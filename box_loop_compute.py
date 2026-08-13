@@ -524,3 +524,70 @@ with open('box_loop_B.txt', 'w') as f:
             f.write("\n\n")
 
 print("Scheme-A beta-weighted sums written to box_loop_B.txt")
+
+# ======================================================================
+#  PARTIAL SUMS OF B  (equal +/- hard external-mode contributions)
+# ======================================================================
+#  Since the + and - transverse hard external modes give equal left/right
+#  subdiagram contributions, we combine:
+#     P1  =  S(L+) + S(L-)
+#     P2  =  S(+L) + S(-L)
+#     P3  =  S(++) + S(--) + S(+-) + S(-+)
+#  The sums are done at the J-seed level and appended to box_loop_B.txt.
+# ======================================================================
+
+def combined_S(lam1, lam2):
+    """J-seed coefficient dictionary  {(r,m,n): coeff}  for S(lam1 lam2)."""
+    combined = {}
+    for sg1 in helicity:
+        for sg2 in helicity:
+            w = beta_weight(sg1) * beta_weight(sg2)
+            for (coeff, r, m, n) in all_mapped[(lam1, lam2, sg1, sg2)]:
+                key = (r, m, n)
+                combined[key] = combined.get(key, sp.Integer(0)) + w * coeff
+    return combined
+
+def add_S(pairs):
+    """Sum the J-seed coefficient dictionaries of several (lam1, lam2) pairs."""
+    total = {}
+    for lam1, lam2 in pairs:
+        for key, val in combined_S(lam1, lam2).items():
+            total[key] = total.get(key, sp.Integer(0)) + val
+    return total
+
+partial_sums = [
+    ("S(L+) + S(L-)",                 [('L', 1), ('L', -1)]),
+    ("S(+L) + S(-L)",                 [(1, 'L'), (-1, 'L')]),
+    ("S(++) + S(--) + S(+-) + S(-+)", [(1, 1), (-1, -1), (1, -1), (-1, 1)]),
+]
+
+with open('box_loop_B.txt', 'a') as f:
+    f.write("\n\n" + "="*90 + "\n")
+    f.write("PARTIAL SUMS OF B  (equal +/- hard external modes combined)\n")
+    f.write("P1 = S(L+) + S(L-)\n")
+    f.write("P2 = S(+L) + S(-L)\n")
+    f.write("P3 = S(++) + S(--) + S(+-) + S(-+)\n")
+    f.write("Summed at the J-seed level (Scheme A).  beta kept symbolic.\n")
+    f.write("="*90 + "\n\n")
+
+    for label, pairs in partial_sums:
+        total = add_S(pairs)
+        order = sorted(total.keys(), key=lambda k: (k[2], k[1], k[0]))
+
+        f.write("\n" + "="*70 + "\n")
+        f.write(label + "\n")
+        f.write("="*70 + "\n\n")
+
+        f.write(">>> LATEX FORM <<<\n")
+        terms_l = [J_latex(total[k], k[0], k[1], k[2])
+                   for k in order if total[k] != 0]
+        f.write(label + r" = \left[ " + " + ".join(terms_l) + r" \right]")
+        f.write("\n\n")
+
+        f.write(">>> PLAIN FORM <<<\n")
+        terms_p = [J_plain(total[k], k[0], k[1], k[2])
+                   for k in order if total[k] != 0]
+        f.write(label + " = ( " + " + ".join(terms_p) + " )")
+        f.write("\n\n")
+
+print("Partial sums of B written to box_loop_B.txt")
