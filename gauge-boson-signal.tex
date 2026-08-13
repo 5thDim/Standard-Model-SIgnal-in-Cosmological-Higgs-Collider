@@ -1,0 +1,1422 @@
+\documentclass[a4paper,12pt]{article}
+%\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+%\usepackage{times} 
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{framed}
+%\usepackage{mathptmx}
+\usepackage[medium]{titlesec}
+\usepackage{bm}
+\usepackage{cite}                                                   
+%\usepackage{feynmp-auto}
+\usepackage[normalem]{ulem}
+\usepackage{extarrows}
+\usepackage{slashed}
+\usepackage{isodateo}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[bookmarksnumbered=true,bookmarksopen=true]{hyperref}
+ \hypersetup{colorlinks,%
+             linkcolor=[rgb]{0,0.3,0.6}, %
+             citecolor=[rgb]{0,0.3,0.6}, %
+             urlcolor=[rgb]{0,0.3,0.6}}
+\usepackage[hmargin=.7in,vmargin=1.1in]{geometry}
+\usepackage{indentfirst}
+\usepackage{booktabs}
+
+\linespread{1.1}
+%\numberwithin{equation}{section}
+\newcommand{\FR}[2]{\displaystyle\frac{\,{#1}\,}{#2}}
+\newcommand{\fr}[2]{\mbox{$\frac{\,{#1}\,}{#2}$}}
+\newcommand{\n}{\nonumber}
+\renewcommand{\rm}{\mathrm}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\newcommand{\red}{\color{red}}
+\newcommand{\blue}{\color{blue}}
+\newcommand{\gray}{\color{gray}}
+\newcommand{\hl}{\color[rgb]{1,0,.5}}
+
+\def\bge{\begin{equation}}
+\def\ede{\end{equation}}
+\def\bga{\begin{aligned}}
+\def\eda{\end{aligned}}
+\def\bgb{\begin{bmatrix}}
+\def\edb{\end{bmatrix}}
+\def\bgp{\begin{pmatrix}}
+\def\edp{\end{pmatrix}}
+\def\bgm{\begin{matrix}}
+\def\edm{\end{matrix}}
+\def\bgs{\begin{subequations}}
+\def\eds{\end{subequations}}
+\newcommand{\order}[1]{\mathcal{O}({#1})}
+\def\di{{\mathrm{d}}}
+\def\D{{\mathrm{D}}}
+\def\Di{{\mathcal{D}}}
+
+\def\T{\mathcal{T}}
+\def\J{\mathcal{J}}
+\def\mb{\mathbf}
+\def\ms{\mathscr}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+\def\cl{\mathrm{cl}}
+\def\pd{\partial}
+\def\ld{{\mathscr{L}}}
+\def\hd{{\mathscr{H}}}
+\def\z{{\bar{z}}}
+\def\la{\langle}\def\ra{\rangle}
+\def\sla{\slashed}
+\def\const{\mathrm{const.}}
+\setlength\unitlength{1mm}
+\def\tr{\mathrm{\,tr\,}}
+\def\Tr{\mathrm{\,Tr\,}}
+\def\Det{\mathrm{\,Det\,}}
+\def\to{\rightarrow}
+\def\To{\Rightarrow}
+\def\ii{\mathrm{i}}
+
+\def\al{\alpha}
+\def\be{\beta}
+\def\ga{\gamma}
+\def\de{\delta}
+\def\ep{\epsilon}
+\def\ka{\kappa}
+\def\lam{\lambda}
+\def\rh{\rho}
+\def\si{\sigma}
+\def\ze{\zeta}
+\def\tn{\tilde\nu}
+
+
+\def\Wh{\mathrm{W}}
+
+
+\def\aa{\mathsf{a}}
+\def\bb{\mathsf{b}}
+\def\cc{\mathsf{c}}
+\def\dd{\mathsf{d}}
+
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+
+\def\Mp{M_{\text{Pl}}}
+
+
+\def\Re{\mathrm{Re}\,}
+\def\Im{\mathrm{Im}\,}
+
+\def\ad{\mathrm{\,ad\,}}
+
+\usepackage{mdframed} 
+                   
+
+\newmdenv[skipabove=0pt,%
+          skipbelow=5pt,%
+          leftmargin=0pt,%
+          rightmargin=0pt,%
+          innertopmargin=-5pt,%
+          innerbottommargin=7pt,%
+          innerleftmargin=2pt,%
+          innerrightmargin=2pt,%
+          splittopskip=0pt,%
+          splitbottomskip=0pt,%
+          linewidth=0pt,%
+          nobreak=true]%
+          {keyeqn2}                   
+                   
+                   
+\newmdenv[backgroundcolor=gray!15,%
+          skipabove=0pt,%
+          skipbelow=5pt,%
+          leftmargin=0pt,%
+          rightmargin=0pt,%
+          innertopmargin=-5pt,%
+          innerbottommargin=7pt,%
+          innerleftmargin=2pt,%
+          innerrightmargin=2pt,%
+          splittopskip=0pt,%
+          splitbottomskip=0pt,%
+          linewidth=0pt,%
+          nobreak=true]%
+          {keyeqn}
+
+\usepackage{titlesec}          
+\titleformat{\section}
+{\normalfont\fontsize{15}{20}\bfseries}{\thesection}{1em}{}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\newcommand{\ob}[1]{\mkern 2mu \overline{\mkern -2mu #1 \mkern -2mu}\mkern 2mu}
+\newcommand{\wt}[1]{\mkern 2mu \widetilde{\mkern -2mu #1 \mkern -2mu}\mkern 2mu}
+\newcommand{\wh}[1]{\mkern 2mu \widehat{\mkern-2mu#1\mkern-2mu}\mkern 2mu}
+
+\newcommand{\fnemail}[1]{\footnote{Email: \href{mailto:#1}{\nolinkurl{#1}}}}
+
+\title{\Large\textbf{Standard Model Signal in Cosmological Higgs Collider}\\[2mm]}
+
+\author{}
+
+\begin{document}
+
+\date{}
+\maketitle
+
+% \vspace{20mm}
+
+% \begin{abstract}
+% \vspace{10mm}
+
+% We derive ...
+
+% \end{abstract}
+
+% % \newpage
+% \tableofcontents
+
+% \newpage
+% 3 methods: Late-time expansion of two point function; SK integral in time-momentum space and factorization theorem; spectral decomposition. The bubble diagram can be evaluated in these 3 methods, while the triangle diagrams and box diagram can only be evaluated by the factorization theorem method.
+\section{Gauge Boson Signal}
+Higgs bulk-boundary propagator is a massless propagator:
+\begin{align}
+    G_\pm(k; \tau) = \frac{H^2}{2k^3} (1 \mp ik\tau) e^{\pm ik\tau}
+\end{align}
+
+The Higgs-gauged coupling are from the original SM Lagrangian: 
+\begin{align}
+    \frac{\sqrt{-g}}{2}|\mathrm{D}_\mu \mb H |^2 \supset \frac{ a(\tau)^2}{4} g^2 (h_0 + \de h)^2 \left( W^+_\mu W^{-\mu} + \frac{1}{2c_W^2} Z^\mu Z_\mu \right)
+\end{align}
+
+The masses of gauge bosons due to the infrared Higgs loop contribution are:
+\begin{align}
+    m_W^2 = \frac{3 g^2 H^4}{8 \pi^2 m_H^2}, \quad m_Z^2 = \frac{m^2_W}{c^2_W}
+\end{align}
+
+Mode function of a massive gauge boson \cite{qin_helical_2023}:
+\begin{align}
+    B^{( \pm)}(k, \tau) & =\frac{1}{\sqrt{2 k}} \mathrm{~W}_{ 0, \mathrm{i} \tilde{\nu}}(2 \mathrm{i} k \tau), \\
+    B^{(T)}(k, \tau) & =\frac{\sqrt{\pi} k}{2 m} e^{-\pi \tilde{\nu} / 2} H(-\tau)^{3 / 2} \mathrm{H}_{\mathrm{i} \tilde{\nu}}^{(1)}(-k \tau), \\
+    B^{(L)}(k, \tau) & =-\frac{\mathrm{i} \sqrt{\pi}}{4 m} e^{-\pi \widetilde{\nu} / 2} H(-\tau)^{1 / 2}\left[\mathrm{H}_{\mathrm{i} \tilde{\nu}}^{(1)}(-k \tau)-k \tau\left(\mathrm{H}_{1+\mathrm{i} \tilde{\nu}}^{(1)}(-k \tau)-\mathrm{H}_{-1+\mathrm{i} \tilde{\nu}}^{(1)}(-k \tau)\right)\right]
+\end{align}
+where $\tilde\nu=\sqrt{(m/H)^2-1/4}$. And the W function with zero chemical potential can transform to a Hankel function:
+\begin{align}
+    \mathrm{~W}_{ 0, \mathrm{i} \tilde{\nu}}(2 \mathrm{i} k \tau) &= \sqrt{\frac{2ik\tau}{\pi}} K_{i \tilde\nu}(ik\tau) \nonumber \\
+    &= \sqrt{\frac{ i\pi k\tau}{2}} ie^{-\pi \tilde\nu /2} \mathrm{H}^{(1)}_{i\tilde\nu}(-k\tau)
+\end{align}
+
+So the grater propagator or $+-$ propagator of each polarization:
+\begin{align}
+    &D_{>}^{( \pm)}\left(k ; \tau_{1}, \tau_{2}\right)=B^{( \pm)}\left(k, \tau_{1}\right) B^{( \pm) *}\left(k, \tau_{2}\right)=\frac{\pi e^{-\pi\tilde\nu} (\tau_1 \tau_2)^{1/2}}{4} \mathrm{H}_{\mathrm{i} \widetilde{\nu}}^{(1)}\left(-k \tau_{1}\right) \mathrm{H}_{-\mathrm{i} \widetilde{\nu}}^{(2)}\left(-k \tau_{2}\right), \\
+    &D_{>}^{(T)}\left(k ; \tau_{1}, \tau_{2}\right)=B^{(T)}\left(k, \tau_{1}\right) B^{(T) *}\left(k, \tau_{2}\right)=\frac{\pi H^{2} k^{2}}{4 m^{2}} e^{-\pi \widetilde{\nu}}\left(\tau_{1} \tau_{2}\right)^{3 / 2} \mathrm{H}_{\mathrm{i} \widetilde{\nu}}^{(1)}\left(-k \tau_{1}\right) \mathrm{H}_{-\mathrm{i} \widetilde{\nu}}^{(2)}\left(-k \tau_{2}\right), \\
+    &D_{>}^{(L)}\left(k ; \tau_{1}, \tau_{2}\right)=\frac{1}{k^{2}}\left(\partial_{\tau_{1}}-\frac{2}{\tau_{1}}\right)\left(\partial_{\tau_{2}}-\frac{2}{\tau_{2}}\right) D_{>}^{(T)}\left(k ; \tau_{1}, \tau_{2}\right) .
+\end{align}
+
+We quote the scalar propagator with mass index $i\tilde\nu$:
+\begin{align}
+    D^{(\text{scalar})}_> = \frac{\pi }{4 } e^{-\pi \widetilde{\nu}}\left(\tau_{1} \tau_{2}\right)^{3 / 2} \mathrm{H}_{\mathrm{i} \widetilde{\nu}}^{(1)}\left(-k \tau_{1}\right) \mathrm{H}_{-\mathrm{i} \widetilde{\nu}}^{(2)}\left(-k \tau_{2}\right)
+\end{align}
+and the nonlocal part of its late time expansion:
+\begin{align}
+    [D_>]_{\text{NonL}} = [D_<]_{\text{NonL}} = \frac{(\tau_1 \tau_2)^{3/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right]
+\end{align}
+
+And the vector propagator can be related to the scalar propagator:
+\begin{align}
+    D_>^{(\pm)} &= \frac{1}{\tau_1 \tau_2} D^{(\text{scalar})}_> \\
+    D_>^{(T)} &= \frac{k^2}{\tilde\nu^2 + 1/4} D^{(\text{scalar})}_> \\
+    D_{>}^{(L)} &= \frac{1}{\tilde\nu^2 + 1/4}\left(\partial_{\tau_{1}}-\frac{2}{\tau_{1}}\right)\left(\partial_{\tau_{2}}-\frac{2}{\tau_{2}}\right) D_{>}^{(\text{scalar})}\left(k ; \tau_{1}, \tau_{2}\right) 
+\end{align}
+We can see the propagator of temporal component of longitudinal mode have a suppression factor $(k\tau)^2$, so it will contribute the next leading term and we will ignore it below.
+
+And the nonlocal part:
+\begin{align}
+    [D^{(\pm)}]_{\text{NonL}} &= \frac{(\tau_1 \tau_2)^{1/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right] \\
+    [D^{(T)}]_{\text{NonL}} &= \frac{k^2}{\tilde\nu^2 + 1/4} \frac{(\tau_1 \tau_2)^{3/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right] \\
+    [D^{(L)}]_{\text{NonL}} &= \frac{(-1/2+i\tn)^2}{\tilde\nu^2 + 1/4} \frac{(\tau_1 \tau_2)^{1/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right]
+\end{align}
+% We can see that the temporal component have a suppression of factor $(\tau_1\tau_2)$, so it will contribute the next leading term and we will neglected it in the following calculation.
+
+We also define the propagator of helicity eigenstates:
+\begin{align}
+    &D_{>\;\mu\nu}^{{(\pm1)}} \left(\mb k ; \tau_{1}, \tau_{2}\right) = e_{\mu,\mb k}^{(\pm) } e_{\nu, \mb k}^{(\pm)*} D_{>}^{\pm} \left(k ; \tau_{1}, \tau_{2}\right) \\
+    &D_{>\;\mu\nu}^{{(0)}} \left(\mb k ; \tau_{1}, \tau_{2}\right) =  e_{\mu,\mb k}^{(L)} e_{\nu, \mb k}^{(L)*} D_{>}^{(L)}\left(k ; \tau_{1}, \tau_{2}\right) \\
+    &D_{>\;\mu\nu}^{} \left(\mb k ; \tau_{1}, \tau_{2}\right) = \sum_{h=\pm1,0} D_{>\;\mu\nu}^{{(h)}} \left(k ; \tau_{1}, \tau_{2}\right)
+\end{align}
+
+For $\mb{k}  = (0,0,k)$, the polarization vector is:
+\begin{align}
+    e_{\mu,\mathbf{k}}^{(T)} = \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} , \qquad
+    e_{\mu,\mathbf{k}}^{(\pm)} = \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ 1 \\ \pm \mathrm{i} \\ 0 \end{pmatrix} , \qquad
+    e_{\mu,\mathbf{k}}^{(L)} = \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix}, \qquad
+    k_\mu = \begin{pmatrix} 0 \\ 0 \\ 0 \\ k \end{pmatrix}, \qquad
+\end{align}
+and when we rotate $\mb{{k}}$, the $e_{\mu,\mathbf{k}}^{(T)}$ is invariant and the other two types of porlarization vector will transform $e_{i,\mathbf{k}}' = R_{ij} e_{j,\mathbf{k}} $:
+\begin{align}
+    e_{\mu,\mathbf{k}}^{(\pm)} = \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ \cos\theta\cos\phi \mp \mathrm{i}\sin\phi \\ \cos\theta\sin\phi \pm \mathrm{i}\cos\phi \\ -\sin\theta \end{pmatrix}, \qquad
+    k_\mu = e_{\mu,\mathbf{k}}^{(L)} = \begin{pmatrix} 0 \\ \sin\theta\cos\phi \\ \sin\theta\sin\phi \\ \cos\theta \end{pmatrix}
+\end{align}
+
+
+The MB representation of the scalar propagator:
+\begin{align}
+    D_\gtrless \left(k ; \tau_{1}, \tau_{2}\right)= & \frac{1}{4 \pi} \int_{-\mathrm{i} \infty}^{+\mathrm{i} \infty} \frac{\mathrm{~d} s_{1}}{2 \pi \mathrm{i}} \frac{\mathrm{~d} s_{2}}{2 \pi \mathrm{i}} e^{\pm \mathrm{i} \pi\left(s_{1}-s_{2}\right)}\left(\frac{k}{2}\right)^{-2 s_{12}}\left(-\tau_{1}\right)^{-2 s_{1}+3 / 2}\left(-\tau_{2}\right)^{-2 s_{2}+3 / 2} \\
+    & \times \Gamma\left[s_{1}-\frac{\mathrm{i} \widetilde{\nu}}{2}, s_{1}+\frac{\mathrm{i} \widetilde{\nu}}{2}, s_{2}-\frac{\mathrm{i} \widetilde{\nu}}{2}, s_{2}+\frac{\mathrm{i} \widetilde{\nu}}{2}\right]
+\end{align}
+
+For simplicity we define some loop seeds:
+\begin{align}
+    &\int \frac{d^3\mathbf{q}}{(2\pi)^3} |\mathbf{q}|^{-2a} |\mathbf{q} + \mathbf{k}_s|^{-2b} = \frac{k_s^{3-2a-2b}}{(4\pi)^{3/2}} \cdot f_0(a,b) \\
+    &\int \frac{d^3\mathbf{q}}{(2\pi)^3} |\mathbf{q}|^{-2a} |\mathbf{q} + \mathbf{k}_s|^{-2b} \cos\theta = \frac{k_s^{3-2a-2b}}{(4\pi)^{3/2}} \cdot f_c(a,b) \\
+    &\int \frac{d^3\mathbf{q}}{(2\pi)^3} |\mathbf{q}|^{-2a} |\mathbf{q} + \mathbf{k}_s|^{-2b} \cos^2\theta = \frac{k_s^{3-2a-2b}}{(4\pi)^{3/2}} \cdot f_{cc}(a,b) 
+\end{align}
+where $f(a,b)$ are some Gamma functions arising from the loop integral:
+\begin{align}
+    &f_0(a,b) = \Gamma \left[\begin{array}{c}
+    a+b-\frac{3}{2}, \frac{3}{2}-a, \frac{3}{2}-b \\
+    3-a-b, a,b
+    \end{array}\right] \\
+    &f_c(a,b) = \frac{1}{2}f_0(a+1/2,b-1) - \frac{1}{2}f_0(a-1/2,b) - \frac{1}{2}f_0(a+1/2,b) \\
+    &f_{cc}(a,b) = \frac{1}{4}f_0(a+1,b-2) + \frac{1}{4}f_0(a-1,b) + \frac{1}{4}f_0(a+1,b) \nonumber \\
+    &\qquad \quad - \frac{1}{2}f_0(a,b-1) -\frac{1}{2}f_0(a+1,b-1) +\frac{1}{2}f_0(a,b)
+\end{align}
+
+\section{Bubble Diagram}
+For the Bubble diagram:
+\begin{align}
+    \la \delta h^4 \ra^{\text{Bubble}} &= \left( ig^2 \right)^2 \sum_{a,b=\pm} (ab) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_1) G_b(k_3;\tau_2) G_b(k_4;\tau_2) \nonumber \\
+    &\times \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D_{\mu\nu}(q,\tau_1,\tau_2) \right]_{ab} \left[ D^{\nu\mu}(|\mb{k}_s + \mb{q}|,\tau_2,\tau_1) \right]_{ba}
+\end{align}
+
+The loop integral part is:
+\begin{align}
+    \mathcal{LOOP}_{ab} &= \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D_{\mu\nu}(q,\tau_1,\tau_2) \right]_{ab} \left[ D^{\nu\mu}(|\mb{k}_s + \mb{q}|,\tau_2,\tau_1) \right]_{ba}
+\end{align}
+
+Using the cutting rule, we know that the nonlocal signal part is independent of the SK index:
+\begin{align}
+    \mathcal{LOOP} = \int \frac{\di \mb{q}^3}{(2\pi)^3} &\left[ D^{(L)}(q,\tau_1,\tau_2) e^{(L)i}_{\mb q} e^{(L)j*}_{\mb q} + D^{(\pm)}(q,\tau_1,\tau_2) e^{(\pm)i}_{\mb q} e^{(\pm)j*}_{\mb q} \right] \nonumber \\
+    \times &\left[ D^{(L)}(K,\tau_2,\tau_1) e^{(L)j}_{\mb K} e^{(L)i*}_{\mb K} + D^{(\pm)}(K,\tau_2,\tau_1) e^{(\pm)j}_{\mb K} e^{(\pm)i*}_{\mb K} \right] \\
+    &= \sum_{\sigma_1,\sigma_2=L,\pm} \mathcal{{LOOP}}_{\sigma_1\sigma_2}
+\end{align}
+where $\mb K = \mb q+\mb k_s$. So we should deal with different polarization mixing. We set $\mb k_s=k_s(0,0,1)$ and $\mb q = q(\sin\theta\sin\phi,\sin\theta\cos\phi,\cos\theta)$, then the polarization vector become:
+\begin{align}
+    e_{i,\mathbf{q}}^{(L)} = \begin{pmatrix} \sin\theta\cos\phi \\ \sin\theta\sin\phi \\ \cos\theta \end{pmatrix},\qquad
+    e_{i,\mathbf{q}}^{(\pm)} = \frac{1}{\sqrt{2}} \begin{pmatrix} \cos\theta\cos\phi \mp \mathrm{i}\sin\phi \\ \cos\theta\sin\phi \pm \mathrm{i}\cos\phi \\ -\sin\theta \end{pmatrix}
+\end{align}
+
+\begin{align}
+    \mathbf{e}_{i,\mathbf{K}}^{(L)} = 
+    \frac{1}{K}
+    \begin{pmatrix}
+    q\sin\theta\cos\phi \\
+    q\sin\theta\sin\phi \\
+    q\cos\theta + k_s
+    \end{pmatrix},\qquad
+    \mathbf{e}_{i,\mathbf{K}}^{(\pm)} = 
+    \frac{1}{\sqrt{2} K}
+    \begin{pmatrix}
+    \cos\phi\,(q\cos\theta + k_s) \mp i\,\sin\phi\,K \\
+    \sin\phi\,(q\cos\theta + k_s) \pm i\,\cos\phi\,K\\
+    -q\sin\theta
+    \end{pmatrix}
+\end{align}
+
+The signal part is contributed from the loop integral of nonlocal part of each propagator. And we calculate the first term as an example:
+\begin{align}
+    \mathcal{{LOOP}}_{LL}
+    &=\int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D^{(L)}(q,\tau_1,\tau_2) e^{(L)i}_{\mb q} e^{(L)j*}_{\mb q} \cdot D^{(L)}(K,\tau_2,\tau_1) e^{(L)j}_{\mb K} e^{(L)i*}_{\mb K} \right]_{\text{NonL}} \nonumber \\
+    &= \sum_{c=\pm} \frac{(-1/2+i\tn)^4}{(\tilde\nu^2 + 1/4)^2} \frac{(\tau_1 \tau_2)^{1+2ic\tn}}{(4\pi)^2} \Gamma^4(-ic\tn) \int \frac{\di \mb{q}^3}{(2\pi)^3}\left[  \left( \frac{q}{2} \right)^{2ic\tn} \left( \frac{K}{2} \right)^{2ic\tn} |e^{(L)}_{\mb q} \cdot e^{(L)*}_{\mb K}|^2 \right] 
+\end{align}
+
+Completing the loop integral:
+\begin{align}
+    \mathcal{{LOOP}}_{LL}
+    &= \sum_{c=\pm} \frac{(-1/2+i\tn)^4}{(\tilde\nu^2 + 1/4)^2} \frac{(\tau_1 \tau_2)^{1+2ic\tn}}{(4\pi)^2} \Gamma^4(-ic\tn) \cdot \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} \nonumber \\
+    &\times \left( f_0(x-1,x+1) +2f_c(x-1/2,x+1) +f_{cc}(x,x+1) \right)
+\end{align}
+where $x=-\ii c\tn$. Using the identity $\mb q \cdot \mb K=\frac{1}{2}(q^2+K^2-k_s^2)$, we can also express it as:
+\begin{align}
+    \mathcal{{LOOP}}_{LL}
+     &= \sum_{c=\pm} \frac{(-1/2+i\tn)^4}{(\tilde\nu^2 + 1/4)^2} \frac{(\tau_1 \tau_2)^{1+2ic\tn}}{(4\pi)^2} \Gamma^4(-ic\tn) \cdot \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} \nonumber \\
+    &\times \frac{1}{4} \left(f(x-1,x+1) + f(x+1,x-1) + f(x+1,x+1) \right. \nonumber \\
+    &\quad \left. +2f(x,x) - 2f(x,x+1) - 2f(x+1,x)  \right)
+\end{align}
+
+We denote it as:
+\begin{align}
+    \mathcal{{LOOP}}_{LL}
+    &= \sum_{c=\pm}
+    (\tau_1 \tau_2)^{1+2ic\tn} \cdot
+    \frac{\Gamma^4(-ic\tn)}{(4\pi)^2}
+    \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} 
+    \cdot \mathcal{I}_{LL}(-ic\tn)
+\end{align}
+
+And also for the transversal mode:
+\begin{align}
+    \mathcal{{LOOP}}_{++}
+    &= \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D^{(+)}(q,\tau_1,\tau_2) e^{(+)i}_{\mb q} e^{(+)j*}_{\mb q} \cdot D^{(+)}(K,\tau_2,\tau_1) e^{(+)j}_{\mb K} e^{(+)i*}_{\mb K} \right]_{\text{NonL}} \nonumber \\
+    &= \sum_{c=\pm} \frac{(\tau_1 \tau_2)^{1+2ic\tn}}{(4\pi)^2} \Gamma^4(-ic\tn) \int \frac{\di \mb{q}^3}{(2\pi)^3}\left[  \left( \frac{q}{2} \right)^{2ic\tn} \left( \frac{K}{2} \right)^{2ic\tn} |e^{(+)}_{\mb q} \cdot e^{(+)*}_{\mb K}|^2 \right] 
+\end{align}
+
+Also considering the vector structure:
+\begin{align}
+    \mathcal{{LOOP}}_{++}  &= \sum_{c=\pm} \frac{(\tau_1 \tau_2)^{1+2ic\tn}}{(4\pi)^2} \Gamma^4(-ic\tn) \times \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} \nonumber \\
+    &\times \frac{1}{4} [f_0(x,x) + f_0(x-1,x+1) +f_{cc}(x,x+1) \nonumber \\
+    &\quad + 2f_0(x-\fr{1}{2},x+\fr{1}{2}) +2f_c(x-\fr{1}{2},x+1) +2f_c(x,x+\fr{1}{2}) ]\\
+    &= \sum_{c=\pm}
+    (\tau_1 \tau_2)^{1+2ic\tn} \cdot
+    \frac{\Gamma^4(-ic\tn)}{(4\pi)^2}
+    \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} 
+    \cdot \mathcal{I}_{++}(-ic\tn)
+\end{align}
+
+We note that the $--$ term equals to the $++$ term. 
+Then we should deal with the mixing term.
+Firstly we consider the $L+$ term:
+\begin{align}
+    \mathcal{{LOOP}}_{L+} &= \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D^{(+)}(q,\tau_1,\tau_2) e^{(+)i}_{\mb q} e^{(+)j*}_{\mb q} \cdot D^{(+)}(K,\tau_2,\tau_1) e^{(+)j}_{\mb K} e^{(+)i*}_{\mb K} \right]_{\text{NonL}} \nonumber \\
+    &= \sum_{c=\pm} \frac{(-1/2+i\tn)^2}{(\tilde\nu^2 + 1/4)} \frac{(\tau_1 \tau_2)^{1+2ic\tn}}{(4\pi)^2} \Gamma^4(-ic\tn) \int \frac{\di \mb{q}^3}{(2\pi)^3}\left[  \left( \frac{q}{2} \right)^{2ic\tn} \left( \frac{K}{2} \right)^{2ic\tn} |e^{(L)}_{\mb q} \cdot e^{(+)*}_{\mb K}|^2 \right] 
+\end{align}
+and:
+\begin{align}
+    \mathcal{{LOOP}}_{L+} &= \sum_{c=\pm} \frac{(-1/2+i\tn)^2}{(\tilde\nu^2 + 1/4)} \frac{(\tau_1 \tau_2)^{1+2ic\tn}}{(4\pi)^2} \Gamma^4(-ic\tn) \cdot \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} \nonumber \\
+    &\times \frac{1}{2} \left( f_0(x,x+1) - f_{cc}(x,x+1)  \right) \\
+    &= \sum_{c=\pm}
+    (\tau_1 \tau_2)^{1+2ic\tn} \cdot
+    \frac{\Gamma^4(-ic\tn)}{(4\pi)^2}
+    \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} 
+    \cdot \mathcal{I}_{L+}(-ic\tn)
+\end{align}
+and by completing the dot product we note that $L-=L+=-L=+L$.
+
+And for $+-$ term:
+\begin{align}
+    \mathcal{{LOOP}}_{+-}  &= \sum_{c=\pm} \frac{(\tau_1 \tau_2)^{1+2ic\tn}}{(4\pi)^2} \Gamma^4(-ic\tn) \times \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} \nonumber \\
+    &\times \frac{1}{4} [f_0(x,x) + f_0(x-1,x+1) +f_{cc}(x,x+1) \nonumber \\
+    &\quad - 2f_0(x-\fr{1}{2},x+\fr{1}{2}) +2f_c(x-\fr{1}{2},x+1) -2f_c(x,x+\fr{1}{2}) ] \\
+    &= \sum_{c=\pm}
+    (\tau_1 \tau_2)^{1+2ic\tn} \cdot
+    \frac{\Gamma^4(-ic\tn)}{(4\pi)^2}
+    \frac{4^{-2\ii c\tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} 
+    \cdot \mathcal{I}_{+-}(-ic\tn)
+\end{align}
+and we have $-+=+-$.
+
+So the loop integral:
+\begin{align}
+    \mathcal{LOOP} = 
+    \sum_{\si_1,\si_2=L,\pm}
+    \mathcal{{LOOP}}_{\si_1\si_2}  
+    =\sum_{c=\pm} (\tau_1\tau_2)^{1+2ic\tn} \cdot \mathcal{B}_c
+\end{align}
+where the bubble subgraph contribution is:
+\begin{align}
+    \mathcal{B}_c = \frac{\Gamma^4(-\ii c\tn)}{(4\pi)^2} \frac{4^{-2\ii c \tn} k_s^{3+4ic\tn}}{(4\pi)^{3/2}} 
+    \cdot \sum_{\lam_1,\lam_2=L,\pm} 
+    \mathcal{I}_{\lam_1\lam_2}(-\ii c\tn)
+\end{align}
+
+Then we can consider the left and right subgraph contribution, namely the time integral.
+For the left subgraph:
+\begin{align}
+    \mathcal{T}^{(L)}_c &= (ig^2) \sum_a a \int \frac{\di \tau_1}{|H \tau_1|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_1) (-\tau_1)^{1+2ic\tn} \nonumber \\
+    &= (ig^2) \frac{H^2}{4k_1^3 k_2^3} \sum_{a=\pm} a \int_{-\infty}^{0} \di \tau_1 (-\tau_1)^{-1+2\ii c\tn} (1 -iak_{12}\tau_1-k_1k_2\tau_1^2) e^{iak_{12}\tau_1} \nonumber \\
+    &= (ig^2) \frac{H^2}{4k_1^3 k_2^3} \times k_{12}^{-2ic\tn} \cdot \mathcal{P}^{(1)}_c(\tn)
+\end{align}
+where the coefficient is:
+\begin{align}
+    \mathcal{P}^{(1)}_c(\tn) = \frac{2+ic\tn}{2ic\tn} \sinh(\pi c \tn) \Gamma(2+2\ii c\tn)
+\end{align}
+
+Also for the right subgraph:
+\begin{align}
+    \mathcal{T}^{(R)}_c = (ig^2) \frac{H^2}{4k_3^3 k_4^3} \times k_{34}^{-2ic\tn} \cdot \mathcal{P}^{(1)}_c(\tn)
+\end{align}
+
+So the total bubble graph contribution:
+\begin{align}
+    \la \delta h^4 \ra^{\text{Bubble}} &= \sum_{c=\pm} \mathcal{T}^{(L)}_c \mathcal{T}^{(R)}_c \mathcal{B}_c \\
+    &= (ig^2)^2 \frac{H^4 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} \times C^{\text{Bub}}(\tn) + \text{c.c.}
+\end{align}
+where the magnitude is:
+\begin{align}
+    C^{\text{Bub}}(\tn) = 
+    [\mathcal{P}^{(1)}_+(\tn)]^2 \cdot
+    \frac{\Gamma^4(-\ii \tn)}{(4\pi)^{7/2}} \cdot 
+    \sum_{\lam_1,\lam_2=L,\pm} \mathcal{I}_{\lam_1\lam_2}(\tn)|_{c=+}
+\end{align}
+
+
+\section{Triangle Diagram}
+For one of the triangle diagrams:
+\begin{align}
+    \la \delta h^4 \ra^{\text{Tri1}} &= \left( ig^2 \right) (ig^2h_0)^2 \sum_{a,b,c=\pm} (abc) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} \frac{\di \tau_3}{|H \tau_3|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_2) G_c(k_3;\tau_3) G_c(k_4;\tau_3) \nonumber \\
+    &\times \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D_{ij}(\mb q+\mb k_1,\tau_1,\tau_2) \right]_{ab} \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right]_{bc} \left[ D_{ki}( \mb{q},\tau_3,\tau_1) \right]_{ca} 
+\end{align}
+
+Firstly we deal with the loop integral:
+\begin{align}
+    \mathcal{LOOP} 
+    = \int \frac{\di \mb{q}^3}{(2\pi)^3} 
+    \left[ D_{ij}(\mb q+\mb k_1,\tau_1,\tau_2) \right]_{ab} 
+    \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right]_{bc} 
+    \left[ D_{ki}( \mb{q},\tau_3,\tau_1) \right]_{ca}
+\end{align}
+
+Using the cutting rule, we know that only when $\mb q$ and $\mb k_s$ both become soft, this integral will contribute the nonlocal signal.
+\begin{align}
+    \mathcal{LOOP} = \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D_{ij}(\mb k_1,\tau_1,\tau_2) \right]_{ab} \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right] \left[ D_{ki}( \mb{q},\tau_3,\tau_1) \right]
+\end{align}
+Here we use:
+\begin{align}
+    e_{i,\mathbf{k}_1}^{(L)}
+    &= \begin{pmatrix} \sin\theta_1 \\ 0 \\ \cos\theta_1 \end{pmatrix}, \qquad
+    e_{i,\mathbf{k}_1}^{(\pm)}
+    = \frac{1}{\sqrt{2}}
+    \begin{pmatrix}
+    \cos\theta_1 \\
+    \pm \ii \\
+    -\sin\theta_1
+    \end{pmatrix}.
+\end{align}
+and expanding the propagator by helicity basis:
+\begin{align}
+    \mathcal{LOOP} = \int \frac{\di \mb{q}^3}{(2\pi)^3} &\left[ D^{(L)}(k_1,\tau_1,\tau_2) e^{(L)i}_{\mb k_1} e^{(L)j*}_{\mb k_1} + D^{(\pm)}(k_1,\tau_1,\tau_2) e^{(\pm)i}_{\mb k_1} e^{(\pm)j*}_{\mb k_1} \right]_{ab} \nonumber \\
+    \times &\left[ D^{(L)}(K,\tau_2,\tau_3) e^{(L)j}_{\mb K} e^{(L)k*}_{\mb K} + D^{(\pm)}(K,\tau_2,\tau_3) e^{(\pm)j}_{\mb K} e^{(\pm)k*}_{\mb K} \right] \nonumber \\
+    \times &\left[ D^{(L)}(q,\tau_3,\tau_1) e^{(L)k}_{\mb q} e^{(L)i*}_{\mb q} + D^{(\pm)}(q,\tau_3,\tau_1) e^{(\pm)k}_{\mb q} e^{(\pm)i*}_{\mb q} \right] \\
+    &= \sum_{\lambda,\sigma_1,\sigma_2=L,\pm} 
+    \mathcal{LOOP}_{\sigma_1\sigma_2}^{\lambda}
+\end{align}
+where each porlarization combination term is:
+\begin{align}
+    \mathcal{LOOP}_{\sigma_1\sigma_2}^{\lambda} &= \int \frac{\di \mb{q}^3}{(2\pi)^3} 
+    [D^{(\lambda)}(k_1,\tau_1,\tau_2)]_{ab} 
+    D^{(\sigma_1)}(K,\tau_2,\tau_3) 
+    D^{(\sigma_2)}(q,\tau_3,\tau_1) \nonumber \\
+    &\times e^{(\lambda)i}_{\mb k_1} e^{(\lambda)j*}_{\mb k_1}
+    e^{(\sigma_1)j}_{\mb K} e^{(\sigma_1)k*}_{\mb K}
+    e^{(\sigma_2)k}_{\mb q} e^{(\sigma_2)i*}_{\mb q} 
+\end{align}
+
+Firstly we consider the $\lambda=L$ terms and complete the contraction with the other two propagators. We set
+$\mb k_1=k_1(\sin\theta_1,0,\cos\theta_1)$, and still use $\mb k_s=k_s(0,0,1)$ and
+$\mb K=\mb q+\mb k_s$. Then the vector structure is:
+\begin{align}
+    \mathcal{E}_{\si_1\si_2}^L& = e^{(L)i}_{\mb k_1} e^{(L)j*}_{\mb k_1}
+    e^{(\si_1)j}_{\mb K}e^{(\si_1)k*}_{\mb K}
+    e^{(\si_2)k}_{\mb q}e^{(\si_2)i*}_{\mb q}
+    =
+    (e^{(L)*}_{\mb k_1}\cdot e^{(\si_1)}_{\mb K})
+    (e^{(\si_1)*}_{\mb K}\cdot e^{(\si_2)}_{\mb q})
+    (e^{(\si_2)*}_{\mb q}\cdot e^{(L)}_{\mb k_1}) \nonumber \\
+    &= A_{L\si_1} B_{\si_1 \si_2} C_{\si_2 L}
+\end{align}
+where $\si_1,\si_2=L,\pm$. For simplicity we define:
+\begin{align}
+    A_{LL} &= \frac{q\sin\theta\sin\theta_1\cos\phi+(q\cos\theta+k_s)\cos\theta_1}{K}, \\
+    A_{L+} &= \frac{\sin\theta_1\cos\phi(q\cos\theta+k_s)-\ii K\sin\theta_1\sin\phi-q\sin\theta\cos\theta_1}{\sqrt{2}K}, \\
+    A_{L-} &= \frac{\sin\theta_1\cos\phi(q\cos\theta+k_s)+\ii K\sin\theta_1\sin\phi-q\sin\theta\cos\theta_1}{\sqrt{2}K}, \\
+    C_{LL} &= \sin\theta\sin\theta_1\cos\phi+\cos\theta\cos\theta_1, \\
+    C_{+L} &= \frac{\sin\theta_1(\cos\theta\cos\phi+\ii\sin\phi)-\sin\theta\cos\theta_1}{\sqrt{2}}, \\
+    C_{-L} &= \frac{\sin\theta_1(\cos\theta\cos\phi-\ii\sin\phi)-\sin\theta\cos\theta_1}{\sqrt{2}},
+\end{align}
+and:
+\begin{align}
+    B_{LL} &= \frac{q+k_s\cos\theta}{K}, &
+    B_{L+}&=B_{L-} = -\frac{k_s\sin\theta}{\sqrt{2}K}, \\
+    B_{+L}&=B_{-L} = \frac{k_s\sin\theta}{\sqrt{2}K}, &
+    B_{++}&=B_{--} = \frac{K+q+k_s\cos\theta}{2K}, \\
+    B_{+-}&=B_{-+} = \frac{q+k_s\cos\theta-K}{2K}.
+\end{align}
+So the nine contractions are:
+\begin{align}
+    \mathcal{E}_{LL}^L &= A_{LL} B_{LL} C_{LL}, &
+    \mathcal{E}_{L+}^L &= A_{LL} B_{L+} C_{+L}, &
+    \mathcal{E}_{L-}^L &= A_{LL} B_{L-} C_{-L}, \\
+    \mathcal{E}_{+L}^L &= A_{L+} B_{+L} C_{LL}, &
+    \mathcal{E}_{++}^L &= A_{L+} B_{++} C_{+L}, &
+    \mathcal{E}_{+-}^L &= A_{L+} B_{+-} C_{-L}, \\
+    \mathcal{E}_{-L}^L &= A_{L-} B_{-L} C_{LL}, &
+    \mathcal{E}_{-+}^L &= A_{L-} B_{-+} C_{+L}, &
+    \mathcal{E}_{--}^L &= A_{L-} B_{--} C_{-L} .
+\end{align}
+
+Then we can complete the loop integral for the terms related to $D^{(L)}(k_1)$ and recognize the nonlocal signal parts: 
+\begin{align}
+    \mathcal{LOOP}_{\sigma_1\sigma_2}^{\lambda} &= \int \frac{\di \mb{q}^3}{(2\pi)^3} 
+    [D^{(\lambda)}(k_1,\tau_1,\tau_2)]_{ab} 
+    D^{(\sigma_1)}(K,\tau_2,\tau_3) 
+    D^{(\sigma_2)}(q,\tau_3,\tau_1) 
+    \cdot \mathcal{E}^L_{\si_1 \si_2} \\
+    &= \left[D^{(\lambda)}(k_1,\tau_1,\tau_2)\right]_{ab}
+    \cdot \sum_{d=\pm}
+    (\tau_1\tau_2)^{1/2+\ii d\tn}(-\tau_3)^{1+2\ii d\tn} \nonumber \\
+    &\times \frac{\Gamma[-\ii d \tn]^4}{(4\pi)^2} 
+    \be^{\si_1L} \be^{\si_2L}
+    \int \frac{\di \mb{q}^3}{(2\pi)^3}
+    \left(\frac{q}{2}\right)^{2\ii d \tn}
+    \left(\frac{K}{2}\right)^{2\ii d \tn}
+    \mathcal{E}^L_{\si_1 \si_2}   
+\end{align}
+where $\beta^{\si L}$ is a additional factor for the longitudinal mode:
+\begin{align}
+    \beta^{\si L} = \begin{cases}
+    \frac{(-1/2+\ii \tn)^2}{\tn^2+1/4}, & \si=L, \\
+    1, & \si=\pm.
+    \end{cases}
+\end{align}
+
+Since all terms proportional to
+$\sin\phi$ or $\cos\phi$ vanish after the azimuthal integral, we only need the $\phi$-averaged angular factors.
+For the azimuthal average, it is important to keep the quadratic terms:
+\begin{align}
+    \overline{\sin\phi}=\overline{\cos\phi}
+    =\overline{\sin\phi\cos\phi}=0,\qquad
+    \overline{\sin^2\phi}=\overline{\cos^2\phi}=\frac{1}{2}.
+\end{align}
+
+We denote $z=\cos\theta$, $s_1=\sin\theta_1$ and $c_1=\cos\theta_1$. The non-vanishing parts are:
+\begin{align}
+    \overline{\mathcal{E}}_{LL}^L
+    &= \frac{q+k_s z}{K^2}
+    \left[\frac{1}{2}q(1-z^2)s_1^2+z(qz+k_s)c_1^2\right], \\
+    \overline{\mathcal{E}}_{L+}^L
+    =\overline{\mathcal{E}}_{L-}^L
+    &= -\frac{k_s(1-z^2)}{2K^2}
+    \left[\frac{1}{2}qzs_1^2-(qz+k_s)c_1^2\right], \\
+    \overline{\mathcal{E}}_{+L}^L
+    =\overline{\mathcal{E}}_{-L}^L
+    &= \frac{k_s(1-z^2)}{2K^2}
+    \left[\frac{1}{2}(qz+k_s)s_1^2-qzc_1^2\right], \\
+    \overline{\mathcal{E}}_{++}^L
+    =\overline{\mathcal{E}}_{--}^L
+    &= \frac{K+q+k_s z}{4K^2}
+    \left[\frac{1}{2}\left(z(qz+k_s)+K\right)s_1^2+q(1-z^2)c_1^2\right], \\
+    \overline{\mathcal{E}}_{+-}^L
+    =\overline{\mathcal{E}}_{-+}^L
+    &= \frac{q+k_s z-K}{4K^2}
+    \left[\frac{1}{2}\left(z(qz+k_s)-K\right)s_1^2+q(1-z^2)c_1^2\right].
+\end{align}
+
+
+For any monomial generated by these angular factors, we first define the dimensionful integral:
+\begin{align}
+    \widetilde{\mathcal{J}}_r(m,n)
+    &\equiv
+    \int \frac{\di\mb q^3}{(2\pi)^3}
+    \left(\frac{q}{2}\right)^{2\ii d\tn}
+    \left(\frac{K}{2}\right)^{2\ii d\tn}
+    q^m K^{-n} z^r \nonumber \\
+    &=\frac{4^{-2\ii d\tn}k_s^{3+4\ii d\tn+m-n}}{(4\pi)^{3/2}}
+    \mathcal{J}_r(m,n),
+\end{align}
+where the dimensionless loop seeds are:
+\begin{align}
+    \mathcal{J}_r(m,n)
+    &\equiv f_r\left(x-\frac{m}{2},x+\frac{n}{2}\right),
+    \qquad x=-\ii d\tn ,
+\end{align}
+and $f_1\equiv f_c$, $f_2\equiv f_{cc}$. The $\mathcal{J}_3$ terms below are reduced to the same loop seeds by using
+$z=(K^2-q^2-k_s^2)/(2qk_s)$:
+\begin{align}
+    \mathcal{J}_3(m,n)
+    &= \frac{1}{8}
+    \left[\mathcal{J}_0(m-3,n-6)-3\mathcal{J}_0(m-1,n-4)
+    -3\mathcal{J}_0(m-3,n-4)\right. \nonumber \\
+    &\quad
+    +3\mathcal{J}_0(m+1,n-2)+6\mathcal{J}_0(m-1,n-2)
+    +3\mathcal{J}_0(m-3,n-2) \nonumber \\
+    &\quad\left.
+    -\mathcal{J}_0(m+3,n)-3\mathcal{J}_0(m+1,n)
+    -3\mathcal{J}_0(m-1,n)-\mathcal{J}_0(m-3,n)\right].
+\end{align}
+
+We denote the dimensionless coefficients of the loop integrals as $\mathcal{I}_{\si_1\si_2}^{\lam}(-\ii d\tn)$, which are defined by:
+\begin{align}
+    \mathcal{LOOP}_{\sigma_1\sigma_2}^{\lambda} 
+    &= \left[D^{(\lambda)}(k_1,\tau_1,\tau_2)\right]_{ab}
+    \cdot \sum_{d=\pm}
+    (\tau_1\tau_2)^{1/2+\ii d\tn}(-\tau_3)^{1+2\ii d\tn} 
+    \frac{\Gamma^4(-\ii d\tn)}{(4\pi)^{2}}
+    \tilde{\mathcal{I}}^{\lam}_{\si_1 \si_2}(-\ii d\tn)
+\end{align}
+and explicitly:
+\begin{align}
+    \widetilde{\mathcal{I}}^{\lambda}_{\sigma_1\sigma_2}
+    &\equiv \be^{\si_1L} \be^{\si_2L} \int\frac{\di\mb q^3}{(2\pi)^3}
+    \left(\frac{q}{2}\right)^{2\ii f\tn}
+    \left(\frac{K}{2}\right)^{2\ii f\tn}
+    \overline{\mathcal{E}}^{\lambda}_{\sigma_1\sigma_2} \nonumber \\
+    &=\frac{4^{-2\ii f\tn}k_s^{3+4\ii f\tn}}{(4\pi)^{3/2}}
+    \mathcal{I}^{\lambda}_{\sigma_1\sigma_2},
+    \qquad f=\pm.
+\end{align}
+
+Then the dimensionless coefficients of the nine loop integrals are:
+\begin{align}
+    \mathcal{I}_{LL}^{L}
+    &= \frac{(-1/2+\ii c\tn)^4}{(\tn^2 + 1/4)^2} \cdot
+    \left\{\frac{s_1^2}{2}\left[\mathcal{J}_0(2,2)+\mathcal{J}_1(1,2)
+    -\mathcal{J}_2(2,2)-\mathcal{J}_3(1,2)\right] \right. \nonumber \\
+    &\quad \left.
+    +c_1^2\left[\mathcal{J}_2(2,2)+\mathcal{J}_3(1,2)+\mathcal{J}_1(1,2)+\mathcal{J}_2(0,2)\right]  \right\}, \\
+    \mathcal{I}_{L+}^{L}
+    =\mathcal{I}_{L-}^{L}
+    &= \frac{(-1/2+\ii c\tn)^2}{(\tn^2 + 1/4)} \cdot \left\{ -\frac{s_1^2}{4}\left[\mathcal{J}_1(1,2)-\mathcal{J}_3(1,2)\right] \right. \nonumber \\
+    &\quad \left.
+    +\frac{c_1^2}{2}\left[\mathcal{J}_1(1,2)+\mathcal{J}_0(0,2)
+    -\mathcal{J}_3(1,2)-\mathcal{J}_2(0,2)\right] \right\} , \\
+    \mathcal{I}_{+L}^{L}
+    =\mathcal{I}_{-L}^{L}
+    &= \frac{(-1/2+\ii c\tn)^2}{(\tn^2 + 1/4)} \cdot \left\{ \frac{s_1^2}{4}\left[\mathcal{J}_1(1,2)+\mathcal{J}_0(0,2)
+    -\mathcal{J}_3(1,2)-\mathcal{J}_2(0,2)\right] \right. \nonumber \\
+    &\quad \left.
+    -\frac{c_1^2}{2}\left[\mathcal{J}_1(1,2)-\mathcal{J}_3(1,2)\right] \right\},  \\
+    \mathcal{I}_{++}^{L}
+    =\mathcal{I}_{--}^{L}
+    &= \frac{s_1^2}{8}\left[
+    \mathcal{J}_2(1,1)+\mathcal{J}_2(2,2)+\mathcal{J}_3(1,2)
+    +\mathcal{J}_1(0,1)+\mathcal{J}_1(1,2)+\mathcal{J}_2(0,2)\right. \nonumber \\
+    &\quad\left.
+    +\mathcal{J}_0(0,0)+\mathcal{J}_0(1,1)
+    +\mathcal{J}_1(0,1)\right] \nonumber \\
+    &\quad
+    +\frac{c_1^2}{4}\left[\mathcal{J}_0(1,1)-\mathcal{J}_2(1,1)
+    +\mathcal{J}_0(2,2)-\mathcal{J}_2(2,2)
+    +\mathcal{J}_1(1,2)-\mathcal{J}_3(1,2)\right], \\
+    \mathcal{I}_{+-}^{L}
+    =\mathcal{I}_{-+}^{L}
+    &= \frac{s_1^2}{8}\left[
+    \mathcal{J}_2(2,2)+\mathcal{J}_3(1,2)-\mathcal{J}_2(1,1)
+    +\mathcal{J}_1(1,2)+\mathcal{J}_2(0,2)-\mathcal{J}_1(0,1) \right. \nonumber \\
+    &\quad\left.
+    -\mathcal{J}_0(1,1)-\mathcal{J}_1(0,1)
+    +\mathcal{J}_0(0,0) \right] \nonumber \\
+    &\quad
+    +\frac{c_1^2}{4}
+    \left[\mathcal{J}_0(2,2)-\mathcal{J}_2(2,2)
+    +\mathcal{J}_1(1,2)-\mathcal{J}_3(1,2)
+    -\mathcal{J}_0(1,1)+\mathcal{J}_2(1,1)\right].
+\end{align}
+
+So this part of the triangle loop integral can be written as:
+\begin{align}
+    \mathcal{LOOP}^{L} 
+    &= \sum_{\si_1,\si_2=L,\pm} 
+    \mathcal{LOOP}^{L}_{\si_1\si_2} \nonumber \\
+    &= \left[D^{(L)}(k_1,\tau_1,\tau_2)\right]_{ab} \cdot
+    \sum_{d=\pm} (\tau_1\tau_2)^{1/2+\ii d\tn}(-\tau_3)^{1+2\ii d\tn} \nonumber \\
+    &\times \frac{4^{-2\ii d\tn} k_s^{3+4\ii d\tn} \Gamma^4(-\ii d\tn)}{(4\pi)^{7/2}}
+    \mathcal{I}^{L},
+\end{align}
+where we define $\mathcal{I}^L$ is the sum of the nine contractions:
+\begin{align}
+    \mathcal{I}^{L}
+    &\equiv \sum_{\si_1,\si_2=L,\pm} \mathcal{I}^{L}_{\si_1\si_2}
+    = (\mathcal{I}^{L}_{LL}
+    +2\mathcal{I}^{L}_{L+}
+    +2\mathcal{I}^{L}_{+L}
+    +2\mathcal{I}^{L}_{++}
+    +2\mathcal{I}^{L}_{+-})
+\end{align}
+
+Equivalently:
+\begin{align}
+    \mathcal{LOOP}^{L}
+    =
+    \left[D^{(L)}(k_1,\tau_1,\tau_2)\right]_{ab} \cdot
+    \sum_{d=\pm}
+    (\tau_1\tau_2)^{1/2+\ii d\tn}
+    (-\tau_3)^{1+2\ii d\tn}
+    \mathcal{B}^L_d,
+\end{align}
+with:
+\begin{align}
+    \mathcal{B}^L_d
+    =\frac{4^{-2\ii d\tn}k_s^{3+4\ii d\tn} \Gamma^4(-\ii d\tn)}{(4\pi)^{7/2}}
+    \mathcal{I}^{(L)}.
+\end{align}
+
+Now we repeat the same calculation for $\lambda=\pm$ terms. 
+The vector contractions are:
+\begin{align}
+    \mathcal{E}^{(\sigma)}_{\si_1\si_2}
+    &=
+    e^{(\sigma)i}_{\mb k_1} e^{(\sigma)j*}_{\mb k_1}
+    e^{(\si_1)j}_{\mb K}e^{(\si_1)k*}_{\mb K}
+    e^{(\si_2)k}_{\mb q}e^{(\si_2)i*}_{\mb q} \nonumber \\
+    &=
+    (e^{(\sigma)*}_{\mb k_1}\cdot e^{(\si_1)}_{\mb K})
+    (e^{(\si_1)*}_{\mb K}\cdot e^{(\si_2)}_{\mb q})
+    (e^{(\si_2)*}_{\mb q}\cdot e^{(\sigma)}_{\mb k_1}),
+    \qquad \sigma=\pm .
+\end{align}
+For the first and third factors we define:
+\begin{align}
+    A_{+L}
+    &=\frac{q\sin\theta\cos\phi\cos\theta_1-\ii q\sin\theta\sin\phi-(q\cos\theta+k_s)\sin\theta_1}{\sqrt{2}K}, \\
+    A_{++}
+    &=\frac{(q\cos\theta+k_s)\cos\theta_1\cos\phi
+    - \ii K \sin\phi\cos\theta_1
+    - \ii \sin\phi (q\cos\theta+k_s)
+    + K \cos\phi
+    + q \sin\theta\sin\theta_1}
+    {2K}, \nonumber \\
+    A_{+-}
+    &=\frac{(q\cos\theta+k_s)\cos\theta_1\cos\phi
+    + \ii K \sin\phi\cos\theta_1
+    - \ii \sin\phi (q\cos\theta+k_s)
+    - K \cos\phi
+    + q \sin\theta\sin\theta_1}
+    {2K}, \nonumber \\
+    C_{L+}
+    &=\frac{\sin\theta\cos\phi\cos\theta_1
+    +\ii\sin\theta\sin\phi
+    -\cos\theta\sin\theta_1}
+    {\sqrt{2}}, \nonumber \\
+    C_{++}
+    &=\frac{\cos\theta\cos\theta_1\cos\phi
+    + \ii \sin\phi \cos\theta_1
+    + \ii \cos\theta\sin\phi
+    + \cos\phi
+    + \sin\theta\sin\theta_1}
+    {2}, \nonumber \\
+    C_{-+}
+    &=\frac{\cos\theta\cos\theta_1\cos\phi
+    - \ii \sin\phi \cos\theta_1
+    + \ii \cos\theta\sin\phi
+    - \cos\phi
+    + \sin\theta\sin\theta_1}
+    {2}. 
+\end{align}
+The $D^{(-)}(k_1)$ factors are obtained by complex conjugating the external polarization:
+\begin{align}
+    A_{-L}
+    &=\frac{q\sin\theta\cos\phi\cos\theta_1
+    +\ii q\sin\theta\sin\phi
+    -(q\cos\theta+k_s)\sin\theta_1}{\sqrt{2}K}, \nonumber \\
+    A_{-+}
+    &=\frac{(q\cos\theta+k_s)\cos\theta_1\cos\phi
+    - \ii K \sin\phi\cos\theta_1
+    + \ii \sin\phi (q\cos\theta+k_s)
+    - K \cos\phi
+    + q \sin\theta\sin\theta_1}
+    {2K}, \nonumber \\
+    A_{--}
+    &=\frac{(q\cos\theta+k_s)\cos\theta_1\cos\phi
+    + \ii K \sin\phi\cos\theta_1
+    + \ii \sin\phi (q\cos\theta+k_s)
+    + K \cos\phi
+    + q \sin\theta\sin\theta_1}
+    {2K}, \nonumber \\
+    C_{L-}
+    &=\frac{\sin\theta\cos\phi\cos\theta_1
+    -\ii\sin\theta\sin\phi
+    -\cos\theta\sin\theta_1}
+    {\sqrt{2}}, \nonumber \\
+    C_{+-}
+    &=\frac{\cos\theta\cos\theta_1\cos\phi
+    + \ii \sin\phi \cos\theta_1
+    - \ii \cos\theta\sin\phi
+    - \cos\phi
+    + \sin\theta\sin\theta_1}
+    {2}, \nonumber \\
+    C_{--}
+    &=\frac{\cos\theta\cos\theta_1\cos\phi
+    - \ii \sin\phi \cos\theta_1
+    - \ii \cos\theta\sin\phi
+    + \cos\phi
+    + \sin\theta\sin\theta_1}
+    {2}.
+\end{align}
+The middle factor $B_{\si_1\si_2}$ is the same as before. Therefore the nine contractions are:
+\begin{align}
+    \mathcal{E}^{\sigma}_{LL} &= A_{\si L} B_{LL} C_{L\si}, &
+    \mathcal{E}^{\si}_{L+} &= A_{\si L} B_{L+} C_{+\si}, &
+    \mathcal{E}^{\si}_{L-} &= A_{\si L} B_{L-} C_{-\si}, \\
+    \mathcal{E}^{\si}_{+L} &= A_{\si +} B_{+L} C_{L\si}, &
+    \mathcal{E}^{\si}_{++} &= A_{\si +} B_{++} C_{+\si}, &
+    \mathcal{E}^{\si}_{+-} &= A_{\si +} B_{+-} C_{-\si}, \\
+    \mathcal{E}^{\si}_{-L} &= A_{\si -} B_{-L} C_{L\si}, &
+    \mathcal{E}^{\si}_{-+} &= A_{\si -} B_{-+} C_{+\si}, &
+    \mathcal{E}^{\si}_{--} &= A_{\si -} B_{--} C_{-\si} .
+\end{align}
+
+After the azimuthal average, we can get the non-vanishing parts of the nine contractions:
+\begin{align}
+    \bar{\mathcal{E}}^+_{LL} 
+    &= \frac{q+k_s z}{2K^2}
+    \left[
+        \frac{q(1+c_1^2)}{2} (1-z^2) 
+        + (qz+k_s)z s_1^2
+    \right] \nonumber \\
+    \bar{\mathcal{E}}^+_{L+}
+    &= \left(-\frac{k_s(1-z^2)}{4K^2}\right)
+    \left[
+        qc_1 + qz\frac{1+c_1^2}{2} -(qz+k_s)s_1^2
+    \right] \nonumber \\
+    \bar{\mathcal{E}}^+_{L-}
+    &= \left(-\frac{k_s(1-z^2)}{4K^2}\right)
+    \left[
+        -qc_1 + qz\frac{1+c_1^2}{2} -(qz+k_s)s_1^2
+    \right] \nonumber \\
+    \bar{\mathcal{E}}^+_{+L}
+    &= \left(\frac{k_s(1-z^2)}{4K^2}\right)
+    \left[
+        Kc_1 + (qz+k_s)\frac{1+c_1^2}{2} -qz s_1^2
+    \right] \nonumber \\
+    \bar{\mathcal{E}}^+_{-L}
+    &= \left(\frac{k_s(1-z^2)}{4K^2}\right)
+    \left[
+        -Kc_1 + (qz+k_s)\frac{1+c_1^2}{2} -qz s_1^2
+    \right] \nonumber \\
+    \bar{\mathcal{E}}^+_{++}
+    &= \left(\frac{K+q+k_sz}{8K^2}\right)
+    \left[
+        (qz+k_s)\frac{c_1^2z+2c_1+z}{2} +K\frac{c_1^2+2c_1+1}{2} + qs_1^2(1-z^2)
+    \right] \nonumber \\
+    \bar{\mathcal{E}}^+_{--}
+    &= \left(\frac{K+q+k_sz}{8K^2}\right)
+    \left[
+        (qz+k_s)\frac{c_1^2z-2c_1+z}{2} +K\frac{c_1^2-2c_1+1}{2} + qs_1^2(1-z^2)
+    \right] \nonumber \\
+    \bar{\mathcal{E}}^+_{+-}
+    &= \left(\frac{q+k_sz-K}{8K^2}\right)
+    \left[
+        (qz+k_s)\frac{c_1^2z-2c_1+z}{2} -K\frac{c_1^2-2zc_1+1}{2} + qs_1^2(1-z^2)
+    \right] \nonumber \\
+    \bar{\mathcal{E}}^+_{-+}
+    &= \left(\frac{q+k_sz-K}{8K^2}\right)
+    \left[
+        (qz+k_s)\frac{c_1^2z+2c_1+z}{2} -K\frac{c_1^2+2zc_1+1}{2} + qs_1^2(1-z^2)
+    \right]
+\end{align}
+
+Applying the same loop-seed map as above, we get the dimensionless coefficient:
+\begin{align}
+    {\mathcal{I}}^+_{LL} 
+    &= \frac{(-1/2 + \ii d \tn)^4}{(\tn^2+1/4)^2} 
+    \cdot \left\{ \frac{1+c_1^2}{4} [ \mathcal{J}_0(2,2) -\mathcal{J}_2(2,2) +\mathcal{J}_1(1,2) -\mathcal{J}_3(1,2) ] \right. \nonumber \\
+    &\qquad \left. +\frac{s_1^2}{2} [\mathcal{J}_2(2,2) +\mathcal{J}_1(1,2) +\mathcal{J}_3(1,2) +\mathcal{J}_2(0,2) ] \right\} \nonumber \\
+    {\mathcal{I}}^+_{L+} + {\mathcal{I}}^+_{L-} 
+    + {\mathcal{I}}^+_{+L} + {\mathcal{I}}^+_{-L} 
+    &= \frac{(-1/2 + \ii d \tn)^2}{(\tn^2+1/4)}
+    \frac{2+s_1^2}{4} [\mathcal{J}_0(0,2)-\mathcal{J}_2(0,2)] \nonumber \\
+    {\mathcal{I}}^+_{++} + {\mathcal{I}}^+_{--} 
+    + {\mathcal{I}}^+_{+-} + {\mathcal{I}}^+_{-+} 
+    &= \frac{1+c_1^2}{4} [\mathcal{J}_2(2,2) +\mathcal{J}_1(1,2)
+    +\J_3(1,2) +\J_2(0,2) +\J_0(0,0)] \nonumber \\
+    &\qquad + \frac{s_1^2}{2} [\J_0(2,2) -\J_2(2,2) +\J_1(1,2) -\J_3(1,2)]     
+\end{align}
+
+So the sum of these 9 contraction:
+\begin{align}
+    \mathcal{I}^{+}
+    &\equiv \sum_{\si_1,\si_2=L,\pm} \mathcal{I}^{+}_{\si_1\si_2}
+\end{align}
+
+Also for the $D^{(-)}(k_1)$ factors, the polarization contractions are:
+\begin{align}
+    \bar{\mathcal{E}}^{-}_{LL} &= \bar{\mathcal{E}}^{+}_{LL}, &
+    \bar{\mathcal{E}}^{-}_{L+} &= \bar{\mathcal{E}}^{+}_{L-}, &
+    \bar{\mathcal{E}}^{-}_{L-} &= \bar{\mathcal{E}}^{+}_{L+}, \\
+    \bar{\mathcal{E}}^{-}_{+L} &= \bar{\mathcal{E}}^{+}_{-L}, &
+    \bar{\mathcal{E}}^{-}_{-L} &= \bar{\mathcal{E}}^{+}_{+L}, &
+    \bar{\mathcal{E}}^{-}_{++} &= \bar{\mathcal{E}}^{+}_{--}, \\
+    \bar{\mathcal{E}}^{-}_{--} &= \bar{\mathcal{E}}^{+}_{++}, &
+    \bar{\mathcal{E}}^{-}_{+-} &= \bar{\mathcal{E}}^{+}_{-+}, &
+    \bar{\mathcal{E}}^{-}_{-+} &= \bar{\mathcal{E}}^{+}_{+-} .
+\end{align}
+
+So the sum of these 9 contraction:
+\begin{align}
+    \mathcal{I}^{-}
+    &\equiv \sum_{\si_1,\si_2=L,\pm} \mathcal{I}^{-}_{\si_1\si_2}
+    =\mc I^+
+\end{align}
+
+So the transverse part of the triangle loop integral is:
+\begin{align}
+    \mathcal{LOOP}^{\si}
+    =
+    \left[D^{(\sigma)}(k_1,\tau_1,\tau_2)\right]_{ab} \cdot
+    \sum_{d=\pm}(\tau_1\tau_2)^{1/2+\ii d\tn} (-\tau_3)^{1+2\ii d\tn}
+    \mathcal{B}^{\si}_d,
+\end{align}
+with the bubble subgraph contribution:
+\begin{align}
+    \mathcal{B}^{\si}_d
+    =
+    \frac{\Gamma^4(-\ii d\tn)}{(4\pi)^{7/2}}
+    4^{-2\ii d\tn}k_s^{3+4\ii d\tn}
+    \mathcal{I}^{\si},
+    \qquad \sigma=\pm .
+\end{align}
+
+So the total loop integral becomes:
+\begin{align}
+    \mathcal{LOOP}
+    =
+    \sum_{\lambda=T,\pm}
+    \left[D^{(\lambda)}(k_1,\tau_1,\tau_2)\right]_{ab}
+    \sum_{d=\pm}(\tau_1\tau_2)^{1/2+\ii d\tn} (-\tau_3)^{1+2\ii d\tn}
+    \mathcal{B}^{\lambda}_d
+\end{align}
+
+Then we also deal with the left and right subgraph contribution:
+\begin{align}
+    \mathcal{T}^{(L),\lambda}_d &= (ig^2h_0)^2 \sum_{a,b=\pm} (ab) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} G_a(k_1;\tau_1) G_b(k_2;\tau_2) \nonumber \\
+    &\times \left[D^{(\lambda)}(k_1,\tau_1,\tau_2)\right]_{ab} (\tau_1\tau_2)^{1/2+\ii d\tn} \\
+    &= (ig^2h_0)^2  
+    \frac{H^2}{4k_1^3 k_2^3}
+    \sum_{a,b=\pm} (ab)
+    \int \di \tau_1 \di \tau_2 
+    (1-iak_1\tau_1)(1-ibk_2\tau_2)
+    \nonumber \\
+    &\times \left[D^{(\lambda)}(k_1,\tau_1,\tau_2)\right]_{ab} 
+    (-\tau_1)^{-3/2+\ii d\tn}
+    (-\tau_2)^{-3/2+\ii d\tn} 
+    e^{\ii ak_1\tau_1 + \ii bk_2\tau_2}
+\end{align}
+
+For $\lambda=L$, this integral is given by the tree seed in \cite{qin_helical_2023}:
+\begin{align}
+    \mathcal{T}^{(L),L}_d 
+    &= \left( ig^2h_0\right)^2 
+    \frac{k_{12}^{-2id\tn}}{4k_1^3 k_2^3} 
+    \cdot \mathcal{P}_d^{(2),L}(\tn)
+\end{align}
+where the coefficient is:
+\begin{align}
+    \mathcal{P}_d^{(2),L}(\tn) 
+    = -2^{2id\tn} \cdot \sum_{a,b=\pm} 
+    &\left[ +\tilde{\mathcal{K}}_{ab}^{-\fr32+id\tn,-\fr32+id\tn} (1,1) 
+    - ia \tilde{\mathcal{K}}_{ab}^{-\fr12+id\tn,-\fr32+id\tn} (1,1) \right. \nonumber \\
+    &\left. -ib \tilde{\mathcal{K}}_{ab}^{-\fr32+id\tn,-\fr12+id\tn} (1,1) 
+    - ab \tilde{\mathcal{K}}_{ab}^{-\fr12+id\tn,-\fr12+id\tn} (1,1) \right]
+\end{align}
+and here the $\mathcal{K}_{ab}^{p_1p_2} = \mathcal{I}^{(L)p_1p_2}_{ab}$ in \cite{qin_helical_2023}. The opposite-sign seeds:
+\begin{align}
+    \mathcal{K}_{\pm\mp}^{p_1p_2}(1,1) = \frac{e^{\mp i\pi(p_1-p_2)/2}}{4\pi(\tilde{\nu}^2 + \frac{1}{4})} \left[ \mathbf{H}_{\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + \mathbf{H}_{-\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right] \nonumber \\
+    \times \left[ \mathbf{H}_{\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + \mathbf{H}_{-\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right]
+\end{align}
+where we define:
+\begin{align}
+    \mathbf{H}_{\tilde{\nu}}^p(1) \equiv \Bigg\{ \left( \frac{1}{2} - i\tilde{\nu} \right) \Gamma\left[ -i\tilde{\nu}, p + \frac{3}{2} + i\tilde{\nu} \right] {}_2F_1\left[ \begin{matrix} \frac{p}{2} + \frac{3}{4} + \frac{i\tilde{\nu}}{2}, & \frac{p}{2} + \frac{5}{4} + \frac{i\tilde{\nu}}{2} \\ 1 + i\tilde{\nu} \end{matrix} \middle| 1 \right] \nonumber \\
+    + \frac{1}{2} \Gamma\left[ -1 - i\tilde{\nu}, p + \frac{7}{2} + i\tilde{\nu} \right] {}_2F_1\left[ \begin{matrix} \frac{p}{2} + \frac{7}{4} + \frac{i\tilde{\nu}}{2}, & \frac{p}{2} + \frac{9}{4} + \frac{i\tilde{\nu}}{2} \\ 2 + i\tilde{\nu} \end{matrix} \middle| 1 \right] \Bigg\}
+\end{align}
+
+And the same-sign seeds:
+\begin{align}
+    \mathcal{K}_{\pm\pm}^{p_1p_2}(1,1) &= \frac{-i e^{\mp i\pi(p_1+p_2)/2}}{4\pi(\tilde{\nu}^2 + \frac{1}{4})} \left[ e^{\pi\tilde{\nu}} \mathbf{H}_{\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + e^{-\pi\tilde{\nu}} \mathbf{H}_{-\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right] \\
+    &\quad \times \left[ \mathbf{H}_{\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + \mathbf{H}_{-\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right] \nonumber \\
+    &+ \frac{e^{\mp i\pi(p_1+p_2)/2}}{2(\tilde{\nu}^2 + \frac{1}{4})}  \sum_{n_1,n_2=0}^{\infty} \frac{(-1)^{n_{12}}}{n_1! n_2!} \left( \frac{1}{2} \right)^{2n_{12}} \\
+    &\quad \times \frac{i}{\tilde{\nu}} \left( 2n_1 - \frac{1}{2} + i\tilde{\nu} \right) \left( 2n_2 - \frac{1}{2} - i\tilde{\nu} \right) (-i\tilde{\nu})_{-n_1} (i\tilde{\nu})_{-n_2} \\
+    &\quad \times \mathcal{F} \left[ \begin{matrix} 2n_2 + p_2 + \frac{3}{2} - i\tilde{\nu}, & 2n_{12} + p_1 + p_2 + 3 \\ 2n_2 + p_2 + \frac{5}{2} - i\tilde{\nu} \end{matrix} \middle| -1 \right] + (\tilde{\nu} \rightarrow -\tilde{\nu})
+\end{align}
+
+For $\lambda=\pm$, this integral can also be given by the tree seed in \cite{qin_closed-form_2023}:
+\begin{align}
+    \mathcal{T}^{(L),\pm}_d 
+    &= (ig^2h_0)^2  
+    \frac{H^2}{4k_1^3 k_2^3}
+    \sum_{a,b=\pm} (ab)
+    \int \di \tau_1 \di \tau_2 
+    (1-iak_1\tau_1)(1-ibk_2\tau_2)
+    \nonumber \\
+    &\times \left[D^{(\text{scalar})}(k_1,\tau_1,\tau_2)\right]_{ab} 
+    (-\tau_1)^{-5/2+\ii d\tn}
+    (-\tau_2)^{-5/2+\ii d\tn} 
+    e^{\ii ak_1\tau_1 + \ii bk_2\tau_2} \\
+    &= \left( ig^2h_0\right)^2 
+    \frac{k_{12}^{-2id\tn}}{4k_1^3 k_2^3} 
+    \cdot \mathcal{P}_d^{(2),\pm}(\tn)
+\end{align}
+where the coefficient is:
+\begin{align}
+    \mathcal{P}_d^{(2),\pm}(\tn) 
+    = -2^{2id\tn} \cdot \sum_{a,b=\pm} 
+    &\left[ +\tilde{\mathcal{M}}_{ab}^{-\fr52+id\tn,-\fr52+id\tn} (1,1) 
+    - ia \tilde{\mathcal{M}}_{ab}^{-\fr32+id\tn,-\fr52+id\tn} (1,1) \right. \nonumber \\
+    &\left. -ib \tilde{\mathcal{M}}_{ab}^{-\fr52+id\tn,-\fr32+id\tn} (1,1) 
+    - ab \tilde{\mathcal{M}}_{ab}^{-\fr32+id\tn,-\fr32+id\tn} (1,1) \right]
+\end{align}
+and here $\mathcal{M}_{ab}^{p_1p_2} = \mathcal{I}^{p_1p_2}_{ab}$ in \cite{qin_closed-form_2023}.
+The opposite-sign seeds:
+\begin{align}
+    \mc M^{p_1 p_2}_{\pm\mp}(1,1) = 
+    \frac{e^{\mp \mathrm{i} \bar{p}_{12} \pi/2}}
+    {2^{5+p_{12}}} 
+    \Gamma \left[ \begin{matrix} 
+        \frac{5}{2} + p_1 - \mathrm{i}\tilde{\nu}, 
+        & \frac{5}{2} + p_1 + \mathrm{i}\tilde{\nu}, 
+        & \frac{5}{2} + p_2 - \mathrm{i}\tilde{\nu}, 
+        & \frac{5}{2} + p_2 + \mathrm{i}\tilde{\nu} \\ 
+        3 + p_1, 
+        & 3 + p_2 
+    \end{matrix} \right]
+\end{align}
+
+And the same-sign seeds:
+\begin{align}
+    \mathcal{M}^{p_1 p_2}_{\pm\pm}(1,1) 
+    &= \frac{\pm \mathrm{i} e^{\mp \mathrm{i} p_{12} \pi/2} e^{-\pi \widetilde{\nu}}}{2^{5+p_{12}}} 
+    \Gamma \begin{bmatrix} 
+    \frac{5}{2} + p_1 - \mathrm{i}\widetilde{\nu}, & \frac{5}{2} + p_1 + \mathrm{i}\widetilde{\nu}, & \frac{5}{2} + p_2 - \mathrm{i}\widetilde{\nu}, & \frac{5}{2} + p_2 + \mathrm{i}\widetilde{\nu} \\ 
+    3 + p_1, & 3 + p_2 
+    \end{bmatrix} \nonumber \\
+    &\quad - \frac{e^{\mp \mathrm{i} p_{12} \pi/2}}{2^{5+p_{12}}} 
+    \Gamma \begin{bmatrix} 
+    5 + p_{12}, & \frac{5}{2} + p_1 \pm \mathrm{i}\widetilde{\nu}, & \frac{5}{2} + p_2 \pm \mathrm{i}\widetilde{\nu} 
+    \end{bmatrix} \nonumber \\
+    &\quad \cdot {}_3\widetilde{F}_2 \left[ \begin{matrix} 
+    5 + p_{12}, & \frac{1}{2} \pm \mathrm{i}\widetilde{\nu}, & 1 \\ 
+    \frac{7}{2} + p_1 \pm \mathrm{i}\widetilde{\nu}, & \frac{7}{2} + p_2 \pm \mathrm{i}\widetilde{\nu} 
+    \end{matrix} \middle| 1 \right].
+\end{align}
+
+And for the right subgraph:
+\begin{align}
+    \mathcal{T}^{(R)}_d &= (ig^2) \sum_c c \int \frac{\di \tau_3}{|H \tau_3|^2} G_c(k_3;\tau_1) G_c(k_4;\tau_3) (-\tau_3)^{1+2\ii d\tn} \nonumber \\
+    &= (ig^2) \frac{H^2}{4k_3^3 k_4^3} \sum_{c=\pm} c \int_{-\infty}^{0} \di \tau_3 (-\tau_3)^{-1+2\ii c\tn} (1 -ick_{34}\tau_3-k_3k_4\tau_3^2) e^{ick_{34}\tau_3} \nonumber \\
+    &= (ig^2) \frac{H^2}{4k_3^3 k_4^3} \times k_{34}^{-2\ii d\tn} \cdot \mathcal{P}^{(1)}_d(\tn)
+\end{align}
+where the coefficient is:
+\begin{align}
+    \mathcal{P}^{(1)}_d(\tn) = \frac{2+\ii d\tn}{2\ii d\tn} \sinh(\pi d \tn) \Gamma(2+2\ii d\tn)
+\end{align}
+
+So one of the triangle diagram:
+\begin{align}
+    \la \delta h^4 \ra^{\text{Tri1}} 
+    &= \sum_{d=\pm} \sum_{\lambda=L,\pm} 
+    \mc T^{(L),\lambda}_d  
+    \cdot \mc B^{\lam}_d 
+    \cdot \mc T^{(R)}_d \\
+    &= (ig^2)(ig^2h_0)^2 
+    \frac{H^2 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} 
+    \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} 
+    \times C^{\text{Tri}}(\tn,\theta_1) + \text{c.c.}
+\end{align}
+where the magnitude is:
+\begin{align}
+    C^{\text{Tri}}(\tn,\theta_1) = 
+    \sum_{\lam=L,\pm}
+    [\mathcal{P}^{(1)}_+(\tn) \mc P^{(2),\lambda}_+(\tn) ]
+    \cdot \frac{\Gamma^4(-\ii \tn)}{(4\pi)^{7/2}} \cdot 
+    \mathcal{I}^{\lambda}(\tn,\theta_1)|_{d=+}
+\end{align}
+
+Also for another triangle:
+\begin{align}
+    \la \delta h^4 \ra^{\text{Tri2}} 
+    = \la \delta h^4 \ra^{\text{Tri1}}|_{k_1 \longleftrightarrow k_3, k_2 \longleftrightarrow k_4, \theta_1 \longleftrightarrow \theta_3, } 
+\end{align}
+
+So the total triangle diagram contributions:
+\begin{align}
+    \la \delta h^4 \ra^{\text{Tri}} 
+    &= \la \delta h^4 \ra^{\text{Tri1}} 
+    +\la \delta h^4 \ra^{\text{Tri2}} \nonumber \\
+    &= (ig^2)(ig^2h_0)^2 
+    \frac{H^2 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} 
+    \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} 
+    \times (C^{\text{Tri}}(\tn,\theta_1) + C^{\text{Tri}}(\tn,\theta_3)) 
+    + \text{c.c.}
+\end{align}
+
+
+\section{Box Diagram}
+For the box diagrams:
+\begin{align}
+    \la \delta h^4 \ra^{\text{Box}} &= (ig^2h_0)^4 \sum_{a,b,c,d=\pm} (abcd) 
+    \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} 
+    \frac{\di \tau_3}{|H \tau_3|^2} \frac{\di \tau_4}{|H \tau_4|^2} \nonumber \\
+    &\times G_a(k_1;\tau_1) G_a(k_2;\tau_2) G_c(k_3;\tau_3) G_d(k_4;\tau_4) \nonumber \\
+    &\times \int \frac{\di \mb{q}^3}{(2\pi)^3} 
+    \left[ D_{ij}(\mb q+\mb k_1,\tau_1,\tau_2) \right]_{ab} 
+    \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right]_{bc}  \nonumber \\
+    &\times \left[ D_{kl}( \mb{q}+\mb k_3,\tau_3,\tau_4) \right]_{cd} 
+    \left[ D_{li}( \mb{q},\tau_4,\tau_1) \right]_{da}
+\end{align}
+
+Also we deal with the loop integral:
+\begin{align}
+    \mathcal{LOOP} &= 
+    \int \frac{\di \mb{q}^3}{(2\pi)^3} 
+    \left[ D_{ij}(\mb q+\mb k_1,\tau_1,\tau_2) \right]_{ab} 
+    \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right]_{bc}  \nonumber \\
+    &\times \left[ D_{kl}( \mb{q}+\mb k_3,\tau_3,\tau_4) \right]_{cd} 
+    \left[ D_{li}( \mb{q},\tau_4,\tau_1) \right]_{da}
+\end{align}
+
+Using the cutting rule:
+\begin{align}
+    \mathcal{LOOP} &= 
+    \int \frac{\di \mb{q}^3}{(2\pi)^3} 
+    \left[ D_{ij}(\mb k_1,\tau_1,\tau_2) \right]_{ab} 
+    \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right] \nonumber \\
+    &\times \left[ D_{kl}( \mb{k}_3,\tau_3,\tau_4) \right]_{cd}
+    \left[ D_{li}( \mb{q},\tau_4,\tau_1) \right]
+\end{align}
+Expanding the four propagators in the helicity basis, the loop integral becomes:
+\begin{align}
+    \mathcal{LOOP}
+    =\int\frac{\di\mb q^3}{(2\pi)^3}
+    &\left[D^{(L)}(k_1,\tau_1,\tau_2)
+    e^{(L)i}_{\mb k_1}e^{(L)j*}_{\mb k_1}
+    +D^{(\pm)}(k_1,\tau_1,\tau_2)
+    e^{(\pm)i}_{\mb k_1}e^{(\pm)j*}_{\mb k_1}\right]_{ab} \nonumber \\
+    &\times\left[D^{(L)}(K,\tau_2,\tau_3)
+    e^{(L)j}_{\mb K}e^{(L)k*}_{\mb K}
+    +D^{(\pm)}(K,\tau_2,\tau_3)
+    e^{(\pm)j}_{\mb K}e^{(\pm)k*}_{\mb K}\right] \nonumber \\
+    &\times\left[D^{(L)}(k_3,\tau_3,\tau_4)
+    e^{(L)k}_{\mb k_3}e^{(L)l*}_{\mb k_3}
+    +D^{(\pm)}(k_3,\tau_3,\tau_4)
+    e^{(\pm)k}_{\mb k_3}e^{(\pm)l*}_{\mb k_3}\right]_{cd} \nonumber \\
+    &\times\left[D^{(L)}(q,\tau_4,\tau_1)
+    e^{(L)l}_{\mb q}e^{(L)i*}_{\mb q}
+    +D^{(\pm)}(q,\tau_4,\tau_1)
+    e^{(\pm)l}_{\mb q}e^{(\pm)i*}_{\mb q}\right],
+\end{align}
+where $\mb K=\mb q+\mb k_s$, and each repeated $\pm$ label is summed over the two transverse helicities.
+
+To organize the nine external-helicity combinations, we choose the same convention for $\mb k_1$ as in
+the triangle diagram and set
+\begin{align}
+    \mb k_1&=k_1(\sin\theta_1,0,\cos\theta_1), \\
+    \mb k_3&=k_3(\sin\theta_3\cos\phi_3,\sin\theta_3\sin\phi_3,\cos\theta_3).
+\end{align}
+Let $\lambda_1,\lambda_2=L,\pm$ label the polarizations of the hard propagators with momenta
+$\mb k_1$ and $\mb k_3$, respectively, and let $\sigma_1,\sigma_2=L,\pm$ label the two soft propagators.
+Keeping the latter two helicities explicit, as in the Triangle calculation, define
+\begin{align}
+    \mathcal{E}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2}
+    &\equiv
+    e_{\mb k_1}^{(\lambda_1)i}e_{\mb k_1}^{(\lambda_1)j*}
+    e_{\mb K}^{(\sigma_1)j}e_{\mb K}^{(\sigma_1)k*}
+    e_{\mb k_3}^{(\lambda_2)k}e_{\mb k_3}^{(\lambda_2)l*}
+    e_{\mb q}^{(\sigma_2)l}e_{\mb q}^{(\sigma_2)i*} \nonumber \\
+    &=(e_{\mb k_1}^{(\lambda_1)*}\cdot e_{\mb K}^{(\sigma_1)})
+    (e_{\mb K}^{(\sigma_1)*}\cdot e_{\mb k_3}^{(\lambda_2)})
+    (e_{\mb k_3}^{(\lambda_2)*}\cdot e_{\mb q}^{(\sigma_2)})
+    (e_{\mb q}^{(\sigma_2)*}\cdot e_{\mb k_1}^{(\lambda_1)}).
+\end{align}
+Their explicit contraction check is collected in Appendix~B. The dimensionful loop integral is defined by
+\begin{align}
+    \widetilde{\mathcal{I}}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2}
+    &\equiv \be^{\si_1L} \be^{\si_2L} \int\frac{\di\mb q^3}{(2\pi)^3}
+    \left(\frac{q}{2}\right)^{2\ii f\tn}
+    \left(\frac{K}{2}\right)^{2\ii f\tn}
+    \overline{\mathcal{E}}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2} \nonumber \\
+    &=\frac{4^{-2\ii f\tn}k_s^{3+4\ii f\tn}}{(4\pi)^{3/2}}
+    \mathcal{I}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2}(\theta_1,\theta_3,\phi_3),
+    \qquad f=\pm.
+\end{align}
+Here the index $f$ labels the two nonlocal branches and is distinct from the SK index $d$ of the box
+diagram. The loop integral can then be written in the same form as the triangle result:
+\begin{align}
+    \mathcal{LOOP}
+    =\sum_{\lambda_1,\lambda_2=L,\pm}
+    &\left[D^{(\lambda_1)}(k_1,\tau_1,\tau_2)\right]_{ab}
+    \left[D^{(\lambda_2)}(k_3,\tau_3,\tau_4)\right]_{cd} \nonumber \\
+    &\times\sum_{f=\pm}(\tau_1\tau_2\tau_3\tau_4)^{1/2+\ii f\tn}
+    \mathcal{B}^{\lambda_1\lambda_2}_f(k_1,k_3),
+\end{align}
+where
+\begin{align}
+    \mathcal{B}^{\lambda_1\lambda_2}_f(k_1,k_3)
+    =\frac{\Gamma^4(-\ii f\tn)}{(4\pi)^{7/2}}
+    4^{-2\ii f\tn}k_s^{3+4\ii f\tn}
+    \sum_{\sigma_1,\sigma_2=L,\pm}
+    \mathcal{I}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2}(\theta_1,\theta_3,\phi_3).
+\end{align}
+
+
+
+
+
+\appendix
+\section{Check of the Box Polarization Contractions}
+
+For the Box diagram, introduce the shorthand
+\begin{align}
+    \hat q&=(u\cos\phi,u\sin\phi,z),\qquad
+    \hat K=\frac{1}{K}(qu\cos\phi,qu\sin\phi,qz+k_s), \\
+    \hat k_1&=(s_1,0,c_1),\qquad
+    \hat k_3=(s_3\cos\phi_3,s_3\sin\phi_3,c_3),
+\end{align}
+where $s_3=\sin\theta_3$ and $c_3=\cos\theta_3$. For a unit vector with polar angles
+$(\theta_p,\phi_p)$, we use
+\begin{align}
+    e_{\mb p}^{(L)}&=(\sin\theta_p\cos\phi_p,\sin\theta_p\sin\phi_p,\cos\theta_p), \\
+    e_{\mb p}^{(\sigma)}&=\frac{1}{\sqrt{2}}(\cos\theta_p\cos\phi_p-\sigma\ii\sin\phi_p,
+    \cos\theta_p\sin\phi_p+\sigma\ii\cos\phi_p,-\sin\theta_p),
+    \qquad \sigma=\pm1.
+\end{align}
+Thus $e_{\mb k_1}^{(\lambda_1)}$ and $e_{\mb k_3}^{(\lambda_2)}$ follow by taking
+$(\theta_p,\phi_p)=(\theta_1,0)$ and $(\theta_3,\phi_3)$, respectively.
+
+For the physical Box integral, the soft helicities must be kept explicit. Define
+\begin{align}
+    A^{\lambda_1}_{\sigma_1}&\equiv e_{\mb k_1}^{(\lambda_1)*}\cdot e_{\mb K}^{(\sigma_1)},
+    &B^{\lambda_2}_{\sigma_1}&\equiv e_{\mb K}^{(\sigma_1)*}\cdot e_{\mb k_3}^{(\lambda_2)}, \\
+    C^{\lambda_2}_{\sigma_2}&\equiv e_{\mb k_3}^{(\lambda_2)*}\cdot e_{\mb q}^{(\sigma_2)},
+    &D^{\lambda_1}_{\sigma_2}&\equiv e_{\mb q}^{(\sigma_2)*}\cdot e_{\mb k_1}^{(\lambda_1)}.
+\end{align}
+The Box angular factor is therefore
+\begin{align}
+    \mathcal{E}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2}
+    =A^{\lambda_1}_{\sigma_1}B^{\lambda_2}_{\sigma_1}
+    C^{\lambda_2}_{\sigma_2}D^{\lambda_1}_{\sigma_2},
+\end{align}
+which is the direct Box analogue of the three-factor Triangle contraction. One must first form this
+product, then perform the $\phi$ average, and only afterwards apply the loop-seed map separately for
+every $(\sigma_1,\sigma_2)$.
+
+\iffalse
+For reference, a signed polarization sum over the two soft propagators is represented by
+\begin{align}
+    P^{ij}(\hat p)&\equiv\sum_{\mu=L,\pm}\eta_\mu
+    e_{\mb p}^{(\mu)i}e_{\mb p}^{(\mu)j*}
+    =\delta^{ij}-2\hat p^i\hat p^j.
+\end{align}
+This identity must only be applied after the individual $(\mu,\nu)$ loop weights have been shown to be
+identical. In the Box calculation we instead keep $(\mu,\nu)$ explicit, exactly as in the Triangle
+calculation. The following $X,Y$ construction is therefore only an unweighted algebraic diagnostic and
+is not used to define $\mathcal{I}^{\lambda_1\lambda_2}_{\mu\nu;f}$:
+\begin{align}
+    X_{\lambda_1\lambda_2}
+    &\equiv e_{\mb k_1}^{(\lambda_1)*}\cdot P(\hat K)\cdot e_{\mb k_3}^{(\lambda_2)} 
+    =e_{\mb k_1}^{(\lambda_1)*}\cdot e_{\mb k_3}^{(\lambda_2)}
+    -2(e_{\mb k_1}^{(\lambda_1)*}\cdot\hat K)
+    (\hat K\cdot e_{\mb k_3}^{(\lambda_2)}), \\
+    Y_{\lambda_2\lambda_1}
+    &\equiv e_{\mb k_3}^{(\lambda_2)*}\cdot P(\hat q)\cdot e_{\mb k_1}^{(\lambda_1)}
+    =e_{\mb k_3}^{(\lambda_2)*}\cdot e_{\mb k_1}^{(\lambda_1)}
+    -2(e_{\mb k_3}^{(\lambda_2)*}\cdot\hat q)
+    (\hat q\cdot e_{\mb k_1}^{(\lambda_1)}).
+\end{align}
+The nine results are then
+\begin{align}
+    \left(\mathcal{E}^{\lambda_1\lambda_2}\right)_{\lambda_1,\lambda_2=L,+,-}
+    =
+    \begin{pmatrix}
+    X_{LL}Y_{LL} & X_{L+}Y_{+L} & X_{L-}Y_{-L} \\
+    X_{+L}Y_{L+} & X_{++}Y_{++} & X_{+-}Y_{-+} \\
+    X_{-L}Y_{L-} & X_{-+}Y_{+-} & X_{--}Y_{--}
+    \end{pmatrix}.
+\end{align}
+For equal internal weights, this expression is equivalent to the signed sum of the four-polarization
+contractions, since
+\begin{align}
+    \mathcal{E}^{\lambda_1\lambda_2}
+    =e_{\mb k_1}^{(\lambda_1)i}e_{\mb k_1}^{(\lambda_1)j*}
+    P^{jk}(\hat K)e_{\mb k_3}^{(\lambda_2)k}e_{\mb k_3}^{(\lambda_2)l*}
+    P^{li}(\hat q)
+    =X_{\lambda_1\lambda_2}Y_{\lambda_2\lambda_1}.
+\end{align}
+It provides a short component-by-component diagnostic only. The physical Box coefficients are instead
+obtained by first retaining the four scalar products in
+$\mathcal{E}^{\lambda_1\lambda_2}_{\mu\nu}$ and then carrying out the $(\mu,\nu)$-dependent loop integrals.
+
+For completeness, the azimuthal integral can be made fully explicit without listing several hundred
+individual monomials. Let $a=e_{\mb k_1}^{(\lambda_1)}$, $b=e_{\mb k_3}^{(\lambda_2)}$, and denote their
+transverse two-components by $a_\perp,b_\perp$. The six loop-seed combinations are
+\begin{align}
+    A_f={}&-2\mathcal{J}_0(0,2)+4\mathcal{J}_2(0,2)+\mathcal{J}_0(0,0)
+    -2\mathcal{J}_2(0,0)-4\mathcal{J}_1(1,2)+8\mathcal{J}_3(1,2)
+    -2\mathcal{J}_2(2,2)+4\mathcal{J}_4(2,2), \\
+    B_f={}&\mathcal{J}_0(0,0)-2\mathcal{J}_2(0,0)-\mathcal{J}_0(2,2)
+    +3\mathcal{J}_2(2,2)-2\mathcal{J}_4(2,2), \\
+    C_f={}&-2\mathcal{J}_2(0,2)+\mathcal{J}_2(0,0)-4\mathcal{J}_3(1,2)
+    -2\mathcal{J}_4(2,2), \\
+    D_f={}&2\mathcal{J}_1(1,2)-2\mathcal{J}_3(1,2)
+    +2\mathcal{J}_2(2,2)-2\mathcal{J}_4(2,2), \\
+    F_f={}&\mathcal{J}_2(0,0)-\frac{1}{2}\mathcal{J}_0(2,2)
+    +\frac{1}{2}\mathcal{J}_4(2,2), \\
+    G_f={}&\frac{1}{2}\mathcal{J}_0(2,2)-\mathcal{J}_2(2,2)
+    +\frac{1}{2}\mathcal{J}_4(2,2),
+\end{align}
+where every $\mathcal{J}_r$ is evaluated at $x=-\ii f\tn$. The $\mathcal{J}_4$ seed is reduced to
+$\mathcal{J}_0$ by the closed forms given below.
+
+The nine dimensionless coefficients are the following explicit direction functions:
+\begin{align}
+    \mathcal{I}^{\lambda_1\lambda_2}_f(k_1,k_3)
+    ={}&A_f|a_z|^2|b_z|^2
+    +B_fa_zb_z^*(a_\perp^*\cdot b_\perp)
+    +C_fa_z^*b_z(a_\perp\cdot b_\perp^*) \nonumber \\
+    &+D_f\left[a_zb_z(a_\perp^*\cdot b_\perp^*)
+    +a_z^*b_z^*(a_\perp\cdot b_\perp)
+    +|a_\perp|^2|b_z|^2+|a_z|^2|b_\perp|^2\right] \nonumber \\
+    &+F_f|a_\perp^*\cdot b_\perp|^2
+    +2G_f|a_\perp|^2|b_\perp|^2,
+    \qquad (\lambda_1,\lambda_2)=L,+,-.
+\end{align}
+More explicitly, the nine entries are obtained by the substitution
+\begin{align}
+    \left(\mathcal{I}^{\lambda_1\lambda_2}_f\right)_{\lambda_1,\lambda_2=L,+,-}
+    =\begin{pmatrix}
+    \mathscr{F}_f(a_L,b_L)&\mathscr{F}_f(a_L,b_+)&\mathscr{F}_f(a_L,b_-)\\
+    \mathscr{F}_f(a_+,b_L)&\mathscr{F}_f(a_+,b_+)&\mathscr{F}_f(a_+,b_-)\\
+    \mathscr{F}_f(a_-,b_L)&\mathscr{F}_f(a_-,b_+)&\mathscr{F}_f(a_-,b_-)
+    \end{pmatrix},
+\end{align}
+where $\mathscr{F}_f(a,b)$ denotes the preceding displayed direction function and
+\begin{align}
+    a_L&=(s_1,0;c_1),& a_\pm&=\frac{1}{\sqrt{2}}(c_1,\pm\ii;-s_1), \\
+    b_L&=(s_3\cos\phi_3,s_3\sin\phi_3;c_3),&
+    b_\pm&=\frac{1}{\sqrt{2}}(c_3\cos\phi_3\mp\ii\sin\phi_3,
+    c_3\sin\phi_3\pm\ii\cos\phi_3;-s_3).
+\end{align}
+Here the semicolon separates transverse and $z$ components. Thus every entry depends only on
+$\theta_1$, $\theta_3$, and $\phi_3$, and not on $k_1$ or $k_3$.
+
+\fi
+
+\section{Closed Gamma-function forms for $\mathcal{J}_3$ and $\mathcal{J}_4$}
+
+For a general loop seed, write $\mathcal{J}_r(m,n)=f_r(a,b)$ with
+\begin{align}
+    a=x-\frac{m}{2},\qquad b=x+\frac{n}{2},\qquad x=-\ii f\tn.
+\end{align}
+The identity $z=(K^2-q^2-k_s^2)/(2qk_s)$ gives the following finite Gamma-function
+closed forms:
+\begin{align}
+    f_3(a,b)
+    =\frac{1}{8}\Big[&f_0\left(a+\frac{3}{2},b-3\right)
+    -3f_0\left(a+\frac{3}{2},b-2\right)
+    -3f_0\left(a+\frac{1}{2},b-2\right) \nonumber \\
+    &+3f_0\left(a+\frac{3}{2},b-1\right)
+    +6f_0\left(a+\frac{1}{2},b-1\right)
+    +3f_0\left(a-\frac{1}{2},b-1\right) \nonumber \\
+    &-f_0\left(a+\frac{3}{2},b\right)
+    -3f_0\left(a+\frac{1}{2},b\right)
+    -3f_0\left(a-\frac{1}{2},b\right)
+    -f_0\left(a-\frac{3}{2},b\right)\Big], \\
+    f_4(a,b)
+    =\frac{1}{16}\Big[&f_0(a+2,b-4)
+    -4f_0(a+2,b-3)-4f_0(a+1,b-3) \nonumber \\
+    &+6f_0(a+2,b-2)+12f_0(a+1,b-2)+6f_0(a,b-2) \nonumber \\
+    &-4f_0(a+2,b-1)-12f_0(a+1,b-1)-12f_0(a,b-1)-4f_0(a-1,b-1) \nonumber \\
+    &+f_0(a+2,b)+4f_0(a+1,b)+6f_0(a,b)+4f_0(a-1,b)+f_0(a-2,b)\Big].
+\end{align}
+Here $f_0$ is the Gamma ratio defined in the loop-seed section. Consequently, these equations are
+closed expressions in Gamma functions, not new independent seeds. More generally,
+\begin{align}
+    f_r(a,b)=\frac{1}{2^r}
+    \sum_{p+q+t=r}\frac{r!}{p!q!t!}(-1)^{q+t}
+    f_0\left(a+\frac{r}{2}-q,b-p\right),
+\end{align}
+which provides a direct check of both formulas.
+
+\bibliography{sample} 
+\bibliographystyle{utphys}
+
+\end{document}
