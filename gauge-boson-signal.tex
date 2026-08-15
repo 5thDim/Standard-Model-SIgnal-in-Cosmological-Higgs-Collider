@@ -1231,14 +1231,46 @@ diagram. The loop integral can then be written in the same form as the triangle 
 where
 \begin{align}
     \mathcal{B}^{\lambda_1\lambda_2}_f(k_1,k_3)
-    =\frac{\Gamma^4(-\ii f\tn)}{(4\pi)^{7/2}}
+    &= \frac{\Gamma^4(-\ii f\tn)}{(4\pi)^{7/2}}
     4^{-2\ii f\tn}k_s^{3+4\ii f\tn}
     \sum_{\sigma_1,\sigma_2=L,\pm}
-    \mathcal{I}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2}(\theta_1,\theta_3,\phi_3).
+    \mathcal{I}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2}(\theta_1,\theta_3,\phi_3) \nonumber \\
+    &= \frac{\Gamma^4(-\ii f\tn)}{(4\pi)^{7/2}}
+    4^{-2\ii f\tn}k_s^{3+4\ii f\tn}
+    \mathcal{I}^{\lambda_1\lambda_2}(\theta_1,\theta_3,\phi_3)
 \end{align}
 
-
-
+Then we can deal with the left and right subgraph, which is identical to the left subgraph contribution of triangle diagrams:
+\begin{align}
+    \mathcal{T}^{(L),\lam_1}_f 
+    &= \left( ig^2h_0\right)^2 
+    \frac{k_{12}^{-2id\tn}}{4k_1^3 k_2^3} 
+    \cdot \mathcal{P}_f^{(2),\lam_1}(\tn) \\
+    \mathcal{T}^{(R),\lam_2}_f 
+    &= \left( ig^2h_0\right)^2 
+    \frac{k_{34}^{-2id\tn}}{4k_3^3 k_4^3} 
+    \cdot \mathcal{P}_f^{(2),\lam_2}(\tn)
+\end{align}
+So the box diagram:
+\begin{align}
+    \la \delta h^4 \ra^{\text{Box}} 
+    &= \sum_{f=\pm} \sum_{\lam_1,\lam_2=L,\pm} 
+    \mc T^{(L),\lambda_1}_f  
+    \cdot \mc B^{\lam_1\lam_2}_f 
+    \cdot \mc T^{(R),\lam_2}_f \\
+    &= (ig^2h_0)^4 
+    \frac{H^2 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} 
+    \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} 
+    \times C^{\text{Box}}(\tn,\theta_1) + \text{c.c.}
+\end{align}
+where the magnitude is:
+\begin{align}
+    C^{\text{Box}}(\tn,\theta_1,\theta_3,\phi_3) = 
+    \sum_{\lam_z,\lam_2=L,\pm}
+    [\mathcal{P}^{(2),\lam_1}_+(\tn) \mc P^{(2),\lambda_2}_+(\tn) ]
+    \cdot \frac{\Gamma^4(-\ii \tn)}{(4\pi)^{7/2}} \cdot 
+    \mathcal{I}^{\lambda_1\lam_2}(\theta_1,\theta_3,\phi_3)|_{f=+}
+\end{align}
 
 
 \appendix

@@ -559,6 +559,7 @@ partial_sums = [
     ("S(L+) + S(L-)",                 [('L', 1), ('L', -1)]),
     ("S(+L) + S(-L)",                 [(1, 'L'), (-1, 'L')]),
     ("S(++) + S(--) + S(+-) + S(-+)", [(1, 1), (-1, -1), (1, -1), (-1, 1)]),
+    ("S(L+) + S(L-) + S(+L) + S(-L)", [('L', 1), ('L', -1), (1, 'L'), (-1, 'L')]),
 ]
 
 with open('box_loop_B.txt', 'a') as f:
@@ -567,6 +568,7 @@ with open('box_loop_B.txt', 'a') as f:
     f.write("P1 = S(L+) + S(L-)\n")
     f.write("P2 = S(+L) + S(-L)\n")
     f.write("P3 = S(++) + S(--) + S(+-) + S(-+)\n")
+    f.write("P4 = S(L+) + S(L-) + S(+L) + S(-L)\n")
     f.write("Summed at the J-seed level (Scheme A).  beta kept symbolic.\n")
     f.write("="*90 + "\n\n")
 
