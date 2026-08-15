@@ -55,11 +55,12 @@ azimuthally averaged.  The phi-average is applied separately below.
 Only the longitudinal hard line (lambda = L) is requested, so this is
 lambda1 fixed to 'L'.  The nine soft-helicity combinations
 (σ1,σ2) in {L,+,-} x {L,+,-}  are computed.
-The final weighted sum applies, to each soft line, the combination
-    w_σ = η_σ * β_σ ,   with  β_L = (-1/2 + i ν~)^2 / (ν~^2 + 1/4),  β_± = 1,
-and the eta-signed helicity sum  η_L = -1 ,  η_± = +1  (same sign rule as
-the Box program and the .tex Appendix), giving
-    \mathcal{I}^{(L)} = sum_{σ1,σ2} η_{σ1} η_{σ2} β_{σ1} β_{σ2} \mathcal{I}^L_{σ1σ2},
+The final weighted sum applies, to each soft line, one SYMBOLIC beta
+factor for a longitudinal (L) line and none for transverse (+/-) lines:
+    β_L = beta,   β_+ = β_- = 1,
+with NO eta sign weights (helicity expansion all-plus, same as the Box
+program).  The result is
+    S(L) = sum_{σ1,σ2} β_{σ1} β_{σ2} \mathcal{I}^L_{σ1σ2},
 where \mathcal{I}^L_{σ1σ2} is the unweighted J-seed expansion.
 =====================================================================
 """
@@ -80,10 +81,9 @@ Sphi = sp.Symbol('Sphi', real=True)         # sin(phi)
 s1   = sp.Symbol('s1', real=True)           # sin(theta1)
 c1   = sp.Symbol('c1', real=True)           # cos(theta1)
 
-tn   = sp.Symbol('tn', real=True)           # \tilde\nu  (mass/H index)
-x    = sp.Symbol('x',  real=True)           # = -i d \tilde\nu  (branch label)
-
 I    = sp.I
+
+beta = sp.Symbol('beta', commutative=True)   # soft longitudinal-mode factor
 
 # ----------------------------------------------------------------------
 # polarization vectors  (polynomials in Cphi, Sphi)
@@ -195,18 +195,15 @@ name_map = {
     z:   r'\cos\theta',     u:   r'\sin\theta',
     Cphi: r'\cos\phi',      Sphi: r'\sin\phi',
     q:   'q',               K:   'K',      ks: 'k_s',
-    I:   'i', tn: r'\tilde\nu',  x: 'x',
+    I:   'i',               beta: r'\beta',
 }
 
 def to_latex(expr):
+    # plain expansion only; no nsimplify / simplify / phi-average
     latex = sp.latex(sp.expand(expr))
     for sym, rep in name_map.items():
         if sym == I:
             latex = latex.replace("i", rep)
-        elif sym == x:
-            latex = latex.replace("x", rep)
-        elif sym == tn:
-            latex = latex.replace("tn", rep)
         else:
             latex = latex.replace(sp.latex(sym), rep)
     return latex
@@ -272,15 +269,15 @@ def map_to_J(expr):
     return out
 
 Ilabels = {
-    ('L','L'):   r'\mathcal{I}^{L}_{LL}',
-    ('L',1):     r'\mathcal{I}^{L}_{L+}',
-    ('L',-1):    r'\mathcal{I}^{L}_{L-}',
-    (1,'L'):     r'\mathcal{I}^{L}_{+L}',
-    (1,1):       r'\mathcal{I}^{L}_{++}',
-    (1,-1):      r'\mathcal{I}^{L}_{+-}',
-    (-1,'L'):    r'\mathcal{I}^{L}_{-L}',
-    (-1,1):      r'\mathcal{I}^{L}_{-+}',
-    (-1,-1):     r'\mathcal{I}^{L}_{--}',
+    ('L','L'):   r'\mathcal{I}^{L}_{LL;f}',
+    ('L',1):     r'\mathcal{I}^{L}_{L+;f}',
+    ('L',-1):    r'\mathcal{I}^{L}_{L-;f}',
+    (1,'L'):     r'\mathcal{I}^{L}_{+L;f}',
+    (1,1):       r'\mathcal{I}^{L}_{++;f}',
+    (1,-1):      r'\mathcal{I}^{L}_{+-;f}',
+    (-1,'L'):    r'\mathcal{I}^{L}_{-L;f}',
+    (-1,1):      r'\mathcal{I}^{L}_{-+;f}',
+    (-1,-1):     r'\mathcal{I}^{L}_{--;f}',
 }
 
 def J_plain(coeff, r, m, n):
@@ -398,62 +395,59 @@ print("Nine individual dot-product factors written to triangle_loop_E_LambdaL.tx
 print("(polarization -> phi-average -> J-seed mapping, matching the Box output order)")
 
 # ======================================================================
-#  WEIGHTED SUM ->  \mathcal{I}^{(L)}   (Box-program / Appendix convention)
+#  BETA-WEIGHTED SUM  ->  S(L)   (same convention as box_loop_compute.py)
 # ======================================================================
 #  The main-text Triangle section writes  I^L = sum_{σ1,σ2} I^L_{σ1σ2},
 #  where EACH individual  I^L_{σ1σ2}  carries the longitudinal beta-factor
 #        β_L = (-1/2 + i \tilde\nu)^2 / (\tilde\nu^2 + 1/4),   β_+ = β_- = 1.
-#  In this code the individual J-seed expansions  I^L_{σ1σ2}  are stored
-#  WITHOUT that beta factor, exactly as box_loop_compute.py stores
-#  I^{LL}_{σ1σ2} without the eta weight.  The final combination, matching
-#  both the Box program and the .tex Appendix definition of \mathcal{I}^{(L)},
-#  is therefore the ETA-weighted sum  (eta_L = -1, eta_+ = eta_- = +1):
+#  The helicity expansion is all-plus (no eta sign weights), exactly as in
+#  box_loop_compute.py.  Each soft longitudinal (L) line carries one
+#  SYMBOLIC beta factor (no nu dependence); transverse (+/-) lines carry
+#  none.  The sum is done at the J-seed level (Scheme A).
 #
-#      \mathcal{I}^{(L)} = sum_{σ1,σ2 in {L,+,-}}  η_{σ1} η_{σ2} I^L_{σ1σ2}
+#        S(L) = sum_{σ1,σ2 in {L,+,-}}  β_{σ1} β_{σ2} I^L_{σ1σ2}
 #
-#  Because each I^L_{σ1σ2} includes its own β, in terms of the unweighted
-#  J-seed coefficients each soft line carries the combined weight
-#        w_L = η_L * β_L = - (-1/2 + i ν~)^2 / (ν~^2 + 1/4),
-#        w_+ = w_- = 1.
-#  This gives exactly the coefficient entering B^L_d in the main-text
-#  Triangle section (via \mathcal{I}^{(L)}).
+#  NO sin^2+cos^2=1 reduction is applied to the coefficients.
 # ======================================================================
 
-beta_L = (-sp.Rational(1,2) + I*tn)**2 / (tn**2 + sp.Rational(1,4))
-eta = {'L': -1, 1: sp.Integer(1), -1: sp.Integer(1)}
-# per-soft-line weight = eta_sigma * beta_sigma
-wline = {'L': eta['L']*beta_L, 1: sp.Integer(1), -1: sp.Integer(1)}
+def beta_weight(sig):
+    """One beta factor for a soft L line; 1 for a soft +/- line."""
+    return beta if sig == 'L' else sp.Integer(1)
 
-# combined: key (r,m,n) -> summed coefficient [ (eta·beta)_{σ1} (eta·beta)_{σ2} ]
+# combined: key (r,m,n) -> summed coefficient  beta_{σ1} beta_{σ2}
 combined = {}
 for sg1 in helicity:
     for sg2 in helicity:
-        w = wline[sg1] * wline[sg2]
+        w = beta_weight(sg1) * beta_weight(sg2)
         for (coeff, r, m, n) in mapped[(sg1, sg2)]:
             key = (r, m, n)
             combined[key] = combined.get(key, sp.Integer(0)) + w * coeff
 
 order = sorted(combined.keys(), key=lambda k: (k[2], k[1], k[0]))
 
-with open('triangle_loop_BL_eta.txt', 'w') as f:
+def Slabel():
+    return r"S(L)"
+
+with open('triangle_loop_B.txt', 'w') as f:
     f.write("="*90 + "\n")
-    f.write("\\mathcal{I}^{(L)} = sum_{σ1,σ2 in {L,+,-}} η_{σ1} η_{σ2} β_{σ1} β_{σ2} \\mathcal{I}^{L}_{σ1σ2}\n")
-    f.write("with  η_L = -1 , η_+ = η_- = +1   and   β_L = (-1/2 + i \\tilde\\nu)^2/(\\tilde\\nu^2+1/4), β_±=1.\n")
-    f.write("Unweighted \\mathcal{I}^{L}_{σ1σ2} are the J-seed expansions above.\n")
-    f.write("\\mathcal{I}^{(L)} = sum_{(r,m,n)} C_{rmn}(η,β,θ1) * J_r(m,n)\n")
-    f.write("(per-soft-line weight  w_σ = η_σ * β_σ :  w_L = -(-1/2+i\\tilde\\nu)^2/(\\tilde\\nu^2+1/4),  w_±=1)\n")
+    f.write("S(L) = sum_{sg1,sg2 in {L,+,-}}  beta_{sg1} beta_{sg2} I^{L}_{sg1,sg2;f}\n")
+    f.write("Each soft longitudinal (L) line carries one beta factor;\n")
+    f.write("transverse (+/-) lines carry none (beta_L = beta, beta_+/- = 1).\n")
+    f.write("beta is kept symbolic (no nu dependence).  Sum done at the\n")
+    f.write("J-seed level (Scheme A).  NO sin^2+cos^2=1 reduction applied.\n")
+    f.write("S  =  sum_{(r,m,n)} C_{rmn} * J_r(m,n)\n")
     f.write("="*90 + "\n\n")
 
     f.write(">>> LATEX FORM <<<\n")
     terms_l = [J_latex(combined[k], k[0], k[1], k[2])
                for k in order if combined[k] != 0]
-    f.write(r"\mathcal{I}^{(L)} = " + " + ".join(terms_l))
+    f.write(Slabel() + r" = \left[ " + " + ".join(terms_l) + r" \right]")
     f.write("\n\n")
 
     f.write(">>> PLAIN FORM <<<\n")
     terms_p = [J_plain(combined[k], k[0], k[1], k[2])
                for k in order if combined[k] != 0]
-    f.write("I^L = " + " + ".join(terms_p))
+    f.write(Slabel() + " = ( " + " + ".join(terms_p) + " )")
     f.write("\n\n")
 
-print("Eta-weighted sum I^{(L)} written to triangle_loop_BL_eta.txt")
+print("beta-weighted sum S(L) written to triangle_loop_B.txt")

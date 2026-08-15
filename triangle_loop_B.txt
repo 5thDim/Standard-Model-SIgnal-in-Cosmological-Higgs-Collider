@@ -1,0 +1,15 @@
+==========================================================================================
+S(L) = sum_{sg1,sg2 in {L,+,-}}  beta_{sg1} beta_{sg2} I^{L}_{sg1,sg2;f}
+Each soft longitudinal (L) line carries one beta factor;
+transverse (+/-) lines carry none (beta_L = beta, beta_+/- = 1).
+beta is kept symbolic (no nu dependence).  Sum done at the
+J-seed level (Scheme A).  NO sin^2+cos^2=1 reduction applied.
+S  =  sum_{(r,m,n)} C_{rmn} * J_r(m,n)
+==========================================================================================
+
+>>> LATEX FORM <<<
+S(L) = \left[ \frac{\sin\theta_1^{2}}{2}\,\mathcal{J}_{0}\left(0,0\right) + \left( \beta \cos\theta_1^{2} + \frac{\beta \sin\theta_1^{2}}{2} \right)\,\mathcal{J}_{0}\left(0,2\right) + \left( \beta^{2} \cos\theta_1^{2} - \beta \cos\theta_1^{2} - \frac{\beta \sin\theta_1^{2}}{2} + \frac{\sin\theta_1^{2}}{2} \right)\,\mathcal{J}_{2}\left(0,2\right) + \left( \beta^{2} \cos\theta_1^{2} + \frac{\beta^{2} \sin\theta_1^{2}}{2} + \cos\theta_1^{2} + \frac{\sin\theta_1^{2}}{2} \right)\,\mathcal{J}_{1}\left(1,2\right) + \left( \beta^{2} \cos\theta_1^{2} - \frac{\beta^{2} \sin\theta_1^{2}}{2} - \cos\theta_1^{2} + \frac{\sin\theta_1^{2}}{2} \right)\,\mathcal{J}_{3}\left(1,2\right) + \left( \frac{\beta^{2} \sin\theta_1^{2}}{2} + \cos\theta_1^{2} \right)\,\mathcal{J}_{0}\left(2,2\right) + \left( \beta^{2} \cos\theta_1^{2} - \frac{\beta^{2} \sin\theta_1^{2}}{2} - \cos\theta_1^{2} + \frac{\sin\theta_1^{2}}{2} \right)\,\mathcal{J}_{2}\left(2,2\right) \right]
+
+>>> PLAIN FORM <<<
+S(L) = ( \sin\theta_1**2/2 * J_0(0,0) + ( \beta*\cos\theta_1**2 + \beta*\sin\theta_1**2/2 ) * J_0(0,2) + ( \beta**2*\cos\theta_1**2 - \beta*\cos\theta_1**2 - \beta*\sin\theta_1**2/2 + \sin\theta_1**2/2 ) * J_2(0,2) + ( \beta**2*\cos\theta_1**2 + \beta**2*\sin\theta_1**2/2 + \cos\theta_1**2 + \sin\theta_1**2/2 ) * J_1(1,2) + ( \beta**2*\cos\theta_1**2 - \beta**2*\sin\theta_1**2/2 - \cos\theta_1**2 + \sin\theta_1**2/2 ) * J_3(1,2) + ( \beta**2*\sin\theta_1**2/2 + \cos\theta_1**2 ) * J_0(2,2) + ( \beta**2*\cos\theta_1**2 - \beta**2*\sin\theta_1**2/2 - \cos\theta_1**2 + \sin\theta_1**2/2 ) * J_2(2,2) )
+
