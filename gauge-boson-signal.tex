@@ -286,7 +286,7 @@ where $f(a,b)$ are some Gamma functions arising from the loop integral:
 \section{Bubble Diagram}
 For the Bubble diagram:
 \begin{align}
-    \la \delta h^4 \ra^{\text{Bubble}} &= \left( ig^2 \right)^2 \sum_{a,b=\pm} (ab) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_1) G_b(k_3;\tau_2) G_b(k_4;\tau_2) \nonumber \\
+    \la \delta h^4 \ra^{\text{Bubble}} &= \left( g^2 \right)^2 \sum_{a,b=\pm} (-ab) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_1) G_b(k_3;\tau_2) G_b(k_4;\tau_2) \nonumber \\
     &\times \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D_{\mu\nu}(q,\tau_1,\tau_2) \right]_{ab} \left[ D^{\nu\mu}(|\mb{k}_s + \mb{q}|,\tau_2,\tau_1) \right]_{ba}
 \end{align}
 
@@ -423,24 +423,24 @@ where the bubble subgraph contribution is:
 Then we can consider the left and right subgraph contribution, namely the time integral.
 For the left subgraph:
 \begin{align}
-    \mathcal{T}^{(L)}_c &= (ig^2) \sum_a a \int \frac{\di \tau_1}{|H \tau_1|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_1) (-\tau_1)^{1+2ic\tn} \nonumber \\
-    &= (ig^2) \frac{H^2}{4k_1^3 k_2^3} \sum_{a=\pm} a \int_{-\infty}^{0} \di \tau_1 (-\tau_1)^{-1+2\ii c\tn} (1 -iak_{12}\tau_1-k_1k_2\tau_1^2) e^{iak_{12}\tau_1} \nonumber \\
-    &= (ig^2) \frac{H^2}{4k_1^3 k_2^3} \times k_{12}^{-2ic\tn} \cdot \mathcal{P}^{(1)}_c(\tn)
+    \mathcal{T}^{(L)}_c &= (g^2) \sum_a ia \int \frac{\di \tau_1}{|H \tau_1|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_1) (-\tau_1)^{1+2ic\tn} \nonumber \\
+    &= (g^2) \frac{H^2}{4k_1^3 k_2^3} \sum_{a=\pm} ia \int_{-\infty}^{0} \di \tau_1 (-\tau_1)^{-1+2\ii c\tn} (1 -iak_{12}\tau_1-k_1k_2\tau_1^2) e^{iak_{12}\tau_1} \nonumber \\
+    &= (g^2) \frac{H^2}{4k_1^3 k_2^3} \times k_{12}^{-2ic\tn} \cdot \mathcal{P}^{(1)}_c(\tn)
 \end{align}
 where the coefficient is:
 \begin{align}
-    \mathcal{P}^{(1)}_c(\tn) = \frac{2+ic\tn}{2ic\tn} \sinh(\pi c \tn) \Gamma(2+2\ii c\tn)
+    \mathcal{P}^{(1)}_c(\tn) = \frac{2+ic\tn}{2ic\tn} \ii \sinh(\pi c \tn) \Gamma(2+2\ii c\tn)
 \end{align}
 
 Also for the right subgraph:
 \begin{align}
-    \mathcal{T}^{(R)}_c = (ig^2) \frac{H^2}{4k_3^3 k_4^3} \times k_{34}^{-2ic\tn} \cdot \mathcal{P}^{(1)}_c(\tn)
+    \mathcal{T}^{(R)}_c = (g^2) \frac{H^2}{4k_3^3 k_4^3} \times k_{34}^{-2ic\tn} \cdot \mathcal{P}^{(1)}_c(\tn)
 \end{align}
 
 So the total bubble graph contribution:
 \begin{align}
     \la \delta h^4 \ra^{\text{Bubble}} &= \sum_{c=\pm} \mathcal{T}^{(L)}_c \mathcal{T}^{(R)}_c \mathcal{B}_c \\
-    &= (ig^2)^2 \frac{H^4 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} \times C^{\text{Bub}}(\tn) + \text{c.c.}
+    &= (g^2)^2 \frac{H^4 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} \times C^{\text{Bub}}(\tn) + \text{c.c.}
 \end{align}
 where the magnitude is:
 \begin{align}
@@ -454,7 +454,7 @@ where the magnitude is:
 \section{Triangle Diagram}
 For one of the triangle diagrams:
 \begin{align}
-    \la \delta h^4 \ra^{\text{Tri1}} &= \left( ig^2 \right) (ig^2h_0)^2 \sum_{a,b,c=\pm} (abc) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} \frac{\di \tau_3}{|H \tau_3|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_2) G_c(k_3;\tau_3) G_c(k_4;\tau_3) \nonumber \\
+    \la \delta h^4 \ra^{\text{Tri1}} &= \left( g^2 \right) (g^2h_0)^2 \sum_{a,b,c=\pm} (-iabc) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} \frac{\di \tau_3}{|H \tau_3|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_2) G_c(k_3;\tau_3) G_c(k_4;\tau_3) \nonumber \\
     &\times \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D_{ij}(\mb q+\mb k_1,\tau_1,\tau_2) \right]_{ab} \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right]_{bc} \left[ D_{ki}( \mb{q},\tau_3,\tau_1) \right]_{ca} 
 \end{align}
 
@@ -969,11 +969,11 @@ So the total loop integral becomes:
 
 Then we also deal with the left and right subgraph contribution:
 \begin{align}
-    \mathcal{T}^{(L),\lambda}_d &= (ig^2h_0)^2 \sum_{a,b=\pm} (ab) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} G_a(k_1;\tau_1) G_b(k_2;\tau_2) \nonumber \\
+    \mathcal{T}^{(L),\lambda}_d &= (g^2h_0)^2 \sum_{a,b=\pm} (-ab) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} G_a(k_1;\tau_1) G_b(k_2;\tau_2) \nonumber \\
     &\times \left[D^{(\lambda)}(k_1,\tau_1,\tau_2)\right]_{ab} (\tau_1\tau_2)^{1/2+\ii d\tn} \\
-    &= (ig^2h_0)^2  
+    &= (g^2h_0)^2  
     \frac{H^2}{4k_1^3 k_2^3}
-    \sum_{a,b=\pm} (ab)
+    \sum_{a,b=\pm} (-ab)
     \int \di \tau_1 \di \tau_2 
     (1-iak_1\tau_1)(1-ibk_2\tau_2)
     \nonumber \\
@@ -986,22 +986,22 @@ Then we also deal with the left and right subgraph contribution:
 For $\lambda=L$, this integral is given by the tree seed in \cite{qin_helical_2023}:
 \begin{align}
     \mathcal{T}^{(L),L}_d 
-    &= \left( ig^2h_0\right)^2 
+    &= \left( g^2h_0\right)^2 
     \frac{k_{12}^{-2id\tn}}{4k_1^3 k_2^3} 
     \cdot \mathcal{P}_d^{(2),L}(\tn)
 \end{align}
 where the coefficient is:
 \begin{align}
     \mathcal{P}_d^{(2),L}(\tn) 
-    = -2^{2id\tn} \cdot \sum_{a,b=\pm} 
-    &\left[ +\tilde{\mathcal{K}}_{ab}^{-\fr32+id\tn,-\fr32+id\tn} (1,1) 
-    - ia \tilde{\mathcal{K}}_{ab}^{-\fr12+id\tn,-\fr32+id\tn} (1,1) \right. \nonumber \\
-    &\left. -ib \tilde{\mathcal{K}}_{ab}^{-\fr32+id\tn,-\fr12+id\tn} (1,1) 
-    - ab \tilde{\mathcal{K}}_{ab}^{-\fr12+id\tn,-\fr12+id\tn} (1,1) \right]
+    = 2^{2id\tn} \cdot \sum_{a,b=\pm} 
+    &\left[ +{\mathcal{K}}_{ab}^{-\fr32+id\tn,-\fr32+id\tn}  
+    - ia {\mathcal{K}}_{ab}^{-\fr12+id\tn,-\fr32+id\tn} \right. \nonumber \\
+    &\left. -ib {\mathcal{K}}_{ab}^{-\fr32+id\tn,-\fr12+id\tn} 
+    - ab {\mathcal{K}}_{ab}^{-\fr12+id\tn,-\fr12+id\tn} \right]
 \end{align}
-and here the $\mathcal{K}_{ab}^{p_1p_2} = \mathcal{I}^{(L)p_1p_2}_{ab}$ in \cite{qin_helical_2023}. The opposite-sign seeds:
+and here $\mathcal{K}_{ab}^{p_1p_2} = \mathcal{I}^{(L)p_1p_2}_{ab}(1,1)$ are vector seeds at the double folded limit in \cite{qin_helical_2023}. The opposite-sign seeds:
 \begin{align}
-    \mathcal{K}_{\pm\mp}^{p_1p_2}(1,1) = \frac{e^{\mp i\pi(p_1-p_2)/2}}{4\pi(\tilde{\nu}^2 + \frac{1}{4})} \left[ \mathbf{H}_{\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + \mathbf{H}_{-\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right] \nonumber \\
+    \mathcal{K}_{\pm\mp}^{p_1p_2} = \frac{e^{\mp i\pi(p_1-p_2)/2}}{4\pi(\tilde{\nu}^2 + \frac{1}{4})} \left[ \mathbf{H}_{\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + \mathbf{H}_{-\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right] \nonumber \\
     \times \left[ \mathbf{H}_{\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + \mathbf{H}_{-\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right]
 \end{align}
 where we define:
@@ -1009,46 +1009,46 @@ where we define:
     \mathbf{H}_{\tilde{\nu}}^p(1) \equiv \Bigg\{ \left( \frac{1}{2} - i\tilde{\nu} \right) \Gamma\left[ -i\tilde{\nu}, p + \frac{3}{2} + i\tilde{\nu} \right] {}_2F_1\left[ \begin{matrix} \frac{p}{2} + \frac{3}{4} + \frac{i\tilde{\nu}}{2}, & \frac{p}{2} + \frac{5}{4} + \frac{i\tilde{\nu}}{2} \\ 1 + i\tilde{\nu} \end{matrix} \middle| 1 \right] \nonumber \\
     + \frac{1}{2} \Gamma\left[ -1 - i\tilde{\nu}, p + \frac{7}{2} + i\tilde{\nu} \right] {}_2F_1\left[ \begin{matrix} \frac{p}{2} + \frac{7}{4} + \frac{i\tilde{\nu}}{2}, & \frac{p}{2} + \frac{9}{4} + \frac{i\tilde{\nu}}{2} \\ 2 + i\tilde{\nu} \end{matrix} \middle| 1 \right] \Bigg\}
 \end{align}
-
 And the same-sign seeds:
 \begin{align}
-    \mathcal{K}_{\pm\pm}^{p_1p_2}(1,1) &= \frac{-i e^{\mp i\pi(p_1+p_2)/2}}{4\pi(\tilde{\nu}^2 + \frac{1}{4})} \left[ e^{\pi\tilde{\nu}} \mathbf{H}_{\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + e^{-\pi\tilde{\nu}} \mathbf{H}_{-\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right] \\
-    &\quad \times \left[ \mathbf{H}_{\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + \mathbf{H}_{-\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right] \nonumber \\
-    &+ \frac{e^{\mp i\pi(p_1+p_2)/2}}{2(\tilde{\nu}^2 + \frac{1}{4})}  \sum_{n_1,n_2=0}^{\infty} \frac{(-1)^{n_{12}}}{n_1! n_2!} \left( \frac{1}{2} \right)^{2n_{12}} \\
-    &\quad \times \frac{i}{\tilde{\nu}} \left( 2n_1 - \frac{1}{2} + i\tilde{\nu} \right) \left( 2n_2 - \frac{1}{2} - i\tilde{\nu} \right) (-i\tilde{\nu})_{-n_1} (i\tilde{\nu})_{-n_2} \\
+    \mathcal{K}_{\pm\pm}^{p_1p_2}
+    &= \frac{-i e^{\mp i\pi(p_1+p_2)/2}}{4\pi(\tilde{\nu}^2 + \frac{1}{4})} 
+    \left[ e^{\pi\tilde{\nu}} \mathbf{H}_{\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} 
+    + e^{-\pi\tilde{\nu}} \mathbf{H}_{-\tilde{\nu}}^{p_1}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right]  \left[ \mathbf{H}_{\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{i\tilde{\nu}} + \mathbf{H}_{-\tilde{\nu}}^{p_2}(1) \left(\frac{1}{2}\right)^{-i\tilde{\nu}} \right] \nonumber \\
+    &\quad + \frac{e^{\mp i\pi(p_1+p_2)/2}}{2(\tilde{\nu}^2 + \frac{1}{4})}  
+    \sum_{n_1,n_2=0}^{\infty} \frac{(-1)^{n_{12}}}{n_1! n_2!} \left( \frac{1}{2} \right)^{2n_{12}} \frac{i}{\tilde{\nu}} \left( 2n_1 - \frac{1}{2} + i\tilde{\nu} \right) \left( 2n_2 - \frac{1}{2} - i\tilde{\nu} \right) (-i\tilde{\nu})_{-n_1} (i\tilde{\nu})_{-n_2} \nonumber \\
     &\quad \times \mathcal{F} \left[ \begin{matrix} 2n_2 + p_2 + \frac{3}{2} - i\tilde{\nu}, & 2n_{12} + p_1 + p_2 + 3 \\ 2n_2 + p_2 + \frac{5}{2} - i\tilde{\nu} \end{matrix} \middle| -1 \right] + (\tilde{\nu} \rightarrow -\tilde{\nu})
 \end{align}
 
-For $\lambda=\pm$, this integral can also be given by the tree seed in \cite{qin_closed-form_2023}:
+But in this way, the double folded limit is hard to get.
+So we use the other method, namely acting differential operator on the scalar seed\cite{qin_closed-form_2023}.
+Then the coefficient becomes two parts, where the first part contains delta function contribution:
 \begin{align}
-    \mathcal{T}^{(L),\pm}_d 
-    &= (ig^2h_0)^2  
-    \frac{H^2}{4k_1^3 k_2^3}
-    \sum_{a,b=\pm} (ab)
-    \int \di \tau_1 \di \tau_2 
-    (1-iak_1\tau_1)(1-ibk_2\tau_2)
-    \nonumber \\
-    &\times \left[D^{(\text{scalar})}(k_1,\tau_1,\tau_2)\right]_{ab} 
-    (-\tau_1)^{-5/2+\ii d\tn}
-    (-\tau_2)^{-5/2+\ii d\tn} 
-    e^{\ii ak_1\tau_1 + \ii bk_2\tau_2} \\
-    &= \left( ig^2h_0\right)^2 
-    \frac{k_{12}^{-2id\tn}}{4k_1^3 k_2^3} 
-    \cdot \mathcal{P}_d^{(2),\pm}(\tn)
+    \text{Part 1 of}\;\; \mathcal{P}_d^{(2),L}(\tn) = \mathcal{P}_d^{(1)}(\tn) \cdot \frac{1}{\tn^2+1/4}
 \end{align}
-where the coefficient is:
+
+And the second part comes from the scalar seeds:
 \begin{align}
-    \mathcal{P}_d^{(2),\pm}(\tn) 
-    = -2^{2id\tn} \cdot \sum_{a,b=\pm} 
-    &\left[ +\tilde{\mathcal{M}}_{ab}^{-\fr52+id\tn,-\fr52+id\tn} (1,1) 
-    - ia \tilde{\mathcal{M}}_{ab}^{-\fr32+id\tn,-\fr52+id\tn} (1,1) \right. \nonumber \\
-    &\left. -ib \tilde{\mathcal{M}}_{ab}^{-\fr52+id\tn,-\fr32+id\tn} (1,1) 
-    - ab \tilde{\mathcal{M}}_{ab}^{-\fr32+id\tn,-\fr32+id\tn} (1,1) \right]
+    \text{Part 2 of}\;\; \mathcal{P}_d^{(2),L}(\tn) &= 
+    \frac{2^{2id\tn}}{\tn^2+1/4} \sum_{a,b=\pm} 
+    \left\{ (\fr12+id\tn)^2 \left[ 
+    \mc M_{ab}^{p_0,p_0}
+    +(ia) \mc M_{ab}^{p_0+1,p_0}
+    +(ib) \mc M_{ab}^{p_0,p_0+1}
+    +(ab) \mc M_{ab}^{p_0+1,p_0+1}
+    \right] \right. \nonumber \\
+    &+ (\fr12+id\tn) \left[
+    \mc M_{ab}^{p_0+2,p_0}
+    + (ib) \mc M_{ab}^{p_0+2,p_0+1}
+    + \mc M_{ab}^{p_0,p_0+2}
+    + (ia) \mc M_{ab}^{p_0+1,p_0+2}
+    \right] \nonumber \\
+    &+ \left. \mc M_{ab}^{p_0+2,p_0+2} \right\}
 \end{align}
-and here $\mathcal{M}_{ab}^{p_1p_2} = \mathcal{I}^{p_1p_2}_{ab}$ in \cite{qin_closed-form_2023}.
+where $p_0=-\fr52+\ii d\tn$, and  $\mathcal{M}_{ab}^{p_1p_2} = \mathcal{I}^{p_1p_2}_{ab}(1,1)$ are the scalar seeds in \cite{qin_closed-form_2023}.
 The opposite-sign seeds:
 \begin{align}
-    \mc M^{p_1 p_2}_{\pm\mp}(1,1) = 
+    \mc M^{p_1 p_2}_{\pm\mp} = 
     \frac{e^{\mp \mathrm{i} \bar{p}_{12} \pi/2}}
     {2^{5+p_{12}}} 
     \Gamma \left[ \begin{matrix} 
@@ -1063,7 +1063,7 @@ The opposite-sign seeds:
 
 And the same-sign seeds:
 \begin{align}
-    \mathcal{M}^{p_1 p_2}_{\pm\pm}(1,1) 
+    \mathcal{M}^{p_1 p_2}_{\pm\pm} 
     &= \frac{\pm \mathrm{i} e^{\mp \mathrm{i} p_{12} \pi/2} e^{-\pi \widetilde{\nu}}}{2^{5+p_{12}}} 
     \Gamma \begin{bmatrix} 
     \frac{5}{2} + p_1 - \mathrm{i}\widetilde{\nu}, & \frac{5}{2} + p_1 + \mathrm{i}\widetilde{\nu}, & \frac{5}{2} + p_2 - \mathrm{i}\widetilde{\nu}, & \frac{5}{2} + p_2 + \mathrm{i}\widetilde{\nu} \\ 
@@ -1079,15 +1079,42 @@ And the same-sign seeds:
     \end{matrix} \middle| 1 \right].
 \end{align}
 
-And for the right subgraph:
+For $\lambda=\pm$, this integral can also be given by the tree seed in \cite{qin_closed-form_2023}:
 \begin{align}
-    \mathcal{T}^{(R)}_d &= (ig^2) \sum_c c \int \frac{\di \tau_3}{|H \tau_3|^2} G_c(k_3;\tau_1) G_c(k_4;\tau_3) (-\tau_3)^{1+2\ii d\tn} \nonumber \\
-    &= (ig^2) \frac{H^2}{4k_3^3 k_4^3} \sum_{c=\pm} c \int_{-\infty}^{0} \di \tau_3 (-\tau_3)^{-1+2\ii c\tn} (1 -ick_{34}\tau_3-k_3k_4\tau_3^2) e^{ick_{34}\tau_3} \nonumber \\
-    &= (ig^2) \frac{H^2}{4k_3^3 k_4^3} \times k_{34}^{-2\ii d\tn} \cdot \mathcal{P}^{(1)}_d(\tn)
+    \mathcal{T}^{(L),\pm}_d 
+    &= (g^2h_0)^2  
+    \frac{H^2}{4k_1^3 k_2^3}
+    \sum_{a,b=\pm} (-ab)
+    \int \di \tau_1 \di \tau_2 
+    (1-iak_1\tau_1)(1-ibk_2\tau_2)
+    \nonumber \\
+    &\times \left[D^{(\text{scalar})}(k_1,\tau_1,\tau_2)\right]_{ab} 
+    (-\tau_1)^{-5/2+\ii d\tn}
+    (-\tau_2)^{-5/2+\ii d\tn} 
+    e^{\ii ak_1\tau_1 + \ii bk_2\tau_2} \\
+    &= \left( g^2h_0\right)^2 
+    \frac{k_{12}^{-2id\tn}}{4k_1^3 k_2^3} 
+    \cdot \mathcal{P}_d^{(2),\pm}(\tn)
 \end{align}
 where the coefficient is:
 \begin{align}
-    \mathcal{P}^{(1)}_d(\tn) = \frac{2+\ii d\tn}{2\ii d\tn} \sinh(\pi d \tn) \Gamma(2+2\ii d\tn)
+    \mathcal{P}_d^{(2),\pm}(\tn) 
+    = 2^{2id\tn} \cdot \sum_{a,b=\pm} 
+    &\left[ +{\mathcal{M}}_{ab}^{p_0,p_0} 
+    - ia {\mathcal{M}}_{ab}^{p_0+1,p_0}  
+    - ib {\mathcal{M}}_{ab}^{p_0,p_0+1}  
+    - ab {\mathcal{M}}_{ab}^{p_0+1,p_0+1} \right]
+\end{align}
+
+And for the right subgraph:
+\begin{align}
+    \mathcal{T}^{(R)}_d &= (g^2) \sum_c ic \int \frac{\di \tau_3}{|H \tau_3|^2} G_c(k_3;\tau_1) G_c(k_4;\tau_3) (-\tau_3)^{1+2\ii d\tn} \nonumber \\
+    &= (g^2) \frac{H^2}{4k_3^3 k_4^3} \sum_{c=\pm} ic \int_{-\infty}^{0} \di \tau_3 (-\tau_3)^{-1+2\ii c\tn} (1 -ick_{34}\tau_3-k_3k_4\tau_3^2) e^{ick_{34}\tau_3} \nonumber \\
+    &= (g^2) \frac{H^2}{4k_3^3 k_4^3} \times k_{34}^{-2\ii d\tn} \cdot \mathcal{P}^{(1)}_d(\tn)
+\end{align}
+where the coefficient is:
+\begin{align}
+    \mathcal{P}^{(1)}_d(\tn) = \frac{2+\ii d\tn}{2\ii d\tn} \ii\sinh(\pi d \tn) \Gamma(2+2\ii d\tn)
 \end{align}
 
 So one of the triangle diagram:
@@ -1097,7 +1124,7 @@ So one of the triangle diagram:
     \mc T^{(L),\lambda}_d  
     \cdot \mc B^{\lam}_d 
     \cdot \mc T^{(R)}_d \\
-    &= (ig^2)(ig^2h_0)^2 
+    &= (g^2)(g^2h_0)^2 
     \frac{H^2 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} 
     \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} 
     \times C^{\text{Tri}}(\tn,\theta_1) + \text{c.c.}
@@ -1122,7 +1149,7 @@ So the total triangle diagram contributions:
     \la \delta h^4 \ra^{\text{Tri}} 
     &= \la \delta h^4 \ra^{\text{Tri1}} 
     +\la \delta h^4 \ra^{\text{Tri2}} \nonumber \\
-    &= (ig^2)(ig^2h_0)^2 
+    &= (g^2)(g^2h_0)^2 
     \frac{H^2 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} 
     \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} 
     \times (C^{\text{Tri}}(\tn,\theta_1) + C^{\text{Tri}}(\tn,\theta_3)) 
