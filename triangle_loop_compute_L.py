@@ -4,10 +4,10 @@ triangle_loop_compute_L.py
 =====================================================================
 Compute the azimuthally-averaged Triangle angular factors
 
-              \overline{\mathcal{E}}^L_{\sigma1\sigma2}
+              \overline{\mathcal{E}}^\lambda_{\sigma1\sigma2}
 
 for the physical Triangle DIAGRAM (one hard + two soft propagators),
-for the fixed external helicity lambda = L  on the single hard line k1.
+for all external helicities lambda in {L,+,-} on the single hard line k1.
 
 This follows exactly the same pipeline as box_loop_compute.py, except
 that a Triangle factor has only THREE contraction factors (one hard
@@ -39,29 +39,30 @@ Polarization vectors
         e^{(σ)}_{k1} = 1/√2 ( c1, σ i, -s1 )
 
 ---------------------------------------------------------------------
-Angular factor (lambda = L)  -- THREE factor product:
-    E^L_{σ1σ2} = A^L_{σ1} * B_{σ1σ2} * C^L_{σ2}
-        A = e_{k1}^{(L)*} · e_K^{(σ1)}
+Angular factor -- THREE factor product:
+    E^lambda_{σ1σ2} = A^lambda_{σ1} * B_{σ1σ2} * C^lambda_{σ2}
+        A = e_{k1}^{(lambda)*} · e_K^{(σ1)}
         B = e_K^{(σ1)*}  · e_q^{(σ2)}
-        C = e_q^{(σ2)*}  · e_{k1}^{(L)}
+        C = e_q^{(σ2)*}  · e_{k1}^{(lambda)}
 
-  (cf. the .tex:  E^L_{σ1σ2} = A_{Lσ1} B_{σ1σ2} C_{σ2 L} )
+  (cf. the .tex: E^lambda_{σ1σ2}
+       = A_{lambda σ1} B_{σ1 σ2} C_{σ2 lambda})
 
 IMPORTANT (same convention as box_loop_compute.py):  EACH factor is kept
 as a raw polynomial in Cphi, Sphi -- NOT reduced, NOT simplified, NOT
 azimuthally averaged.  The phi-average is applied separately below.
 
 ---------------------------------------------------------------------
-Only the longitudinal hard line (lambda = L) is requested, so this is
-lambda1 fixed to 'L'.  The nine soft-helicity combinations
-(σ1,σ2) in {L,+,-} x {L,+,-}  are computed.
+All three hard-line helicities and all nine soft-helicity combinations
+(σ1,σ2) in {L,+,-} x {L,+,-} are computed (27 factors total).
 The final weighted sum applies, to each soft line, one SYMBOLIC beta
 factor for a longitudinal (L) line and none for transverse (+/-) lines:
     β_L = beta,   β_+ = β_- = 1,
 with NO eta sign weights (helicity expansion all-plus, same as the Box
 program).  The result is
-    S(L) = sum_{σ1,σ2} β_{σ1} β_{σ2} \mathcal{I}^L_{σ1σ2},
-where \mathcal{I}^L_{σ1σ2} is the unweighted J-seed expansion.
+    S(lambda) = sum_{σ1,σ2} β_{σ1} β_{σ2}
+                \mathcal{I}^lambda_{σ1σ2;d},
+where d is the Triangle nonlocal-branch index used in the .tex.
 =====================================================================
 """
 
@@ -114,43 +115,53 @@ def k1_L():
     """longitudinal polarization of the (single) hard external line k1"""
     return sp.Matrix([s1, 0, c1])
 
+def k1_s(sig):
+    """transverse polarization of the hard line k1; sig = +1 or -1"""
+    return sp.Matrix([c1, sig*I, -s1])/sp.sqrt(2)
+
 def conj(m):
     return sp.conjugate(m)
 
 # ----------------------------------------------------------------------
-# build E^L_{σ1σ2} = A * B * C   (lambda fixed to L)
+# build E^lambda_{σ1σ2} = A * B * C
 # ----------------------------------------------------------------------
-def build_E(sig1, sig2):
+def build_E(lam, sig1, sig2):
     """
+    lam  = helicity of the hard k1 line (in {'L', +1, -1})
     sig1 = soft helicity on the K-line  (in {'L', +1, -1})
     sig2 = soft helicity on the q-line   (in {'L', +1, -1})
-    External hard line lambda = L is fixed.
     """
-    # A = e_{k1}^{(L)*} · e_K^{(σ1)}    (k1 L is real -> conj no-op)
+    k1 = k1_L() if lam == 'L' else k1_s(lam)
     eK_s1 = eL_K() if sig1 == 'L' else es_K(sig1)
-    A = (conj(k1_L())).dot(eK_s1)
-
-    # B = e_K^{(σ1)*} · e_q^{(σ2)}
     eq_s2 = eL_q() if sig2 == 'L' else es_q(sig2)
-    B = (conj(eK_s1)).dot(eq_s2)
 
-    # C = e_q^{(σ2)*} · e_{k1}^{(L)}    (k1 L real -> conj no-op)
-    C = (conj(eq_s2)).dot(k1_L())
+    # A = e_{k1}^{(lambda)*} · e_K^{(σ1)}
+    A = conj(k1).dot(eK_s1)
+    # B = e_K^{(σ1)*} · e_q^{(σ2)}
+    B = (conj(eK_s1)).dot(eq_s2)
+    # C = e_q^{(σ2)*} · e_{k1}^{(lambda)}
+    C = conj(eq_s2).dot(k1)
 
     # three-factor product -> polynomial in Cphi,Sphi
     return sp.expand(A*B*C)
 
 helicity = ['L', 1, -1]                       # order: L, +, -
 
+def hname(x):
+    """helicity name: 'L' -> 'L', +1 -> '+', -1 -> '-'."""
+    return {'L': 'L', 1: '+', -1: '-'}[x]
+
 # ----------------------------------------------------------------------
-# compute all 9 factors  (no phi-average yet)
+# compute all 3 hard helicities x 9 soft-helicity factors
 # ----------------------------------------------------------------------
-print("Computing (lambda = L)  [plain dot products, no phi-average]:")
-results = {}
-for sg1 in helicity:
-    for sg2 in helicity:
-        results[(sg1, sg2)] = build_E(sg1, sg2)
-        print("  done  sigma1 = %s, sigma2 = %s" % (sg1, sg2), flush=True)
+print("Computing all (lambda, sigma1, sigma2) [plain dot products, no phi-average]:")
+results = {}                                  # (lam,sg1,sg2) -> raw E
+for lam in helicity:
+    for sg1 in helicity:
+        for sg2 in helicity:
+            results[(lam, sg1, sg2)] = build_E(lam, sg1, sg2)
+            print("  done  lambda=%s, sigma1=%s, sigma2=%s"
+                  % (hname(lam), hname(sg1), hname(sg2)), flush=True)
 
 # ----------------------------------------------------------------------
 # phi-average  (closed-form even-moment averaging, same as Box code)
@@ -180,12 +191,14 @@ def phi_average(expr):
             total += coeff * mom_even(m, n)
     return sp.expand(total)
 
-print("Computing phi-averages  \\overline{\\mathcal{E}}^L_{\\sigma1\\sigma2}:")
+print("Computing phi-averages for all (lambda, sigma1, sigma2):")
 avg_results = {}
-for sg1 in helicity:
-    for sg2 in helicity:
-        avg_results[(sg1, sg2)] = phi_average(results[(sg1, sg2)])
-        print("  averaged  sigma1 = %s, sigma2 = %s" % (sg1, sg2), flush=True)
+for lam in helicity:
+    for sg1 in helicity:
+        for sg2 in helicity:
+            avg_results[(lam, sg1, sg2)] = phi_average(results[(lam, sg1, sg2)])
+            print("  averaged  lambda=%s, sigma1=%s, sigma2=%s"
+                  % (hname(lam), hname(sg1), hname(sg2)), flush=True)
 
 # ----------------------------------------------------------------------
 # output helpers : rename sympy symbols to readable LaTeX / plain text
@@ -216,15 +229,14 @@ def to_plain(expr):
 
 # ----------------------------------------------------------------------
 # MAPPING TO LOOP SEEDS  J_r(m,n)
-#    Each phi-averaged factor \bar{\mathcal{E}}^L_{σ1σ2} is expressed as
-#    a linear combination of loop seeds
-#        J_r(m,n) = f_r( x - m/2 , x + n/2 ),    x = -i d \tilde\nu
-#    with f_0, f_1(=f_c), f_2(=f_cc) from the .tex loop-seed section.
-#    sin(theta) eliminated via sin^2 = 1-cos^2;  z = cos(theta).
-#    J_3 is kept explicitly (NOT reduced to J_0).
+#    Each phi-averaged factor is mapped to
+#        J_r(m,n) = f_r(x-m/2, x+n/2),   x = -i d \tilde\nu,
+#    where d is the Triangle nonlocal-branch index used in the article.
+#    Equal seeds are combined before output.  This is essential for the
+#    Triangle: apparent J_4 terms in an uncollected monomial list cancel.
 # ----------------------------------------------------------------------
 def classify_term(term):
-    """Split one monomial into (const, m, n, r, s, a)   [same as Box code]."""
+    """Split a monomial into const*q^m*K^(-n)*z^r*u^s*k_s^a."""
     factors = [term] if term.is_Atom else sp.Mul.make_args(term)
     const = sp.Integer(1)
     m = n = r = s = a = 0
@@ -249,36 +261,39 @@ def classify_term(term):
     return sp.expand(const), int(m), int(n), int(r), int(s), int(a)
 
 def process_monomial(term):
-    """One expanded monomial -> list of (coeff, r, m, n); u^s -> z expansion."""
+    """Map one monomial to one or more (coeff,r,m,n) seed terms."""
     const, m, n, r, s, a = classify_term(term)
-    if s == 0:
-        return [(const, r, m, n)]
+    if s % 2:
+        raise ValueError("odd power of sin(theta) survived phi averaging: %s" % term)
+    if m - n + a != 0:
+        raise ValueError("term has unexpected k_s scaling: %s" % term)
     polyz = sp.Poly(sp.expand((1 - z**2)**(s // 2)), z)
-    out = []
-    for (rz,), cf in polyz.terms():
-        out.append((sp.expand(const * cf), int(r + rz), m, n))
-    return out
+    return [(sp.expand(const*cf), int(r+rz), m, n)
+            for (rz,), cf in polyz.terms()]
 
 def map_to_J(expr):
-    """expr -> list of (coeff, r, m, n)  s.t. expr = sum coeff_i J_{r_i}(m_i,n_i)."""
-    e = sp.expand(expr)
-    terms_list = list(e.args) if e.is_Add else [e]
-    out = []
-    for t in terms_list:
-        out.extend(process_monomial(t))
-    return out
+    """Return {(r,m,n): coeff}, combining identical seeds exactly."""
+    combined = {}
+    for term in sp.Add.make_args(sp.expand(expr)):
+        for coeff, r, m, n in process_monomial(term):
+            key = (r, m, n)
+            combined[key] = combined.get(key, sp.Integer(0)) + coeff
+    return {key: coeff for key, value in combined.items()
+            if (coeff := sp.expand(value)) != 0}
 
-Ilabels = {
-    ('L','L'):   r'\mathcal{I}^{L}_{LL;f}',
-    ('L',1):     r'\mathcal{I}^{L}_{L+;f}',
-    ('L',-1):    r'\mathcal{I}^{L}_{L-;f}',
-    (1,'L'):     r'\mathcal{I}^{L}_{+L;f}',
-    (1,1):       r'\mathcal{I}^{L}_{++;f}',
-    (1,-1):      r'\mathcal{I}^{L}_{+-;f}',
-    (-1,'L'):    r'\mathcal{I}^{L}_{-L;f}',
-    (-1,1):      r'\mathcal{I}^{L}_{-+;f}',
-    (-1,-1):     r'\mathcal{I}^{L}_{--;f}',
-}
+def Elabel(lam, sig1, sig2):
+    return r"\overline{\mathcal{E}}^{%s}_{%s%s}" % (
+        hname(lam), hname(sig1), hname(sig2))
+
+def Ilabel(lam, sig1, sig2):
+    return r"\mathcal{I}^{%s}_{%s%s;d}" % (
+        hname(lam), hname(sig1), hname(sig2))
+
+def Slabel(lam):
+    return r"S(%s)" % hname(lam)
+
+def seed_order(seed_dict):
+    return sorted(seed_dict, key=lambda key: (key[2], key[1], key[0]))
 
 def J_plain(coeff, r, m, n):
     c = to_plain(coeff)
@@ -292,162 +307,187 @@ def J_latex(coeff, r, m, n):
         c = r"\left( %s \right)" % c
     return r"%s\,\mathcal{J}_{%d}\left(%d,%d\right)" % (c, r, m, n)
 
-print("Mapping phi-averaged factors onto loop seeds J_r(m,n):")
-mapped = {}
+def seed_sum_plain(seed_dict):
+    return " + ".join(J_plain(seed_dict[key], *key)
+                      for key in seed_order(seed_dict)) or "0"
+
+def seed_sum_latex(seed_dict):
+    return " + ".join(J_latex(seed_dict[key], *key)
+                      for key in seed_order(seed_dict)) or "0"
+
+print("Mapping phi-averaged factors onto collected loop seeds J_r(m,n):")
+mapped = {}                                    # (lam,sg1,sg2) -> seed dictionary
+for lam in helicity:
+    for sg1 in helicity:
+        for sg2 in helicity:
+            key = (lam, sg1, sg2)
+            mapped[key] = map_to_J(avg_results[key])
+            if any(r > 3 for r, m, n in mapped[key]):
+                raise AssertionError("Triangle produced a non-cancelling J_r with r > 3")
+            print("  mapped  lambda=%s, sigma1=%s, sigma2=%s (%d collected seeds)"
+                  % (hname(lam), hname(sg1), hname(sg2), len(mapped[key])), flush=True)
+
+# Polarization checks quoted in the Triangle section of the article.
+def flip(sig):
+    return sig if sig == 'L' else -sig
+
 for sg1 in helicity:
     for sg2 in helicity:
-        mapped[(sg1, sg2)] = map_to_J(avg_results[(sg1, sg2)])
-        print("  mapped  sigma1 = %s, sigma2 = %s  (%d terms)"
-              % (sg1, sg2, len(mapped[(sg1, sg2)])), flush=True)
+        if sp.expand(avg_results[('L', sg1, sg2)]
+                     - avg_results[('L', flip(sg1), flip(sg2))]) != 0:
+            raise AssertionError("longitudinal hard-line helicity symmetry failed")
+        if sp.expand(avg_results[(-1, sg1, sg2)]
+                     - avg_results[(1, flip(sg1), flip(sg2))]) != 0:
+            raise AssertionError("plus/minus hard-line conjugation symmetry failed")
 
 # ----------------------------------------------------------------------
-# write the NINE individual dot-product factors to file.
-# Output order follows box_loop_compute.py EXACTLY:
-#   1) polarization part        : plain then latex, raw A*B*C (no phi-average)
-#   2) phi-averaged part        : plain then latex
-#   3) mapped loop-seed part    : plain then latex  (J_r(m,n) expansions)
+# Output all 27 individual factors.  The file name is retained for backward
+# compatibility even though it now contains lambda=L,+,-, not only LambdaL.
 # ----------------------------------------------------------------------
-label = {
-    ('L','L'):   r'\overline{\mathcal{E}}^{L}_{LL}',
-    ('L',1):     r'\overline{\mathcal{E}}^{L}_{L+}',
-    ('L',-1):    r'\overline{\mathcal{E}}^{L}_{L-}',
-    (1,'L'):     r'\overline{\mathcal{E}}^{L}_{+L}',
-    (1,1):       r'\overline{\mathcal{E}}^{L}_{++}',
-    (1,-1):      r'\overline{\mathcal{E}}^{L}_{+-}',
-    (-1,'L'):    r'\overline{\mathcal{E}}^{L}_{-L}',
-    (-1,1):      r'\overline{\mathcal{E}}^{L}_{-+}',
-    (-1,-1):     r'\overline{\mathcal{E}}^{L}_{--}',
-}
-
-with open('triangle_loop_E_LambdaL.txt', 'w') as f:
+with open('triangle_loop_E.txt', 'w') as f:
     f.write("="*90 + "\n")
-    f.write("Triangle dot-product factors  \\mathcal{E}^L_{\\sigma1\\sigma2}\n")
-    f.write("lambda = L (single hard line k1),  sigma1,sigma2 in {L,+,-}\n")
-    f.write("Plain A*B*C dot products (no phi-average, no K reduction).\n")
-    f.write("Variables: ks, q, K, z(=cos th), u(=sin th), Cphi=cos ph, Sphi=sin ph,\n")
-    f.write("           s1=sin th1, c1=cos th1;  K kept independent.\n")
+    f.write("Triangle factors  \\mathcal{E}^lambda_{sigma1 sigma2}\n")
+    f.write("lambda, sigma1, sigma2 in {L,+,-}; 27 helicity combinations.\n")
+    f.write("The Triangle branch label is d: x = -i d \\tilde\\nu.\n")
     f.write("="*90 + "\n\n")
 
-    # ---- 1) polarization part : raw dot products (no phi-average) ----
-    f.write(">>> PLAIN FORM  (no phi-average) <<<\n")
-    for sg1 in helicity:
-        for sg2 in helicity:
-            f.write(label[(sg1,sg2)] + " =\n")
-            f.write(to_plain(results[(sg1,sg2)]))
-            f.write("\n\n")
+    for lam in helicity:
+        f.write("\n" + "="*70 + "\n")
+        f.write("lambda = %s\n" % hname(lam))
+        f.write("="*70 + "\n\n")
 
-    f.write("\n>>> LATEX FORM  (no phi-average) <<<\n")
-    for sg1 in helicity:
-        for sg2 in helicity:
-            f.write(label[(sg1,sg2)] + " =\n")
-            f.write(to_latex(results[(sg1,sg2)]))
-            f.write("\n\n")
+        f.write(">>> PLAIN FORM (no phi-average) <<<\n")
+        for sg1 in helicity:
+            for sg2 in helicity:
+                key = (lam, sg1, sg2)
+                f.write(Elabel(*key) + " =\n" + to_plain(results[key]) + "\n\n")
 
-    # ---- 2) phi-averaged part ----
-    f.write("\n\n==============================================================\n")
-    f.write("PHI-AVERAGED  \\overline{\\mathcal{E}}^L_{\\sigma1\\sigma2}\n")
-    f.write("(phi integrated over [0,2*pi]; K = |q+k_s| kept independent)\n")
-    f.write("==============================================================\n\n")
+        f.write(">>> LATEX FORM (no phi-average) <<<\n")
+        for sg1 in helicity:
+            for sg2 in helicity:
+                key = (lam, sg1, sg2)
+                f.write(Elabel(*key) + " =\n" + to_latex(results[key]) + "\n\n")
 
-    f.write(">>> PLAIN FORM  (phi-averaged) <<<\n")
-    for sg1 in helicity:
-        for sg2 in helicity:
-            f.write(label[(sg1,sg2)] + " =\n")
-            f.write(to_plain(avg_results[(sg1,sg2)]))
-            f.write("\n\n")
+        f.write(">>> PLAIN FORM (phi-averaged) <<<\n")
+        for sg1 in helicity:
+            for sg2 in helicity:
+                key = (lam, sg1, sg2)
+                f.write(Elabel(*key) + " =\n" + to_plain(avg_results[key]) + "\n\n")
 
-    f.write("\n>>> LATEX FORM  (phi-averaged) <<<\n")
-    for sg1 in helicity:
-        for sg2 in helicity:
-            f.write(label[(sg1,sg2)] + " =\n")
-            f.write(to_latex(avg_results[(sg1,sg2)]))
-            f.write("\n\n")
+        f.write(">>> LATEX FORM (phi-averaged) <<<\n")
+        for sg1 in helicity:
+            for sg2 in helicity:
+                key = (lam, sg1, sg2)
+                f.write(Elabel(*key) + " =\n" + to_latex(avg_results[key]) + "\n\n")
 
-    # ---- 3) mapped loop-seed part : J_r(m,n) expansions ----
-    f.write("\n\n==============================================================\n")
-    f.write("MAPPING TO LOOP SEEDS  J_r(m,n)\n")
-    f.write("Each phi-averaged  \\bar{\\mathcal{E}}^L_{\\sigma1\\sigma2}  is expressed\n")
-    f.write("as a linear combination of loop seeds\n")
-    f.write("    J_r(m,n) = f_r(x - m/2 , x + n/2),   x = -i d \\tilde\\nu,\n")
-    f.write("with f_0, f_c=f_1, f_cc=f_2, f_3 defined in the .tex.\n")
-    f.write("sin(theta) eliminated via sin^2 = 1 - cos^2;  z = cos(theta).\n")
-    f.write("J_3 is kept explicitly (NOT reduced to J_0).\n")
-    f.write("This equals the dimensionless coefficient \\mathcal{I}^L_{\\sigma1\\sigma2}.\n")
-    f.write("="*90 + "\n\n")
+        f.write(">>> PLAIN FORM (collected J-seed expansion) <<<\n")
+        for sg1 in helicity:
+            for sg2 in helicity:
+                key = (lam, sg1, sg2)
+                f.write(Ilabel(*key) + " =\n" + seed_sum_plain(mapped[key]) + "\n\n")
 
-    f.write(">>> PLAIN FORM (J-seed expansion) <<<\n")
-    for sg1 in helicity:
-        for sg2 in helicity:
-            f.write(Ilabels[(sg1,sg2)] + " =\n")
-            f.write(" + ".join(J_plain(co, r, m, n)
-                               for (co, r, m, n) in mapped[(sg1,sg2)]) or "0")
-            f.write("\n\n")
+        f.write(">>> LATEX FORM (collected J-seed expansion) <<<\n")
+        for sg1 in helicity:
+            for sg2 in helicity:
+                key = (lam, sg1, sg2)
+                f.write(Ilabel(*key) + " =\n" + seed_sum_latex(mapped[key]) + "\n\n")
 
-    f.write("\n>>> LATEX FORM (J-seed expansion) <<<\n")
-    for sg1 in helicity:
-        for sg2 in helicity:
-            f.write(Ilabels[(sg1,sg2)] + " =\n")
-            f.write(" + ".join(J_latex(co, r, m, n)
-                               for (co, r, m, n) in mapped[(sg1,sg2)]) or "0")
-            f.write("\n\n")
-
-print("Nine individual dot-product factors written to triangle_loop_E_LambdaL.txt")
-print("(polarization -> phi-average -> J-seed mapping, matching the Box output order)")
+print("All 27 Triangle factors written to triangle_loop_E.txt")
 
 # ======================================================================
-#  BETA-WEIGHTED SUM  ->  S(L)   (same convention as box_loop_compute.py)
+# BETA-WEIGHTED SOFT-HELICITY SUMS S(L), S(+), S(-)
 # ======================================================================
-#  The main-text Triangle section writes  I^L = sum_{σ1,σ2} I^L_{σ1σ2},
-#  where EACH individual  I^L_{σ1σ2}  carries the longitudinal beta-factor
-#        β_L = (-1/2 + i \tilde\nu)^2 / (\tilde\nu^2 + 1/4),   β_+ = β_- = 1.
-#  The helicity expansion is all-plus (no eta sign weights), exactly as in
-#  box_loop_compute.py.  Each soft longitudinal (L) line carries one
-#  SYMBOLIC beta factor (no nu dependence); transverse (+/-) lines carry
-#  none.  The sum is done at the J-seed level (Scheme A).
-#
-#        S(L) = sum_{σ1,σ2 in {L,+,-}}  β_{σ1} β_{σ2} I^L_{σ1σ2}
-#
-#  NO sin^2+cos^2=1 reduction is applied to the coefficients.
-# ======================================================================
-
 def beta_weight(sig):
-    """One beta factor for a soft L line; 1 for a soft +/- line."""
     return beta if sig == 'L' else sp.Integer(1)
 
-# combined: key (r,m,n) -> summed coefficient  beta_{σ1} beta_{σ2}
-combined = {}
-for sg1 in helicity:
-    for sg2 in helicity:
-        w = beta_weight(sg1) * beta_weight(sg2)
-        for (coeff, r, m, n) in mapped[(sg1, sg2)]:
-            key = (r, m, n)
-            combined[key] = combined.get(key, sp.Integer(0)) + w * coeff
+def combined_S(lam):
+    combined = {}
+    for sg1 in helicity:
+        for sg2 in helicity:
+            weight = beta_weight(sg1)*beta_weight(sg2)
+            for key, coeff in mapped[(lam, sg1, sg2)].items():
+                combined[key] = combined.get(key, sp.Integer(0)) + weight*coeff
+    return {key: coeff for key, value in combined.items()
+            if (coeff := sp.expand(value)) != 0}
 
-order = sorted(combined.keys(), key=lambda k: (k[2], k[1], k[0]))
+def weighted_I_sum_latex(lam):
+    """Explicit nine-term sum before collecting equal J_r(m,n) seeds."""
+    terms = []
+    for sg1 in helicity:
+        for sg2 in helicity:
+            weight = beta_weight(sg1)*beta_weight(sg2)
+            factor = "" if weight == 1 else to_latex(weight) + r"\,"
+            terms.append(factor + Ilabel(lam, sg1, sg2))
+    return " + ".join(terms)
 
-def Slabel():
-    return r"S(L)"
+def weighted_I_sum_plain(lam):
+    """Plain-text counterpart of the explicit nine-term weighted sum."""
+    terms = []
+    for sg1 in helicity:
+        for sg2 in helicity:
+            weight = beta_weight(sg1)*beta_weight(sg2)
+            factor = "" if weight == 1 else to_plain(weight) + " * "
+            terms.append(factor + Ilabel(lam, sg1, sg2))
+    return " + ".join(terms)
+
+all_sums = {lam: combined_S(lam) for lam in helicity}
+if all_sums[1] != all_sums[-1]:
+    raise AssertionError("article relation S(+) = S(-) failed")
+
+# Check S(+) against the three grouped formulas displayed in the article:
+# I^+_LL, the four mixed-soft terms, and the four transverse-soft terms.
+# The article uses s1^2+c1^2=1 in several coefficients; the generated output
+# deliberately keeps s1 and c1 independent, as in box_loop_compute.py.
+expected_plus = {
+    (0, 0, 0): (1+c1**2)/4,
+    (0, 0, 2): beta*(2+s1**2)/4,
+    (2, 0, 2): beta**2*s1**2/2 - beta*(2+s1**2)/4 + (1+c1**2)/4,
+    (1, 1, 2): beta**2*((1+c1**2)/4+s1**2/2)
+                 + (1+c1**2)/4+s1**2/2,
+    (3, 1, 2): beta**2*(-(1+c1**2)/4+s1**2/2)
+                 + (1+c1**2)/4-s1**2/2,
+    (0, 2, 2): beta**2*(1+c1**2)/4+s1**2/2,
+    (2, 2, 2): beta**2*(-(1+c1**2)/4+s1**2/2)
+                 + (1+c1**2)/4-s1**2/2,
+}
+if set(all_sums[1]) != set(expected_plus):
+    raise AssertionError("S(+) seed support disagrees with the article")
+for key, expected in expected_plus.items():
+    difference = sp.expand((all_sums[1][key] - expected).subs(c1**2, 1-s1**2))
+    if difference != 0:
+        raise AssertionError("S(+) coefficient disagrees with the article at %s" % (key,))
+
+transverse_sum = {
+    key: sp.expand(all_sums[1].get(key, 0) + all_sums[-1].get(key, 0))
+    for key in set(all_sums[1]) | set(all_sums[-1])
+}
+transverse_sum = {key: value for key, value in transverse_sum.items() if value != 0}
 
 with open('triangle_loop_B.txt', 'w') as f:
     f.write("="*90 + "\n")
-    f.write("S(L) = sum_{sg1,sg2 in {L,+,-}}  beta_{sg1} beta_{sg2} I^{L}_{sg1,sg2;f}\n")
-    f.write("Each soft longitudinal (L) line carries one beta factor;\n")
-    f.write("transverse (+/-) lines carry none (beta_L = beta, beta_+/- = 1).\n")
-    f.write("beta is kept symbolic (no nu dependence).  Sum done at the\n")
-    f.write("J-seed level (Scheme A).  NO sin^2+cos^2=1 reduction applied.\n")
-    f.write("S  =  sum_{(r,m,n)} C_{rmn} * J_r(m,n)\n")
+    f.write("S(lambda) = sum_{sigma1,sigma2} beta_sigma1 beta_sigma2 "
+            "I^lambda_{sigma1 sigma2;d}\n")
+    f.write("lambda in {L,+,-}; beta_L=beta and beta_+=beta_-=1.\n")
+    f.write("Equal J_r(m,n) seeds are collected; d is the Triangle branch index.\n")
     f.write("="*90 + "\n\n")
 
+    for lam in helicity:
+        f.write(Slabel(lam) + "\n")
+        f.write(">>> EXPLICIT NINE-TERM BETA-WEIGHTED DEFINITION <<<\n")
+        f.write(Slabel(lam) + " = " + weighted_I_sum_latex(lam) + "\n")
+        f.write(Slabel(lam) + " = " + weighted_I_sum_plain(lam) + "\n\n")
+        f.write(">>> LATEX FORM <<<\n")
+        f.write(Slabel(lam) + r" = \left[ " + seed_sum_latex(all_sums[lam])
+                + r" \right]" + "\n\n")
+        f.write(">>> PLAIN FORM <<<\n")
+        f.write(Slabel(lam) + " = ( " + seed_sum_plain(all_sums[lam]) + " )\n\n")
+
+    label_T = "S(+) + S(-)"
+    f.write(label_T + "\n")
     f.write(">>> LATEX FORM <<<\n")
-    terms_l = [J_latex(combined[k], k[0], k[1], k[2])
-               for k in order if combined[k] != 0]
-    f.write(Slabel() + r" = \left[ " + " + ".join(terms_l) + r" \right]")
-    f.write("\n\n")
-
+    f.write(label_T + r" = \left[ " + seed_sum_latex(transverse_sum)
+            + r" \right]" + "\n\n")
     f.write(">>> PLAIN FORM <<<\n")
-    terms_p = [J_plain(combined[k], k[0], k[1], k[2])
-               for k in order if combined[k] != 0]
-    f.write(Slabel() + " = ( " + " + ".join(terms_p) + " )")
-    f.write("\n\n")
+    f.write(label_T + " = ( " + seed_sum_plain(transverse_sum) + " )\n")
 
-print("beta-weighted sum S(L) written to triangle_loop_B.txt")
+print("S(L), S(+), S(-), and S(+)+S(-) written to triangle_loop_B.txt")
