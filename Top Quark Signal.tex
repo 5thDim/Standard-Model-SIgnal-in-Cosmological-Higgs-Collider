@@ -122,14 +122,14 @@
   \propedge{#9}{v4}{v1}
  \end{scope}
  \propedge{#8}{v3}{v4}
- \draw (v1)--(-.95,.95) (v2)--(.95,.95)
-       (v3)--(.95,-.95) (v4)--(-.95,-.95);
+ \draw (v1)--(-1.12,.62) (v2)--(1.12,.62)
+       (v3)--(1.12,-.62) (v4)--(-1.12,-.62);
  \fill (v1) circle (1.4pt) (v2) circle (1.4pt)
        (v3) circle (1.4pt) (v4) circle (1.4pt);
- \node[above left,font=\scriptsize] at (v1) {$#2$};
- \node[above right,font=\scriptsize] at (v2) {$#3$};
- \node[below right,font=\scriptsize] at (v3) {$#4$};
- \node[below left,font=\scriptsize] at (v4) {$#5$};
+ \node[left,font=\scriptsize] at (-1.12,.62) {$#2$};
+ \node[right,font=\scriptsize] at (1.12,.62) {$#3$};
+ \node[right,font=\scriptsize] at (1.12,-.62) {$#4$};
+ \node[left,font=\scriptsize] at (-1.12,-.62) {$#5$};
  \node[font=\scriptsize] at (0,-1.22) {#1};
 \end{tikzpicture}}
 
@@ -141,7 +141,7 @@
 \date{}
 \maketitle
 
-\section{Setup}
+\section{Top Quark Signal}
 
 We calculate the top-quark contribution to the connected Higgs four-point function in the
 collapsed, or $s$-channel squeezed, limit. 
@@ -166,8 +166,6 @@ In unitary gauge the top Yukawa interaction is
 \end{align}
 Here $t$ and $t^c$ are two left-handed Weyl fields and have already been conformally rescaled by $a^{3/2}$.  
 Hence every Yukawa vertex carries one power of $a(\tau)$, rather than $a^4(\tau)$.  
-
-\subsection{From the Dirac top to two Majorana spinors}
 
 The fermion formalism of Ref.~\cite{you_rhn} is written for a two-component Majorana field.  
 It can be applied to the top without changing the physics by the unitary Takagi rotation
@@ -225,8 +223,6 @@ The mode functions:
  \label{eq:modes}
 \end{align}
 
-\subsection{Fermion propagators and their nonlocal parts}
-
 There are three useful two-component propagators,
 \begin{align}
  D_{ab\,\alpha\dot\be}&\equiv
@@ -273,9 +269,6 @@ $\mb\si\cdot\wh{\mb k}$.  Consequently a pair of type-1 soft lines is not covere
 factorized symmetric prescription of Ref.~\cite{you_rhn}.  We return to this point in
 Sec.~\ref{sec:antisym}.
 
-\section{Box diagram and classification of the sixteen contractions}
-\label{sec:sixteen}
-
 For one cyclic ordering of the external Higgs legs, the box has the schematic SK form
 \begin{align}
  \la\de h^4\ra'_{\rm Box}
@@ -284,55 +277,117 @@ For one cyclic ordering of the external Higgs legs, the box has the schematic SK
  \int\frac{\di^3\mb q}{(2\pi)^3}\,\mathcal{S}_{abcd},
  \label{eq:box-start}
 \end{align}
-where $(a_1,a_2,a_3,a_4)=(a,b,c,d)$ and $\mathcal S_{abcd}$ denotes the cyclic spinor
-contraction of the four fermion propagators.  Crossed cyclic orderings are obtained by
-permuting the external labels.
+where $(a_1,a_2,a_3,a_4)=(a,b,c,d)$.
+We now spell out the loop integrand $\mathcal S_{abcd}$.
+Introduce a composite two-component index $A$, which is undotted for $r=N$ and dotted for $r=\bar N$, and write
+\begin{align}
+ (E_N)^{AB}=\ep^{\alpha\be},\qquad
+ (E_{\bar N})^{AB}=\ep^{\dot\alpha\dot\be}.
+ \label{eq:composite-spinor}
+\end{align}
+The propagator joining two vertices is
+\begin{align}
+ {\cal D}^{NN}_{ab,\alpha\be}&=\widehat D_{ab,\alpha\be},&
+ {\cal D}^{N\bar N}_{ab,\alpha\dot\be}&=D_{ab,\alpha\dot\be},\nonumber\\
+ {\cal D}^{\bar NN}_{ab,\dot\alpha\be}&=\bar D_{ab,\dot\alpha\be},&
+ {\cal D}^{\bar N\bar N}_{ab,\dot\alpha\dot\be}
+ &=\check D_{ab,\dot\alpha\dot\be}.
+ \label{eq:propagator-dictionary}
+\end{align}
+The reversed type-1 propagator is fixed by
+\begin{align}
+ \bar D_{ab,\dot\alpha\be}(\mb p;\tau,\tau')
+ \equiv-D_{ba,\be\dot\alpha}(-\mb p;\tau',\tau).
+ \label{eq:Dbar}
+\end{align}
+We orient the loop as $1\to2\to3\to4\to1$ and choose
+\begin{align}
+ \mb p_{12}&=\mb q+\mb k_1,&
+ \mb p_{23}&=\mb K=\mb q+\mb k_s,&
+ \mb p_{34}&=\mb q+\mb k_3,&
+ \mb p_{41}&=\mb q .
+ \label{eq:box-routing}
+\end{align}
+The complete integrand in Eq.~\eqref{eq:box-start} is then
+\begin{align}
+ {\cal S}_{abcd}
+ =\sum_{r_1,r_2,r_3,r_4=N,\bar N}
+ & (E_{r_1})^{B_1A_1}(E_{r_2})^{B_2A_2}
+   (E_{r_3})^{B_3A_3}(E_{r_4})^{B_4A_4}\nonumber\\
+ {}\times&
+ {\cal D}^{r_1r_2}_{ab,A_1B_2}
+   (\mb p_{12};\tau_1,\tau_2)
+ {\cal D}^{r_2r_3}_{bc,A_2B_3}
+   (\mb p_{23};\tau_2,\tau_3)\nonumber\\
+ {}\times&
+ {\cal D}^{r_3r_4}_{cd,A_3B_4}
+   (\mb p_{34};\tau_3,\tau_4)
+ {\cal D}^{r_4r_1}_{da,A_4B_1}
+   (\mb p_{41};\tau_4,\tau_1).
+ \label{eq:S-explicit}
+\end{align}
+The tensors $E_{r_i}$ are precisely the contractions from the four scalar Yukawa vertices.
+The factor $1/2$ in the Majorana interaction in Eq.~\eqref{eq:maj-L} is canceled at each vertex by the two
+ways of differentiating $N_AN_A$ or $N_A^\dagger N_A^\dagger$; hence no extra numerical
+factor is missing from Eq.~\eqref{eq:box-start}.
+
+For example, the first word gives
+\begin{align}
+ {\cal S}^{NNNN}_{abcd}
+ =&\ \ep^{\be_1\alpha_1}\ep^{\be_2\alpha_2}
+ \ep^{\be_3\alpha_3}\ep^{\be_4\alpha_4}
+ \widehat D_{ab,\alpha_1\be_2}(\mb p_{12})
+ \widehat D_{bc,\alpha_2\be_3}(\mb p_{23})\nonumber\\
+ &\times
+ \widehat D_{cd,\alpha_3\be_4}(\mb p_{34})
+ \widehat D_{da,\alpha_4\be_1}(\mb p_{41}),
+ \label{eq:S-row1-explicit}
+\end{align}
+A word containing all
+four propagator types, row 7, is
+\begin{align}
+ {\cal S}^{N\,\bar N\,\bar N\,N}_{abcd}
+ =&\ \ep^{\be_1\alpha_1}\ep^{\dot\be_2\dot\alpha_2}
+ \ep^{\dot\be_3\dot\alpha_3}\ep^{\be_4\alpha_4}
+ D_{ab,\alpha_1\dot\be_2}(\mb p_{12})
+ \check D_{bc,\dot\alpha_2\dot\be_3}(\mb p_{23})\nonumber\\
+ &\times
+ \bar D_{cd,\dot\alpha_3\be_4}(\mb p_{34})
+ \widehat D_{da,\alpha_4\be_1}(\mb p_{41}).
+ \label{eq:S-row7-explicit}
+\end{align}
 
 The nonlocal $s$-channel signal arises when the lines with momenta $\mb q$ and
 $\mb K=\mb q+\mb k_s$ are soft.
 At every Yukawa vertex one may choose either $NN$ or $N^\dagger N^\dagger$.  
 We denote these choices by $N$ and $\bar N$.  
 They give $2^4=16$ Weyl contractions for a fixed cyclic ordering of the four external Higgs legs.  
-These are terms in the Majorana decomposition of one box topology, not sixteen different momentum topologies.
-For compactness, on an oriented edge we write
-\begin{align}
- NN:\widehat D,\qquad
- N\bar N:D,\qquad
- \bar NN:\bar D,\qquad
- \bar N\bar N:\check D .
- \label{eq:edge-rule}
-\end{align}
-The reversed type-1 propagator is not an additional independent object:
-\begin{align}
- \bar D_{ab}^{\dot\alpha\be}(\mb k;\tau,\tau')
- \equiv-D_{ba}^{\be\dot\alpha}(-\mb k;\tau',\tau).
- \label{eq:Dbar}
-\end{align}
-This relation fixes the Fermi sign and the SK/time reversal for every $\bar D$ entry.
-The hard edges are $(12)$ and $(34)$, and the soft edges are $(23)$ and $(41)$.  Before
-making either a symmetric or an antisymmetric soft-line replacement, the complete list is
+Equation~\eqref{eq:Dbar} fixes the Fermi sign and the SK/time reversal for every
+$\bar D$ entry.
+The hard edges are $(12)$ and $(34)$, and the soft edges are $(23)$ and $(41)$.
+The complete list is
 \begin{center}
 \small
-\begin{tabular}{ccllc}
+\begin{tabular}{ccll}
 \toprule
-No. & $(r_1r_2r_3r_4)$ & $(12,23,34,41)$ & soft class & $n_1$\\
+No. & $(r_1r_2r_3r_4)$ & $(12,23,34,41)$ & soft class\\
 \midrule
-1  & $NNNN$                         & $(\widehat D,\widehat D,\widehat D,\widehat D)$ & $AA$ &0\\
-2  & $NNN\bar N$                    & $(\widehat D,\widehat D,D,\bar D)$ & $AN$ &1\\
-3  & $NN\bar NN$                    & $(\widehat D,D,\bar D,\widehat D)$ & $NA$ &1\\
-4  & $NN\bar N\bar N$               & $(\widehat D,D,\check D,\bar D)$ & $NN$ &2\\
-5  & $N\bar NNN$                    & $(D,\bar D,\widehat D,\widehat D)$ & $NA$ &1\\
-6  & $N\bar NN\bar N$               & $(D,\bar D,D,\bar D)$ & $NN$ &2\\
-7  & $N\bar N\bar NN$               & $(D,\check D,\bar D,\widehat D)$ & $AA$ &0\\
-8  & $N\bar N\bar N\bar N$          & $(D,\check D,\check D,\bar D)$ & $AN$ &1\\
-9  & $\bar NNNN$                    & $(\bar D,\widehat D,\widehat D,D)$ & $AN$ &1\\
-10 & $\bar NNN\bar N$               & $(\bar D,\widehat D,D,\check D)$ & $AA$ &0\\
-11 & $\bar NN\bar NN$               & $(\bar D,D,\bar D,D)$ & $NN$ &2\\
-12 & $\bar NN\bar N\bar N$          & $(\bar D,D,\check D,\check D)$ & $NA$ &1\\
-13 & $\bar N\bar NNN$               & $(\check D,\bar D,\widehat D,D)$ & $NN$ &2\\
-14 & $\bar N\bar NN\bar N$          & $(\check D,\bar D,D,\check D)$ & $NA$ &1\\
-15 & $\bar N\bar N\bar NN$          & $(\check D,\check D,\bar D,D)$ & $AN$ &1\\
-16 & $\bar N\bar N\bar N\bar N$     & $(\check D,\check D,\check D,\check D)$ & $AA$ &0\\
+1  & $NNNN$                         & $(\widehat D,\widehat D,\widehat D,\widehat D)$ & $AA$\\
+2  & $NNN\bar N$                    & $(\widehat D,\widehat D,D,\bar D)$ & $AN$\\
+3  & $NN\bar NN$                    & $(\widehat D,D,\bar D,\widehat D)$ & $NA$\\
+4  & $NN\bar N\bar N$               & $(\widehat D,D,\check D,\bar D)$ & $NN$\\
+5  & $N\bar NNN$                    & $(D,\bar D,\widehat D,\widehat D)$ & $NA$\\
+6  & $N\bar NN\bar N$               & $(D,\bar D,D,\bar D)$ & $NN$\\
+7  & $N\bar N\bar NN$               & $(D,\check D,\bar D,\widehat D)$ & $AA$\\
+8  & $N\bar N\bar N\bar N$          & $(D,\check D,\check D,\bar D)$ & $AN$\\
+9  & $\bar NNNN$                    & $(\bar D,\widehat D,\widehat D,D)$ & $AN$\\
+10 & $\bar NNN\bar N$               & $(\bar D,\widehat D,D,\check D)$ & $AA$\\
+11 & $\bar NN\bar NN$               & $(\bar D,D,\bar D,D)$ & $NN$\\
+12 & $\bar NN\bar N\bar N$          & $(\bar D,D,\check D,\check D)$ & $NA$\\
+13 & $\bar N\bar NNN$               & $(\check D,\bar D,\widehat D,D)$ & $NN$\\
+14 & $\bar N\bar NN\bar N$          & $(\check D,\bar D,D,\check D)$ & $NA$\\
+15 & $\bar N\bar N\bar NN$          & $(\check D,\check D,\bar D,D)$ & $AN$\\
+16 & $\bar N\bar N\bar N\bar N$     & $(\check D,\check D,\check D,\check D)$ & $AA$\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -364,8 +419,7 @@ $(23)$ and $(41)$ are soft.  The label below each diagram is its soft class.}
 \label{fig:sixteen-boxes}
 \end{figure}
 Here $A$ is only a compact class label for a type-2 $\widehat D$ or type-3 $\check D$
-soft line, while $N$ denotes a type-1 $D$ or $\bar D$ soft line; $n_1$ counts the
-type-1 soft lines.  
+soft line, while $N$ denotes a type-1 $D$ or $\bar D$ soft line.
 
 \section{Symmetric soft-line contribution}
 
@@ -377,14 +431,13 @@ potential,
  [\check D^{(S)}]_{\rm NLoc}\ne0.
  \label{eq:symmetric-zero}
 \end{align}
-Consequently
+Consequently the symmetric nonlocal contributions of rows
+$\ell\in\{2,3,4,5,6,8,9,11,12,13,14,15\}$ vanish, and only
 \begin{align}
- C^{(S)}_\ell&=0,\qquad
- \ell\in\{2,3,4,5,6,8,9,11,12,13,14,15\},\\
- {\cal G}_{AA}&=\{1,7,10,16\}.
+ {\cal G}_{AA}&=\{1,7,10,16\}
  \label{eq:GAA}
 \end{align}
-Thus twelve rows vanish and only four rows survive.  This condition concerns the
+survive.  This condition concerns the
 \emph{soft} edges only: the hard edges of rows 1, 7, 10, and 16 are respectively
 $(2,2)$, $(1,1)$, $(1,1)$, and $(3,3)$.
 
@@ -444,11 +497,7 @@ The factor $2^{4\ii f\tn}$ follows directly from the normalization in
 Eq.~\eqref{eq:soft-type23}.
 
 \subsection{Left and right subgraphs}
-
-The extra powers in Eq.~\eqref{eq:symmetric-loop-after-q} are now absorbed into the
-left and right time integrals.  We first write these subgraphs before introducing any
-seed.  For the chirality word $w_\ell=(r_1r_2r_3r_4)$, their matrix-valued integral
-definitions are
+The left and right subgraph contributions:
 \begin{subequations}\label{eq:T-time-def}
 \begin{align}
  \mathcal T_{f,\ell}^{(L)}
@@ -467,9 +516,7 @@ definitions are
  {\cal D}^{r_3r_4}_{cd}(\mb k_3;\tau_3,\tau_4).
 \end{align}
 \end{subequations}
-The SK weights $ab$ and $cd$ are included here, whereas the soft coefficient
-$\ka_f^2$ belongs to the bubble subgraph.  Inserting the scale factor and the two
-massless Higgs wavefunctions into the first line gives
+Inserting the scale factor and the two massless bulk-boundary propagator into the first line gives:
 \begin{align}
  \mathcal T_{f,\ell}^{(L)}
  &=(\ii g_t)^2\frac{H^2}{4k_1^3k_2^3}
@@ -484,45 +531,47 @@ massless Higgs wavefunctions into the first line gives
 The right subgraph is obtained by
 $(1,2,a,b,r_1,r_2)\to(3,4,c,d,r_3,r_4)$.
 
-Now define the two hard scales
-\begin{align}
- k_L\equiv\frac{k_{12}}2,\qquad k_R\equiv\frac{k_{34}}2.
-\end{align}
-At leading order in the collapsed limit,
-$k_1=k_2=k_L+\order(k_s)$ and $k_3=k_4=k_R+\order(k_s)$.
-With $z_1=-k_L\tau_1$ and $z_2=-k_L\tau_2$,
+With $z_1=-k_1\tau_1$ and $z_2=-k_2\tau_2$,
 Eq.~\eqref{eq:TL-before-seed} becomes
 \begin{align}
  \mathcal T_{f,\ell}^{(L)}
  &=(\ii g_t)^2\frac{H^2}{4k_1^3k_2^3}
- k_L^{-2\ii f\tn}\sum_{a,b=\pm}ab
+ \left(\frac{k_{12}}{2}\right)^{-2\ii f\tn}\sum_{a,b=\pm}ab
  \int_0^\infty\di z_1\di z_2\,
  z_1^{p_f}z_2^{p_f}(1+\ii az_1)(1+\ii bz_2)\nonumber\\
  &\hspace{28mm}\times e^{-\ii az_1-\ii bz_2}
- {\cal D}^{r_1r_2}_{ab}(\wh{\mb k}_1;z_1,z_2)
- +\order(k_s/k_i).
+ {\cal D}^{r_1r_2}_{ab}(\mb k_1;z_1,z_2)
  \label{eq:TL-dimensionless}
 \end{align}
 The dimensionless propagator on the last line is the one used in
-Ref.~\cite{you_rhn}; conformal rescaling makes its momentum dependence a function of
-$k_L\tau_{1,2}=-z_{1,2}$ and the direction $\wh{\mb k}_1$.  Retaining unequal
-$k_1/k_L$ and $k_2/k_L$ would merely give energy-deformed seeds and contributes beyond
-the leading collapsed result considered here.
-
-We can now read off the You seeds.  For endpoint chiralities
-$r,s\in\{N,\bar N\}$ define
+Ref.~\cite{you_rhn}. For endpoint chiralities $r,s\in\{N,\bar N\}$ define
 \begin{align}
  \mathcal I_{ab}^{rs;p_1p_2}(\wh{\mb k})
  =\int_0^\infty\di z_1\di z_2\,
  e^{-\ii a z_1-\ii b z_2}z_1^{p_1}z_2^{p_2}
- {\cal D}_{ab}^{rs}(\wh{\mb k};z_1,z_2).
+ \left[{\cal D}_{ab}^{rs}(\wh{\mb k};z_1,z_2)\right]_{\rm mixed}.
  \label{eq:seed-def}
 \end{align}
 Here $\mathcal D^{NN}=\widehat D$, $\mathcal D^{N\bar N}=D$,
 $\mathcal D^{\bar NN}=\bar D$, and $\mathcal D^{\bar N\bar N}=\check D$.
-Local end-point terms are defined by analytic continuation and do not affect the
-nonanalytic signal.  Expanding the two Higgs polynomials in
-Eq.~\eqref{eq:TL-dimensionless} gives exactly
+The subscript mixed means that the anomalous propagators are converted
+from the two-lower-index matrices of Ref.~\cite{you_rhn} using the Yukawa
+$\epsilon$ tensor.  Following Eqs.~(2.35) and (2.37) of that reference,
+the second index of $\widehat D$ and the first index of $\check D$ are raised:
+\begin{align}
+ \widehat D_{\alpha}{}^{\be}
+ &=\ep^{\be\gamma}\widehat D_{\alpha\gamma},&
+ \check D^{\dot\alpha}{}_{\dot\be}
+ &=\ep^{\dot\alpha\dot\gamma}
+   \check D_{\dot\gamma\dot\be}.
+ \label{eq:anomalous-index-conversion}
+\end{align}
+The type-1 seed matrices already have the required mixed-index form.
+This is an index conversion, not an additional propagator.  The
+opposite placement of $\epsilon$ for the type-2 and type-3 cases is
+also what makes both symmetric soft propagators produce the same
+positive Kronecker delta in Eq.~\eqref{eq:soft-type23}.
+Expanding the two massless polynomials in Eq.~\eqref{eq:TL-dimensionless} gives exactly
 \begin{align}
  \mathcal H^{rs}_{f;ab}
  &=\mathcal I_{ab}^{rs;p_fp_f}
@@ -546,190 +595,420 @@ Therefore the two original time integrals reduce to
  \label{eq:hard-subgraphs}
 \end{align}
 Appendix~\ref{app:seeds} gives the type-1, type-2, and type-3 seed matrices required by
-Eq.~\eqref{eq:Q-def}.  Thus no hard time integral remains.  For the type-1 hard edges of
-rows 7 and 10 we abbreviate
-\begin{align}
- \mathcal Q_f^{N\bar N}(\wh{\mb k})
- =Q_{f,0}\si^0+Q_{f,1}\wh{\mb k}\cdot\mb\si .
- \label{eq:Q-rotation}
-\end{align}
+Eq.~\eqref{eq:Q-def}.  Thus no hard time integral remains.
 
-\subsection{Factorized form before the spinor contraction}
-
-Let $w_\ell=(r_1r_2r_3r_4)$ denote the chirality word in row $\ell$.  After the
-bubble integral has been done, the symmetric contribution takes exactly the same
-left--bubble--right form as the gauge-boson box,
-\begin{align}
- \left.\la\de h^4\ra'_{\rm Box}\right|_{S}
- =-N_c\sum_{\ell\in{\cal G}_{AA}}\sum_{f=\pm}
- {\cal T}^{(L)}_{f,\ell}\,{\cal B}^{(S)}_f\,
- {\cal T}^{(R)}_{f,\ell}\big|_{\text{spinor contraction}} .
- \label{eq:symmetric-factorization}
-\end{align}
-The scalar bubble coefficient is Eq.~\eqref{eq:soft-bubble}; all spinor indices reside in
-the two hard blocks.  Since a symmetric type-2 or type-3 soft propagator becomes a
-Kronecker delta after raising the index contracted at the adjacent Yukawa vertex, no
-direction associated with $\mb q$ or $\mb K$ remains in this sector.  The spinor
-contraction can therefore be completed before doing either hard time integral.
-
-\subsection{Four spinor contractions and the closed symmetric result}
+\subsection{Rotation and spinor contraction diagram by diagram}
 \label{sec:symmetric-four}
 
-We now evaluate rows $1,7,10,16$ separately.  This also fixes the relative sign between
-the type-1 and type-2/type-3 hard lines.  Let
-\begin{align}
- E_{\alpha\be}=\ep_{\alpha\be},\qquad
- \widehat{\mb Q}_{f}=\widehat{\mathcal Q}_{f}E^{-1},\qquad
- \check{\mb Q}_{f}=E^{-1}\check{\mathcal Q}_{f},
- \label{eq:raised-hard-blocks}
-\end{align}
-where the placement of $E^{-1}$ is fixed by whether the indices are undotted or dotted.
-These are just the mixed-index matrices obtained by contracting the hard propagator with
-the two Yukawa tensors.  In the $\mb k\parallel\wh{\mb z}$ frame define their four pairs
-of radial coefficients by
-\begin{align}
- \widehat{\mb Q}_{+}(\wh{\mb z})
- &=\widehat q_0\si^0+\widehat q_1\si^3,&
- \check{\mb Q}_{+}(\wh{\mb z})
- &=\check q_0\si^0+\check q_1\bar\si^3,\nonumber\\
- \mb Q_{+}(\wh{\mb z})
- &=q_0\si^0+q_1\si^3,&
- \ob{\mb Q}_{+}(\wh{\mb z})
- &=\bar q_0\si^0+\bar q_1\bar\si^3,
- \qquad \bar\si^i=-\si^i .
- \label{eq:q-radial-def}
-\end{align}
-Here $\mb Q$ and $\ob{\mb Q}$ are respectively the $D$ and $\bar D$ hard blocks.
-The eight quantities in Eq.~\eqref{eq:q-radial-def} depend only on $\tn$ at the leading
-collapsed order.  The rotation rule of Ref.~\cite{you_rhn} gives
-\begin{align}
- \si^3\longrightarrow\wh{\mb k}\cdot\mb\si,
- \qquad
- \bar\si^3\longrightarrow\wh{\mb k}\cdot\bar{\mb\si}.
- \label{eq:q-rotation}
-\end{align}
-We choose the same angles as in the gauge-boson box,
-\begin{align}
- \mb k_s&=k_s(0,0,1),\nonumber\\
- \mb k_1&=k_1(\sin\theta_1,0,\cos\theta_1),\nonumber\\
- \mb k_3&=k_3(\sin\theta_3\cos\phi_3,
- \sin\theta_3\sin\phi_3,\cos\theta_3),
-\end{align}
-and use the single invariant
-\begin{align}
- c_{13}\equiv\wh{\mb k}_1\cdot\wh{\mb k}_3
- =\cos\theta_1\cos\theta_3
- +\sin\theta_1\sin\theta_3\cos\phi_3 .
- \label{eq:angles}
-\end{align}
+For each of the four surviving diagrams we use the same three steps.  We first
+write its left and right hard subgraphs as finite sums of the integral seeds of
+Ref.~\cite{you_rhn} with their \emph{original} spinor indices and hard momentum
+along $\widehat{\mb z}$.  We then rotate those tensors to
+$\widehat{\mb k}_1$ and $\widehat{\mb k}_3$ without raising or lowering an
+index.  Only in the third step do we use the $\epsilon$ tensors at the
+vertices to join them to the two spinor deltas from the symmetric soft bubble.
 
-The two raised soft lines are identities.  Using
-$\tr(\si^i\si^j)=2\de^{ij}$ and
-$\tr(\si^i\bar\si^j)=-2\de^{ij}$, the four contractions are
-\begin{subequations}\label{eq:four-symmetric-traces}
-\begin{align}
- {\cal W}_{+,1}
- &=\tr_2\!\left[
- \widehat{\mb Q}_{+}(\wh{\mb k}_1)
- \widehat{\mb Q}_{+}(\wh{\mb k}_3)\right]
- =2\left(\widehat q_0^{\,2}+\widehat q_1^{\,2}c_{13}\right),
- \label{eq:trace-row1}\\
- {\cal W}_{+,7}
- &=\tr_2\!\left[
- \mb Q_{+}(\wh{\mb k}_1)\ob{\mb Q}_{+}(\wh{\mb k}_3)\right]
- =2\left(q_0\bar q_0-q_1\bar q_1c_{13}\right),
- \label{eq:trace-row7}\\
- {\cal W}_{+,10}
- &=\tr_2\!\left[
- \ob{\mb Q}_{+}(\wh{\mb k}_1)\mb Q_{+}(\wh{\mb k}_3)\right]
- =2\left(\bar q_0q_0-\bar q_1q_1c_{13}\right),
- \label{eq:trace-row10}\\
- {\cal W}_{+,16}
- &=\tr_2\!\left[
- \check{\mb Q}_{+}(\wh{\mb k}_1)
- \check{\mb Q}_{+}(\wh{\mb k}_3)\right]
- =2\left(\check q_0^{\,2}+\check q_1^{\,2}c_{13}\right).
- \label{eq:trace-row16}
-\end{align}
-\end{subequations}
-Thus rows 7 and 10 are equal after the radial coefficients have been extracted, but both
-must be retained: they are the two opposite fermion-flow assignments.  Equations
-\eqref{eq:four-symmetric-traces} also show directly why the symmetric angular dependence
-cannot contain $\cos2\phi_3$, $\cos\theta_1$, or $\cos\theta_3$ separately.
-
-For completeness, we now write the hard quantities in terms of the integral seeds of
-Ref.~\cite{you_rhn}.  With $p=-1+\ii\tn$, define for
-$X=D,\bar D,\widehat D,\check D$
-\begin{align}
- \mb Q^{X}_{+}(\wh{\mb k})
- &=\sum_{a,b=\pm}ab\Big[
- \mb I^{X;p,p}_{ab}
- +\ii a\mb I^{X;p+1,p}_{ab}
- +\ii b\mb I^{X;p,p+1}_{ab}
- -ab\mb I^{X;p+1,p+1}_{ab}\Big](\wh{\mb k}).
- \label{eq:Yukawa-dressed-seed}
-\end{align}
-This is the scalar-Yukawa analogue of the subdiagram construction in
-Ref.~\cite{you_rhn}: the four terms $(m,n)=(0,0),(1,0),(0,1),(1,1)$ come from the two
-massless Higgs polynomials.  For $X=\widehat D,\check D$, the index-raising operation in
-Eq.~\eqref{eq:raised-hard-blocks} is understood on the right-hand side.  More explicitly,
-at leading collapsed order we may set
-$k_1=k_2=k_{12}/2+\order(k_s)$ and
-$k_3=k_4=k_{34}/2+\order(k_s)$.  Putting
+We display the $f=+$ oscillatory branch; its complex conjugate gives the
+$f=-$ branch.  Throughout this subsection $p=-1+\ii\tn$.  The axis-frame
+seed sums below contain the four terms generated by the two massless Higgs
+polynomials in Eq.~\eqref{eq:Q-def}.  The spinor indices are kept in the
+form in which the corresponding seed is tabulated in Appendix~\ref{app:seeds}.
+At leading collapsed order,
+$k_1=k_2=k_{12}/2$ and
+$k_3=k_4=k_{34}/2$.
+Thus left and right dimensionless seed matrices are the same whenever
+their hard propagator types agree; their different hard scales are
+carried by the prefactors below.
+The common dimensional prefactors of the left and right hard subgraphs are
 \begin{align}
  {\cal N}_L&=(\ii g_t)^2\frac{H^2}{4k_1^3k_2^3}
  \left(\frac{k_{12}}2\right)^{-2\ii\tn},&
  {\cal N}_R&=(\ii g_t)^2\frac{H^2}{4k_3^3k_4^3}
- \left(\frac{k_{34}}2\right)^{-2\ii\tn},
+ \left(\frac{k_{34}}2\right)^{-2\ii\tn}.
  \label{eq:NLNR}
 \end{align}
-the four pairs of left and right subdiagrams are
+The two symmetric soft lines are $(23)$ and $(41)$.  Their spinor
+Kronecker deltas will be inserted separately for each diagram below,
+\emph{after} both hard subgraphs have been rotated.
+The common soft factor is already the bubble subgraph
+$\mathcal B^{(S)}_+(k_s)$ of Eq.~\eqref{eq:soft-bubble}; no new
+coefficient is needed.  If $\mathcal W_{+,\ell}$ denotes the
+dimensionless spinor contraction computed below, the contribution of
+each surviving diagram before extracting the universal momentum
+factor is
 \begin{align}
- (\mathcal T^{(L)}_{+,1},\mathcal T^{(R)}_{+,1})
- &=({\cal N}_L\widehat{\mb Q}_+(\wh{\mb k}_1),
-    {\cal N}_R\widehat{\mb Q}_+(\wh{\mb k}_3)),\nonumber\\
- (\mathcal T^{(L)}_{+,7},\mathcal T^{(R)}_{+,7})
- &=({\cal N}_L\mb Q_+(\wh{\mb k}_1),
-    {\cal N}_R\ob{\mb Q}_+(\wh{\mb k}_3)),\nonumber\\
- (\mathcal T^{(L)}_{+,10},\mathcal T^{(R)}_{+,10})
- &=({\cal N}_L\ob{\mb Q}_+(\wh{\mb k}_1),
-    {\cal N}_R\mb Q_+(\wh{\mb k}_3)),\nonumber\\
- (\mathcal T^{(L)}_{+,16},\mathcal T^{(R)}_{+,16})
- &=({\cal N}_L\check{\mb Q}_+(\wh{\mb k}_1),
-    {\cal N}_R\check{\mb Q}_+(\wh{\mb k}_3)).
- \label{eq:four-hard-subgraphs}
+ \left.\la\de h^4\ra_{\ell}^{\prime}\right|_{S,+}
+ =-N_c\,\mathcal B^{(S)}_+(k_s)\,
+ {\cal N}_L{\cal N}_R\,\mathcal W_{+,\ell},
+ \qquad \ell\in{\cal G}_{AA}.
+ \label{eq:symmetric-bubble-times-hard}
 \end{align}
-Thus the subdiagrams in Eqs.~\eqref{eq:four-symmetric-traces} are now finite sums of the
-You integral seeds, rather than unevaluated time integrals.  The type-1 and type-2
-matrices $\mb I^D$ and
-$\mb I^{\widehat D}$ are displayed explicitly in
+Below, $\widehat{\mathcal Q}_{+,\alpha\beta}$ and
+$\check{\mathcal Q}_{+,\dot\alpha\dot\beta}$ denote the seed sums with
+their original two lower indices.  By contrast,
+$\mathcal Q^{NN}_+$ and $\mathcal Q^{\bar N\bar N}_+$ denote the
+mixed-index matrices obtained at the contraction step.
+
+\paragraph{Diagram 1: $NNNN$.}
+Both hard lines are type 2, so their integral seeds are the unraised
+$\widehat{\mathcal I}_{ab,\alpha\beta}^{p_1p_2}$ of
+Eq.~\eqref{eq:hat-seed-matrices}.  The left seed sum in the $z$ frame is
+\begin{align}
+ \frac{\widehat{\cal T}^{(L)}_{+,1}(\wh{\mb z})}{{\cal N}_L}
+ &=\sum_{a,b=\pm}ab\Big[
+ \widehat{\mathcal I}_{ab}^{p,p}
+ +\ii a\widehat{\mathcal I}_{ab}^{p+1,p}
+ +\ii b\widehat{\mathcal I}_{ab}^{p,p+1}
+ -ab\widehat{\mathcal I}_{ab}^{p+1,p+1}\Big](\wh{\mb z})\nonumber\\
+ &=\widehat{\mathcal Q}_+(\wh{\mb z})
+ =\widehat q_1\si^1+\ii\widehat q_0\si^2.
+ \label{eq:row1-seed}
+\end{align}
+The two Pauli matrices here display a matrix with \emph{only} 12 and
+21 entries.  Its coefficients are read directly from those entries:
+\begin{align}
+ \widehat q_0
+ &=\tfrac12\bigl(\widehat{\mathcal Q}_{+,12}
+                 -\widehat{\mathcal Q}_{+,21}\bigr),&
+ \widehat q_1
+ &=\tfrac12\bigl(\widehat{\mathcal Q}_{+,12}
+                 +\widehat{\mathcal Q}_{+,21}\bigr).
+ \label{eq:hat-q-from-seed}
+\end{align}
+The right seed is identical apart from the overall factor:
+$\widehat{\cal T}^{(R)}_{+,1}(\wh{\mb z})
+={\cal N}_R\widehat{\mathcal Q}_+(\wh{\mb z})$.
+For the rotation, use the spin-$1/2$ matrix of Ref.~\cite{you_rhn},
+\begin{align}
+ U(\theta,\phi)
+ =\begin{pmatrix}
+ e^{-\ii\phi/2}\cos(\theta/2)&-e^{-\ii\phi/2}\sin(\theta/2)\\
+ e^{+\ii\phi/2}\sin(\theta/2)& e^{+\ii\phi/2}\cos(\theta/2)
+ \end{pmatrix}.
+ \label{eq:spinor-rotation}
+\end{align}
+As in the gauge-boson box, take
+\begin{align}
+ \mb k_s&=k_s(0,0,1),\nonumber\\
+ \mb k_1&=k_1(\sin\theta_1,0,\cos\theta_1),\nonumber\\
+ \mb k_3&=k_3(\sin\theta_3\cos\phi_3,
+                 \sin\theta_3\sin\phi_3,\cos\theta_3),\nonumber\\
+ c_{13}&\equiv\wh{\mb k}_1\cdot\wh{\mb k}_3
+ =\cos\theta_1\cos\theta_3
+ +\sin\theta_1\sin\theta_3\cos\phi_3.
+ \label{eq:angles}
+\end{align}
+Set $U_1=U(\theta_1,0)$ and $U_3=U(\theta_3,\phi_3)$.
+Table~1 of Ref.~\cite{you_rhn} gives the $U\widehat I U^T$
+rule for two lower undotted indices.  We therefore rotate the left and
+right hard tensors separately, with \emph{no} index conversion:
+\begin{align}
+ \widehat{\cal T}^{(L)}_{+,1}(\wh{\mb k}_1)
+ &={\cal N}_LU_1(\widehat q_1\si^1+\ii\widehat q_0\si^2)U_1^T,
+ \label{eq:row1-left}\\
+ \widehat{\cal T}^{(R)}_{+,1}(\wh{\mb k}_3)
+ &={\cal N}_RU_3(\widehat q_1\si^1+\ii\widehat q_0\si^2)U_3^T.
+ \label{eq:row1-right}
+\end{align}
+No index has been raised in Eqs.~\eqref{eq:row1-seed}--\eqref{eq:row1-right}.
+At the two vertices we now raise the \emph{second} index of each hard
+tensor, as in Eq.~\eqref{eq:anomalous-index-conversion}, and join their
+open ends with the two soft deltas.  We use
+$\ep=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$,
+$\widehat{\mathcal Q}_+(\wh{\mb z})\ep^{-1}
+=\widehat q_0\si^0+\widehat q_1\si^3$, and
+$U_i^T\ep^{-1}=\ep^{-1}U_i^\dagger$.  After stripping
+${\cal N}_L{\cal N}_R$, the explicit spinor chain is
+\begin{align}
+ {\cal W}_{+,1}
+ &=[\widehat{\mathcal Q}_{+}(\wh{\mb k}_1)
+     \ep^{-1}]^{\alpha_1}{}_{\alpha_2}
+ \de^{\alpha_2}{}_{\alpha_3}
+ [\widehat{\mathcal Q}_{+}(\wh{\mb k}_3)
+     \ep^{-1}]^{\alpha_3}{}_{\alpha_4}
+ \de^{\alpha_4}{}_{\alpha_1}\nonumber\\
+ &=\tr_2\!\left[
+ \widehat{\mathcal Q}_{+}(\wh{\mb k}_1)\ep^{-1}
+ \widehat{\mathcal Q}_{+}(\wh{\mb k}_3)\ep^{-1}
+ \right]\nonumber\\
+ &=\tr_2\!\left[
+ U_1(\widehat q_0\si^0+\widehat q_1\si^3)U_1^\dagger
+ U_3(\widehat q_0\si^0+\widehat q_1\si^3)U_3^\dagger
+ \right]\nonumber\\
+ &=\tr_2\!\left[
+ (\widehat q_0\si^0+\widehat q_1\widehat{\mb k}_1\cdot\mb\si)
+ (\widehat q_0\si^0+\widehat q_1\widehat{\mb k}_3\cdot\mb\si)\right]\nonumber\\
+ &=2(\widehat q_0^{\,2}+\widehat q_1^{\,2}c_{13}).
+ \label{eq:trace-row1}
+\end{align}
+
+\paragraph{Diagram 7: $N\bar N\bar NN$.}
+The left hard line is type-1 $D$, whereas the right one is its
+reversed-flow partner $\bar D$.  Their axis-frame integral-seed sums are
+\begin{align}
+ \frac{{\cal T}^{(L)}_{+,7}(\wh{\mb z})}{{\cal N}_L}
+ &=\sum_{a,b=\pm}ab\Big[
+ \mathcal I_{ab}^{N\bar N;p,p}
+ +\ii a\mathcal I_{ab}^{N\bar N;p+1,p}
+ +\ii b\mathcal I_{ab}^{N\bar N;p,p+1}
+ -ab\mathcal I_{ab}^{N\bar N;p+1,p+1}\Big](\wh{\mb z})\nonumber\\
+ &=\mathcal Q^{N\bar N}_+(\wh{\mb z})
+ =q_0\si^0+q_1\si^3,\nonumber\\
+ \frac{{\cal T}^{(R)}_{+,7}(\wh{\mb z})}{{\cal N}_R}
+ &=\sum_{c,d=\pm}cd\Big[
+ \mathcal I_{cd}^{\bar NN;p,p}
+ +\ii c\mathcal I_{cd}^{\bar NN;p+1,p}
+ +\ii d\mathcal I_{cd}^{\bar NN;p,p+1}
+ -cd\mathcal I_{cd}^{\bar NN;p+1,p+1}\Big](\wh{\mb z})\nonumber\\
+ &=\mathcal Q^{\bar NN}_+(\wh{\mb z})
+ =\bar q_0\si^0+\bar q_1\bar\si^3 .
+ \label{eq:row7-seeds}
+\end{align}
+Here $\bar\si^i=-\si^i$; the four coefficients are simply the
+mean and half-difference of the \emph{diagonal} entries in these
+two seed sums.  Writing
+$Q_{jj}=[\mathcal Q^{N\bar N}_+(\wh{\mb z})]_{jj}$ and
+$\bar Q_{jj}=[\mathcal Q^{\bar NN}_+(\wh{\mb z})]_{jj}$,
+\begin{align}
+ q_0&=\tfrac12(Q_{11}+Q_{22}),&
+ q_1&=\tfrac12(Q_{11}-Q_{22}),\nonumber\\
+ \bar q_0&=\tfrac12(\bar Q_{11}+\bar Q_{22}),&
+ \bar q_1&=\tfrac12(\bar Q_{22}-\bar Q_{11}).
+ \label{eq:q-from-seed}
+\end{align}
+Here $\mathcal I^{\bar NN}$ is constructed from $\mathcal I^{N\bar N}$
+by the reversal identity in Eq.~\eqref{eq:conjugate-seeds-34}; its SK
+labels $c,d$ refer to vertices 3 and 4.  The two type-1 seeds already
+have one dotted and one undotted index.  We rotate them, without any
+additional index conversion, by the $U Q U^\dagger$ rule of
+Table~1 of Ref.~\cite{you_rhn} to the two physical hard directions:
+\begin{align}
+ {\cal T}^{(L)}_{+,7}(\wh{\mb k}_1)
+ &={\cal N}_LU_1(q_0\si^0+q_1\si^3)U_1^\dagger,
+ \label{eq:row7-left}\\
+ {\cal T}^{(R)}_{+,7}(\widehat{\mb k}_3)
+ &={\cal N}_RU_3(\bar q_0\si^0+\bar q_1\bar\si^3)U_3^\dagger.
+ \label{eq:row7-right}
+\end{align}
+Finally the two soft lines, of types 3 and 2 respectively, each supply
+the identity in the appropriate spinor space.  Inserting these deltas
+and using $U_i\si^3U_i^\dagger=\wh{\mb k}_i\cdot\mb\si$ and
+$\bar\si^i=-\si^i$ gives
+\begin{align}
+ {\cal W}_{+,7}
+ &=[\mathcal Q^{N\bar N}_{+}(\widehat{\mb k}_1)]^{\alpha_1}{}_{\dot\alpha_2}
+ \de^{\dot\alpha_2}{}_{\dot\alpha_3}
+ [\mathcal Q^{\bar NN}_{+}(\widehat{\mb k}_3)]^{\dot\alpha_3}{}_{\alpha_4}
+ \de^{\alpha_4}{}_{\alpha_1}\nonumber\\
+ &=\tr_2\!\left[
+ (q_0\si^0+q_1\widehat{\mb k}_1\cdot\mb\si)
+ (\bar q_0\si^0+\bar q_1\widehat{\mb k}_3\cdot\bar{\mb\si})\right]\nonumber\\
+ &=2(q_0\bar q_0-q_1\bar q_1c_{13}).
+ \label{eq:trace-row7}
+\end{align}
+
+\paragraph{Diagram 10: $\bar NNN\bar N$.}
+This exchanges the two type-1 hard seeds of diagram 7.  Explicitly, the
+axis-frame left and right seed sums are the $\bar NN$ and $N\bar N$
+finite sums in Eq.~\eqref{eq:row7-seeds}, respectively; the left and
+right prefactors remain ${\cal N}_L$ and ${\cal N}_R$:
+\begin{align}
+ {\cal T}^{(L)}_{+,10}(\wh{\mb z})
+ &={\cal N}_L\sum_{a,b=\pm}ab
+ \big[\mathcal I_{ab}^{\bar NN;p,p}
+ +\ii a\mathcal I_{ab}^{\bar NN;p+1,p}
+ +\ii b\mathcal I_{ab}^{\bar NN;p,p+1}
+ -ab\mathcal I_{ab}^{\bar NN;p+1,p+1}\big](\wh{\mb z})\nonumber\\
+ &={\cal N}_L(\bar q_0\si^0+\bar q_1\bar\si^3),\nonumber\\
+ {\cal T}^{(R)}_{+,10}(\wh{\mb z})
+ &={\cal N}_R\sum_{c,d=\pm}cd
+ \big[\mathcal I_{cd}^{N\bar N;p,p}
+ +\ii c\mathcal I_{cd}^{N\bar N;p+1,p}
+ +\ii d\mathcal I_{cd}^{N\bar N;p,p+1}
+ -cd\mathcal I_{cd}^{N\bar N;p+1,p+1}\big](\wh{\mb z})\nonumber\\
+ &={\cal N}_R(q_0\si^0+q_1\si^3).
+ \label{eq:row10-seeds}
+\end{align}
+The unaltered spinor indices of these two type-1 seeds rotate as
+\begin{align}
+ {\cal T}^{(L)}_{+,10}(\wh{\mb k}_1)
+ &={\cal N}_LU_1(\bar q_0\si^0+\bar q_1\bar\si^3)U_1^\dagger,
+ \label{eq:row10-left}\\
+ {\cal T}^{(R)}_{+,10}(\widehat{\mb k}_3)
+ &={\cal N}_RU_3(q_0\si^0+q_1\si^3)U_3^\dagger.
+ \label{eq:row10-right}
+\end{align}
+Only after this rotation do we insert the two soft deltas, now of
+types 2 and 3 in reversed order.  Their index chain yields
+\begin{align}
+ {\cal W}_{+,10}
+ &=[\mathcal Q^{\bar NN}_{+}(\widehat{\mb k}_1)]^{\dot\alpha_1}{}_{\alpha_2}
+ \de^{\alpha_2}{}_{\alpha_3}
+ [\mathcal Q^{N\bar N}_{+}(\widehat{\mb k}_3)]^{\alpha_3}{}_{\dot\alpha_4}
+ \de^{\dot\alpha_4}{}_{\dot\alpha_1}\nonumber\\
+ &=\tr_2\!\left[
+ (\bar q_0\si^0+\bar q_1\widehat{\mb k}_1\cdot\bar{\mb\si})
+ (q_0\si^0+q_1\widehat{\mb k}_3\cdot\mb\si)\right]\nonumber\\
+ &=2(\bar q_0q_0-\bar q_1q_1c_{13})
+ =\mathcal W_{+,7}.
+ \label{eq:trace-row10}
+\end{align}
+The equality follows from the symmetry of
+$\wh{\mb k}_1\cdot\wh{\mb k}_3$ and the same pair of scalar seed
+coefficients in the two traces; both diagrams must be retained in the sum.
+
+\paragraph{Diagram 16: $\bar N\bar N\bar N\bar N$.}
+Both hard lines are type 3.  Their seeds are the unraised
+$\check{\mathcal I}_{ab,\dot\alpha\dot\beta}^{p_1p_2}$ of
+Eq.~\eqref{eq:check-seed}.  In the axis frame, the left subgraph is
+\begin{align}
+ \frac{\check{\cal T}^{(L)}_{+,16}(\wh{\mb z})}{{\cal N}_L}
+ &=\sum_{a,b=\pm}ab\Big[
+ \check{\mathcal I}_{ab}^{p,p}
+ +\ii a\check{\mathcal I}_{ab}^{p+1,p}
+ +\ii b\check{\mathcal I}_{ab}^{p,p+1}
+ -ab\check{\mathcal I}_{ab}^{p+1,p+1}\Big](\wh{\mb z})\nonumber\\
+ &=\check{\mathcal Q}_+(\wh{\mb z})
+ =-\check q_1\si^1-\ii\check q_0\si^2.
+ \label{eq:row16-seed}
+\end{align}
+As in diagram 1, only the 12 and 21 entries occur.  The signs
+appropriate to type 3 are fixed by
+\begin{align}
+ \check q_0
+ &=\tfrac12\bigl(\check{\mathcal Q}_{+,21}
+                 -\check{\mathcal Q}_{+,12}\bigr),&
+ \check q_1
+ &=-\tfrac12\bigl(\check{\mathcal Q}_{+,12}
+                  +\check{\mathcal Q}_{+,21}\bigr).
+ \label{eq:check-q-from-seed}
+\end{align}
+The right subgraph has the same seed sum multiplied by ${\cal N}_R$:
+$\check{\cal T}^{(R)}_{+,16}(\wh{\mb z})
+={\cal N}_R\check{\mathcal Q}_+(\wh{\mb z})$.
+We rotate both \emph{lower dotted-index} matrices according to Table~1
+of Ref.~\cite{you_rhn}, with no index conversion:
+\begin{align}
+ \check{\cal T}^{(L)}_{+,16}(\wh{\mb k}_1)
+ &=-{\cal N}_LU_1^*(\check q_1\si^1+\ii\check q_0\si^2)U_1^\dagger,
+ \label{eq:row16-left}\\
+ \check{\cal T}^{(R)}_{+,16}(\wh{\mb k}_3)
+ &=-{\cal N}_RU_3^*(\check q_1\si^1+\ii\check q_0\si^2)U_3^\dagger.
+ \label{eq:row16-right}
+\end{align}
+Only now do we raise the \emph{first} dotted index of each tensor
+with $\ep$, as in Eq.~\eqref{eq:anomalous-index-conversion}, and
+contract with the two type-3 soft-line deltas.  Here
+$\ep\check{\mathcal Q}_+(\wh{\mb z})
+=\check q_0\si^0+\check q_1\bar\si^3$ and
+$\ep U_i^*=U_i\ep$:
+\begin{align}
+ {\cal W}_{+,16}
+ &=[\ep\,\check{\mathcal Q}_{+}(\wh{\mb k}_1)
+   ]^{\dot\alpha_1}{}_{\dot\alpha_2}
+ \de^{\dot\alpha_2}{}_{\dot\alpha_3}
+ [\ep\,\check{\mathcal Q}_{+}(\wh{\mb k}_3)
+   ]^{\dot\alpha_3}{}_{\dot\alpha_4}
+ \de^{\dot\alpha_4}{}_{\dot\alpha_1}\nonumber\\
+ &=\tr_2\!\left[
+ \ep\,\check{\mathcal Q}_{+}(\wh{\mb k}_1)
+ \ep\,\check{\mathcal Q}_{+}(\wh{\mb k}_3)
+ \right]\nonumber\\
+ &=\tr_2\!\left[
+ U_1(\check q_0\si^0+\check q_1\bar\si^3)U_1^\dagger
+ U_3(\check q_0\si^0+\check q_1\bar\si^3)U_3^\dagger
+ \right]\nonumber\\
+ &=\tr_2\!\left[
+ (\check q_0\si^0+\check q_1\widehat{\mb k}_1\cdot\bar{\mb\si})
+ (\check q_0\si^0+\check q_1\widehat{\mb k}_3\cdot\bar{\mb\si})\right]\nonumber\\
+ &=2(\check q_0^{\,2}+\check q_1^{\,2}c_{13}).
+ \label{eq:trace-row16}
+\end{align}
+Here the angular term is positive because the two factors
+$\bar\si^i=-\si^i$ supply two minus signs.  These four explicit contractions also show
+why no separate $\cos\theta_1$, $\cos\theta_3$, or $\cos2\phi_3$ term can occur in the
+symmetric answer: after the two soft deltas are extracted, the only directional scalar
+is $\widehat{\mb k}_1\cdot\widehat{\mb k}_3=c_{13}$.
+
+The $\epsilon$ conversions used \emph{only in the contraction step} of
+diagrams 1 and 16 may be checked component by component.  For every
+SK pair and every seed power, in the convention
+$\ep^{12}=\ep^{\dot1\dot2}=+1$,
+\begin{align}
+ \begin{pmatrix}0&\widehat{\mathcal I}_{ab,12}\\
+ \widehat{\mathcal I}_{ab,21}&0\end{pmatrix}\ep^{-1}
+ &=\begin{pmatrix}\widehat{\mathcal I}_{ab,12}&0\\
+ 0&-\widehat{\mathcal I}_{ab,21}\end{pmatrix},\nonumber\\
+ \ep\begin{pmatrix}0&\check{\mathcal I}_{ab,\dot1\dot2}\\
+ \check{\mathcal I}_{ab,\dot2\dot1}&0\end{pmatrix}
+ &=\begin{pmatrix}\check{\mathcal I}_{ab,\dot2\dot1}&0\\
+ 0&-\check{\mathcal I}_{ab,\dot1\dot2}\end{pmatrix}.
+ \label{eq:offdiagonal-to-diagonal}
+\end{align}
+In particular, the axis-frame hard matrices appearing \emph{inside}
+the traces, not in the preceding rotation equations, are
+\begin{align}
+ \mathcal Q^{NN}_+(\wh{\mb z})
+ &=\widehat{\mathcal Q}_+(\wh{\mb z})\ep^{-1}
+ =\widehat q_0\si^0+\widehat q_1\si^3,\nonumber\\
+ \mathcal Q^{\bar N\bar N}_+(\wh{\mb z})
+ &=\ep\check{\mathcal Q}_+(\wh{\mb z})
+ =\check q_0\si^0+\check q_1\bar\si^3,
+ \qquad \ep=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+ \label{eq:raw-to-mixed-hard}
+\end{align}
+These identities also explain why rotating the lower-index seed and
+then raising one index gives the same answer as raising that index
+first and applying a mixed-index similarity rotation.  The two
+operations commute because $U^T\ep^{-1}=\ep^{-1}U^\dagger$ and
+$\ep U^*=U\ep$.  For diagram 16, an overall type-3 sign would
+cancel between the two hard factors; Eq.~\eqref{eq:offdiagonal-to-diagonal}
+fixes that sign for diagrams with a single type-3 hard line in the
+antisymmetric sector.
+
+For comparison, collect the four seed sums in the mixed-index notation
+used elsewhere in this article.  Let $p=-1+\ii\tn$ and
+$rs\in\{N\bar N,\bar NN,NN,\bar N\bar N\}$.  Then
+\begin{align}
+ \mathcal Q^{rs}_{+}(\wh{\mb k})
+ &=\sum_{a,b=\pm}ab\Big[
+ \mathcal I^{rs;p,p}_{ab}
+ +\ii a\mathcal I^{rs;p+1,p}_{ab}
+ +\ii b\mathcal I^{rs;p,p+1}_{ab}
+ -ab\mathcal I^{rs;p+1,p+1}_{ab}\Big](\wh{\mb k}).
+ \label{eq:Yukawa-dressed-seed}
+\end{align}
+This is the scalar-Yukawa analogue of the subdiagram construction in
+Ref.~\cite{you_rhn}: the four terms $(m,n)=(0,0),(1,0),(0,1),(1,1)$ come from the two
+massless Higgs polynomials.  The $\widehat D,\check D$ seeds are converted to mixed
+indices as specified after Eq.~\eqref{eq:seed-def}.  Every axis-frame matrix used above is a finite
+sum of the You integral seeds, rather than an unevaluated time integral.  The type-1
+matrix $\mathcal I^{N\bar N}$ and the \emph{unraised} type-2 matrix
+$\widehat{\mathcal I}$ are displayed explicitly in
 Eqs.~\eqref{eq:seed-matrices} and \eqref{eq:hat-seed-matrices}.  The other two contain no
 new integral,
 \begin{align}
  \mb I^{\bar D;p_1p_2}_{ab}(\wh{\mb k})
  &=-\left[\mb I^{D;p_2p_1}_{ba}(-\wh{\mb k})\right]^T,\nonumber\\
- \mb I^{\check D;p_1p_2}_{ab}(\wh{\mb k})
- &=-\left[\mb I^{\widehat D;p_1^*p_2^*}_{-a,-b}
+ \check{\mathcal I}^{p_1p_2}_{ab}(\wh{\mb k})
+ &=-\left[\widehat{\mathcal I}^{p_1^*p_2^*}_{-a,-b}
  (\wh{\mb k})\right]^* .
  \label{eq:conjugate-seeds-34}
 \end{align}
-After the index raising in Eq.~\eqref{eq:raised-hard-blocks}, the radial coefficients are
-obtained without a further integral:
-\begin{align}
- q_{X0}&=\frac12\left[(\mb Q^X_+)_{11}+(\mb Q^X_+)_{22}\right],\nonumber\\
- q_{X1}&=\frac{\eta_X}{2}\left[(\mb Q^X_+)_{11}-(\mb Q^X_+)_{22}\right],
- \qquad
- \eta_D=\eta_{\widehat D}=1,\qquad
- \eta_{\bar D}=\eta_{\check D}=-1.
- \label{eq:q-from-seed}
-\end{align}
-In Eq.~\eqref{eq:q-from-seed}, $q_{D i}=q_i$,
-$q_{\bar D i}=\bar q_i$, $q_{\widehat D i}=\widehat q_i$, and
-$q_{\check D i}=\check q_i$.
+The second relation concerns the \emph{unraised} type-2 and type-3 seeds.
+Equation~\eqref{eq:Yukawa-dressed-seed} is written in mixed-index notation,
+so Eq.~\eqref{eq:offdiagonal-to-diagonal} is applied when using it; in
+the four diagram-by-diagram derivations above, that conversion was made
+\emph{after} the raw-seed rotation, at the soft-line contraction step.
+No extra integration is needed to extract any of the eight coefficients.
+For type 1, use the two diagonal entries in Eq.~\eqref{eq:q-from-seed};
+for types 2 and 3, use the \emph{12 and 21} entries in
+Eqs.~\eqref{eq:hat-q-from-seed} and \eqref{eq:check-q-from-seed},
+respectively, followed by the index conversion in
+Eq.~\eqref{eq:raw-to-mixed-hard}.
 
-\newpage
-To make the special-function dependence explicit, all entries needed in
-Eqs.~\eqref{eq:Yukawa-dressed-seed}--\eqref{eq:q-from-seed} reduce to
+To make the special-function dependence explicit, all seed entries needed in
+Eqs.~\eqref{eq:q-from-seed} and \eqref{eq:Yukawa-dressed-seed} reduce to
 \begin{align}
  {\mathfrak K}^{p_1p_2}(x,y)
  &=e^{\frac{\ii\pi}{2}(p_1-p_2)}
@@ -789,7 +1068,8 @@ entries occur in each SK matrix.  Hence Eqs.~\eqref{eq:K-seed-main}--
 \eqref{eq:type2-dependence-main} expose the complete mass dependence; no hard time
 integral is left unevaluated in the symmetric result.
 
-Summing Eqs.~\eqref{eq:four-symmetric-traces}, it is useful to define
+Summing Eqs.~\eqref{eq:trace-row1}, \eqref{eq:trace-row7},
+\eqref{eq:trace-row10}, and \eqref{eq:trace-row16}, it is useful to define
 \begin{align}
  {\cal R}_0(\tn)
  &=\widehat q_0^{\,2}+\check q_0^{\,2}+2q_0\bar q_0,\nonumber\\
@@ -807,6 +1087,19 @@ The remaining bubble functions can also be written entirely in Gamma functions,
  {\Gamma(3+2\ii\tn)\Gamma^2(-\ii\tn)}.
  \label{eq:kappa-f0-explicit}
 \end{align}
+To extract the gauge-boson-box momentum convention from
+Eq.~\eqref{eq:symmetric-bubble-times-hard}, combine the already-defined
+bubble with the two hard prefactors:
+\begin{align}
+ \mathcal B^{(S)}_+(k_s)\,{\cal N}_L{\cal N}_R
+ &=\frac{g_t^4H^4k_s^3}{16\prod_{j=1}^4k_j^3}
+ \left(\frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn}
+ \frac{2^{12\ii\tn}\ka_+^2}{(4\pi)^{3/2}}\,
+ f_0(-\ii\tn,-\ii\tn).
+ \label{eq:B-times-hard-normalization}
+\end{align}
+The factor $2^{12\ii\tn}$ belongs to this extraction of the
+common momentum power; it is not a second bubble coefficient.
 The complete symmetric amplitude for one cyclic ordering is therefore
 \begin{keyeqn}
 \begin{align}
@@ -1010,7 +1303,12 @@ Yukawa seed, without an SK sum, by
 \end{align}
 where $p_f=-1+\ii f\tn$.  It is important that Eq.~\eqref{eq:deformed-seed} contains
 no factor $ab$; the four branch labels are summed only after the cross-edge kernels have
-been inserted.  The dependence on the special functions of Ref.~\cite{you_rhn} is made
+been inserted.  For $X=\widehat D,\check D$, both $\mb D^X$ here and the
+corresponding $\mb I^X$ below are the mixed-index matrices obtained from
+Eq.~\eqref{eq:anomalous-index-conversion}; in particular the raw type-3
+seed is multiplied by $\epsilon$ on the \emph{left}, as in
+Eq.~\eqref{eq:offdiagonal-to-diagonal}.  The dependence on the special
+functions of Ref.~\cite{you_rhn} is made
 explicit by the convergent, $\ii\epsilon$-regulated expansion
 \begin{align}
  \mb Q^X_{f;ab}(u,v)
@@ -1021,8 +1319,10 @@ explicit by the convergent, $\ii\epsilon$-regulated expansion
  -ab\mb I^{X;p_f+r+1,p_f+s+1}_{ab}\Big].
  \label{eq:deformed-seed-series}
 \end{align}
-Every matrix $\mb I^{X;p_1p_2}_{ab}$ on the right-hand side is one of the You seeds in
-Appendix~\ref{app:seeds}; hence every term is an explicit combination of Gamma functions
+Every matrix $\mb I^{X;p_1p_2}_{ab}$ on the right-hand side is a You seed from
+Appendix~\ref{app:seeds}, with the anomalous index conversion of
+Eq.~\eqref{eq:offdiagonal-to-diagonal} applied where needed; hence every
+term is an explicit combination of Gamma functions
 and ${}_4\widetilde F_3(-1)$.  Equation~\eqref{eq:deformed-seed-series}, analytically
 continued from the regulated half-plane, is also a useful numerical representation of the
 Hilbert transforms below.  At $u=v=0$ it reduces to the finite four-seed combination in
@@ -1330,7 +1630,7 @@ the cut.  This also shows directly that no loop-momentum angular integral was si
 dropped in Eq.~\eqref{eq:soft-bubble}.
 
 Third, enumerating the two vertex choices as four-bit words gives exactly sixteen entries.
-The edge rule in Eq.~\eqref{eq:edge-rule} gives four entries in each of the $AA$, $AN$,
+The propagator dictionary in Eq.~\eqref{eq:propagator-dictionary} gives four entries in each of the $AA$, $AN$,
 $NA$, and $NN$ classes, so no chirality flow is duplicated or omitted.
 
 Fourth, the conformal loop formula gives $k_s^{3+4\ii f\tn}$.  The two hard subgraphs give
@@ -1348,7 +1648,8 @@ derivative.  This independently fixes the signs of all four SK kernels.
 
 Sixth, multiplying the four pairs of $2\times2$ matrices in the
 $\mb k\parallel\wh{\mb z}$ frame and then applying the SU(2) rotations reproduces all
-four traces in Eq.~\eqref{eq:four-symmetric-traces}.  This independently leaves only
+four traces in Eqs.~\eqref{eq:trace-row1}, \eqref{eq:trace-row7},
+\eqref{eq:trace-row10}, and \eqref{eq:trace-row16}.  This independently leaves only
 $1$ and $c_{13}$ in the symmetric sector.  For the antisymmetric sector, direct
 Pauli-matrix multiplication gives Eqs.~\eqref{eq:WAN}, \eqref{eq:WNA}, and
 \eqref{eq:NN-angle}, including the opposite signs of the two triple-product terms.
@@ -1467,7 +1768,8 @@ The nested seed is
 Here ${}_4\widetilde F_3$ denotes the regularized generalized hypergeometric function.
 Equations \eqref{eq:seed-matrices}--\eqref{eq:I-seed}, inserted into the
 $rs=N\bar N$ case of Eq.~\eqref{eq:Q-def} with $p_+=-1+\ii\tn$, determine
-$Q_{+,0}$ and $Q_{+,1}$ without any remaining time integral.  The reversed
+$q_0$ and $q_1$ as defined in Eq.~\eqref{eq:q-from-seed}, without any remaining
+time integral.  The reversed
 $rs=\bar NN$ block follows from Eq.~\eqref{eq:Dbar}.
 
 For the type-2 hard propagator, the corresponding lower-index matrices are
@@ -1525,7 +1827,8 @@ The type-3 seed follows without another integration,
  =-\left(\widehat{\mathcal I}_{-a,-b}^{p_1^*p_2^*}\right)^*.
  \label{eq:check-seed}
 \end{align}
-Raising the appropriate second index and using
+Converting the anomalous seeds to mixed indices as specified after
+Eq.~\eqref{eq:seed-def} and using
 Eqs.~\eqref{eq:hat-seed-matrices}--\eqref{eq:check-seed} in
 the corresponding $rs=NN$ and $rs=\bar N\bar N$ cases of Eq.~\eqref{eq:Q-def}
 supplies the type-2 and type-3 hard blocks in
