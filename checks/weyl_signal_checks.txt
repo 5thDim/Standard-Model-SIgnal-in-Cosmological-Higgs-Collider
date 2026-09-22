@@ -1,0 +1,37 @@
+PASS mode equations and normalization: residual 5.023e-39
+PASS F first descendant: residual 2.811e-15
+PASS G first descendant: residual 2.837e-16
+PASS exact nonanalytic Wightman equality including descendants: residual 2.885e-42
+PASS signed equal-time completeness: residual 3.247e-41
+PASS four-Pauli trace: residual 9.930e-16
+PASS azimuthal bubble polynomial: residual 1.241e-16
+PASS five angular coefficients: residual 0.000e+00
+PASS zeroth-order four-cycle cancellation: residual 0.000e+00
+PASS ordered scalar Laplace integral: residual 0.000e+00
+PASS Hankel power-series normalization: residual 1.291e-41
+PASS Hankel power-series normalization: residual 1.148e-41
+PASS Gamma recurrence for M: residual 2.005e-43
+PASS Gamma recurrence for P: residual 1.058e-43
+PASS Gamma recurrence for Q: residual 1.192e-43
+PASS Gamma recurrence for E: residual 9.146e-43
+PASS Gamma recurrence for F: residual 7.395e-43
+PASS Gamma recurrence for T: residual 8.338e-44
+PASS Gamma recurrence for U: residual 7.588e-44
+PASS Gamma recurrence for V: residual 2.067e-43
+PASS Gamma recurrence for X: residual 7.676e-43
+PASS Gamma recurrence for Y: residual 6.278e-43
+PASS mixed-branch Gamma bubble: residual 2.305e-41
+
+Bubble moments: replace u**m*v**n with F0(1/2-i*mu-m,1/2-i*mu-n).
+M = u**2/8 + 3*u*v/4 - u/8 + v**2/8 - v/8
+P = -u**3/16 + u**2*v/16 + u**2/8 + u*v**2/16 + u*v/4 - u/16 - v**3/16 + v**2/8 - v/16
+Q = 3*u**3/16 - 3*u**2*v/16 - u**2/4 - 3*u*v**2/16 + u/16 + 3*v**3/16 - v**2/4 + v/16
+E = -u**2/8 + u*v/4 + u/4 - v**2/8 + v/4 - 1/8
+F = 3*u**2/8 - 3*u*v/4 - u/4 + 3*v**2/8 - v/4 + 1/8
+T = u**4/128 - u**3*v/32 - u**3/32 + 3*u**2*v**2/64 + u**2*v/32 + 3*u**2/64 - u*v**3/32 + u*v**2/32 + u*v/32 - u/32 + v**4/128 - v**3/32 + 3*v**2/64 - v/32 + 1/128
+U = -5*u**4/128 + 5*u**3*v/32 + 3*u**3/32 - 15*u**2*v**2/64 - 3*u**2*v/32 - 5*u**2/64 + 5*u*v**3/32 - 3*u*v**2/32 + u*v/32 + u/32 - 5*v**4/128 + 3*v**3/32 - 5*v**2/64 + v/32 - 1/128
+V = 35*u**4/128 - 35*u**3*v/32 - 15*u**3/32 + 105*u**2*v**2/64 + 15*u**2*v/32 + 21*u**2/64 - 35*u*v**3/32 + 15*u*v**2/32 - 9*u*v/32 - 3*u/32 + 35*v**4/128 - 15*v**3/32 + 21*v**2/64 - 3*v/32 + 3/128
+X = -u**3/16 + u**2*v/16 + 3*u**2/16 + u*v**2/16 + u*v/8 - 3*u/16 - v**3/16 + 3*v**2/16 - 3*v/16 + 1/16
+Y = 3*u**3/16 - 3*u**2*v/16 - 5*u**2/16 - 3*u*v**2/16 + u*v/8 + 3*u/16 + 3*v**3/16 - 5*v**2/16 + 3*v/16 - 1/16
+
+Scope: algebra and convergent scalar identities checked; full hard-seed analytic continuation has not been numerically scanned.

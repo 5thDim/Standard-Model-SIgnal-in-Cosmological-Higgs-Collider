@@ -1,0 +1,2 @@
+scale 0.001 relative projected hard error 9.64522474312395e-07
+scale 0.0005 relative projected hard error 2.399899768629671e-07
