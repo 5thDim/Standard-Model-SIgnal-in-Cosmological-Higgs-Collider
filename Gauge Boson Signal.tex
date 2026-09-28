@@ -207,27 +207,27 @@ where $\tilde\nu=\sqrt{(m/H)^2-1/4}$. The Whittaker W function at zero chemical 
     &= \sqrt{\frac{ i\pi k\tau}{2}} ie^{-\pi \tilde\nu /2} \mathrm{H}^{(1)}_{i\tilde\nu}(-k\tau)
 \end{align}
 
-Thus, the greater propagator, or $+-$ propagator, for each polarization is:
+Thus, the greater propagator, or $-+$ propagator, for each polarization is:
 \begin{align}
     &D_{>}^{( \pm)}\left(k ; \tau_{1}, \tau_{2}\right)=B^{( \pm)}\left(k, \tau_{1}\right) B^{( \pm) *}\left(k, \tau_{2}\right)=\frac{\pi e^{-\pi\tilde\nu} (\tau_1 \tau_2)^{1/2}}{4} \mathrm{H}_{\mathrm{i} \widetilde{\nu}}^{(1)}\left(-k \tau_{1}\right) \mathrm{H}_{-\mathrm{i} \widetilde{\nu}}^{(2)}\left(-k \tau_{2}\right), \\
     &D_{>}^{(T)}\left(k ; \tau_{1}, \tau_{2}\right)=B^{(T)}\left(k, \tau_{1}\right) B^{(T) *}\left(k, \tau_{2}\right)=\frac{\pi H^{2} k^{2}}{4 m^{2}} e^{-\pi \widetilde{\nu}}\left(\tau_{1} \tau_{2}\right)^{3 / 2} \mathrm{H}_{\mathrm{i} \widetilde{\nu}}^{(1)}\left(-k \tau_{1}\right) \mathrm{H}_{-\mathrm{i} \widetilde{\nu}}^{(2)}\left(-k \tau_{2}\right), \\
     &D_{>}^{(L)}\left(k ; \tau_{1}, \tau_{2}\right)=\frac{1}{k^{2}}\left(\partial_{\tau_{1}}-\frac{2}{\tau_{1}}\right)\left(\partial_{\tau_{2}}-\frac{2}{\tau_{2}}\right) D_{>}^{(T)}\left(k ; \tau_{1}, \tau_{2}\right).
 \end{align}
 
-For reference, the scalar propagator with mass index $i\tilde\nu$ is:
+For reference, the physical scalar propagator with mass index $i\tilde\nu$ is:
 \begin{align}
-    D^{(\text{scalar})}_> = \frac{\pi }{4 } e^{-\pi \widetilde{\nu}}\left(\tau_{1} \tau_{2}\right)^{3 / 2} \mathrm{H}_{\mathrm{i} \widetilde{\nu}}^{(1)}\left(-k \tau_{1}\right) \mathrm{H}_{-\mathrm{i} \widetilde{\nu}}^{(2)}\left(-k \tau_{2}\right)
+    D^{(\text{scalar})}_> = \frac{\pi H^2}{4} e^{-\pi \widetilde{\nu}}\left(\tau_{1} \tau_{2}\right)^{3 / 2} \mathrm{H}_{\mathrm{i} \widetilde{\nu}}^{(1)}\left(-k \tau_{1}\right) \mathrm{H}_{-\mathrm{i} \widetilde{\nu}}^{(2)}\left(-k \tau_{2}\right)
 \end{align}
 and the nonlocal part of its late-time expansion is:
 \begin{align}
-    [D_>]_{\text{NonL}} = [D_<]_{\text{NonL}} = \frac{(\tau_1 \tau_2)^{3/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right]
+    [D^{(\text{scalar})}_>]_{\text{NonL}} = [D^{(\text{scalar})}_<]_{\text{NonL}} = \frac{H^2(\tau_1 \tau_2)^{3/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right]
 \end{align}
 
 The vector propagators can be related to the scalar propagator as follows:
 \begin{align}
-    D_>^{(\pm)} &= \frac{1}{\tau_1 \tau_2} D^{(\text{scalar})}_> \\
-    D_>^{(T)} &= \frac{k^2}{\tilde\nu^2 + 1/4} D^{(\text{scalar})}_> \\
-    D_{>}^{(L)} &= \frac{1}{\tilde\nu^2 + 1/4}\left(\partial_{\tau_{1}}-\frac{2}{\tau_{1}}\right)\left(\partial_{\tau_{2}}-\frac{2}{\tau_{2}}\right) D_{>}^{(\text{scalar})}\left(k ; \tau_{1}, \tau_{2}\right) 
+    D_>^{(\pm)} &= \frac{1}{H^2\tau_1 \tau_2} D^{(\text{scalar})}_> \\
+    D_>^{(T)} &= \frac{k^2}{H^2(\tilde\nu^2 + 1/4)} D^{(\text{scalar})}_> \\
+    D_{>}^{(L)} &= \frac{1}{H^2(\tilde\nu^2 + 1/4)}\left(\partial_{\tau_{1}}-\frac{2}{\tau_{1}}\right)\left(\partial_{\tau_{2}}-\frac{2}{\tau_{2}}\right) D_{>}^{(\text{scalar})}\left(k ; \tau_{1}, \tau_{2}\right)
 \end{align}
 The propagator for the temporal component of the longitudinal mode is suppressed by a factor of $(k\tau)^2$. It therefore contributes only at next-to-leading order and is neglected below.
 
@@ -235,7 +235,7 @@ The corresponding nonlocal parts are:
 \begin{align}
     [D^{(\pm)}]_{\text{NonL}} &= \frac{(\tau_1 \tau_2)^{1/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right] \\
     [D^{(T)}]_{\text{NonL}} &= \frac{k^2}{\tilde\nu^2 + 1/4} \frac{(\tau_1 \tau_2)^{3/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right] \\
-    [D^{(L)}]_{\text{NonL}} &= \frac{(-1/2+i\tn)^2}{\tilde\nu^2 + 1/4} \frac{(\tau_1 \tau_2)^{1/2}}{4\pi} \left[ \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right]
+    [D^{(L)}]_{\text{NonL}} &= \frac{(\tau_1 \tau_2)^{1/2}}{4\pi(\tilde\nu^2 + 1/4)} \left[ (-1/2+i\tn)^2 \Gamma^2(-i\tn) \left( \frac{k^2\tau_1\tau_2}{4} \right)^{i\tn} +\text{c.c.} \right]
 \end{align}
 % We can see that the temporal component have a suppression of factor $(\tau_1\tau_2)$, so it will contribute the next leading term and we will neglected it in the following calculation.
 
@@ -260,9 +260,9 @@ When we rotate $\mb{k}$, $e_{\mu,\mathbf{k}}^{(T)}$ remains invariant, while the
 \end{align}
 
 
-The MB representation of the scalar propagator is:
+The MB representation below uses the rescaled scalar seed $D^{(\text{scalar})}/H^2$:
 \begin{align}
-    D_\gtrless \left(k ; \tau_{1}, \tau_{2}\right)= & \frac{1}{4 \pi} \int_{-\mathrm{i} \infty}^{+\mathrm{i} \infty} \frac{\mathrm{~d} s_{1}}{2 \pi \mathrm{i}} \frac{\mathrm{~d} s_{2}}{2 \pi \mathrm{i}} e^{\pm \mathrm{i} \pi\left(s_{1}-s_{2}\right)}\left(\frac{k}{2}\right)^{-2 s_{12}}\left(-\tau_{1}\right)^{-2 s_{1}+3 / 2}\left(-\tau_{2}\right)^{-2 s_{2}+3 / 2} \\
+    \frac{D_\gtrless^{(\text{scalar})}\left(k ; \tau_{1}, \tau_{2}\right)}{H^2}= & \frac{1}{4 \pi} \int_{-\mathrm{i} \infty}^{+\mathrm{i} \infty} \frac{\mathrm{~d} s_{1}}{2 \pi \mathrm{i}} \frac{\mathrm{~d} s_{2}}{2 \pi \mathrm{i}} e^{\pm \mathrm{i} \pi\left(s_{1}-s_{2}\right)}\left(\frac{k}{2}\right)^{-2 s_{12}}\left(-\tau_{1}\right)^{-2 s_{1}+3 / 2}\left(-\tau_{2}\right)^{-2 s_{2}+3 / 2} \\
     & \times \Gamma\left[s_{1}-\frac{\mathrm{i} \widetilde{\nu}}{2}, s_{1}+\frac{\mathrm{i} \widetilde{\nu}}{2}, s_{2}-\frac{\mathrm{i} \widetilde{\nu}}{2}, s_{2}+\frac{\mathrm{i} \widetilde{\nu}}{2}\right]
 \end{align}
 
@@ -450,17 +450,19 @@ where the magnitude is:
 \end{align}
 
 A numerical result is shown below:
-\begin{figure}[h]
+\begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{figure/CBub.png}
-    \caption{$C_{\text{Bub}}(\tn)$}
+    \includegraphics[width=0.86\textwidth]{figure/CBub.png}
+    \par\medskip
+    \includegraphics[width=0.86\textwidth]{figure/CBub_deBoltzmann.png}
+    \caption{$C_{\text{Bub}}(\tn)$ (top) and the rescaled log magnitude $\log|C_{\text{Bub}}(\tn)|+2\pi\tn$ (bottom), with the leading $e^{-2\pi\tn}$ factor divided out.}
 \end{figure}
 
-\newpage
+\clearpage
 \section{Triangle Diagram}
 One of the triangle diagrams is given by:
 \begin{align}
-    \la \delta h^4 \ra^{\text{Tri1}} &= \left( g^2 \right) (g^2h_0)^2 \sum_{a,b,c=\pm} (-iabc) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} \frac{\di \tau_3}{|H \tau_3|^2} G_a(k_1;\tau_1) G_a(k_2;\tau_2) G_c(k_3;\tau_3) G_c(k_4;\tau_3) \nonumber \\
+    \la \delta h^4 \ra^{\text{Tri1}} &= \left( g^2 \right) (g^2h_0)^2 \sum_{a,b,c=\pm} (-iabc) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} \frac{\di \tau_3}{|H \tau_3|^2} G_a(k_1;\tau_1) G_b(k_2;\tau_2) G_c(k_3;\tau_3) G_c(k_4;\tau_3) \nonumber \\
     &\times \int \frac{\di \mb{q}^3}{(2\pi)^3} \left[ D_{ij}(\mb q+\mb k_1,\tau_1,\tau_2) \right]_{ab} \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right]_{bc} \left[ D_{ki}( \mb{q},\tau_3,\tau_1) \right]_{ca} 
 \end{align}
 
@@ -883,12 +885,12 @@ After taking the azimuthal average, we obtain the nonvanishing parts of the nine
     \bar{\mathcal{E}}^+_{++}
     &= \left(\frac{K+q+k_sz}{8K^2}\right)
     \left[
-        (qz+k_s)\frac{c_1^2z+2c_1+z}{2} +K\frac{c_1^2+2c_1+1}{2} + qs_1^2(1-z^2)
+        (qz+k_s)\frac{c_1^2z+2c_1+z}{2} +K\frac{c_1^2+2zc_1+1}{2} + qs_1^2(1-z^2)
     \right] \nonumber \\
     \bar{\mathcal{E}}^+_{--}
     &= \left(\frac{K+q+k_sz}{8K^2}\right)
     \left[
-        (qz+k_s)\frac{c_1^2z-2c_1+z}{2} +K\frac{c_1^2-2c_1+1}{2} + qs_1^2(1-z^2)
+        (qz+k_s)\frac{c_1^2z-2c_1+z}{2} +K\frac{c_1^2-2zc_1+1}{2} + qs_1^2(1-z^2)
     \right] \nonumber \\
     \bar{\mathcal{E}}^+_{+-}
     &= \left(\frac{q+k_sz-K}{8K^2}\right)
@@ -978,7 +980,7 @@ We next evaluate the contributions from the left and right subgraphs:
     \mathcal{T}^{(L),\lambda}_d &= (g^2h_0)^2 \sum_{a,b=\pm} (-ab) \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} G_a(k_1;\tau_1) G_b(k_2;\tau_2) \nonumber \\
     &\times \left[D^{(\lambda)}(k_1,\tau_1,\tau_2)\right]_{ab} (\tau_1\tau_2)^{1/2+\ii d\tn} \\
     &= (g^2h_0)^2  
-    \frac{H^2}{4k_1^3 k_2^3}
+    \frac{1}{4k_1^3 k_2^3}
     \sum_{a,b=\pm} (-ab)
     \int \di \tau_1 \di \tau_2 
     (1-iak_1\tau_1)(1-ibk_2\tau_2)
@@ -1089,7 +1091,7 @@ For $\lambda=\pm$, this integral can also be expressed in terms of the tree-leve
 \begin{align}
     \mathcal{T}^{(L),\pm}_d 
     &= (g^2h_0)^2  
-    \frac{H^2}{4k_1^3 k_2^3}
+    \frac{1}{4H^2k_1^3 k_2^3}
     \sum_{a,b=\pm} (-ab)
     \int \di \tau_1 \di \tau_2 
     (1-iak_1\tau_1)(1-ibk_2\tau_2)
@@ -1163,20 +1165,22 @@ Thus, the total contribution of the triangle diagrams is:
 \end{align}
 
 A numerical result is shown below:
-\begin{figure}[h]
+\begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{figure/CTri.png}
-    \caption{$C_{\text{Tri}}(\tn)$}
+    \includegraphics[width=0.86\textwidth]{figure/CTri.png}
+    \par\medskip
+    \includegraphics[width=0.86\textwidth]{figure/CTriSimp_deBoltzmann.png}
+    \caption{$C_{\text{Tri}}(\tn)$ (top) and the rescaled log magnitude $\log|C_{\text{Tri}}(\tn)|+2\pi\tn$ (bottom), with the leading $e^{-2\pi\tn}$ factor divided out.}
 \end{figure}
 
-\newpage
+\clearpage
 \section{Box Diagram}
 For the box diagram, we have:
 \begin{align}
     \la \delta h^4 \ra^{\text{Box}} &= (ig^2h_0)^4 \sum_{a,b,c,d=\pm} (abcd) 
     \int \frac{\di \tau_1}{|H \tau_1|^2} \frac{\di \tau_2}{|H \tau_2|^2} 
     \frac{\di \tau_3}{|H \tau_3|^2} \frac{\di \tau_4}{|H \tau_4|^2} \nonumber \\
-    &\times G_a(k_1;\tau_1) G_a(k_2;\tau_2) G_c(k_3;\tau_3) G_d(k_4;\tau_4) \nonumber \\
+    &\times G_a(k_1;\tau_1) G_b(k_2;\tau_2) G_c(k_3;\tau_3) G_d(k_4;\tau_4) \nonumber \\
     &\times \int \frac{\di \mb{q}^3}{(2\pi)^3} 
     \left[ D_{ij}(\mb q+\mb k_1,\tau_1,\tau_2) \right]_{ab} 
     \left[ D_{jk}(\mb q+\mb k_s,\tau_2,\tau_3) \right]_{bc}  \nonumber \\
@@ -1247,7 +1251,7 @@ Keeping the latter two helicities explicit, as in the triangle calculation, we d
     (e_{\mb k_3}^{(\lambda_2)*}\cdot e_{\mb q}^{(\sigma_2)})
     (e_{\mb q}^{(\sigma_2)*}\cdot e_{\mb k_1}^{(\lambda_1)}).
 \end{align}
-Their explicit contraction check is collected in Appendix~B. The dimensionful loop integral is defined by
+The dimensionful loop integral is defined by
 \begin{align}
     \widetilde{\mathcal{I}}^{\lambda_1\lambda_2}_{\sigma_1\sigma_2}
     &\equiv \be^{\si_1L} \be^{\si_2L} \int\frac{\di\mb q^3}{(2\pi)^3}
@@ -1299,7 +1303,7 @@ Thus, the contribution of the box diagram is:
     \cdot \mc B^{\lam_1\lam_2}_f 
     \cdot \mc T^{(R),\lam_2}_f \\
     &= (ig^2h_0)^4 
-    \frac{H^2 k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3} 
+    \frac{k_s^3}{16 k_1^3 k_2^3 k_3^3 k_4^3}
     \left( \frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tn} 
     \times C^{\text{Box}}(\tn,\theta_1,\theta_3,\phi_3) + \text{c.c.}
 \end{align}
@@ -1343,35 +1347,80 @@ Through a lengthy calculation, we obtain an analytic expression for $C^{\text{Bo
     + D \sin^2\theta_1 \sin^2\theta_3 \cos 2\phi_3
 \end{align}
 
+For completeness, the five coefficient functions are extracted from the full box coefficient by the
+same angular projections used in the accompanying notebook.  Define
+\begin{align}
+    \mathscr{C}(\theta_1,\theta_3,\phi_3)
+    &\equiv C^{\text{Box}}(\tn,\theta_1,\theta_3,\phi_3), \\
+    \mathscr{A}(\theta_1,\theta_3)
+    &\equiv \frac{1}{4}\left[
+        \mathscr{C}(\theta_1,\theta_3,0)
+        +\mathscr{C}(\theta_1,\theta_3,\pi)
+        +2\mathscr{C}\left(\theta_1,\theta_3,\frac{\pi}{2}\right)
+    \right].
+\end{align}
+Then the explicit reconstruction formulae are
+\begin{align}
+    A_1(\tn)
+    &= \mathscr{A}\left(\frac{\pi}{2},\frac{\pi}{2}\right), \\
+    A_2(\tn)
+    &= \mathscr{A}\left(\frac{\pi}{2},0\right)-A_1(\tn), \\
+    A_3(\tn)
+    &= \mathscr{A}(0,0)-A_1(\tn)-2A_2(\tn), \\
+    B(\tn)
+    &= \frac{1}{2}\left[
+        \mathscr{C}\left(\frac{\pi}{4},\frac{\pi}{4},0\right)
+        -\mathscr{C}\left(\frac{\pi}{4},\frac{\pi}{4},\pi\right)
+    \right], \\
+    D(\tn)
+    &= \frac{1}{4}\left[
+        \mathscr{C}\left(\frac{\pi}{2},\frac{\pi}{2},0\right)
+        +\mathscr{C}\left(\frac{\pi}{2},\frac{\pi}{2},\pi\right)
+        -2\mathscr{C}\left(\frac{\pi}{2},\frac{\pi}{2},\frac{\pi}{2}\right)
+    \right].
+\end{align}
+These projections remove the unwanted angular structures and determine all five functions directly
+from the analytic expression for $C^{\text{Box}}$ above.
+
 Some numerical results are shown below:
-\begin{figure}[h]
+\begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{figure/CBoxA1.png}
-    \caption{$A_1(\tn)$}
+    \includegraphics[width=0.86\textwidth]{figure/CBoxA1.png}
+    \par\medskip
+    \includegraphics[width=0.86\textwidth]{figure/CBoxA1_deBoltzmann.png}
+    \caption{$A_1(\tn)$ (top) and the rescaled log magnitude $\log|A_1(\tn)|+2\pi\tn$ (bottom).}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{figure/CBoxA2.png}
-    \caption{$A_2(\tn)$}
+    \includegraphics[width=0.86\textwidth]{figure/CBoxA2.png}
+    \par\medskip
+    \includegraphics[width=0.86\textwidth]{figure/CBoxA2_deBoltzmann.png}
+    \caption{$A_2(\tn)$ (top) and the rescaled log magnitude $\log|A_2(\tn)|+2\pi\tn$ (bottom).}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{figure/CBoxA3.png}
-    \caption{$A_3(\tn)$}
+    \includegraphics[width=0.86\textwidth]{figure/CBoxA3.png}
+    \par\medskip
+    \includegraphics[width=0.86\textwidth]{figure/CBoxA3_deBoltzmann.png}
+    \caption{$A_3(\tn)$ (top) and the rescaled log magnitude $\log|A_3(\tn)|+2\pi\tn$ (bottom).}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{figure/CBoxB1.png}
-    \caption{$B(\tn)$}
+    \includegraphics[width=0.86\textwidth]{figure/CBoxB1.png}
+    \par\medskip
+    \includegraphics[width=0.86\textwidth]{figure/CBoxB1_deBoltzmann.png}
+    \caption{$B(\tn)$ (top) and the rescaled log magnitude $\log|B(\tn)|+2\pi\tn$ (bottom).}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[p]
     \centering
-    \includegraphics[width=\textwidth]{figure/CBoxD1.png}
-    \caption{$D(\tn)$}
+    \includegraphics[width=0.86\textwidth]{figure/CBoxD1.png}
+    \par\medskip
+    \includegraphics[width=0.86\textwidth]{figure/CBoxD1_deBoltzmann.png}
+    \caption{$D(\tn)$ (top) and the rescaled log magnitude $\log|D(\tn)|+2\pi\tn$ (bottom).}
 \end{figure}
 
 \clearpage

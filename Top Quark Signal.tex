@@ -11,6 +11,7 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{tikz}
+\usepackage{placeins}
 \usepackage[bookmarksnumbered=true,bookmarksopen=true]{hyperref}
 \hypersetup{colorlinks,%
             linkcolor=[rgb]{0,0.3,0.6},%
@@ -39,8 +40,7 @@
 \newcommand{\FP}{\operatorname{FP}}
 \newcommand{\G}{\mathcal G}
 \newcommand{\cC}{\mathcal C}
-\title{\Large\textbf{Weyl Spinor Signal in the Cosmological Higgs Collider}\\[2mm]
-\large A direct two-Weyl calculation of the top-quark box}
+\title{\Large\textbf{Top Quark Signal in the Cosmological Higgs Collider}}
 \author{}
 \begin{document}
 \date{}
@@ -49,104 +49,445 @@
 
 \section{Two-Weyl setup and Feynman rules}
 \subsection{Lagrangian, basis and mode functions}
-We use $\eta_{\mu\nu}=\operatorname{diag}(1,-1,-1,-1)$,
-$\sigma^\mu=(1,\bs)$, $\bar\sigma^\mu=(1,-\bs)$, and
-$a(\tau)=-1/(H\tau)$, $\tau<0$. The conformally rescaled fields have action
+We start with the top sector of the Standard Model before choosing a
+coordinate system. In the usual left/right notation, let
+$Q_{3L}=(t_L,b_L)^T$ and
+$\widetilde\Phi=(\Phi^{2*},-\Phi^{1*})^T$. Its relevant curved-space
+action is, in four-component chiral notation,
+\begin{align*}
+ S_{\rm top}=\int\dd^4x\,\sqrt{-g}\,\big[
+ &\ii\bar Q_{3L}\gamma^a e_a{}^\mu D_\mu Q_{3L}
+ +\ii\bar t_R\gamma^a e_a{}^\mu D_\mu t_R\\
+ &-y_t\big(\bar Q_{3L}\widetilde\Phi\,t_R
+              +\bar t_R\widetilde\Phi^\dagger Q_{3L}\big)\big].
+\end{align*}
+To express everything with left-handed two-component spinors, identify
+each chiral field with its nonzero Weyl component and replace the
+right-handed $t_R$ by its charge conjugate:
+\begin{equation*}
+ Q_3=(t_{\rm cov},b_{\rm cov})^T,\qquad
+ t_{\rm cov}=t_L,\qquad
+ (t_R)^C=C\bar t_R^{\,T},\qquad
+ t^c_{\rm cov}=\big[(t_R)^C\big]_L.
+\end{equation*}
+Here $C$ is the charge-conjugation matrix. Equivalently, for the
+two-component right-handed spinor,
+$t^c_{\rm cov}=\ii\sigma^2 t_R^*$, with $\sigma^2$ acting on spinor
+indices. Thus $t^c$ is the same right-handed top degree of freedom
+written as a left-handed charge-conjugate field. Its SM gauge charges
+are conjugated, so its covariant derivative acts in the conjugate
+representation. In particular,
+\begin{align*}
+ \bar t_R\widetilde\Phi^\dagger Q_{3L}
+ &\longleftrightarrow
+ (\Phi^2t_{\rm cov}-\Phi^1b_{\rm cov})t^c_{\rm cov}
+ =\epsilon_{ij}Q_3^i\Phi^j t^c_{\rm cov},\\
+ \ii\bar t_R\gamma^a e_a{}^\mu D_\mu t_R
+ &\longleftrightarrow
+ \ii t_{\rm cov}^{c\dagger}\bar\sigma^a e_a{}^\mu
+ D_\mu t^c_{\rm cov},
+\end{align*}
+where $\epsilon_{12}=+1$ and the kinetic identity holds up to a total
+derivative. We use the
+phase of $t^c_{\rm cov}$ for which the Yukawa term has the sign below.
+The action therefore becomes
 \begin{align}
- S=\int\dd\tau\dd^3x\big\{&\ii t^\dagger\bar\sigma^\mu\partial_\mu t
+ S_{\rm top}=\int\dd^4x\,\sqrt{-g}\,\big[
+ &\ii Q_3^\dagger\bar\sigma^a e_a{}^\mu D_\mu Q_3
+ +\ii t_{\rm cov}^{c\dagger}\bar\sigma^a e_a{}^\mu D_\mu t^c_{\rm cov}
+ \nonumber\\
+ &-y_t\big(\epsilon_{ij}Q_3^i\Phi^j t^c_{\rm cov}
+       +\mathrm{h.c.}\big)\big].
+ \label{eq:covariant-top}
+\end{align}
+Here $\Phi$ is the SM Higgs doublet, $D_\mu$ contains the spin and
+SM gauge connections, and $\sigma^a=(\mathbf1_2,\bs)$,
+$\bar\sigma^a=(\mathbf1_2,-\bs)$ with
+$\eta_{ab}=\operatorname{diag}(1,-1,-1,-1)$. Gauge backgrounds are set
+to zero in the Yukawa box considered below. Choosing the neutral Higgs
+background
+$\Phi=(0,(h_0+\delta h)/\sqrt2)^T$ selects the top component of
+$Q_3$. We assume $h_0$ is constant, and write
+\begin{equation}
+ g_t=\frac{y_t}{\sqrt2},\qquad m_t=g_t h_0,\qquad
+ \mu=\frac{m_t}{H},\qquad N_c=3.
+\end{equation}
+The two-component contraction $t_{\rm cov}t^c_{\rm cov}$ includes its
+antisymmetric spinor epsilon tensor. Since the fields are distinct,
+the Yukawa term has no factor of $1/2$.
+
+In conformal de Sitter coordinates,
+\begin{equation}
+ \dd s^2=a(\tau)^2(\dd\tau^2-\dd\bm x^2),\qquad
+ a(\tau)=-\frac1{H\tau},\quad \tau<0,\qquad
+ e_a{}^\mu=a^{-1}\delta_a{}^\mu .
+\end{equation}
+Rescale the two Weyl fields by their conformal weight,
+\begin{equation}
+ t=a^{3/2}t_{\rm cov},\qquad t^c=a^{3/2}t^c_{\rm cov}.
+ \label{eq:weyl-rescaling}
+\end{equation}
+The tetrad and spin connection give
+$\ii a^3t_{\rm cov}^\dagger\bar\sigma^\mu
+(\partial_\mu+3a'\delta_\mu^0/2a)t_{\rm cov}$, and likewise for
+$t^c_{\rm cov}$. The extra $3a'/2a$ cancels the derivative of
+$a^{-3/2}$ in Eq.~\eqref{eq:weyl-rescaling}. The Yukawa bilinear
+instead retains one factor of $a^4(a^{-3/2})^2=a$. Thus the action for
+the top sector becomes
+\begin{align}
+ S=\int\dd\tau\dd^3x\big\{
+ &\ii t^\dagger\bar\sigma^\mu\partial_\mu t
  +\ii t^{c\dagger}\bar\sigma^\mu\partial_\mu t^c
- -a(\tau)(m_t+g_t\delta h)(tt^c+t^\dagger t^{c\dagger})\big\},\\
- &g_t=y_t/\sqrt2,\qquad m_t=g_t h_0,\qquad \mu=m_t/H,\qquad N_c=3.
+ \nonumber\\*[-1mm]
+ &-a(\tau)(m_t+g_t\delta h)
+       (tt^c+t^\dagger t^{c\dagger})\big\}.
  \label{eq:action}
 \end{align}
-The spinor epsilon conventions are chosen so that the displayed mass term is
-$-a m_t\Psi_W^\dagger\beta_W\Psi_W$, with
-\begin{equation}
- \Psi_W=\begin{pmatrix}t_\alpha\\t^{c\dagger\dot\alpha}\end{pmatrix},\qquad
- \beta_W=\begin{pmatrix}0&\one\\\one&0\end{pmatrix},\qquad
- \ii\partial_\tau\Psi_W(\bm p)
- =\begin{pmatrix}-\bs\cdot\bm p&a m_t\one\\a m_t\one&\bs\cdot\bm p\end{pmatrix}\Psi_W(\bm p).
- \label{eq:weyl-eom}
-\end{equation}
-This column is only a convenient way to keep the two Weyl equations together.
-Both entries have the same top charge. In particular no reality condition is imposed.
-We evaluate matrices in the orthonormal component basis
-\begin{equation}
- e_+=\frac1{\sqrt2}\binom{\one}{\one},\quad
- e_-=\frac1{\sqrt2}\binom{-\one}{\one},\quad
- U_B=(e_+,e_-),\qquad
- \beta=U_B^\dagger\beta_W U_B=\begin{pmatrix}\one&0\\0&-\one\end{pmatrix}.
-\end{equation}
-This is a change of spinor-component basis, not the replacement of $t,t^c$ by two
-Majorana fields. Charge remains proportional to the identity. In this basis,
-\begin{equation}
- \mathsf H(\bm p,\tau)=\begin{pmatrix}M&\bs\cdot\bm p\\\bs\cdot\bm p&-M\end{pmatrix},
- \qquad M=-\mu/\tau.
-\end{equation}
-For $\bs\cdot\hat{\bm p}\,\xi_h=h\xi_h$, $h=\pm1$, use
-\begin{equation}
- \xi_+=\binom{e^{-\ii\phi/2}\cos(\theta/2)}{e^{\ii\phi/2}\sin(\theta/2)},\qquad
- \xi_-=\binom{-e^{-\ii\phi/2}\sin(\theta/2)}{e^{\ii\phi/2}\cos(\theta/2)},\qquad
- \sum_h\xi_h\xi_h^\dagger=\one.
-\end{equation}
-The massless Higgs external contraction is the one used in the supplied notes:
-\begin{equation}
- G_a(k;\tau)=\frac{H^2}{2k^3}(1-\ii a k\tau)e^{\ii a k\tau},\qquad a=\pm1.
- \label{eq:higgs}
-\end{equation}
-All external vectors are incoming, $\sum_i\bk_i=0$, and a prime removes the overall
-$(2\pi)^3\delta^3(\sum_i\bk_i)$. We consider exact de Sitter, constant $m_t$, zero
-chemical potential, and the leading collapsed expansion.
+All fermion fields from here onward are the rescaled fields. The
+background mass $m_t$ belongs to the free equation; each
+$\delta h$ insertion supplies one Yukawa vertex.
 
-Write $x=-p\tau>0$. A positive-frequency column has components
-$(F(x)\xi_h,hG(x)\xi_h)^T$, giving
+To keep the two Weyl equations in one matrix equation, introduce the
+four-component Dirac column
+\begin{equation}
+ \Psi_W=\binom{t_\alpha}{t^{c\dagger\dot\alpha}},\qquad
+ \beta_W=\begin{pmatrix}0&\one\\ \one&0\end{pmatrix}.
+\end{equation}
+The epsilon contractions in Eq.~\eqref{eq:action} are understood in
+this column notation, so its mass bilinear is
+$-a m_t\Psi_W^\dagger\beta_W\Psi_W$ in our index convention.
+Under top number, $t\mapsto e^{\ii\vartheta}t$ and
+$t^c\mapsto e^{-\ii\vartheta}t^c$. Both entries of $\Psi_W$ therefore
+have the same charge; no Majorana reality condition is imposed.
+
+The mass matrix is diagonal in a simple orthonormal component basis.
+Rather than naming its two basis columns separately, define
+\begin{equation}
+ U_B=\frac1{\sqrt2}
+ \begin{pmatrix}\one&-\one\\ \one&\one\end{pmatrix},
+ \qquad
+ \Psi=U_B^\dagger\Psi_W,\qquad
+ \beta=U_B^\dagger\beta_WU_B
+      =\begin{pmatrix}\one&0\\0&-\one\end{pmatrix}.
+ \label{eq:basis-change}
+\end{equation}
+This unitary change acts only on spinor components. It preserves the
+top charge, canonical anticommutators, and traces.
+
+Use the Fourier convention
+\begin{equation}
+ \Psi_W(\tau,\bm x)
+ =\int\frac{\dd^3k}{(2\pi)^3}\,
+   e^{\ii\bm k\cdot\bm x}\Psi_W(\tau,\bm k),
+ \qquad \partial_i\longmapsto\ii k_i .
+ \label{eq:fermion-fourier}
+\end{equation}
+Varying the quadratic action and then applying $U_B$ gives, with the
+same momentum on both sides,
 \begin{align}
- -\ii F'&=\frac\mu x F+G,& -\ii G'&=F-\frac\mu xG,\\
+ \ii\partial_\tau\Psi_W(\tau,\bm k)
+ &=\begin{pmatrix}
+   -\bs\cdot\bm k&a m_t\one\\
+   a m_t\one&\bs\cdot\bm k
+   \end{pmatrix}\Psi_W(\tau,\bm k),
+ \nonumber\\
+ \ii\partial_\tau\Psi(\tau,\bm k)
+ &=\begin{pmatrix}
+   a m_t\one&\bs\cdot\bm k\\
+   \bs\cdot\bm k&-a m_t\one
+   \end{pmatrix}\Psi(\tau,\bm k).
+ \label{eq:weyl-eom}
+\end{align}
+The matrix in the second line is Hermitian; at fixed time its square
+is $(k^2+a^2m_t^2)\mathbf1_4$.
+
+For nonzero momentum, write $k=|\bm k|>0$ and
+$\bm k=k(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$.
+We use the following explicit normalized helicity basis:
+\begin{equation}
+ \xi_+(\bm k)=
+ \binom{e^{-\ii\phi/2}\cos(\theta/2)}
+       {e^{\ii\phi/2}\sin(\theta/2)},\qquad
+ \xi_-(\bm k)=
+ \binom{-e^{-\ii\phi/2}\sin(\theta/2)}
+       {e^{\ii\phi/2}\cos(\theta/2)}.
+ \label{eq:helicity-explicit}
+\end{equation}
+They obey
+\begin{equation}
+ (\bs\cdot\hat{\bm k})\xi_h=h\xi_h,\qquad
+ \xi_h^\dagger\xi_{h'}=\delta_{hh'},\qquad
+ \sum_{h=\pm1}\xi_h\xi_h^\dagger=\one.
+ \label{eq:helicity-basis}
+\end{equation}
+The phases in Eq.~\eqref{eq:helicity-explicit} are a convention;
+the subsequent propagators depend only on the helicity projectors.
+For fixed nonzero momentum, ``positive frequency'' means a mode
+approaching $e^{-\ii k\tau}$ in the far past $\tau\to-\infty$;
+``negative frequency'' means one approaching $e^{+\ii k\tau}$.
+Indeed, $\ii\partial_\tau e^{\mp\ii k\tau}
+=\pm k e^{\mp\ii k\tau}$.
+The superscript $(+)$ or $(-)$ on a mode denotes this frequency,
+while $h=\pm1$ denotes helicity. Neither sign is an SK branch label.
+We first solve for the positive-frequency mode:
+\begin{equation}
+ \Psi_h^{(+)}(\tau,\bm k)
+ =\binom{F(x)\xi_h}{hG(x)\xi_h},
+ \qquad x=-k\tau>0.
+ \label{eq:positive-mode}
+\end{equation}
+The factor $h$ in the lower entry makes the same two radial functions
+work for both helicities.
+Since $a m_t=\mu k/x$ and $\partial_\tau=-k\partial_x$,
+Eq.~\eqref{eq:weyl-eom} reduces to
+\begin{align}
+ -\ii F'&=\frac{\mu}{x}F+G,&
+ -\ii G'&=F-\frac{\mu}{x}G,
+ \label{eq:radial-first-order}\\
  F''+\left[1+\frac{\mu^2+\ii\mu}{x^2}\right]F&=0,&
  G''+\left[1+\frac{\mu^2-\ii\mu}{x^2}\right]G&=0.
+ \label{eq:radial-second-order}
 \end{align}
-The Bunch--Davies solutions, with a common irrelevant phase fixed, are
+The second line follows by eliminating one component from the first.
+These are Bessel equations with orders $1/2-\ii\mu$ and
+$1/2+\ii\mu$. The positive-frequency BD condition is
+$e^{-\ii k\tau}=e^{\ii x}$, so we choose Hankel functions of the
+first kind. Normalizing the positive-frequency column to unit norm
+fixes
 \begin{equation}
- \boxed{F(x)=\frac{\sqrt{\pi x}}2 e^{\pi\mu/2}H^{(1)}_{1/2-\ii\mu}(x),\qquad
- G(x)=\frac{\sqrt{\pi x}}2 e^{-\pi\mu/2}H^{(1)}_{1/2+\ii\mu}(x).}
+ \boxed{F(x)=\frac{\sqrt{\pi x}}2e^{\pi\mu/2}
+ H^{(1)}_{1/2-\ii\mu}(x),\qquad
+ G(x)=\frac{\sqrt{\pi x}}2e^{-\pi\mu/2}
+ H^{(1)}_{1/2+\ii\mu}(x).}
  \label{eq:modes}
 \end{equation}
-Both tend to $-\ii e^{\ii x}/\sqrt2$ in the far past. The normalization is
-$|F|^2+|G|^2=1$. At fixed Fourier momentum, a useful complete pair of mode matrices is
+The relative coefficients in this pair follow directly from
+$G=-\ii F'-\mu F/x$ and the Hankel identities
+$H_{\nu-1}^{(1)}=H_\nu^{(1)\prime}+\nu H_\nu^{(1)}/x$ and
+$H_{-1/2-\ii\mu}^{(1)}=\ii e^{-\pi\mu}H_{1/2+\ii\mu}^{(1)}$.
+Both functions approach $-\ii e^{\ii x}/\sqrt2$ as $x\to\infty$.
+The first-order equations imply
+$\partial_\tau(|F|^2+|G|^2)=0$, so this asymptotic normalization gives
+$|F|^2+|G|^2=1$ at every time. The common phase is conventional; the
+relative phase between $F$ and $G$ is fixed by
+Eq.~\eqref{eq:radial-first-order}.
+The independent negative-frequency mode at the same Fourier momentum
+is then
 \begin{equation}
- u(\bm p,\tau)=\binom{F\one}{G\bs\cdot\hat{\bm p}},\qquad
- v(\bm p,\tau)=\binom{G^*\one}{-F^*\bs\cdot\hat{\bm p}}.
- \label{eq:uv}
+ \Psi_h^{(-)}(\tau,\bm k)
+ =\binom{G(x)^*\xi_h}{-hF(x)^*\xi_h}
+ \ \propto e^{+\ii k\tau}\quad(\tau\to-\infty).
+ \label{eq:negative-mode}
 \end{equation}
-The columns multiply independent annihilation and creation operators; the latter
-carry antiparticle label $-\bm p$. Thus $u^\dagger u=v^\dagger v=\one$,
-$u^\dagger v=0$ and $uu^\dagger+vv^\dagger=\mathbf1_4$ at equal time.
-The original Weyl modes are $U_Bu$ and $U_Bv$. This also specifies their relative
-phases, which are essential for the soft cut. The mode construction is consistent
-with the charged-fermion momentum-space quantization of Ref.~\cite{cota}.
+Here $^*$ means complex conjugation of the time-dependent functions;
+the relative minus sign makes this column solve the same field
+equation at momentum $\bm k$.
 
 \subsection{SK propagators}
-Define the contractions without a prefactor of $\ii$:
+Here $A,B=1,\ldots,4$ label components of the four-component spinor
+$\Psi$; they are not SK indices. The SK branch labels will be
+$s,s'\in\{+,-\}$. All propagators in this subsection are first
+computed in the rotated $\Psi$ basis. Outer products of the modes
+give the two Wightman functions, and contour ordering then gives the
+four SK propagators.
+The positive- and negative-frequency solutions can be collected into
+two $4\times2$ matrices. Their two-dimensional column space represents
+the two spin states; multiplying either matrix by $\xi_h$ selects
+the helicity-$h$ solution:
+\begin{equation}
+ u(\bm k,\tau)=
+ \binom{F(x)\one}{G(x)\bs\cdot\hat{\bm k}},\qquad
+ v(\bm k,\tau)=
+ \binom{G(x)^*\one}{-F(x)^*\bs\cdot\hat{\bm k}}.
+ \label{eq:uv}
+\end{equation}
+Thus $u\xi_h=\Psi_h^{(+)}$ and $v\xi_h=\Psi_h^{(-)}$.
+At fixed Fourier momentum the field operator expands as
 \begin{align}
- R^>(p;\tau,\tau')&=u(\tau)u^\dagger(\tau'),&
- R^<(p;\tau,\tau')&=-v(\tau)v^\dagger(\tau').
+ \Psi(\tau,\bm k)
+ ={}&\sum_{h=\pm1}
+ \binom{F(x)\xi_h(\bm k)}{hG(x)\xi_h(\bm k)}
+ b_h(\bm k)\nonumber\\
+ &+\sum_{h=\pm1}
+ \binom{G(x)^*\xi_h(\bm k)}{-hF(x)^*\xi_h(\bm k)}
+ d_h^\dagger(-\bm k).
+ \label{eq:mode-expansion}
+\end{align}
+For each $h$, $b_h(\bm k)$ annihilates a particle and
+$d_h^\dagger(-\bm k)$ creates an antiparticle. The label $h$ on the
+creation operator refers to the basis spinor $\xi_h(\bm k)$ used in
+this Fourier expansion. The $-\bm k$ argument follows from
+Eq.~\eqref{eq:fermion-fourier}; color labels are suppressed.
+The compact form of Eq.~\eqref{eq:mode-expansion} is
+$\Psi=ub+vd^\dagger$, where
+$b(\bm k)=\sum_h\xi_h(\bm k)b_h(\bm k)$ and
+$d^\dagger(-\bm k)=\sum_h\xi_h(\bm k)d_h^\dagger(-\bm k)$
+are two-entry operator columns.
+The dagger on an operator denotes its adjoint, whereas $^*$ on $F,G$
+means complex conjugation and $u^\dagger,v^\dagger$ mean Hermitian
+conjugation of matrices. The canonical
+anticommutators, together with the mode normalization, give
+$u^\dagger u=v^\dagger v=\one$, $u^\dagger v=0$, and
+$uu^\dagger+vv^\dagger=\mathbf1_4$. The modes in the original Weyl
+basis are $U_Bu$ and $U_Bv$.
+
+Before choosing an SK branch, $R^>$ and $R^<$ denote the two
+possible field orderings; the symbols $>$ and $<$ do not compare
+$\tau$ with $\tau'$. Matrix multiplication sums over the two spin
+states. We define these contractions without an extra prefactor of
+$\ii$, and suppress the momentum-conserving delta function. With
+the first argument at the field end of the ordered line,
+\begin{align}
+ R^>_{AB}(\bm k;\tau,\tau')
+ &=\langle\Psi_A(\tau,\bm k)\Psi_B^\dagger(\tau',\bm k)\rangle
+   =[u(\tau)u^\dagger(\tau')]_{AB},
+ \nonumber\\
+ R^<_{AB}(\bm k;\tau,\tau')
+ &=-\langle\Psi_B^\dagger(\tau',\bm k)\Psi_A(\tau,\bm k)\rangle
+   =-[v(\tau)v^\dagger(\tau')]_{AB}.
  \label{eq:wightman}
 \end{align}
-The minus sign in $R^<$ is the fermionic exchange sign. Explicitly, with
-$\sigma_p=\bs\cdot\hat{\bm p}$,
+Here is the vacuum contraction that gives the second equality in each
+line. Let $|0\rangle$ be the BD vacuum, so
+$b_h(\bm k)|0\rangle=d_h(\bm k)|0\rangle=0$.
+Taking the adjoint of Eq.~\eqref{eq:mode-expansion} gives
+\begin{equation}
+ \Psi_B^\dagger(\tau',\bm k')=
+ \sum_{h'=\pm1}\left[
+ b_{h'}^\dagger(\bm k')\Psi_{h',B}^{(+)*}(\tau',\bm k')
+ +d_{h'}(-\bm k')\Psi_{h',B}^{(-)*}(\tau',\bm k')
+ \right].
+ \label{eq:adjoint-mode-expansion}
+\end{equation}
+The only nonzero operator products between these vacuum states are
+\begin{equation}
+ \langle0|b_h(\bm k)b_{h'}^\dagger(\bm k')|0\rangle
+ =\langle0|d_h(-\bm k)d_{h'}^\dagger(-\bm k')|0\rangle
+ =(2\pi)^3\delta_{hh'}\delta^3(\bm k-\bm k').
+ \label{eq:vacuum-operators}
+\end{equation}
+Substituting Eqs.~\eqref{eq:mode-expansion} and
+\eqref{eq:adjoint-mode-expansion} into the two expectation values
+leaves one operator product in each ordering. Suppressing the
+arguments of the modes and operators for this intermediate step,
 \begin{align}
- R^>&=\begin{pmatrix}F_1F_2^*\one&F_1G_2^*\sigma_p\\G_1F_2^*\sigma_p&G_1G_2^*\one\end{pmatrix},&
- R^<&=\begin{pmatrix}-G_1^*G_2\one&G_1^*F_2\sigma_p\\F_1^*G_2\sigma_p&-F_1^*F_2\one\end{pmatrix}.
+ \langle0|\Psi_A\Psi_B^\dagger|0\rangle
+ &=\sum_{h,h'}\Psi_{h,A}^{(+)}\Psi_{h',B}^{(+)*}
+   \langle0|b_h b_{h'}^\dagger|0\rangle,\nonumber\\
+ -\langle0|\Psi_B^\dagger\Psi_A|0\rangle
+ &=-\sum_{h,h'}\Psi_{h',B}^{(-)*}\Psi_{h,A}^{(-)}
+   \langle0|d_{h'} d_h^\dagger|0\rangle.
+ \label{eq:vacuum-intermediate}
+\end{align}
+Terms with $b^\dagger b$, $d^\dagger d$, or a mixed $b,d$ product
+vanish in the vacuum. Restoring the arguments and using
+Eq.~\eqref{eq:vacuum-operators} gives
+\begin{align}
+ \langle0|\Psi_A(\tau,\bm k)\Psi_B^\dagger(\tau',\bm k')|0\rangle
+ &=(2\pi)^3\delta^3(\bm k-\bm k')\nonumber\\
+ &\quad\times\sum_h\Psi_{h,A}^{(+)}(\tau,\bm k)
+             \Psi_{h,B}^{(+)*}(\tau',\bm k),\nonumber\\
+ -\langle0|\Psi_B^\dagger(\tau',\bm k')\Psi_A(\tau,\bm k)|0\rangle
+ &=-(2\pi)^3\delta^3(\bm k-\bm k')\nonumber\\
+ &\quad\times\sum_h\Psi_{h,A}^{(-)}(\tau,\bm k)
+             \Psi_{h,B}^{(-)*}(\tau',\bm k).
+ \label{eq:vacuum-wightman}
+\end{align}
+Finally, Eq.~\eqref{eq:helicity-basis} converts the helicity sums
+into matrix products. The common momentum $\bm k$ is suppressed in
+this display:
+\begin{align}
+ \sum_h\Psi_h^{(+)}(\tau)\Psi_h^{(+)\dagger}(\tau')
+ &=u(\tau)\left(\sum_h\xi_h\xi_h^\dagger\right)u^\dagger(\tau')
+ =u(\tau)u^\dagger(\tau'),\nonumber\\*
+ \sum_h\Psi_h^{(-)}(\tau)\Psi_h^{(-)\dagger}(\tau')
+ &=v(\tau)\left(\sum_h\xi_h\xi_h^\dagger\right)v^\dagger(\tau')
+ =v(\tau)v^\dagger(\tau').
+ \label{eq:helicity-sums}
+\end{align}
+These are precisely the products in Eq.~\eqref{eq:wightman} after
+removing the common momentum delta function. Both nonzero vacuum
+products in Eq.~\eqref{eq:vacuum-operators} are positive; the minus
+sign in $R^<$ comes from the fermionic ordering convention in its
+definition, not from the $d d^\dagger$ vacuum product.
+
+Write
+$F_1=F(-k\tau)$, $F_2=F(-k\tau')$, and likewise for $G$; also write
+$\sigma_k=\bs\cdot\hat{\bm k}$. Multiplication of the matrices in
+Eq.~\eqref{eq:uv} then gives
+\begin{align}
+ R^>&=\begin{pmatrix}
+ F_1F_2^*\one&F_1G_2^*\sigma_k\\
+ G_1F_2^*\sigma_k&G_1G_2^*\one
+ \end{pmatrix},
+ &
+ R^<&=\begin{pmatrix}
+ -G_1^*G_2\one&G_1^*F_2\sigma_k\\
+ F_1^*G_2\sigma_k&-F_1^*F_2\one
+ \end{pmatrix}.
  \label{eq:Rblocks}
 \end{align}
-The four contour contractions are
+For example, the upper-right block of $R^<$ is positive because
+$-\bigl(G_1^*\one\bigr)
+ \bigl(-F_2^*\sigma_k\bigr)^\dagger
+ =G_1^*F_2\sigma_k$.
+This is a useful check on the relative sign of the two components
+of $v$.
+
+Let $+$ denote the forward SK branch and $-$ the backward branch.
+In $R_{ss'}(\bm k;\tau,\tau')$, $s$ belongs to the first time
+$\tau$ and $s'$ to the second time $\tau'$. Each $R_{ss'}$ remains a
+$4\times4$ spinor matrix with entries $R_{ss';AB}$, and $\theta$ is
+the step function.
+Contour ordering gives
 \begin{align}
- R_{-+}=R^>,\quad R_{+-}=R^<,\qquad
- R_{++}&=\theta(\tau-\tau')R^>+\theta(\tau'-\tau)R^<,\\
- R_{--}&=\theta(\tau'-\tau)R^>+\theta(\tau-\tau')R^<.
+ R_{-+}&=R^>,&
+ R_{+-}&=R^<,\nonumber\\
+ R_{++}&=\theta(\tau-\tau')R^>
+          +\theta(\tau'-\tau)R^<,&
+ R_{--}&=\theta(\tau'-\tau)R^>
+          +\theta(\tau-\tau')R^<.
  \label{eq:sk}
 \end{align}
+Thus $R_{++}$ is time ordered and $R_{--}$ is reverse time
+ordered. A line in the original Weyl basis uses
+$R_W=U_BR U_B^\dagger$. Each displayed entry of
+Eq.~\eqref{eq:Rblocks} is a $2\times2$ block, and its diagonal blocks
+are not $\langle tt\rangle$ or $\langle t^ct^c\rangle$.
+In the original Weyl basis, the diagonal blocks of $R_W$ contain
+$\langle tt^\dagger\rangle$ and
+$\langle t^{c\dagger}t^c\rangle$; the off-diagonal blocks contain
+$\langle tt^c\rangle$ and its conjugate, with the ordering signs
+specified by $R^>$ or $R^<$.
+The Fourier convention in
+Eq.~\eqref{eq:fermion-fourier} fixes the momentum of a reversed
+line to $-\bm k$.
+
 \subsection{Feynman rules}
+
+The external Higgs fluctuation is treated as massless. Its
+bulk-to-boundary contraction on SK branch $s=\pm1$ is
+\begin{equation}
+ G_s(k;\tau)=\frac{H^2}{2k^3}(1-\ii s k\tau)e^{\ii s k\tau}.
+ \label{eq:higgs}
+\end{equation}
+All external momenta are incoming, $\sum_i\bk_i=0$, and a prime on a
+correlator removes the overall
+$(2\pi)^3\delta^3(\sum_i\bk_i)$. We work in exact de Sitter with
+constant $m_t$ and zero chemical potential, and keep the leading
+collapsed expansion.
+This is a spectator-background approximation: over the times sampled by
+the correlator we require $|\dot h_0|\ll H|h_0|$ and
+$|m_{h,\mathrm{eff}}^2|\ll H^2$, with the renormalized Higgs effective
+mass including potential and curvature contributions. These conditions
+do not follow from a nonzero $h_0$ alone. The calculation gives the
+connected $\delta h$ four-point function at order $g_t^4$; converting it
+to a curvature trispectrum requires a specified Higgs-to-curvature
+transfer mechanism. Since the Yukawa coupling is linear in $\delta h$,
+there is no elementary $\delta h^2\bar t t$ vertex and hence no Yukawa
+bubble or triangle at this order with four external Higgs legs.
+
+
 The following rules refer to the conformally rescaled fermions in
 Eq.~\eqref{eq:action}. SK contractions contain no extra factor of $\ii$.
 The branch sign at a vertex will be denoted by $s=\pm1$ here to distinguish it
@@ -178,7 +519,7 @@ is already included in the propagator, so it is not inserted again.
 \item \textbf{Fermion line.} A line with field end $(A,\tau,s)$ and dagger
 end $(B,\tau',s')$ contributes
 \begin{equation}
- [R_{W,ss'}(\bm p;\tau,\tau')]_{AB}\delta_{cc'}.
+ [R_{W,ss'}(\bm k;\tau,\tau')]_{AB}\delta_{cc'}.
 \end{equation}
 where $R_W=U_BR U_B^\dagger$ and $R$ is given in
 Eqs.~\eqref{eq:Rblocks}--\eqref{eq:sk}. The block dictionary is
@@ -196,13 +537,17 @@ Thus the epsilon tensors needed to raise the $t^c$ indices are already included;
 one must not add another epsilon tensor to the vertex matrix. This fixes the
 normal and anomalous Weyl contractions in one convention. The charge arrow runs
 from the dagger end to the field end, and the Fourier factor of this ordered
-line is $e^{\ii\bm p\cdot(\bm x-\bm x')}$.
-If its endpoints are exchanged, use the Grassmann identity
+line is $e^{\ii\bm k\cdot(\bm x-\bm x')}$.
+If its endpoints are exchanged, use the coordinate-space Grassmann identity
 \begin{equation}
- \langle T_C\Psi^\dagger_B(\bm p,\tau)\Psi_A(-\bm p,\tau')\rangle_{ss'}
- =-[R_{s's}(-\bm p;\tau',\tau)]_{AB}.
+ \langle T_C\Psi^\dagger_B(\tau,\bm x)\Psi_A(\tau',\bm x')\rangle_{ss'}
+ =-[R_{s's}(\tau',\bm x';\tau,\bm x)]_{AB}.
  \label{eq:reverse-line-rule}
 \end{equation}
+The coefficient of $e^{\ii\bm k\cdot(\bm x-\bm x')}$ on the right is
+$-[R_{s's}(-\bm k;\tau',\tau)]_{AB}$. This distinguishes the Fourier
+transform of the adjoint field from the adjoint of a Fourier coefficient,
+whose momentum convention was used in Eq.~\eqref{eq:wightman}.
 In particular the minus sign of $R^<$ in Eq.~\eqref{eq:wightman} is part of
 the line rule, not an optional extra sign. Charge-forbidden contractions such
 as $\langle tt\rangle$ and $\langle t^ct^c\rangle$ vanish.
@@ -218,26 +563,57 @@ Multiplying these rules gives Eq.~\eqref{eq:each-box}; its overall sign is
 $(-1)_{\rm loop}(-\ii)^4=-1$, with the product of the four branch signs kept
 inside the SK sum.
 
+The calculation now follows the same order as the gauge-boson box note:
+identify the two soft lines, keep the other two lines as exact SK hard
+subgraphs, perform the spin or polarization contraction, and reduce the
+remaining loop integral to scalar $F_0$ convolutions. For fermions the
+polarization tensors are replaced by the matrices $\beta R$ and a Pauli
+trace. The symmetric exchange of the external Higgs legs removes the
+leading equal-branch spin contraction, so the hard subgraphs must be
+expanded one order further before the scalar convolution is taken.
+
+\clearpage
 \subsection{Nonlocal part of the soft propagator}
-For $t=-\tau>0$, the late-time expansion is
+For $\tau<0$, the late-time argument is $x=-k\tau>0$. Define only one
+coefficient,
+\begin{equation}
+ A=-\frac{\ii 2^{-1/2-\ii\mu}}{\sqrt\pi}
+   \Gamma(\tfrac12-\ii\mu),\qquad
+ c=-A^2=\frac{2^{-1-2\ii\mu}}\pi
+   \Gamma(\tfrac12-\ii\mu)^2,\qquad
+ |c|=\frac1{2\cosh\pi\mu}.
+ \label{eq:late-coefficient}
+\end{equation}
+After the factors $e^{\pm\pi\mu/2}$ are displayed explicitly, the
+two leading mode coefficients are $A$ and $-A^*$; no second symbol is
+needed. The late-time modes are
 \begin{align}
- F(pt)&=A(pt)^{\ii\mu}+\frac{\ii B}{1-2\ii\mu}(pt)^{1-\ii\mu}+O((pt)^2\text{ times the branches}),\\
- G(pt)&=B(pt)^{-\ii\mu}+\frac{\ii A}{1+2\ii\mu}(pt)^{1+\ii\mu}+O((pt)^2\text{ times the branches}),\\
- A&=-\frac{\ii e^{\pi\mu/2}2^{-1/2-\ii\mu}}{\sqrt\pi}\Gamma(\tfrac12-\ii\mu),\quad
- B=-\frac{\ii e^{-\pi\mu/2}2^{-1/2+\ii\mu}}{\sqrt\pi}\Gamma(\tfrac12+\ii\mu),\\
- c&=AB^*=\frac{2^{-1-2\ii\mu}}\pi\Gamma(\tfrac12-\ii\mu)^2,\qquad |c|=\frac1{2\cosh\pi\mu}.
+ F(-k\tau)&=e^{\pi\mu/2}A(-k\tau)^{\ii\mu}
+ -\frac{\ii e^{-\pi\mu/2}A^*}{1-2\ii\mu}
+  (-k\tau)^{1-\ii\mu}+O((k\tau)^2\text{ times the branches}),\\
+ G(-k\tau)&=-e^{-\pi\mu/2}A^*(-k\tau)^{-\ii\mu}
+ +\frac{\ii e^{\pi\mu/2}A}{1+2\ii\mu}
+  (-k\tau)^{1+\ii\mu}+O((k\tau)^2\text{ times the branches}).
  \label{eq:late}
 \end{align}
 In particular,
 \begin{equation}
- R^{\NL}_{ab}(\bm p;t,t')=
- c(p^2tt')^{\ii\mu}\begin{pmatrix}0&\sigma_p\\0&0\end{pmatrix}
- +c^*(p^2tt')^{-\ii\mu}\begin{pmatrix}0&0\\\sigma_p&0\end{pmatrix}+O(pt,pt').
+ R^{\NL}_{ab}(\bm k;\tau,\tau')=
+ c(k^2\tau\tau')^{\ii\mu}\begin{pmatrix}0&\sigma_k\\0&0\end{pmatrix}
+ +c^*(k^2\tau\tau')^{-\ii\mu}\begin{pmatrix}0&0\\\sigma_k&0\end{pmatrix}
+ +O(k|\tau|,k|\tau'|).
  \label{eq:soft-leading}
 \end{equation}
+The diagonal blocks have only the mixed powers $(\tau/\tau')^{\pm\ii\mu}$
+at zeroth order and hence do not supply the equal-sign soft branch in
+Eq.~\eqref{eq:soft-leading}. The first $k|\tau|$ descendants of the two
+off-diagonal blocks supply the diagonal entries of
+Eq.~\eqref{eq:soft-factored}; they are required at the first surviving
+order of the box signal.
 \textbf{There is no SK label on this expression.} For example, the upper-right
-$+\ii\mu$ term is $F(t)G^*(t')$ in $R^>$ and $G^*(t)F(t')$ in $R^<$;
-both equal $c(p^2tt')^{\ii\mu}$. This equality also holds for their analytic
+$+\ii\mu$ term is $F(-k\tau)G^*(-k\tau')$ in $R^>$ and
+$G^*(-k\tau)F(-k\tau')$ in $R^<$;
+both equal $c(k^2\tau\tau')^{\ii\mu}$. This equality also holds for their analytic
 momentum descendants. It is compatible with the absence of these powers in the
 state-independent anticommutator $R^>-R^<$. This property is independent of the choice between the two-Weyl and
 Majorana descriptions. In particular, the reverse Wightman contraction must use
@@ -265,16 +641,16 @@ of that old box amplitude is asserted here.
 For the first nonzero box signal we also need the first descendants. They are
 particularly transparent as the following explicit block product:
 \begin{equation}
- \left.\beta R^{\NL}(\bm p;t,t')\right|_+
- =c(p^2tt')^{\ii\mu}
- \begin{pmatrix}\one\\-\dfrac{\ii t\bs\cdot\bm p}{1+2\ii\mu}\end{pmatrix}
- \sigma_p
- \begin{pmatrix}-\dfrac{\ii t'\bs\cdot\bm p}{1+2\ii\mu}&\one\end{pmatrix}
+ \left.\beta R^{\NL}(\bm k;\tau,\tau')\right|_+
+ =c(k^2\tau\tau')^{\ii\mu}
+ \begin{pmatrix}\one\\\dfrac{\ii\tau\bs\cdot\bm k}{1+2\ii\mu}\end{pmatrix}
+ \sigma_k
+ \begin{pmatrix}\dfrac{\ii\tau'\bs\cdot\bm k}{1+2\ii\mu}&\one\end{pmatrix}
  +\cdots .
  \label{eq:soft-factored}
 \end{equation}
 The other branch is fixed by
-$R^{\NL}_-(\bm p;t,t')=[R^{\NL}_+(\bm p;t',t)]^\dagger$.
+$R^{\NL}_-(\bm k;\tau,\tau')=[R^{\NL}_+(\bm k;\tau',\tau)]^\dagger$.
 The dots include second-order corrections to the leading entries. They multiply
 a vanishing zeroth-order Bose-symmetrized hard block and do not affect the first
 nonzero clock coefficient derived below.
@@ -293,7 +669,34 @@ For $\pi=(i,j,k,l)$ define
  p_{kl}=q-k_l,\qquad p_{li}=q,
  \label{eq:routing}
 \end{equation}
-where this equation is a vector equation. The exact individual contribution is
+where this equation is a vector equation. For the four lines of this
+cycle, abbreviate
+$R_{W,ij}=R_{W,a_i a_j}(p_{ij};\tau_i,\tau_j)$, and similarly for
+the other three pairs. The Feynman rules of Sec.~1.3 were written in
+the original $\Psi_W$ basis, so their spinor contraction starts as the
+$4\times4$ trace
+\begin{equation}
+ \tr_4[\beta_W R_{W,ij}\,\beta_W R_{W,jk}\,
+       \beta_W R_{W,kl}\,\beta_W R_{W,li}].
+ \label{eq:weyl-box-trace}
+\end{equation}
+Insert $R_{W,uv}=U_B R_{uv}U_B^\dagger$ and
+$\beta_W=U_B\beta U_B^\dagger$ into every factor. Adjacent
+$U_B^\dagger U_B$ cancel, and cyclicity of the trace removes the
+remaining pair at the two ends:
+\begin{align}
+ &\tr_4[\beta_W R_{W,ij}\,\beta_W R_{W,jk}\,
+          \beta_W R_{W,kl}\,\beta_W R_{W,li}]\nonumber\\
+ &\quad=\tr_4\!\left[U_B(\beta R_{ij}\,\beta R_{jk}\,
+              \beta R_{kl}\,\beta R_{li})U_B^\dagger\right]
+ =\tr_4[\beta R_{ij}\,\beta R_{jk}\,
+         \beta R_{kl}\,\beta R_{li}].
+ \label{eq:box-basis-invariance}
+\end{align}
+Both sides remain $4\times4$ traces. We use the rotated form on the
+right because the mode functions give $R$ directly. Restoring the
+branch labels, momenta, time integrals, and external Higgs lines,
+the exact individual contribution is
 \begin{align}
  \G_{ijkl}={}&-N_cg_t^4\sum_{a_i,a_j,a_k,a_l=\pm}a_i a_j a_k a_l
  \int_{-\infty}^0\prod_{v=i,j,k,l}\big[\dd\tau_v\,a(\tau_v)G_{a_v}(k_v;\tau_v)\big]
@@ -305,60 +708,44 @@ where this equation is a vector equation. The exact individual contribution is
  \beta R_{a_l a_i}(q;\tau_l,\tau_i)\right].
  \label{eq:each-box}
 \end{align}
-Here $(-\ii)^4=1$ from the four Yukawa vertices. The following table specifies
-Eq.~\eqref{eq:each-box} separately for all six diagrams, including all four line
-momenta. No unspecified permutation factor is implicit.
-\begin{center}\small
-\begin{tabular}{ccll}
-\toprule
-cycle & successive momenta & $s$-soft region & $s$-hard edges\\\midrule
-$1234$ & $q+k_1,q+k_s,q-k_4,q$ & $q\sim k_s$ & $12,34$\\
-$1243$ & $q+k_1,q+k_s,q-k_3,q$ & $q\sim k_s$ & $12,43$\\
-$1324$ & $q+k_1,q+k_1+k_3,q-k_4,q$ & none & ---\\
-$1342$ & $q+k_1,q+k_1+k_3,q-k_2,q$ & $q+k_1\sim k_s$ & $34,21$\\
-$1423$ & $q+k_1,q+k_1+k_4,q-k_3,q$ & none & ---\\
-$1432$ & $q+k_1,q+k_1+k_4,q-k_2,q$ & $q+k_1\sim k_s$ & $43,21$\\
-\bottomrule
-\end{tabular}\end{center}
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[scale=.88,every node/.style={font=\small}]
-\foreach \labels/\xx/\yy in {{1,2,3,4}/0/0,{1,2,4,3}/4/0,{1,3,2,4}/8/0,{1,3,4,2}/0/-3,{1,4,2,3}/4/-3,{1,4,3,2}/8/-3}{
- \begin{scope}[shift={(\xx,\yy)}]
-  \coordinate (a) at (0,0);\coordinate (b) at (1.6,0);
-  \coordinate (c) at (1.6,-1.3);\coordinate (d) at (0,-1.3);
-  \draw[<-] (a)--(b);\draw[<-] (b)--(c);\draw[<-] (c)--(d);\draw[<-] (d)--(a);
-  \foreach \id [count=\j] in \labels {
-   \ifcase\j\or\def\pos{a}\def\dx{-.55}\def\dy{.35}\or\def\pos{b}\def\dx{.55}\def\dy{.35}\or\def\pos{c}\def\dx{.55}\def\dy{-.35}\or\def\pos{d}\def\dx{-.55}\def\dy{-.35}\fi
-   \draw (\pos)--++(\dx,\dy) node[above] {$\id$};\fill (\pos) circle (1.5pt);
-  }
- \end{scope}
-}
-\end{tikzpicture}
-\caption{The six directed cycles in the order of the table. For the line $R_{ij}$ the charge arrow points from $j$ to $i$, opposite to
-the written matrix-cycle order. The Weyl propagator components and vertex chiralities
-are summed as in Eq.~\eqref{eq:weyl-components}. The upper right and lower
-middle cycles have no two-soft-line cut in the $s$ channel.}
-\end{figure}
-Here $\bk_s=\bk_1+\bk_2$. Notice $p_{34}=q-k_4=q+k_s+k_3$ in $1234$;
-using $q+k_3$ at finite $k_s$ would violate momentum conservation and spoil the
-first surviving signal. The $t$- and $u$-channel results follow by relabelling.
+Here $(-\ii)^4=1$ from the four Yukawa vertices.
 
-For an explicit two-Weyl component enumeration, expand the vertex matrices and propagators.
-The trace in each of the six expressions is the sum of the sixteen terms
+We can also unpack the same trace into the original two-Weyl
+components. Let $M_{uv}=\beta_W R_{W,uv}$. Each $M_{uv}$ is a
+$4\times4$ matrix made of four $2\times2$ blocks $M_{uv}^{rs}$,
+where $r,s\in\{1,2\}$ select the upper or lower Weyl block. For two
+such matrices, ordinary block multiplication and the definition of
+the trace give the simpler example
 \begin{equation}
- \mathcal S^{w}_{ijkl}=
- \tr_2[(\beta_W R_{W,ij})^{w_iw_j}(\beta_W R_{W,jk})^{w_jw_k}
- (\beta_W R_{W,kl})^{w_kw_l}(\beta_W R_{W,li})^{w_lw_i}],\qquad w_v\in\{1,2\}.
- \label{eq:weyl-components}
+ \tr_4(M_{ij}M_{jk})
+ =\sum_{r,s=1}^2\tr_2(M_{ij}^{rs}M_{jk}^{sr}).
+ \label{eq:two-block-trace}
 \end{equation}
-Each term's four-point function is Eq.~\eqref{eq:each-box} with its trace replaced
-by $\mathcal S^w$; its times, loop measure, SK signs and color factor are thus
-fully fixed. The component list is
+For the four factors of the box, the same rule gives
+\begin{align}
+ \tr_4(M_{ij}M_{jk}M_{kl}M_{li})
+ &=\sum_{w_i,w_j,w_k,w_l\in\{1,2\}}\mathcal S^w_{ijkl},\nonumber\\*
+ \mathcal S^w_{ijkl}
+ &=\tr_2[M_{ij}^{w_iw_j}M_{jk}^{w_jw_k}
+              M_{kl}^{w_kw_l}M_{li}^{w_lw_i}].
+ \label{eq:weyl-components}
+\end{align}
+Each $w$ label selects an upper or lower block index at one vertex;
+adjacent labels select the block of the connecting $M$ factor. They
+are neither SK branch labels nor helicities. For example,
+$w_iw_jw_kw_l=1112$
+selects blocks $11,11,12,21$. There are $2^4=16$ choices. The
+$\tr_2$ still sums the two spinor components inside each selected
+block; summing all 16 results restores the original $\tr_4$.
+The table lists blocks of $M=\beta_W R_W$, not blocks of $R_W$.
+Because $\beta_W$ exchanges the two block rows, for example
+$M_{ij}^{11}=(R_{W,ij})^{21}$. Each term uses exactly the time
+integrals, SK signs, color factor, and line momenta of
+Eq.~\eqref{eq:each-box}. The complete block list is
 \begin{center}\small
 \begin{tabular}{cc@{\qquad}cc}
 \toprule
-word & successive blocks & word & successive blocks\\\midrule
+word & successive $M$ blocks & word & successive $M$ blocks\\\midrule
 1111 & 11,11,11,11 & 2111 & 21,11,11,12\\
 1112 & 11,11,12,21 & 2112 & 21,11,12,22\\
 1121 & 11,12,21,11 & 2121 & 21,12,21,12\\
@@ -369,9 +756,55 @@ word & successive blocks & word & successive blocks\\\midrule
 1222 & 12,22,22,21 & 2222 & 22,22,22,22\\\bottomrule
 \end{tabular}\end{center}
 These are $96$ algebraic Weyl terms, not $96$ distinct box topologies.
-The four $s$-cut cycles contain $64$ of them. Keeping the matrix trace performs
+Keeping the matrix trace performs
 all these component contractions at once and avoids epsilon-index sign ambiguities.
 
+Figure~\ref{fig:master-box} shows the representative $1234$ box. Fixing
+leg 1, the other five labelled cycles follow by permuting the labels
+$2,3,4$ in Eq.~\eqref{eq:each-box}. This substitution acts on the external
+momenta, times, and SK labels together; the routing in
+Eq.~\eqref{eq:routing} then supplies all four internal momenta. Thus
+the full box contribution is
+\begin{equation}
+ \G_{\rm box}=\sum_{(j,k,l)\in\operatorname{Perm}(2,3,4)}\G_{1jkl}.
+ \label{eq:box-permutations}
+\end{equation}
+The sum has six terms, with no additional permutation factor.
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+ \coordinate (a) at (0,0);\coordinate (b) at (2.5,0);
+ \coordinate (c) at (2.5,-1.8);\coordinate (d) at (0,-1.8);
+ \draw[->] (a)--node[above] {$\bq$} (b);
+ \draw[->] (b)--node[right] {$\bq-\bk_4$} (c);
+ \draw[->] (c)--node[below] {$\bq+\bk_s$} (d);
+ \draw[->] (d)--node[left] {$\bq+\bk_1$} (a);
+ \draw (a)--++(-.65,.45) node[above] {$\bk_1$};
+ \draw (b)--++(.65,.45) node[above] {$\bk_4$};
+ \draw (c)--++(.65,-.45) node[below] {$\bk_3$};
+ \draw (d)--++(-.65,-.45) node[below] {$\bk_2$};
+ \foreach \v in {a,b,c,d} \fill (\v) circle (1.5pt);
+\end{tikzpicture}
+\caption{Representative $1234$ box, read counterclockwise from the
+upper-left vertex, with $\bk_s=\bk_1+\bk_2$.
+For $R_{ij}$ the charge arrow points from $j$ to $i$, opposite to the
+written matrix-cycle order. Relabelling the external legs generates the
+other five contributions.}
+\label{fig:master-box}
+\end{figure}
+For $\bk_s=\bk_1+\bk_2\to0$, the representative box has two soft
+lines, $\bq$ and $\bq+\bk_s$, when $\bq\sim\bk_s$. The relabelled
+cycles $1234$ and $1243$ have this same soft region; $1342$ and
+$1432$ have two soft lines when $\bq+\bk_1\sim\bk_s$. The remaining
+$1324$ and $1423$ cycles have no two-soft-line cut in the $s$ channel.
+Consequently the $s$-channel clock term is the sum of the four listed
+cut cycles, including their $4\times16=64$ Weyl-block terms. In the
+representative box $p_{34}=q-k_4=q+k_s+k_3$; replacing it by $q+k_3$
+before taking the limit would spoil momentum conservation and the first
+surviving signal. The $t$- and $u$-channel results follow by relabelling.
+
+
+\FloatBarrier
 \subsection{Collapsed limit and Bose-symmetry cancellation}
 The collapsed kinematics are best organized symmetrically:
 \begin{align}
@@ -386,12 +819,12 @@ $k_L=k_{12}/2$, $k_R=k_{34}/2$, where $k_{ij}=k_i+k_j$ is a sum of magnitudes.
 
 For the $+$ clock branch in $1234$, the two projected hard matrices are
 \begin{align}
- V_L&=\begin{pmatrix}-\dfrac{\ii t_1\bs\cdot\bq}{1+2\ii\mu}&\one\end{pmatrix}\beta R_{12}(\bm k_L+\bm\ell;t_1,t_2)\begin{pmatrix}\one\\-\dfrac{\ii t_2\bs\cdot\bm K}{1+2\ii\mu}\end{pmatrix},\\
- V_R&=\begin{pmatrix}-\dfrac{\ii t_3\bs\cdot\bm K}{1+2\ii\mu}&\one\end{pmatrix}\beta R_{34}(\bm k_R+\bm\ell;t_3,t_4)\begin{pmatrix}\one\\-\dfrac{\ii t_4\bs\cdot\bq}{1+2\ii\mu}\end{pmatrix}.
+ V_L&=\begin{pmatrix}\dfrac{\ii\tau_1\bs\cdot\bq}{1+2\ii\mu}&\one\end{pmatrix}\beta R_{12}(\bm k_L+\bm\ell;\tau_1,\tau_2)\begin{pmatrix}\one\\\dfrac{\ii\tau_2\bs\cdot\bm K}{1+2\ii\mu}\end{pmatrix},\\
+ V_R&=\begin{pmatrix}\dfrac{\ii\tau_3\bs\cdot\bm K}{1+2\ii\mu}&\one\end{pmatrix}\beta R_{34}(\bm k_R+\bm\ell;\tau_3,\tau_4)\begin{pmatrix}\one\\\dfrac{\ii\tau_4\bs\cdot\bq}{1+2\ii\mu}\end{pmatrix}.
 \end{align}
 After the Weyl-component sum the entire spin contraction is
 \begin{equation}
- c^2(qK)^{2\ii\mu}\prod_v t_v^{\ii\mu}
+ c^2(qK)^{2\ii\mu}\prod_v(-\tau_v)^{\ii\mu}
  \tr_2[V_L\sigma_K V_R\sigma_q].
  \label{eq:spin-cut}
 \end{equation}
@@ -419,7 +852,9 @@ both ends of the cut.
 \section{Scalar integrals for the hard lines and the soft bubble}
 \subsection{Left and right hard subgraphs}
 We now calculate the first order of each Bose-symmetrized hard block.
-Write $x=k_Lt_1$, $y=k_Lt_2$ and $r=p/k_L$. We need only two
+Write $x=-k_L\tau_1$, $y=-k_L\tau_2$ and $r=p/k_L$, where
+$p=|\bm p|$ denotes the hard-line momentum magnitude in this section.
+Also write $\sigma_p=\bs\cdot\hat{\bm p}$. We need only two
 SK-summed scalar seeds, corresponding to the $21$ and $11$ blocks of $R$:
 \begin{align}
  \mathcal H_{IJ}(\alpha,\beta;r)={}&\sum_{a,b=\pm}ab\int_0^\infty\dd x\dd y\,
@@ -430,19 +865,19 @@ SK-summed scalar seeds, corresponding to the $21$ and $11$ blocks of $R$:
 \end{align}
 ``Radial'' means the coefficient of $\sigma_p$ in $R_{21}$ or of $\one$ in
 $R_{11}$; their mode arguments are $rx,ry$. Hence these are scalar integrals,
-with the spin structure already removed. Their evaluated series is given
+with the spin structure already removed. Their finite evaluation is given
 immediately below in Sec.~\ref{sec:seed-eval}.
 
 The useful exact reversal identities are
 \begin{equation}
- R_{21;ab}(t_1,t_2)=R_{21;ba}(t_2,t_1),\qquad
- R_{11;ab}(t_1,t_2)=-R_{22;ba}(t_2,t_1).
+ R_{21;ab}(\tau_1,\tau_2)=R_{21;ba}(\tau_2,\tau_1),\qquad
+ R_{11;ab}(\tau_1,\tau_2)=-R_{22;ba}(\tau_2,\tau_1).
  \label{eq:reverse}
 \end{equation}
 For one left ordering, expanding the endpoint projectors gives
 \begin{equation}
- V_L=-R_{21}-\frac{\ii t_1}{1+2\ii\mu}\bs\cdot\bq\,R_{11}
-                  +\frac{\ii t_2}{1+2\ii\mu}R_{22}\bs\cdot\bm K+O(q^2,k_s^2).
+ V_L=-R_{21}+\frac{\ii\tau_1}{1+2\ii\mu}\bs\cdot\bq\,R_{11}
+                  -\frac{\ii\tau_2}{1+2\ii\mu}R_{22}\bs\cdot\bm K+O(q^2,k_s^2).
  \label{eq:vertex-expand}
 \end{equation}
 All entries here are unapproximated hard SK contractions before expansion of their
@@ -450,8 +885,44 @@ momentum $\bm p=\bm k_L+\bm\ell$. The other ordering has
 $\bm p=-\bm k_L+\bm\ell$. The derivative of the hard line and the descendants
 of both soft endpoints must both be kept. Eq.~\eqref{eq:reverse} shows that the
 first-order difference between the two external magnitudes gives zero in the
-sum: the integrated $R_{21}$ block is symmetric in those energies. Also $\int t_2R_{22}=-\int t_1R_{11}$
+sum: the integrated $R_{21}$ block is symmetric in those energies. Also $\int\tau_2R_{22}=-\int\tau_1R_{11}$
 at equal external magnitudes.
+
+The intermediate momentum expansion makes the two terms in
+Eq.~\eqref{eq:hard-result} explicit. Write
+$h(r)=\mathcal H_{21}(\ii\mu,\ii\mu;r)$ and
+$L=\bm n_L\cdot\bm\ell$. For the ordering $\varepsilon=\pm1$,
+\begin{align}
+ |\varepsilon k_L\bm n_L+\bm\ell|
+ &=k_L+\varepsilon L+O(\ell^2/k_L),\\
+ \bs\cdot\widehat{\varepsilon k_L\bm n_L+\bm\ell}
+ &=\varepsilon\bs\cdot\bm n_L
+ +\frac{\bs\cdot(\bm\ell-\bm n_LL)}{k_L}
+ +O(\ell^2/k_L^2),\\
+ h\!\left(\frac{|\varepsilon k_L\bm n_L+\bm\ell|}{k_L}\right)
+ &=h(1)+\frac{\varepsilon L}{k_L}h'(1)
+ +O(\ell^2/k_L^2).
+ \label{eq:hard-taylor}
+\end{align}
+The $-R_{21}$ terms of the two orderings therefore add to
+\begin{equation}
+ -\frac{2}{k_L}\bs\cdot\big[
+ h(1)\bm\ell+(h'(1)-h(1))\bm n_LL\big]
+ +O(\ell^2/k_L^2).
+ \label{eq:hard-derivative-step}
+\end{equation}
+The $R_{11}$ and $R_{22}$ descendants in
+Eq.~\eqref{eq:vertex-expand} contribute
+$-4\ii\mathcal H_{11}(1+\ii\mu,\ii\mu;1)
+\bs\cdot\bm\ell/[k_L(1+2\ii\mu)]$.
+The common factor $k_L^{-2\ii\mu}$ comes from
+$(-\tau_1)^{\ii\mu}(-\tau_2)^{\ii\mu}$ after
+$x=-k_L\tau_1$, $y=-k_L\tau_2$.
+Finally, the external magnitudes are
+$|\bm k_L\pm\bk_s/2|=k_L\pm\bm n_L\cdot\bk_s/2+O(k_s^2/k_L)$.
+Their first-order shifts cancel under the two orderings by the
+time-reversal identity in Eq.~\eqref{eq:reverse}; equal external energies
+are imposed only after this sum.
 
 Strip $H^2/(4k_1^3k_2^3)$ from the left two external lines and vertices. Its
 integrated projected matrix, summed over its two Higgs orderings, is
@@ -478,83 +949,250 @@ $P$-wave fermion-pair effect. It adds two powers of $k_s$ to the bubble scaling.
 
 \subsection{Evaluation of the scalar hard seeds}
 \label{sec:seed-eval}
-We give an explicit representation so the answer is a function of mass, rather
-than a definition by two unevaluated time integrations. The construction uses only
-scalar Hankel functions and ordered scalar Laplace integrals. Its analytic
-continuation is part of the definition, just as for scalar double-folded seeds.
-
-A mode $Z\in\{F,G,\bar F,\bar G\}$ has the expansion
+\paragraph{Relation to the published Hankel scalar seed.}
+The hard time integrals can also be reduced to the scalar seed of
+Ref.~\cite{qin-seed}, provided its mass index is analytically continued.
+This gives a direct route to the literature's single- and double-folded
+formulae. Set
 \begin{equation}
- Z(rx)=\sum_{\eta=\pm1}\sum_{n=0}^\infty z_{\eta n}(rx)^{\lambda_{\eta n}},\qquad
- \lambda_{\eta n}=\tfrac12+\eta\nu+2n.
- \label{eq:mode-series}
+ \lambda=\mu-\frac{\ii}{2},\qquad \rho=\ii\lambda=\frac12+\ii\mu,
+ \qquad x=-k_L\tau_1,\quad y=-k_L\tau_2,\quad r=p/k_L.
 \end{equation}
-For $F$ use $(N,\nu)=(\sqrt\pi e^{\pi\mu/2}/2,1/2-\ii\mu)$;
-for $G$ use $(\sqrt\pi e^{-\pi\mu/2}/2,1/2+\ii\mu)$. Their coefficients are
+Define a dimensionless scalar SK kernel $S_{ab}^{(\lambda)}$ from the two
+Wightman functions
 \begin{align}
- z_{-n}&=\frac{N}{\ii\sin\pi\nu}
- \frac{(-1)^n2^{\nu-2n}}{n!\Gamma(n+1-\nu)},\\
- z_{+n}&=-\frac{Ne^{-\ii\pi\nu}}{\ii\sin\pi\nu}
- \frac{(-1)^n2^{-\nu-2n}}{n!\Gamma(n+1+\nu)}.
- \label{eq:mode-coeff}
+ S^{>}(r;x,y)&=\frac\pi4 e^{-\pi\lambda}(xy)^{3/2}
+ H^{(1)}_{\rho}(rx)H^{(2)}_{-\rho}(ry),\\
+ S^{<}(r;x,y)&=\frac\pi4 e^{-\pi\lambda}(xy)^{3/2}
+ H^{(2)}_{-\rho}(rx)H^{(1)}_{\rho}(ry),
+ \label{eq:scalar-seed-kernel}
 \end{align}
-For a barred mode conjugate both coefficients and exponents; $\mu$ is real.
-These formulas follow immediately from
-$H_\nu^{(1)}=(J_{-\nu}-e^{-\ii\pi\nu}J_\nu)/(\ii\sin\pi\nu)$.
+with the same SK theta-function ordering as Eq.~\eqref{eq:sk}.
+Using $H_{-\rho}^{(2)}=e^{-\ii\pi\rho}H_\rho^{(2)}$ and
+$N_FN_G=\pi/4$ for the mode prefactors in Eq.~\eqref{eq:modes}, one finds
+the \emph{exact} radial identities, for every branch pair,
+\begin{equation}
+ [R_{21}(r;x,y)]^{\rm radial}_{ab}
+ =\frac{r}{xy}S_{ab}^{(\lambda)}(r;x,y),\qquad
+ [R_{11}(r;x,y)]^{\rm radial}_{ab}
+ =\frac1r\left(-\ii\partial_x+\frac\mu x\right)
+ [R_{21}(r;x,y)]^{\rm radial}_{ab}.
+ \label{eq:fermion-scalar-seed-map}
+\end{equation}
+The $1/r$ in the second identity follows from differentiating a mode
+with argument $rx$. Differentiating the SK theta functions introduces
+no delta-function term: the two radial $R_{21}$ Wightman functions agree
+at $x=y$. Although $\lambda$ is complex, Eq.~\eqref{eq:scalar-seed-kernel}
+is an analytic scalar kernel; no physical scalar with complex mass is
+being introduced.
 
-For a monomial $x^{A-1}y^{B-1}$ define two evaluated kernels,
-\begin{align}
- K_{\rm all}(A,B;s,t)&=\frac{\Gamma(A)\Gamma(B)}{s^A t^B},\\
- K_{<}(A,B;s,t)&=\frac{\Gamma(A+B)}{A\,t^{A+B}}
- {}_2F_1(A+B,A;A+1;-s/t),\\
- K_{>}(A,B;s,t)&=K_{<}(B,A;t,s).
- \label{eq:Laplace}
-\end{align}
-The $<$ kernel integrates the region $x<y$, which is $\tau_1>\tau_2$.
-It follows by setting $x=zy$, $0<z<1$, and doing the $y$ Gamma integral.
+To see precisely which published seeds are needed, let
+\begin{equation}
+ J^{p,q}_{ab}(r)=\int_0^\infty\dd x\dd y\,
+ x^p y^q e^{-\ii ax-\ii by}S_{ab}^{(\lambda)}(r;x,y).
+\end{equation}
+In the units $H=1$ of Ref.~\cite{qin-seed}, its branch-resolved Hankel
+seed $\mathscr I_{ab}^{p,q}$ obeys the exact normalization map
+\begin{equation}
+ J^{p,q}_{ab}(r)=-ab\,r^{-5-p-q}
+ \mathscr I_{ab}^{p,q}(u,u),\qquad
+ u=\frac{2r}{1+r}.
+ \label{eq:seed-normalization}
+\end{equation}
+The reference includes $-ab$ in the seed definition; neither that sign
+nor the power of $r$ may be omitted. For
+$p=\alpha-2$, $q=\beta-2$, Eq.~\eqref{eq:hard-def} becomes
+\begin{equation}
+ \mathcal H_{21}(\alpha,\beta;r)
+ =r\sum_{a,b=\pm}ab\big[
+ J^{p,q}_{ab}+\ii aJ^{p+1,q}_{ab}
+ +\ii bJ^{p,q+1}_{ab}-abJ^{p+1,q+1}_{ab}\big].
+ \label{eq:published-seed-map}
+\end{equation}
+The four terms correspond to the integer time-power shifts generated by
+$(1+\ii ax)(1+\ii by)$. The SK indices stay explicit until their
+$a,b$ weights are combined.
 
-For two specified modes $Z,W$ define the \emph{explicit double series}
+The remaining hard coefficient can also be expressed without a new
+time integral. Put $\mathscr S_{ab}^{p,q}=\mathscr I_{ab}^{p,q}(1,1)$,
+$p_0=-2+\ii\mu+\delta$, and use one common endpoint regulator
+$\delta$ in all seed powers. Equation~\eqref{eq:published-seed-map} gives
+\begin{equation}
+ \mathcal H_{21}(\ii\mu+\delta,\ii\mu+\delta;1)
+ =-\sum_{a,b=\pm}\sum_{j,l=0}^1
+ (\ii a)^j(\ii b)^l\mathscr S_{ab}^{p_0+j,p_0+l}.
+ \label{eq:H21-literature}
+\end{equation}
+Integrating the second relation of
+Eq.~\eqref{eq:fermion-scalar-seed-map} by parts yields
 \begin{align}
- \mathcal L^{ZW}_{ab,\Omega}(\alpha,\beta;r)
- =\FP_{\delta\to0}\,\operatorname{AC}_{\epsilon\to0^+}
- \sum_{\eta,n;\zeta,m}z_{\eta n}w_{\zeta m}r^{\lambda_{\eta n}+\lambda_{\zeta m}}
- \sum_{j,l=0}^1(\ii a)^j(\ii b)^l\\[-2mm]
- {}\times K_{\Omega}(\alpha+\delta+\lambda_{\eta n}+j,
- \beta+\delta+\lambda_{\zeta m}+l;\epsilon+\ii a,\epsilon+\ii b),
- \qquad \Omega\in\{{\rm all},<,>\}.
- \label{eq:Lseries}
+ \mathcal H_{11}(1+\ii\mu+\delta,\ii\mu+\delta;1)
+ ={}&\ii\delta\,
+ \mathcal H_{21}(\ii\mu+\delta,\ii\mu+\delta;1)\nonumber\\
+ &-\ii\sum_{a,b=\pm}\left[
+ \mathscr S_{ab}^{\ii\mu+\delta,p_0}
+ +\ii b\,\mathscr S_{ab}^{\ii\mu+\delta,p_0+1}\right].
+ \label{eq:H11-literature}
 \end{align}
-Here AC means analytic continuation of the \emph{summed} function from large
-positive Laplace damping (where termwise integration converges) to the displayed
-BD boundary value. One must not insert $\epsilon=0$ into a raw power-series
-truncation outside its convergence domain. The endpoint regulator $\delta$ is
-common to all terms. In the following combinations both regulator operations
-are performed \emph{after the full SK sum}. This specifies the finite part
-unambiguously and preserves cancellations. For numerical use one may continue
-in the Laplace variables in steps, or use the equivalent convergent scalar
-Hankel contours; no additional frequency/PV integrations are involved.
+The $\ii\delta\mathcal H_{21}$ term is retained at finite regulator;
+the complete $\mathcal H_{21}$ will be finite, so this term vanishes
+in the final limit. Individual SK terms do have regulator poles.
+The integration-by-parts boundary term at
+$x=0$ cancels only in the complete SK sum, since for $x<y$ the two
+branches with the same $b$ have the same Wightman function.
 
-The complete SK-summed off-diagonal and diagonal hard seeds are respectively
+The hard-momentum derivative in $\mathcal P_2$ follows from the
+published scalar bootstrap equation without differentiating a time
+integral. At $u_1=u_2=1$, the coefficient of its second derivative
+vanishes. Define
 \begin{align}
- \mathcal H_{21}(\alpha,\beta;r)={}&
- \mathcal L^{G\bar F}_{++,<}+\mathcal L^{\bar F G}_{++,>}
- +\mathcal L^{G\bar F}_{--,>}+\mathcal L^{\bar F G}_{--,<}
- -\mathcal L^{\bar F G}_{+-,\rm all}-\mathcal L^{G\bar F}_{-+,\rm all},\\
- \mathcal H_{11}(\alpha,\beta;r)={}&
- \mathcal L^{F\bar F}_{++,<}-\mathcal L^{\bar G G}_{++,>}
- +\mathcal L^{F\bar F}_{--,>}-\mathcal L^{\bar G G}_{--,<}
- +\mathcal L^{\bar G G}_{+-,\rm all}-\mathcal L^{F\bar F}_{-+,\rm all}.
- \label{eq:hard-series-combo}
+ T_{ab}^{p,q}&=\delta_{ab}\,
+ e^{-\ii a\pi(p+q)/2}2^{-5-p-q}\Gamma(5+p+q),\\
+ \mathscr D_{ab}^{p,q}&=\frac12\sum_{w=p,q}
+ \frac{\lambda^2+(w+5/2)^2}{w+3}\,\mathscr S_{ab}^{p,q}
+ -\frac12\left(\frac1{p+3}+\frac1{q+3}\right)T_{ab}^{p,q}.
+ \label{eq:seed-bootstrap-derivative}
 \end{align}
-All terms on a line share $(\alpha,\beta;r)$. Inserting these two series into
-Eq.~\eqref{eq:hard-result} evaluates $\mathcal P_1(\mu),\mathcal P_2(\mu)$.
-For $\mathcal P_2$, multiply each term of the
-$\mathcal H_{21}(\ii\mu,\ii\mu;1)$ series by
-$\lambda_{\eta n}+\lambda_{\zeta m}-1$; no numerical differentiation is needed.
-The derivative holds the external Higgs energies fixed.
-The regulator limits are taken after the complete SK sum. These are
-Gamma--${}_2F_1$ expressions for the two hard coefficients, rather than
-unevaluated time integrals; a finite Gamma-only reduction is not assumed.
+Since $\dd u/\dd r|_{r=1}=1/2$, $\mathscr D_{ab}^{p,q}$ is precisely
+$\dd\mathscr I_{ab}^{p,q}(u(r),u(r))/\dd r|_{r=1}$.
+Combining this with the explicit $r^{-5-p-q}$ in
+Eq.~\eqref{eq:seed-normalization} gives
+\begin{equation}
+ \mathcal P_2=-\FP_{\delta\to0}
+ \sum_{a,b=\pm}\sum_{j,l=0}^1(\ii a)^j(\ii b)^l
+ \left[\mathscr D_{ab}^{p_0+j,p_0+l}
+ -(5+2p_0+j+l)\mathscr S_{ab}^{p_0+j,p_0+l}\right].
+ \label{eq:P2-literature}
+\end{equation}
+Equations~\eqref{eq:H21-literature}--\eqref{eq:P2-literature}, with
+$\mathcal P_1$ from Eq.~\eqref{eq:hard-result}, complete both hard
+subgraphs in terms of the scalar seed values of
+Ref.~\cite{qin-seed}; the right subgraph uses the same two functions.
+\paragraph{Regularization and a finite evaluation.}
+There is an essential normalization in Eq.~(92) of
+Ref.~\cite{qin-seed}: its hypergeometric function is regularized,
+\begin{equation}
+ {}_3\widetilde F_2(a,b,c;d,e;1)
+ =\frac{{}_3F_2(a,b,c;d,e;1)}{\Gamma(d)\Gamma(e)}.
+ \label{eq:regularized-hyper}
+\end{equation}
+The earlier numerical implementation omitted these two Gamma factors.
+Consequently its apparent regulator-path instability was not evidence
+for an obstruction to the scalar-seed map. A real-index conjugation
+check alone cannot detect this error. As an independent normalization
+check, the conformal scalar $\lambda=-\ii/2$ has
+$S^>(1;x,y)=xy\,e^{\ii(x-y)}/2$. Direct elementary time integration gives
+$\mathscr S_{++}^{0,0}=\mathscr S_{--}^{0,0}=-3/16$ and
+$\mathscr S_{+-}^{0,0}=\mathscr S_{-+}^{0,0}=1/32$; the corrected
+implementation reproduces these values and their unequal-power generalization.
+
+The scalar kernel is invariant under $\lambda\to-\lambda$, by the
+Hankel order-reflection identities. In each equal-SK seed choose the
+sign of $\lambda$ so that $a\ii\lambda=1/2+\ii\mu$. Its ordinary
+${}_3F_2(1)$ then has convergence balance $1+\ii\mu$, whose real
+part is positive. This is an exact change of representation and needs
+no additional mass-index regulator.
+
+For this subsection only set $z=\ii\mu$, and define the single symmetric
+family
+\begin{equation}
+ \mathcal Q_{jl}=\frac{2^{-1-2z-j-l}\Gamma(1+2z+j+l)}
+ {(1+2z+j)(1+2z+l)}
+ {}_3F_2\!\left(\begin{matrix}1+2z+j+l,\ 1+z,\ 1\\
+ 2+2z+j,\ 2+2z+l\end{matrix};1\right).
+ \label{eq:finite-Q}
+\end{equation}
+Only $\mathcal Q_{00},\mathcal Q_{01},\mathcal Q_{11},
+\mathcal Q_{02},\mathcal Q_{12}$ are needed. Also abbreviate the
+finite endpoint contribution by
+\begin{equation}
+ \mathcal E=\pi^2 2^{-1-2z}
+ \frac{\Gamma(1+2z)^2}{\Gamma(1+z)^2}.
+ \label{eq:endpoint-finite}
+\end{equation}
+The fully summed hard seeds and momentum derivative are
+\begin{align}
+ \mathcal H_{21}(z,z;1)
+ &=2\cosh(\pi\mu)(\mathcal Q_{00}+2\mathcal Q_{01}+\mathcal Q_{11})
+ -\mathcal E,\nonumber\\
+ \mathcal H_{11}(1+z,z;1)
+ &=-2\ii\cosh(\pi\mu)(\mathcal Q_{02}+\mathcal Q_{12}),
+ \label{eq:finite-hard-seeds}\\
+ \mathcal P_2
+ &=2\cosh(\pi\mu)\sum_{j,l=0}^1
+ \left[\frac{j(1+2z+j)}{2(1+z+j)}
+ +\frac{l(1+2z+l)}{2(1+z+l)}-(1+2z+j+l)\right]\mathcal Q_{jl}
+ \nonumber\\
+ &\quad +(1+2z)\mathcal E
+ +2^{-1-2z}\cosh(\pi\mu)\Gamma(1+2z)
+ \frac{4+5z+2z^2}{1+z}.
+ \label{eq:finite-P2}
+\end{align}
+Together with $\mathcal P_1$ in Eq.~\eqref{eq:hard-result}, these are
+finite, convergent special-function expressions for the complete hard
+coefficients. No raw mode-power-series truncation or numerical
+regulator extrapolation is required for the oscillatory signal.
+
+Here is the endpoint cancellation leading to these expressions.
+For $p_j=-2+z+\delta+j$, write the Gamma product in the opposite-SK
+seed as
+\begin{equation}
+ C_{jl}(\delta)=
+ \frac{\Gamma(\delta+j)\Gamma(1+2z+\delta+j)
+       \Gamma(\delta+l)\Gamma(1+2z+\delta+l)}
+ {\Gamma(1+z+\delta+j)\Gamma(1+z+\delta+l)}.
+\end{equation}
+After the external-mode factors $(\ii a)^j(\ii b)^l$ and the SK
+branches are summed, its contribution to $\mathcal H_{21}$ is
+$2\,2^{-1-2z-2\delta-j-l}[\cos(\pi\delta)-1]C_{jl}(\delta)$.
+Only $j=l=0$ has a double pole; therefore
+\begin{equation}
+ \lim_{\delta\to0}2[\cos(\pi\delta)-1]C_{00}(\delta)
+ =-\pi^2\frac{\Gamma(1+2z)^2}{\Gamma(1+z)^2}.
+\end{equation}
+This is precisely $-\mathcal E$ after restoring its power of two.
+Discarding the poles branch by branch would lose this finite term.
+The remaining regularized-hypergeometric pieces give
+$2\cosh(\pi\mu)\mathcal Q_{jl}$.
+The integration-by-parts insertion in Eq.~\eqref{eq:H11-literature}
+replaces $j=0,1$ by $j=2$ and contributes $-\ii$ times the same
+pieces; it has no double-pole remainder.
+Finally, substituting $p_j$ in
+Eq.~\eqref{eq:seed-bootstrap-derivative} gives the bracket in
+Eq.~\eqref{eq:finite-P2}. The last term in that equation is the
+summed bootstrap source, and $(1+2z)\mathcal E$ is the derivative's
+endpoint remainder. These steps preserve all factors of $r$.
+
+The late-time cancellation can also be seen before integration.
+With $E_a(x)=(1+\ii ax)e^{-\ii ax}$, the SK sum for $x<y$ is
+\begin{equation}
+ \sum_{a,b}ab E_a(x)E_b(y)R_{ab}(x,y)
+ =[E_+(x)-E_-(x)]
+ [E_+(y)R^>(x,y)-E_-(y)R^<(x,y)].
+ \label{eq:sk-endpoint-cancel}
+\end{equation}
+Since $E_+(x)-E_-(x)=-2\ii x^3/3+O(x^5)$, the common late-time
+endpoint is integrable in the hard blocks used here. The early-time
+BD prescription is still necessary; this identity does not justify
+integrating undamped oscillations numerically on a truncated interval.
+
+For reference, direct evaluation of Eqs.~\eqref{eq:finite-hard-seeds}
+and \eqref{eq:finite-P2} gives
+\begin{center}
+\begin{tabular}{rcc}
+\toprule
+$\mu$ & $\mathcal P_1$ & $\mathcal P_2$\\\midrule
+$0.20$ & $-1.030411081-1.109020094\ii$ & $3.163771501+0.704629904\ii$\\
+$0.73$ & $-1.598130708-2.346219694\ii$ & $1.923885009+1.958596831\ii$\\
+$1.00$ & $-1.325125325-2.665004109\ii$ & $1.137292037+2.131408832\ii$\\
+$2.00$ & $1.901463897-2.535666708\ii$ & $-1.119241948+1.383844867\ii$\\
+$5.00$ & $3.921820606+1.458261456\ii$ & $-2.047325876-0.690483918\ii$\\\bottomrule
+\end{tabular}
+\end{center}
+The corrected branch-resolved calculation converges to these values
+with a common endpoint regulator. The two representations are checked
+in \texttt{checks/weyl\_seed\_checks.py}; the physical coefficients
+are implemented in \texttt{checks/weyl\_scalar\_seed.py}.
 
 \subsection{Soft bubble integral}
 The spin trace of Eq.~\eqref{eq:pauli} leaves a polynomial numerator divided
@@ -620,6 +1258,12 @@ The $\mathcal P_1\mathcal P_2$ and $\mathcal P_2^2$ terms are evaluated by
 the same two steps. Their fully reduced coefficients are displayed directly
 in Eq.~\eqref{eq:compact-coefficients}, without introducing separate symbols
 for each tensor moment.
+The azimuthal average introduces only the five angle monomials
+$1$, $c_1^2+c_3^2$, $c_1^2c_3^2$,
+$\sin(2\theta_1)\sin(2\theta_3)\cos\phi_3$, and
+$\sin^2\theta_1\sin^2\theta_3\cos(2\phi_3)$, where
+$c_i=\cos\theta_i$. Applying Eq.~\eqref{eq:bubble-reduction} to their
+coefficients reproduces Eq.~\eqref{eq:compact-coefficients}.
 
 \section{Nonlocal signal}
 \subsection{Oscillatory signal and angular coefficients}
@@ -655,6 +1299,13 @@ soft-mode coefficients $c^2$, the factor $4$ from the two Bose-summed hard block
  \nu=\tfrac12-\ii\mu.
  \label{eq:bubble-normalization}
 \end{equation}
+In particular, the natural hard scaling is
+$(k_s^2/(k_Lk_R))^{2\ii\mu}$. Since
+$4k_{12}k_{34}=16k_Lk_R$ at this order, using the vector note's
+ratio transfers $16^{2\ii\mu}$ into the coefficient. Thus
+$8c^2\,16^{2\ii\mu}
+=2^{1+4\ii\mu}\Gamma(1/2-\ii\mu)^4/\pi^2$, which fixes both
+the phase and the overall factor in Eq.~\eqref{eq:bubble-normalization}.
 Combining the bubble with the two hard coefficients of Eq.~\eqref{eq:hard-result}
 gives the final mass dependence:
 \begin{align}
@@ -679,6 +1330,13 @@ analytic contact terms are not displayed.
 Taking opposite soft branches gives a nonoscillatory $k_s^3$ term. The hard
 blocks are $R_{11}$ and $-R_{22}$; Eq.~\eqref{eq:reverse} makes their integrated
 values equal to the real seed $\mathcal H_{11}(-\ii\mu,+\ii\mu;1)$.
+The leading soft matrices are now opposite triangular blocks, so they
+project the diagonal hard blocks. Each hard end therefore has a Bose-even
+zeroth-order term. There are two soft assignments and two Higgs orderings
+at each end, giving $2\times2\times2$ contributions; the spin trace
+adds $2\hat q\cdot\hat K$. The soft coefficients give
+$|c|^2=1/(4\cosh^2\pi\mu)$. These factors fix the normalization of
+the mixed term independently of the oscillatory branch.
 The scalar bubble in this case is
 \begin{equation}
  \int\frac{\dd^3q}{(2\pi)^3}(q^2)^{-\ii\mu}(K^2)^{\ii\mu}
@@ -698,18 +1356,57 @@ It is independent of angles at this order. Equation~\eqref{eq:mixed} is the
 leading nonoscillatory nonanalytic term, whereas Eq.~\eqref{eq:final} is the
 leading mass-dependent clock signal. At $\mu=0$ the separated branches coalesce;
 the limit must be taken after combining the relevant terms.
+Here $k_s^3=(\bk_s^2)^{3/2}$ is nonanalytic as a function of the
+soft momentum components, even though it has no mass-dependent oscillation.
+It cannot be discarded as a polynomial contact term.
+
+For evaluation of the remaining mixed seed, the same radial identity
+and integration by parts give the general formula
+\begin{align}
+ \mathcal H_{11}(\alpha,\beta;1)
+ ={}&[\ii(\alpha-1)+\mu]\mathcal H_{21}(\alpha-1,\beta;1)
+ \nonumber\\
+ &-\ii\sum_{a,b=\pm}\left[
+ \mathscr S_{ab}^{\alpha-1,\beta-2}
+ +\ii b\,\mathscr S_{ab}^{\alpha-1,\beta-1}\right].
+ \label{eq:mixed-seed-eval}
+\end{align}
+Set $\alpha=-\ii\mu+\delta$, $\beta=\ii\mu+\delta$, perform the
+complete sum, and then take $\delta\to0$ using the corrected
+regularized seeds. The conjugation relation
+$\mathcal H_{11}(\alpha,\beta;1)^*
+=\mathcal H_{11}(\beta^*,\alpha^*;1)$ proves the mixed seed is real.
+The code evaluates this limit by fourth-order extrapolation, with
+step-size and precision checks; the clock coefficients above instead
+use the analytic limit.
+For example,
+$\mathcal H_{11}(-0.73\ii,+0.73\ii;1)=-1.388500280198814$;
+halving the extrapolation step changes this value by less than
+$2\times10^{-15}$.
 
 \paragraph{Checks and scope.}
 The accompanying scripts check the mode equations, normalization, signed SK
 contractions, soft descendants, spin traces, scalar Gamma reductions, and hard
-momentum expansion. A numerical scan of the analytically continued hard seeds
-has not been performed. The calculation assumes constant mass in exact de Sitter,
-a massless external Higgs and zero chemical potential. The supplied gauge-boson
-note provides the scalar-factorization workflow and angular convention; the
-top-quark note provides $g_t,\mu,G_a$. The loop factorization follows
-Ref.~\cite{qin}. No Majorana-field decomposition is used.
+momentum expansion. The hard-seed checks include independent conformal-scalar
+time integrals, the exact finite SK sum, regulator convergence, and precision
+stability. The former hard-seed normalization error is corrected by
+Eq.~\eqref{eq:regularized-hyper}; the scaling, diagram multiplicities and
+five angular coefficients retain their displayed form.
+These checks concern the leading collapsed nonanalytic terms of the
+constant-mass, zero-chemical-potential Yukawa box in de Sitter with a light
+external Higgs. They are not a numerical integration of the full unexpanded
+box, a computation of its renormalized analytic contact terms, or a
+Higgs-to-curvature conversion. The gauge-boson note supplies the
+factorization workflow and angular basis. Its zeroth-order hard-line
+replacement is insufficient for this fermion clock term: the two first
+descendants and the hard momentum derivative are essential. The loop
+factorization follows Ref.~\cite{qin}.
 
 \begin{thebibliography}{9}
+\bibitem{qin-seed} Z.~Qin and Z.-Z.~Xianyu, ``Closed-Form Formulae for
+Inflation Correlators,'' JHEP \textbf{07} (2023) 001,
+\href{https://arxiv.org/abs/2301.07047}{arXiv:2301.07047},
+especially the branch-resolved Hankel seed and its folded limits.
 \bibitem{cota} I.~I.~Cot\u aescu, ``Integral representation of the Feynman propagators of
 the Dirac fermions on the de Sitter expanding universe,'' Eur. Phys. J. C
 \textbf{78}, 769 (2018),

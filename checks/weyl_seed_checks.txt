@@ -1,0 +1,21 @@
+PASS elementary conformal-scalar normalization, folded derivative, and real-index conjugation
+PASS complex scalar-kernel nu parity: residual 1.064e-36
+PASS equal-SK seed nu parity, a=1: residual 1.011e-36
+PASS equal-SK seed nu parity, a=-1: residual 1.011e-36
+PASS physical hard coefficients precision, mu=.2: residual 9.082e-23
+mu=.2 P1=(-1.03041108145985702 - 1.10902009435309262j) P2=(3.16377150071779997 + 0.704629903804015821j)
+PASS physical hard coefficients precision, mu=.73: residual 2.041e-22
+mu=.73 P1=(-1.59813070834661283 - 2.34621969383716141j) P2=(1.92388500855456824 + 1.95859683065576684j)
+PASS physical hard coefficients precision, mu=2: residual 1.466e-22
+mu=2 P1=(1.9014638970334727 - 2.53566670770028864j) P2=(-1.11924194764536561 + 1.38384486686919492j)
+PASS physical hard coefficients precision, mu=5: residual 1.135e-21
+mu=5 P1=(3.92182060593035746 + 1.45826145582899932j) P2=(-2.04732587567190607 - 0.690483917647586766j)
+PASS full SK common-regulator limit, eta/delta=0: residual 7.140e-09
+PASS full SK common-regulator limit, eta/delta=1: residual 1.040e-08
+PASS full SK common-regulator limit, eta/delta=2: residual 1.051e-08
+PASS complete clock normalization and ratio phase: residual 5.415e-41
+mu=.73 angular coefficients: A1=(-0.0000209240647229727195 - 0.0000251517635559536145j), A2=(3.73039870939923045e-6 + 3.19317580959707917e-6j), A3=(-0.0000111911961281976914 - 9.57952742879123751e-6j), B1=(5.70750649542737914e-6 + 3.34647503059507021e-6j), D1=(-0.0000158556991510310785 + 1.43046115480112023e-6j)
+PASS mixed seed regulator step and precision: residual 1.854e-15
+PASS mixed seed reality: residual 1.329e-27
+mu=.73 mixed H11=(-1.3885002801988139277 - 1.3289755460504542887e-27j)
+Scope: factorized leading nonanalytic terms; no full unexpanded-box quadrature or analytic-contact renormalization.

@@ -1,4 +1,8 @@
 PASS mode equations and normalization: residual 5.023e-39
+PASS scalar seed map greater R21: residual 0.000e+00
+PASS scalar seed map greater R11: residual 3.247e-41
+PASS scalar seed map lesser R21: residual 1.283e-41
+PASS scalar seed map lesser R11: residual 1.623e-41
 PASS F first descendant: residual 2.811e-15
 PASS G first descendant: residual 2.837e-16
 PASS exact nonanalytic Wightman equality including descendants: residual 2.885e-42
@@ -20,7 +24,9 @@ PASS Gamma recurrence for U: residual 7.588e-44
 PASS Gamma recurrence for V: residual 2.067e-43
 PASS Gamma recurrence for X: residual 7.676e-43
 PASS Gamma recurrence for Y: residual 6.278e-43
+PASS five compact mass-dependent coefficients: residual 8.968e-44
 PASS mixed-branch Gamma bubble: residual 2.305e-41
+PASS mixed-branch total normalization: residual 2.692e-43
 
 Bubble moments: replace u**m*v**n with F0(1/2-i*mu-m,1/2-i*mu-n).
 M = u**2/8 + 3*u*v/4 - u/8 + v**2/8 - v/8
@@ -34,4 +40,4 @@ V = 35*u**4/128 - 35*u**3*v/32 - 15*u**3/32 + 105*u**2*v**2/64 + 15*u**2*v/32 + 
 X = -u**3/16 + u**2*v/16 + 3*u**2/16 + u*v**2/16 + u*v/8 - 3*u/16 - v**3/16 + 3*v**2/16 - 3*v/16 + 1/16
 Y = 3*u**3/16 - 3*u**2*v/16 - 5*u**2/16 - 3*u*v**2/16 + u*v/8 + 3*u/16 + 3*v**3/16 - 5*v**2/16 + 3*v/16 - 1/16
 
-Scope: algebra and convergent scalar identities checked; full hard-seed analytic continuation has not been numerically scanned.
+Scope: algebra and local identities; physical hard-seed evaluation and convergence are checked separately in weyl_seed_checks.py.

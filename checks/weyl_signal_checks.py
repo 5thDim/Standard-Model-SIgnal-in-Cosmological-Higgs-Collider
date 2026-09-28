@@ -1,4 +1,4 @@
-"""Independent algebraic/numerical checks of Weyl Spinor Signal.tex.
+"""Independent algebraic/numerical checks of Top Quark Signal.tex.
 Run: python3 checks/weyl_signal_checks.py
 No claim of numerical continuation of the full hard SK seeds is made.
 """
@@ -19,12 +19,28 @@ errs=[]
 for x in map(mp.mpf,['.001','.7','12']):
     errs += [abs(-1j*mp.diff(F,x)-mu/x*F(x)-G(x)),abs(-1j*mp.diff(G,x)+mu/x*G(x)-F(x)),abs(abs(F(x))**2+abs(G(x))**2-1)]
 check('mode equations and normalization',max(errs),1e-30)
-A=-1j*mp.exp(mp.pi*mu/2)*2**(-.5-1j*mu)*mp.gamma(.5-1j*mu)/mp.sqrt(mp.pi)
-B=-1j*mp.exp(-mp.pi*mu/2)*2**(-.5+1j*mu)*mp.gamma(.5+1j*mu)/mp.sqrt(mp.pi)
+# Exact map from the hard fermion radial blocks to an analytically continued
+# scalar Hankel seed. Check off the folded point so the factor r is tested.
+lam=mu-1j/2;rho=1j*lam;r=mp.mpf('1.17')
+x0=mp.mpf('.8');y0=mp.mpf('1.3')
+scalar_gt=lambda xx,yy:mp.pi/4*mp.exp(-mp.pi*lam)*(xx*yy)**mp.mpf('1.5')*mp.hankel1(rho,r*xx)*mp.hankel2(-rho,r*yy)
+scalar_lt=lambda xx,yy:mp.pi/4*mp.exp(-mp.pi*lam)*(xx*yy)**mp.mpf('1.5')*mp.hankel2(-rho,r*xx)*mp.hankel1(rho,r*yy)
+for name,scalar,radial21,radial11 in [
+    ('greater',scalar_gt,G(r*x0)*mp.conj(F(r*y0)),F(r*x0)*mp.conj(F(r*y0))),
+    ('lesser',scalar_lt,mp.conj(F(r*x0))*G(r*y0),-mp.conj(G(r*x0))*G(r*y0))]:
+    mapped21=r*scalar(x0,y0)/(x0*y0)
+    mapped11=(-1j*mp.diff(lambda z:scalar(z,y0)/(z*y0),x0)
+              +mu/x0*scalar(x0,y0)/(x0*y0))
+    check('scalar seed map '+name+' R21',abs(radial21-mapped21),1e-30)
+    check('scalar seed map '+name+' R11',abs(radial11-mapped11),1e-30)
+A=-1j*2**(-.5-1j*mu)*mp.gamma(.5-1j*mu)/mp.sqrt(mp.pi)
+c=-A**2
 d=1j/(1+2j*mu); dm=1j/(1-2j*mu)
 for x in [mp.mpf('1e-7')]:
-    check('F first descendant',abs(F(x)-A*x**(1j*mu)-dm*B*x**(1-1j*mu)),1e-13)
-    check('G first descendant',abs(G(x)-B*x**(-1j*mu)-d*A*x**(1+1j*mu)),1e-13)
+    check('F first descendant',abs(F(x)-mp.exp(mp.pi*mu/2)*A*x**(1j*mu)
+                                   +dm*mp.exp(-mp.pi*mu/2)*mp.conj(A)*x**(1-1j*mu)),1e-13)
+    check('G first descendant',abs(G(x)+mp.exp(-mp.pi*mu/2)*mp.conj(A)*x**(-1j*mu)
+                                   -d*mp.exp(mp.pi*mu/2)*A*x**(1+1j*mu)),1e-13)
 
 def mode_parts(x,nu,N):
     return N*mp.sqrt(x)*mp.besselj(-nu,x)/(1j*mp.sin(mp.pi*nu)), -N*mp.sqrt(x)*mp.exp(-1j*mp.pi*nu)*mp.besselj(nu,x)/(1j*mp.sin(mp.pi*nu))
@@ -108,12 +124,33 @@ rat={
 for name,poly in polys.items():
     val=sum(mp.mpf(str(coeff))*f0(xx-m,xx-n) for (m,n),coeff in sp.Poly(poly,u,v).terms())
     check('Gamma recurrence for '+name,abs(val-base*rat[name]),1e-30)
+# The earlier angular check only verifies the choice of basis. This separately
+# checks the five reduced mass-dependent coefficients printed in the paper.
+p1=mp.mpc('.63','.19');p2=mp.mpc('-.27','.41')
+M,P,Q,E,Ff,T,U,V,X,Y=(rat[k] for k in ['M','P','Q','E','F','T','U','V','X','Y'])
+w0=p1*p1*M+2*p1*p2*P+2*p2*p2*T
+w2=p1*p2*Q+2*p2*p2*U
+we=p2*p2*(4*T-X)
+wez=p2*p2*(8*U-Y-E/2)
+w4=p2*p2*(2*V-Ff/2)
+actual=[w0+we/2,w2-we/2,w4+wez+mp.mpf('1.5')*we,(2*we+wez)/4,we/2]
+baseB=1/(32*(xx-3)*(xx-2)*(4*xx-7)*(4*xx-5))
+claimed=[
+ baseB*(xx-1)*(2*xx-3)*(4*(xx-3)*(3*p1*p1+2*p1*p2)+(2*xx-5)*p2*p2),
+ -baseB*p2*p2*(xx-1)*(2*xx-3)**2,
+ 3*baseB*p2*p2*(xx-1)*(2*xx-3)**2,
+ -2*baseB*p2*p2*(xx-1)*(xx-2)*(2*xx-3),
+ baseB*p2*p2*(xx-2)*(2*xx-5)*(2*xx-3)]
+check('five compact mass-dependent coefficients',max(map(abs,(x-y for x,y in zip(actual,claimed)))),1e-30)
 aa=mp.mpf('.5')+1j*mu;bb=mp.mpf('.5')-1j*mu
 jm=(f0(aa-1,bb)+f0(aa,bb-1)-f0(aa,bb))/2
 check('mixed-branch Gamma bubble',abs(jm-2*mp.sqrt(mp.pi)/3*mu*(1+mu**2)*mp.coth(mp.pi*mu)),1e-30)
+mixed_from_factors=16*abs(c)**2*jm/(4*mp.pi)**mp.mpf('1.5')
+mixed_claim=2*mu*(1+mu**2)/(3*mp.pi*mp.sinh(2*mp.pi*mu))
+check('mixed-branch total normalization',abs(mixed_from_factors-mixed_claim),1e-30)
 report.append('\nBubble moments: replace u**m*v**n with F0(1/2-i*mu-m,1/2-i*mu-n).')
 for name,poly in polys.items(): report.append(f'{name} = {sp.expand(poly)}')
-report.append('\nScope: algebra and convergent scalar identities checked; full hard-seed analytic continuation has not been numerically scanned.')
+report.append('\nScope: algebra and local identities; physical hard-seed evaluation and convergence are checked separately in weyl_seed_checks.py.')
 out='\n'.join(report)+'\n'
 Path(__file__).with_name('weyl_signal_checks.txt').write_text(out)
 print(out)
