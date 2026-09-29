@@ -1,0 +1,1273 @@
+% SMS in CHC -- manuscript draft.
+% Typography and notation: Gauge Boson Signal.tex.
+% Front-matter structure: Qin and Xianyu (2023), Closed-Form Formulae
+% for Inflation Correlators (local PDF in ref/).
+% Sections 2.1--2.4 and the associated integral appendices are populated.
+% Build: latexmk -pdf -interaction=nonstopmode -halt-on-error "SMS in CHC.tex"
+
+\documentclass[a4paper,12pt]{article}
+%\usepackage[lite,subscriptcorrection,slantedGreek,nofontinfo]{mtpro2}
+%\usepackage{times} 
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{framed}
+%\usepackage{mathptmx}
+\usepackage[medium]{titlesec}
+\usepackage{bm}
+\usepackage{cite}                                                   
+%\usepackage{feynmp-auto}
+\usepackage[normalem]{ulem}
+\usepackage{extarrows}
+\usepackage{slashed}
+\usepackage{isodateo}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[bookmarksnumbered=true,bookmarksopen=true]{hyperref}
+ \hypersetup{colorlinks,%
+             linkcolor=[rgb]{0,0.3,0.6}, %
+             citecolor=[rgb]{0,0.3,0.6}, %
+             urlcolor=[rgb]{0,0.3,0.6}}
+\usepackage[hmargin=.7in,vmargin=1.1in]{geometry}
+\usepackage{indentfirst}
+\usepackage{booktabs}
+
+\linespread{1.1}
+%\numberwithin{equation}{section}
+\newcommand{\FR}[2]{\displaystyle\frac{\,{#1}\,}{#2}}
+\newcommand{\fr}[2]{\mbox{$\frac{\,{#1}\,}{#2}$}}
+\newcommand{\n}{\nonumber}
+\renewcommand{\rm}{\mathrm}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\newcommand{\red}{\color{red}}
+\newcommand{\blue}{\color{blue}}
+\newcommand{\gray}{\color{gray}}
+\newcommand{\hl}{\color[rgb]{1,0,.5}}
+
+\def\bge{\begin{equation}}
+\def\ede{\end{equation}}
+\def\bga{\begin{aligned}}
+\def\eda{\end{aligned}}
+\def\bgb{\begin{bmatrix}}
+\def\edb{\end{bmatrix}}
+\def\bgp{\begin{pmatrix}}
+\def\edp{\end{pmatrix}}
+\def\bgm{\begin{matrix}}
+\def\edm{\end{matrix}}
+\def\bgs{\begin{subequations}}
+\def\eds{\end{subequations}}
+\newcommand{\order}[1]{\mathcal{O}({#1})}
+\def\di{{\mathrm{d}}}
+\def\D{{\mathrm{D}}}
+\def\Di{{\mathcal{D}}}
+
+\def\T{\mathcal{T}}
+\def\J{\mathcal{J}}
+\def\mb{\mathbf}
+\def\ms{\mathscr}
+\def\mf{\mathfrak}
+\def\mc{\mathcal}
+\def\cl{\mathrm{cl}}
+\def\pd{\partial}
+\def\ld{{\mathscr{L}}}
+\def\hd{{\mathscr{H}}}
+\def\z{{\bar{z}}}
+\def\la{\langle}\def\ra{\rangle}
+\def\sla{\slashed}
+\def\const{\mathrm{const.}}
+\setlength\unitlength{1mm}
+\def\tr{\mathrm{\,tr\,}}
+\def\Tr{\mathrm{\,Tr\,}}
+\def\Det{\mathrm{\,Det\,}}
+\def\to{\rightarrow}
+\def\To{\Rightarrow}
+\def\ii{\mathrm{i}}
+
+\def\al{\alpha}
+\def\be{\beta}
+\def\ga{\gamma}
+\def\de{\delta}
+\def\ep{\epsilon}
+\def\ka{\kappa}
+\def\lam{\lambda}
+\def\rh{\rho}
+\def\si{\sigma}
+\def\ze{\zeta}
+\def\tn{\tilde\nu}
+
+
+\def\Wh{\mathrm{W}}
+
+
+\def\aa{\mathsf{a}}
+\def\bb{\mathsf{b}}
+\def\cc{\mathsf{c}}
+\def\dd{\mathsf{d}}
+
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+
+\def\Mp{M_{\text{Pl}}}
+
+
+\def\Re{\mathrm{Re}\,}
+\def\Im{\mathrm{Im}\,}
+
+\def\ad{\mathrm{\,ad\,}}
+
+\usepackage{mdframed} 
+                   
+
+\newmdenv[skipabove=0pt,%
+          skipbelow=5pt,%
+          leftmargin=0pt,%
+          rightmargin=0pt,%
+          innertopmargin=-5pt,%
+          innerbottommargin=7pt,%
+          innerleftmargin=2pt,%
+          innerrightmargin=2pt,%
+          splittopskip=0pt,%
+          splitbottomskip=0pt,%
+          linewidth=0pt,%
+          nobreak=true]%
+          {keyeqn2}                   
+                   
+                   
+\newmdenv[backgroundcolor=gray!15,%
+          skipabove=0pt,%
+          skipbelow=5pt,%
+          leftmargin=0pt,%
+          rightmargin=0pt,%
+          innertopmargin=-5pt,%
+          innerbottommargin=7pt,%
+          innerleftmargin=2pt,%
+          innerrightmargin=2pt,%
+          splittopskip=0pt,%
+          splitbottomskip=0pt,%
+          linewidth=0pt,%
+          nobreak=true]%
+          {keyeqn}
+
+\usepackage{titlesec}          
+\titleformat{\section}
+{\normalfont\fontsize{15}{20}\bfseries}{\thesection}{1em}{}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\newcommand{\ob}[1]{\mkern 2mu \overline{\mkern -2mu #1 \mkern -2mu}\mkern 2mu}
+\newcommand{\wt}[1]{\mkern 2mu \widetilde{\mkern -2mu #1 \mkern -2mu}\mkern 2mu}
+\newcommand{\wh}[1]{\mkern 2mu \widehat{\mkern-2mu#1\mkern-2mu}\mkern 2mu}
+
+\newcommand{\fnemail}[1]{\footnote{Email: \href{mailto:#1}{\nolinkurl{#1}}}}
+
+\hypersetup{pdftitle={SMS in CHC}}
+\setcounter{tocdepth}{2}
+
+\title{\Large\textbf{SMS in CHC}\\[2mm]}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\vspace{20mm}
+\begin{abstract}
+% Abstract intentionally left blank.
+\vspace{10mm}
+\end{abstract}
+
+\clearpage
+\tableofcontents
+
+\clearpage
+\section{Introduction}
+\label{sec:introduction}
+% Intentionally left blank.
+
+\section{Gauge Boson Signal}
+\label{sec:gauge-boson}
+% Follow the calculation in Gauge Boson Signal.tex and its companion PDF.
+
+\subsection{Preliminaries}
+\label{sec:gauge-preliminaries}
+We will compute the connected four-point function
+$\langle\delta h_{\mb k_1}\delta h_{\mb k_2}
+\delta h_{\mb k_3}\delta h_{\mb k_4}\rangle'$
+generated by a massive gauge-boson loop. 
+Our interest is the leading nonlocal signal in the collapsed $s$ channel,
+\begin{equation}
+    \mb k_s\equiv\mb k_1+\mb k_2=-(\mb k_3+\mb k_4),
+    \qquad k_s\ll k_i,\qquad
+    k_{12}\equiv k_1+k_2,\quad k_{34}\equiv k_3+k_4,
+    \label{eq:collapsed-kinematics}
+\end{equation}
+where $k_i\equiv|\mb k_i|$. Thus $k_1\simeq k_2$ and
+$k_3\simeq k_4$ at leading order. 
+We choose $\mb k_s$ along the
+$z$ axis and the azimuth of $\mb k_1$ to be zero, and $\theta_1$ and
+$\theta_3$ are the polar angles of $\mb k_1$ and $\mb k_3$, and
+$\phi_3$ is their relative azimuth.
+
+The Higgs--gauge couplings follow from the Higgs kinetic term
+\cite{lu_cosmological_2020}:
+\begin{equation}
+    \frac{\sqrt{-g}}{2}|\mathrm D_\mu\mb H|^2
+    \supset\frac{a^2g^2}{4}(h_0+\delta h)^2
+    \left(W^+_\mu W^{-\mu}+\frac{Z_\mu Z^\mu}{2c_W^2}\right),
+    \label{eq:higgs-gauge-couplings}
+\end{equation}
+where $g$ is the weak gauge coupling, $c_W=\cos\theta_W$, and the
+Lorentz contractions on the right use the flat conformal metric.
+The terms linear and quadratic in $\delta h$ generate the cubic and
+quartic vertices, respectively. 
+They give the bubble, triangle, and box
+topologies considered below. 
+In the light-Higgs regime, the dominant
+infrared Higgs-loop contribution to the vector masses is
+\cite{lu_cosmological_2020}
+\begin{equation}
+    m_W^2\simeq\frac{3g^2H^4}{8\pi^2m_H^2},\qquad
+    m_Z^2\simeq\frac{m_W^2}{c_W^2}.
+    \label{eq:gauge-masses}
+\end{equation}
+Here $m_H$ is the effective Higgs mass. We use a constant vector mass
+$m_V$ and the parameter
+$\tilde\nu\equiv\sqrt{m_V^2/H^2-1/4}>0$ in the following.
+The $W$ and $Z$ contributions are obtained with their respective masses
+and couplings in \eqref{eq:higgs-gauge-couplings}.
+
+We use $\lambda,\sigma=L,+,-,T$ for vector polarization-basis labels, and
+$\eta=\pm1$ for the two nonlocal branches. 
+Neglecting the Higgs mass
+in the external mode functions, its bulk-to-boundary propagator is
+\begin{equation}
+    G_{\aa}(k;\tau)=\frac{H^2}{2k^3}
+    (1-\ii\aa k\tau)e^{\ii\aa k\tau}.
+    \label{eq:higgs-propagator}
+\end{equation}
+The spacetime vector propagator decomposes as
+\begin{align}
+    D_{\aa\bb,\mu\nu}(\mb k;\tau_1,\tau_2)
+    ={}&\sum_{\lambda=T,L,\pm}
+    e^{(\lambda)}_{\mb k,\mu}e^{(\lambda)*}_{\mb k,\nu}
+    D^{(\lambda)}_{\aa\bb}(k;\tau_1,\tau_2)
+    \nonumber\\
+    &+e^{(T)}_{\mb k,\mu}e^{(L)*}_{\mb k,\nu}
+    D^{(TL)}_{\aa\bb}(k;\tau_1,\tau_2)
+    +e^{(L)}_{\mb k,\mu}e^{(T)*}_{\mb k,\nu}
+    D^{(LT)}_{\aa\bb}(k;\tau_1,\tau_2),
+    \label{eq:polarization-decomposition}
+\end{align}
+where $\mu,\nu=0,1,2,3$. In the comoving frame, the covariant
+polarization basis is \cite{qin_helical_2023}
+\[
+    e^{(T)}_{\mb k,\mu}=(1,\mb0),\qquad
+    e^{(L)}_{\mb k,\mu}=(0,\widehat{\mb k}),\qquad
+    e^{(\pm)}_{\mb k,\mu}
+    =\frac1{\sqrt2}(0,\mb e_\theta\pm\ii\mb e_\phi),
+\]
+with $(\widehat{\mb k},\mb e_\theta,\mb e_\phi)$ the orthonormal
+spherical basis. 
+The label $T$ denotes the temporal component of the lobgitudinal mode.
+
+At zero chemical potential, all components can be expressed through an auxiliary scalar
+propagator with the same Hankel index
+\cite{qin_helical_2023,qin_closed-form_2023}:
+\begin{align}
+    D^{\rm(s)}_>(k;\tau_1,\tau_2)
+    &=\frac{\pi H^2}{4}e^{-\pi\tilde\nu}
+    (\tau_1\tau_2)^{3/2}
+    \mathrm H^{(1)}_{\ii\tilde\nu}(-k\tau_1)
+    \mathrm H^{(2)}_{-\ii\tilde\nu}(-k\tau_2),
+    \label{eq:scalar-propagator}\\
+    D^{(\pm)}_>&=\frac{D^{\rm(s)}_>}{H^2\tau_1\tau_2},\qquad
+    D^{(L)}_>=\frac{(\partial_{\tau_1}-2/\tau_1)
+    (\partial_{\tau_2}-2/\tau_2)D^{\rm(s)}_>}
+    {H^2(\tilde\nu^2+1/4)},
+    \label{eq:vector-scalar-relation}\\
+    D^{(T)}_>&=\frac{k^2D^{\rm(s)}_>}
+    {H^2(\tilde\nu^2+1/4)},
+    \label{eq:temporal-scalar-relation}\\
+    D^{(TL)}_>&=\frac{\ii k(\partial_{\tau_2}-2/\tau_2)D^{\rm(s)}_>}
+    {H^2(\tilde\nu^2+1/4)},\qquad
+    D^{(LT)}_>=-\frac{\ii k(\partial_{\tau_1}-2/\tau_1)D^{\rm(s)}_>}
+    {H^2(\tilde\nu^2+1/4)}.
+    \label{eq:mixed-scalar-relations}
+\end{align}
+
+With spacetime indices and momentum arguments suppressed,
+$D_{-+}=D_>$, $D_{+-}=D_<$, and the separated-time SK propagators are
+\begin{align}
+    D_{++}&=\theta(\tau_1-\tau_2)D_>
+              +\theta(\tau_2-\tau_1)D_<,\nonumber\\
+    D_{--}&=\theta(\tau_2-\tau_1)D_>
+              +\theta(\tau_1-\tau_2)D_<.
+    \label{eq:sk-prescription}
+\end{align}
+for $D^{(\pm)},D^{(L)},D^{(TL)}$ and $D^{(LT)}$. 
+But for $D^{T}$, the $++$ and $--$ propagators have a delta term because the temporal mode is not a physical degree of freedom:
+\begin{align}
+    D_{++}^{(T)}&=\theta(\tau_1-\tau_2)D_>^{(T)}
+              +\theta(\tau_2-\tau_1)D_< + \frac{\ii \delta(\tau_1-\tau_2)}{(\tn^2+1/4) a(\tau_1)^2} ,\nonumber\\
+    D_{--}^{(T)}&=\theta(\tau_2-\tau_1)D_>^{(T)}
+              +\theta(\tau_1-\tau_2)D_< - \frac{\ii \delta(\tau_1-\tau_2)}{(\tn^2+1/4) a(\tau_1)^2} .
+\end{align}
+Then we will see that the propagators $D^{(T)},D^{(TL)}$ and $D^{(LT)}$ will not contribute the leading nonlocal signal.
+
+The leading nonlocal parts of the spatial propagators are independent
+of the SK indices:
+\begin{align}
+    \left[D^{(\pm)}_{\aa\bb}(k;\tau_1,\tau_2)\right]_{\rm NonL}
+    &=\frac{(\tau_1\tau_2)^{1/2}}{4\pi}
+      \sum_{\eta=\pm1}\Gamma^2(-\ii\eta\tilde\nu)
+      \left(\frac{k^2\tau_1\tau_2}{4}\right)^{\ii\eta\tilde\nu},
+      \label{eq:transverse-nonlocal}\\
+    \left[D^{(L)}_{\aa\bb}(k;\tau_1,\tau_2)\right]_{\rm NonL}
+    &=\frac{(\tau_1\tau_2)^{1/2}}{4\pi}
+      \sum_{\eta=\pm1}
+      \frac{(-1/2+\ii\eta\tilde\nu)^2}{\tilde\nu^2+1/4}
+      \Gamma^2(-\ii\eta\tilde\nu)
+      \left(\frac{k^2\tau_1\tau_2}{4}\right)^{\ii\eta\tilde\nu}.
+    \label{eq:longitudinal-nonlocal}
+\end{align}
+The temporal nonlocal part is
+\begin{equation}
+    \left[D^{(T)}_{\aa\bb}(k;\tau_1,\tau_2)\right]_{\rm NonL}
+    =\frac{k^2(\tau_1\tau_2)^{3/2}}
+    {4\pi(\tilde\nu^2+1/4)}
+    \sum_{\eta=\pm1}\Gamma^2(-\ii\eta\tilde\nu)
+    \left(\frac{k^2\tau_1\tau_2}{4}\right)^{\ii\eta\tilde\nu}.
+    \label{eq:temporal-nonlocal}
+\end{equation}
+
+The one-loop factorization theorem and cutting rule
+\cite{qin_inflation_2023} isolate the leading nonlocal signal in the
+collapsed channel. We first identify the two internal lines whose
+removal separates the external pairs $(1,2)$ and $(3,4)$.
+Their momenta can be chosen as $\mb q$ and
+$\mb K\equiv\mb q+\mb k_s$. The relevant loop region has
+$q,K\sim k_s\ll k_i$. We replace these two propagators by the
+leading nonlocal terms of their late-time expansions, keeping their
+polarization tensors, and expand the remaining hard propagators
+to leading order in the soft momenta. The hard propagators retain
+their full time dependence and SK ordering.
+
+The cut propagators are independent of the SK indices, and their
+time dependence separates between the two endpoints. The time
+integrals thus factorize into two tree subgraphs with additional
+time powers supplied by the cut lines. Multiplying these subgraphs
+by the soft momentum integral and summing over polarizations gives
+the nonlocal signal. 
+The branches $\eta=\pm1$ combine into the oscillatory signal
+retained below. Higher terms in the soft expansion give subleading
+corrections in the collapsed limit.
+
+The propagators $D^{(T)}$, $D^{(TL)}$, and $D^{(LT)}$ do not
+contribute to the leading nonlocal signal. On a soft line, each
+temporal mode function $B^{(T)}$ carries an additional factor of
+$k\tau$ relative to the spatial modes $B^{(L)}$ and $B^{(\pm)}$.
+Their nonanalytic contributions are therefore suppressed in the
+collapsed limit. The contact term in $D^{(T)}$ is analytic in the
+soft momentum and does not contribute to the nonlocal signal.
+On a hard line, a temporal endpoint has a vanishing polarization
+contraction with the spatial components of the attached soft line.
+A nonzero contraction would require a temporal soft component,
+which is already suppressed. We therefore omit propagators with
+temporal components when computing the leading signal below.
+
+All required soft momentum integrals reduce to five dimensionless
+functions $f_r$, $r=0,1,2,3,4$. With
+$z\equiv\widehat{\mb q}\cdot\widehat{\mb k}_s$, we define
+\begin{equation}
+    \int\frac{\di^3\mb q}{(2\pi)^3}
+    q^{-2\alpha}K^{-2\beta}z^r
+    =\frac{k_s^{3-2\alpha-2\beta}}{(4\pi)^{3/2}}
+    f_r(\alpha,\beta),\qquad r=0,1,2,3,4.
+    \label{eq:fr-definition}
+\end{equation}
+These expressions are understood by analytic continuation from the
+convergent domain. The first three functions are
+\begin{align}
+    f_0(\alpha,\beta)
+    &=\frac{\Gamma(\alpha+\beta-3/2)
+    \Gamma(3/2-\alpha)\Gamma(3/2-\beta)}
+    {\Gamma(3-\alpha-\beta)\Gamma(\alpha)\Gamma(\beta)},
+    \label{eq:f0}\\
+    f_1(\alpha,\beta)
+    &=\frac12\left[
+    f_0(\alpha+\tfrac12,\beta-1)
+    -f_0(\alpha-\tfrac12,\beta)
+    -f_0(\alpha+\tfrac12,\beta)\right],
+    \label{eq:f1}\\
+    f_2(\alpha,\beta)
+    &=\frac14\left[
+    f_0(\alpha+1,\beta-2)+f_0(\alpha-1,\beta)
+    +f_0(\alpha+1,\beta)\right.\nonumber\\
+    &\hspace{13mm}\left.
+    -2f_0(\alpha,\beta-1)-2f_0(\alpha+1,\beta-1)
+    +2f_0(\alpha,\beta)\right].
+    \label{eq:f2}
+\end{align}
+The functions $f_3$ and $f_4$ are likewise finite sums of $f_0$;
+their explicit expressions are collected in App.~\ref{app:loop-integrals}.
+
+For the nonlocal branch $\eta$, it is convenient to set
+$x=-\ii\eta\tilde\nu$ and define
+\begin{equation}
+    \mathcal J_r(m,n;x)
+    \equiv f_r\left(x-\frac m2,x+\frac n2\right),
+    \qquad r=0,1,2,3,4.
+    \label{eq:Jr-definition}
+\end{equation}
+Here $m,n$ are integer shifts of momentum powers, unrelated to $m_V$.
+In particular,
+\begin{equation}
+    \int\frac{\di^3\mb q}{(2\pi)^3}
+    \left(\frac q2\right)^{-2x}
+    \left(\frac K2\right)^{-2x}q^mK^{-n}z^r
+    =\frac{4^{2x}k_s^{3-4x+m-n}}{(4\pi)^{3/2}}
+    \mathcal J_r(m,n;x).
+    \label{eq:Jr-normalization}
+\end{equation}
+
+\subsection{Bubble Diagram}
+\label{sec:gauge-bubble}
+The bubble contains two quartic vertices, each attached to a pair of external Higgs modes. 
+With the four external momenta understood, the $s$-channel contribution is
+\begin{align}
+    \langle\delta h^4\rangle'_{\mathrm{Bub}}
+    ={}&\frac{g^4}{8}
+    \sum_{\aa,\bb=\pm1}(-\aa\bb)
+    \int_{-\infty}^{0}\frac{\di\tau_1}{|H\tau_1|^2}
+    \int_{-\infty}^{0}\frac{\di\tau_2}{|H\tau_2|^2}
+    G_{\aa}(k_1;\tau_1)G_{\aa}(k_2;\tau_1)
+    G_{\bb}(k_3;\tau_2)G_{\bb}(k_4;\tau_2)\nonumber\\
+    &\times\int\frac{\di^3\mb q}{(2\pi)^3}
+    D_{\aa\bb,ij}(\mb q;\tau_1,\tau_2)
+    D_{\bb\aa,ji}(\mb K;\tau_2,\tau_1),
+    \qquad \mb K=\mb q+\mb k_s.
+    \label{eq:bubble-sk}
+\end{align}
+The symmetry factor $1/2$ is included. Throughout this chapter,
+the $W^\pm$ contribution is obtained by multiplying the expressions
+by $2$, and the $Z$ contribution by replacing $g\to g/c_W$,
+with the corresponding mass used in each case.
+
+Replacing the two soft propagators by
+\eqref{eq:transverse-nonlocal}--\eqref{eq:longitudinal-nonlocal}
+removes their SK-index dependence. After summing the polarizations,
+the oscillatory part of the loop integral is
+\begin{align}
+    &\left[\int\frac{\di^3\mb q}{(2\pi)^3}
+    D_{\aa\bb,ij}(\mb q;\tau_1,\tau_2)
+    D_{\bb\aa,ji}(\mb K;\tau_2,\tau_1)\right]_{\rm NonL}
+    \nonumber\\
+    &\qquad\simeq\sum_{\eta=\pm1}
+    (\tau_1\tau_2)^{1+2\ii\eta\tilde\nu}
+    \frac{\Gamma^4(-\ii\eta\tilde\nu)}{(4\pi)^{7/2}}
+    4^{-2\ii\eta\tilde\nu}k_s^{3+4\ii\eta\tilde\nu}
+    \mathcal I_{\rm Bub}(-\ii\eta\tilde\nu).
+    \label{eq:bubble-cut-loop}
+\end{align}
+The dimensionless polarization sum has the compact form
+\begin{align}
+    \mathcal I_{\rm Bub}(x)
+    ={}&\frac{3+2x}{1-2x}\,\mathcal J_0(0,0;x)
+    +\frac{16x^2}{(1-2x)^2}
+    \left[\mathcal J_0(2,2;x)+2\mathcal J_1(1,2;x)
+    +\mathcal J_2(0,2;x)\right],
+    \label{eq:bubble-polarization-sum}
+\end{align}
+with $x=-\ii\eta\tilde\nu$ as in \eqref{eq:Jr-definition}.
+The separate polarization contributions are given in
+App.~\ref{app:bubble-polarizations}. 
+
+The remaining time integrals factorize. For the left subgraph, at
+$k_1\simeq k_2\simeq k_{12}/2$, we find
+\begin{align}
+    &\sum_{\aa=\pm1}\ii\aa
+    \int_{-\infty}^{0}\frac{\di\tau}{|H\tau|^2}
+    G_{\aa}(k_1;\tau)G_{\aa}(k_2;\tau)
+    (-\tau)^{1+2\ii\eta\tilde\nu}
+    \simeq\frac{H^2k_{12}^{-2\ii\eta\tilde\nu}}
+    {4k_1^3k_2^3}\,\mathcal P^{(1)}_\eta(\tilde\nu),
+    \label{eq:bubble-time-integral}\\
+    &\mathcal P^{(1)}_\eta(\tilde\nu)
+    =\frac{2+\ii\eta\tilde\nu}{2\ii\eta\tilde\nu}
+    \ii\sinh(\pi\eta\tilde\nu)\Gamma(2+2\ii\eta\tilde\nu).
+    \label{eq:bubble-P1}
+\end{align}
+The right vertex gives the same expression with
+$(k_1,k_2,k_{12})\to(k_3,k_4,k_{34})$.
+Combining the two vertices with \eqref{eq:bubble-cut-loop}, we obtain
+\begin{equation}
+    \left[\langle\delta h^4\rangle'_{\mathrm{Bub}}\right]_{\rm NonL}
+    \simeq\frac{g^4H^4k_s^3}
+    {128k_1^3k_2^3k_3^3k_4^3}
+    \left[
+    \left(\frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tilde\nu}
+    C^{\rm Bub}(\tilde\nu)+\text{c.c.}\right],
+    \label{eq:bubble-signal}
+\end{equation}
+where the complex signal coefficient is
+\begin{equation}
+    C^{\rm Bub}(\tilde\nu)
+    =\frac{\Gamma^4(-\ii\tilde\nu)}{(4\pi)^{7/2}}
+    \left[\mathcal P^{(1)}_+(\tilde\nu)\right]^2
+    \mathcal I_{\rm Bub}(-\ii\tilde\nu).
+    \label{eq:bubble-coefficient}
+\end{equation}
+This definition separates the loop and time integrals from the
+couplings and diagram symmetry factor.
+The bracket in \eqref{eq:bubble-signal} equals
+\begin{equation}
+    2|C^{\rm Bub}(\tilde\nu)|
+    \cos\left[
+    2\tilde\nu\log\!\left(\frac{k_s^2}{4k_{12}k_{34}}\right)
+    +\arg C^{\rm Bub}(\tilde\nu)\right].
+    \label{eq:bubble-phase}
+\end{equation}
+
+% Thus $|C^{\rm Bub}|$ and $\arg C^{\rm Bub}$ determine the amplitude
+% and phase, respectively. Figure~\ref{fig:bubble-coefficient} shows their
+% mass dependence, including the Boltzmann suppression of the amplitude.
+% The $W$ and $Z$ signals are added using their respective
+% $\tilde\nu_W$ and $\tilde\nu_Z$ in \eqref{eq:bubble-signal},
+% with the multiplicity and coupling replacements stated above.
+% The other exchange channels follow by permuting the external labels;
+% \eqref{eq:bubble-signal} describes the leading signal in the
+% $s$-channel collapsed limit.
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=0.80\textwidth]{figure/CBub.png}
+    \caption{The bubble coefficient defined in \eqref{eq:bubble-coefficient}.
+    The red and blue curves show $\log|C^{\rm Bub}|$ and
+    $\arg C^{\rm Bub}$ in radians, respectively, as functions of
+    $\tilde\nu$. }
+    \label{fig:bubble-coefficient}
+\end{figure}
+
+% \clearpage
+
+\subsection{Triangle Diagram}
+\label{sec:gauge-triangle}
+The triangle contains two cubic vertices and one quartic vertex.
+We first place the external modes $\mb k_1,\mb k_2$ at the cubic
+vertices and $\mb k_3,\mb k_4$ at the quartic vertex. The cubic
+interaction for one real vector component is
+$a^2g^2h_0\delta h\,V_\mu V^\mu/4$, with vertex coefficient
+$g^2h_0/2$. Together with the quartic coefficient $g^2/2$, this
+gives an overall factor $g^6h_0^2/8$; the triangle has unit
+diagram symmetry factor. In the conventions of Sec.~\ref{sec:gauge-bubble},
+its SK expression is
+\begin{align}
+    \langle\delta h^4\rangle'_{\mathrm{Tri1}}
+    ={}&\frac{g^6h_0^2}{8}
+    \sum_{\aa,\bb,\cc=\pm1}(-\ii\aa\bb\cc)
+    \int_{-\infty}^0\prod_{v=1}^{3}
+    \frac{\di\tau_v}{|H\tau_v|^2}\,
+    G_{\aa}(k_1;\tau_1)G_{\bb}(k_2;\tau_2)
+    G_{\cc}(k_3;\tau_3)G_{\cc}(k_4;\tau_3)
+    \nonumber\\
+    &\times\int\frac{\di^3\mb q}{(2\pi)^3}
+    D_{\aa\bb,ij}(\mb q+\mb k_1;\tau_1,\tau_2)
+    D_{\bb\cc,j\ell}(\mb K;\tau_2,\tau_3)
+    D_{\cc\aa,\ell i}(\mb q;\tau_3,\tau_1).
+    \label{eq:triangle-sk}
+\end{align}
+The nonlocal signal comes from $q,K\sim k_s\ll k_1$.
+We cut the $\mb q$ and $\mb K$ lines and evaluate the remaining hard
+propagator at $\mb q+\mb k_1\simeq\mb k_1$. The latter retains its
+full time dependence and SK ordering.
+
+After summing the soft polarizations, the cut loop takes the form
+\begin{align}
+    &\left[\int\frac{\di^3\mb q}{(2\pi)^3}
+    D_{\aa\bb,ij}(\mb q+\mb k_1;\tau_1,\tau_2)
+    D_{\bb\cc,j\ell}(\mb K;\tau_2,\tau_3)
+    D_{\cc\aa,\ell i}(\mb q;\tau_3,\tau_1)\right]_{\rm NonL}
+    \nonumber\\
+    &\quad\simeq\sum_{\lambda=L,\pm}\sum_{\eta=\pm1}
+    D^{(\lambda)}_{\aa\bb}(k_1;\tau_1,\tau_2)
+    (\tau_1\tau_2)^{1/2+\ii\eta\tilde\nu}
+    (-\tau_3)^{1+2\ii\eta\tilde\nu}
+    \frac{\Gamma^4(-\ii\eta\tilde\nu)}{(4\pi)^{7/2}}
+    4^{-2\ii\eta\tilde\nu}k_s^{3+4\ii\eta\tilde\nu}
+    \mathcal I^\lambda_{\rm Tri}(-\ii\eta\tilde\nu,\theta_1).
+    \label{eq:triangle-cut-loop}
+\end{align}
+This equation defines the dimensionless coefficients
+$\mathcal I^\lambda_{\rm Tri}(x,\theta)$, with
+$x=-\ii\eta\tilde\nu$. Rotational symmetry and polarization
+completeness imply
+\begin{align}
+    \mathcal I^L_{\rm Tri}(x,\theta)
+    &=\sin^2\theta\,\mathcal I^L_{\rm Tri}(x,\pi/2)
+      +\cos^2\theta\,\mathcal I^L_{\rm Tri}(x,0),
+      \label{eq:triangle-angular-structure}\\
+    \mathcal I^+_{\rm Tri}(x,\theta)
+    &=\mathcal I^-_{\rm Tri}(x,\theta)
+      =\frac12\left[\mathcal I_{\rm Bub}(x)
+      -\mathcal I^L_{\rm Tri}(x,\theta)\right].
+      \label{eq:triangle-completeness}
+\end{align}
+Thus only one longitudinal coefficient is needed in addition to the
+bubble sum. Its expression in terms of $\mathcal J_r$ is given in
+App.~\ref{app:triangle-coefficients}. After simplification, all three
+coefficients equal $\mathcal I_{\rm Bub}(x)/3$; the apparent angular
+dependence cancels, as shown in \eqref{eq:triangle-I-closed}.
+
+The quartic vertex gives the time integral
+$\mathcal P^{(1)}_\eta$ in \eqref{eq:bubble-P1}.
+The two cubic vertices and the hard line instead define
+\begin{align}
+    &\sum_{\aa,\bb=\pm1}(-\aa\bb)
+    \int_{-\infty}^0\frac{\di\tau_1\di\tau_2}
+    {|H\tau_1|^2|H\tau_2|^2}
+    G_{\aa}(k_1;\tau_1)G_{\bb}(k_2;\tau_2)
+    D^{(\lambda)}_{\aa\bb}(k_1;\tau_1,\tau_2)
+    (\tau_1\tau_2)^{1/2+\ii\eta\tilde\nu}
+    \nonumber\\
+    &\qquad\simeq
+    \frac{k_{12}^{-2\ii\eta\tilde\nu}}{4k_1^3k_2^3}
+    \mathcal P^{(2),\lambda}_\eta(\tilde\nu).
+    \label{eq:triangle-time-integral}
+\end{align}
+At leading order, $k_1\simeq k_2\simeq k_{12}/2$.
+The energy entering each end of the hard propagator then equals its
+momentum magnitude. The integral therefore reduces to the
+double-folded scalar seeds of Ref.~\cite{qin_closed-form_2023},
+which we denote by
+$\mathcal M_{\aa\bb}^{p_1p_2}\equiv
+\widetilde{\mathcal I}_{\aa\bb}^{p_1p_2}(1,1)$.
+For the transverse modes this follows directly from
+\eqref{eq:vector-scalar-relation}.
+For the longitudinal mode, the differential relation also produces
+a contact contribution \cite{qin_helical_2023},
+\begin{equation}
+    \left.\mathcal P^{(2),L}_\eta(\tilde\nu)\right|_{\rm contact}
+    =\frac{\mathcal P^{(1)}_\eta(\tilde\nu)}{\tilde\nu^2+1/4}.
+    \label{eq:triangle-contact}
+\end{equation}
+We retain this term together with the scalar-seed contributions.
+The required seed exponents include
+$p_0=-5/2+\ii\eta\tilde\nu$, on the boundary of the convergence
+domain. We define the result by analytic continuation from
+$p_0+\epsilon$, $\epsilon>0$, and take the finite part of the assembled
+expression at $\epsilon=0$. The seed normalization, closed forms,
+and combinations giving $\mathcal P^{(2),\lambda}_\eta$ are collected
+in App.~\ref{app:triangle-coefficients}.
+
+The leading signal of the first triangle is
+\begin{equation}
+    \left[\langle\delta h^4\rangle'_{\mathrm{Tri1}}\right]_{\rm NonL}
+    \simeq\frac{g^6h_0^2H^2k_s^3}
+    {128k_1^3k_2^3k_3^3k_4^3}
+    \left[
+    \left(\frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tilde\nu}
+    C^{\rm Tri}(\tilde\nu,\theta_1)+\text{c.c.}\right],
+    \label{eq:triangle-single-signal}
+\end{equation}
+where
+\begin{equation}
+    C^{\rm Tri}(\tilde\nu,\theta)
+    =\frac{\Gamma^4(-\ii\tilde\nu)}{(4\pi)^{7/2}}
+    \mathcal P^{(1)}_+(\tilde\nu)
+    \sum_{\lambda=L,\pm}
+    \mathcal P^{(2),\lambda}_+(\tilde\nu)
+    \mathcal I^\lambda_{\rm Tri}(-\ii\tilde\nu,\theta).
+    \label{eq:triangle-coefficient}
+\end{equation}
+Since $\mathcal P^{(2),+}_\eta=\mathcal P^{(2),-}_\eta$, the two
+transverse helicities contribute equally. The simplified loop
+coefficients make $C^{\rm Tri}$ independent of $\theta$ at this order;
+its reduced expression is given in \eqref{eq:triangle-C-reduced}.
+
+The second triangle has the quartic vertex on the $(1,2)$ side and
+follows by $(1,2)\leftrightarrow(3,4)$. Adding the two placements gives
+\begin{align}
+    \left[\langle\delta h^4\rangle'_{\mathrm{Tri}}\right]_{\rm NonL}
+    \simeq{}&\frac{g^6h_0^2H^2k_s^3}
+    {128k_1^3k_2^3k_3^3k_4^3}
+    \left\{\left(\frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tilde\nu}
+    \left[C^{\rm Tri}(\tilde\nu,\theta_1)
+    +C^{\rm Tri}(\tilde\nu,\theta_3)\right]
+    +\text{c.c.}\right\}.
+    \label{eq:triangle-total-signal}
+\end{align}
+The nonanalytic momentum dependence is the same as in the bubble,
+while the hard propagator changes the amplitude and phase.
+Figure~\ref{fig:triangle-coefficient} shows the coefficient
+of a single triangle at $\theta_1=0$, with its Boltzmann suppression
+included. Both curves are independent of the angle between the hard
+momentum and $\mb k_s$ at leading order in the collapsed limit;
+$\theta_1=0$ is only a plotting convention.
+Couplings remain outside
+$C^{\rm Tri}$ as in \eqref{eq:triangle-single-signal}.
+
+\begin{figure}[tp]
+    \centering
+    \includegraphics[width=0.80\textwidth]{figure/CTri.png}
+    \caption{The coefficient $C^{\rm Tri}(\tilde\nu,0)$ of a single
+    triangle, defined in \eqref{eq:triangle-coefficient}.
+    The red and blue curves show $\log|C^{\rm Tri}|$ and
+    $\arg C^{\rm Tri}$ in radians, respectively.
+    Both curves are independent of the momentum angle at leading
+    order in the collapsed limit; the choice $\theta_1=0$ is arbitrary.
+    The horizontal variable is $\tilde\nu$ and the Boltzmann
+    suppression is included. The sum of the two triangle placements
+    is given separately in \eqref{eq:triangle-total-signal}.}
+    \label{fig:triangle-coefficient}
+\end{figure}
+
+\clearpage
+
+\subsection{Box Diagram}
+\label{sec:gauge-box}
+We consider the box with external legs in cyclic order $(1,2,3,4)$.
+The four cubic vertices give the coupling factor
+$(g^2h_0/2)^4=g^8h_0^4/16$, and the diagram symmetry
+factor is unity. All results in this subsection refer to this single
+ordering.
+
+Choose the loop momenta along the four successive internal lines as
+$\mb q+\mb k_1$, $\mb K=\mb q+\mb k_s$, $\mb q-\mb k_4$, and
+$\mb q$. In the collapsed limit, the leading nonlocal signal comes
+from the region $q,K\sim k_s$. Cutting these two soft lines leaves
+two hard propagators, with momenta approaching $\mb k_1$ and
+$\mb k_3$. Their polarizations are denoted by
+$\lambda_1,\lambda_3=L,\pm$.
+The soft loop gives the dimensionless coefficient
+$\mathcal I^{\lambda_1\lambda_3}_{\rm Box}
+(-\ii\eta\tilde\nu,\theta_1,\theta_3,\phi_3)$ defined in
+\eqref{eq:box-I-definition}. Its common momentum factor is
+$4^{-2\ii\eta\tilde\nu}k_s^{3+4\ii\eta\tilde\nu}$,
+as for the bubble and triangle.
+
+The time integrals factorize into two copies of
+\eqref{eq:triangle-time-integral}, one for each hard line.
+They contribute
+$\mathcal P^{(2),\lambda_1}_\eta(\tilde\nu)$ and
+$\mathcal P^{(2),\lambda_3}_\eta(\tilde\nu)$, including the
+longitudinal contact terms. Thus no additional time-integral seed
+is required. Combining the two branches gives
+\begin{align}
+    \left[\langle\delta h^4\rangle'_{\mathrm{Box}(1234)}
+    \right]_{\rm NonL}
+    \simeq{}&\frac{g^8h_0^4k_s^3}
+    {256k_1^3k_2^3k_3^3k_4^3}
+    \left[
+    \left(\frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tilde\nu}
+    \right.\nonumber\\
+    &\hspace{18mm}\left.\times
+    C^{\rm Box}(\tilde\nu,\theta_1,\theta_3,\phi_3)
+    +\text{c.c.}\right],
+    \label{eq:box-single-signal}
+\end{align}
+where
+\begin{align}
+    C^{\rm Box}(\tilde\nu,\theta_1,\theta_3,\phi_3)
+    ={}&\frac{\Gamma^4(-\ii\tilde\nu)}{(4\pi)^{7/2}}
+    \sum_{\lambda_1,\lambda_3=L,\pm}
+    \mathcal P^{(2),\lambda_1}_+(\tilde\nu)
+    \mathcal P^{(2),\lambda_3}_+(\tilde\nu)
+    \nonumber\\
+    &\hspace{15mm}\times\mathcal I^{\lambda_1\lambda_3}_{\rm Box}
+    (-\ii\tilde\nu,\theta_1,\theta_3,\phi_3).
+    \label{eq:box-coefficient}
+\end{align}
+The normalization follows the vertex convention of
+Secs.~\ref{sec:gauge-bubble} and \ref{sec:gauge-triangle}.
+The coefficient $C^{\rm Box}$ is independent of the coupling $g$.
+
+Since the hard transverse propagators have equal time integrals,
+the polarization sum reduces to the $LL$, $LH$, and $HH$ groups
+in \eqref{eq:box-channel-groups}. Their explicit expressions are
+given in App.~\ref{app:box-coefficients}. In particular,
+\eqref{eq:box-C-reduced} shows that all angular dependence is
+carried by $\mathcal I^{LL}_{\rm Box}$ and multiplied by
+$[\mathcal P^{(2),L}_+-\mathcal P^{(2),+}_+]^2$.
+The difference between the longitudinal and transverse hard-line
+time integrals therefore controls the angular dependence of the
+box signal.
+
+The result contains five angular structures:
+\begin{align}
+    C^{\rm Box}(\tilde\nu,\theta_1,\theta_3,\phi_3)
+    ={}&A_1(\tilde\nu)
+    +A_2(\tilde\nu)(\cos^2\theta_1+\cos^2\theta_3)
+    +A_3(\tilde\nu)\cos^2\theta_1\cos^2\theta_3
+    \nonumber\\
+    &+B(\tilde\nu)\sin(2\theta_1)\sin(2\theta_3)\cos\phi_3
+    \nonumber\\
+    &+D(\tilde\nu)\sin^2\theta_1\sin^2\theta_3\cos(2\phi_3).
+    \label{eq:box-angular-expansion}
+\end{align}
+The five complex functions depend only on $\tilde\nu$;
+their angular projections are given in
+App.~\ref{app:box-angular-projections}. The signal is symmetric
+under $\theta_1\leftrightarrow\theta_3$ and
+$\phi_3\to-\phi_3$. Its oscillatory momentum dependence is the
+same as in \eqref{eq:bubble-phase}, with an angle-dependent
+amplitude and phase supplied by $C^{\rm Box}$.
+
+Figures~\ref{fig:box-A-coefficients} and
+\ref{fig:box-BD-coefficients} show the five coefficient functions,
+including their Boltzmann suppression. Their magnitudes decrease
+over the displayed mass range. The jumps in the plotted phases
+reflect the principal branch of $\arg$, defined modulo $2\pi$.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.70\textwidth]{figure/CBoxA1.png}
+    \par\medskip
+    \includegraphics[width=0.70\textwidth]{figure/CBoxA2.png}
+    \par\medskip
+    \includegraphics[width=0.70\textwidth]{figure/CBoxA3.png}
+    \caption{The angular coefficients $A_1$, $A_2$, and $A_3$
+    (top to bottom) in \eqref{eq:box-angular-expansion} for the
+    single box ordering $(1,2,3,4)$. Red curves show the logarithmic
+    magnitudes and blue curves show the principal phases in radians.
+    The horizontal variable is $\tilde\nu$; Boltzmann suppression
+    is included.}
+    \label{fig:box-A-coefficients}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.80\textwidth]{figure/CBoxB1.png}
+    \par\medskip
+    \includegraphics[width=0.80\textwidth]{figure/CBoxD1.png}
+    \caption{The angular coefficients $B$ (top, labelled $B1$)
+    and $D$ (bottom, labelled $D1$) in
+    \eqref{eq:box-angular-expansion}. The plotting conventions
+    and single-ordering normalization are the same as in
+    Fig.~\ref{fig:box-A-coefficients}, with Boltzmann suppression
+    included.}
+    \label{fig:box-BD-coefficients}
+\end{figure}
+
+\clearpage
+
+\section{Top Quark Signal}
+\label{sec:top-quark}
+% Intentionally left blank.
+
+\section{Conclusions}
+\label{sec:conclusions}
+% Intentionally left blank.
+
+\appendix
+\section{Loop Integral Formulae}
+\label{app:appendix}
+\label{app:loop-integrals}
+The identity $z=(K^2-q^2-k_s^2)/(2qk_s)$ reduces all angular moments
+in \eqref{eq:fr-definition} to the scalar integral $f_0$:
+\begin{equation}
+    f_r(\alpha,\beta)=\frac1{2^r}
+    \sum_{u+v+w=r}\frac{r!}{u!v!w!}(-1)^{v+w}
+    f_0\left(\alpha+\frac r2-v,\beta-u\right),
+    \label{eq:fr-finite-sum}
+\end{equation}
+where the sum runs over nonnegative integers. For the third and fourth
+moments this gives
+\begin{align}
+    f_3(\alpha,\beta)=\frac18\Big[&
+    f_0(\alpha+\tfrac32,\beta-3)
+    -3f_0(\alpha+\tfrac32,\beta-2)
+    -3f_0(\alpha+\tfrac12,\beta-2)\nonumber\\
+    &+3f_0(\alpha+\tfrac32,\beta-1)
+    +6f_0(\alpha+\tfrac12,\beta-1)
+    +3f_0(\alpha-\tfrac12,\beta-1)\nonumber\\
+    &-f_0(\alpha+\tfrac32,\beta)
+    -3f_0(\alpha+\tfrac12,\beta)
+    -3f_0(\alpha-\tfrac12,\beta)
+    -f_0(\alpha-\tfrac32,\beta)\Big],
+    \label{eq:f3}\\[1mm]
+    f_4(\alpha,\beta)=\frac1{16}\Big[&
+    f_0(\alpha+2,\beta-4)
+    -4f_0(\alpha+2,\beta-3)-4f_0(\alpha+1,\beta-3)\nonumber\\
+    &+6f_0(\alpha+2,\beta-2)+12f_0(\alpha+1,\beta-2)
+    +6f_0(\alpha,\beta-2)\nonumber\\
+    &-4f_0(\alpha+2,\beta-1)-12f_0(\alpha+1,\beta-1)
+    -12f_0(\alpha,\beta-1)\nonumber\\
+    &-4f_0(\alpha-1,\beta-1)
+    +f_0(\alpha+2,\beta)+4f_0(\alpha+1,\beta)\nonumber\\
+    &+6f_0(\alpha,\beta)+4f_0(\alpha-1,\beta)
+    +f_0(\alpha-2,\beta)\Big].
+    \label{eq:f4}
+\end{align}
+Thus $f_1,\ldots,f_4$ introduce no special functions beyond the Gamma
+functions in \eqref{eq:f0}.
+
+\section{Bubble Polarization Coefficients}
+\label{app:bubble-polarizations}
+For $x=-\ii\eta\tilde\nu$, the relative weight of a longitudinal
+nonlocal propagator is
+\begin{equation}
+    \beta(x)\equiv\frac{(x+1/2)^2}{1/4-x^2}
+    =\frac{1+2x}{1-2x}.
+    \label{eq:bubble-longitudinal-weight}
+\end{equation}
+Define $\mathcal I_{\sigma_1\sigma_2}(x)$ by restricting the loop in
+\eqref{eq:bubble-cut-loop} to the polarizations
+$(\sigma_1,\sigma_2)$ and replacing $\mathcal I_{\rm Bub}$ on its
+right-hand side by $\mathcal I_{\sigma_1\sigma_2}$. The independent
+coefficients are
+\begin{align}
+    \mathcal I_{LL}(x)
+    &=[\beta(x)]^2
+    \left[\mathcal J_0(2,2;x)+2\mathcal J_1(1,2;x)
+    +\mathcal J_2(0,2;x)\right],
+    \label{eq:bubble-ILL}\\
+    \mathcal I_{L+}(x)
+    &=\frac{\beta(x)}2
+    \left[\mathcal J_0(0,2;x)-\mathcal J_2(0,2;x)\right],
+    \label{eq:bubble-ILplus}\\
+    \mathcal I_{++}(x)
+    &=\frac14\left[
+    \mathcal J_0(0,0;x)+\mathcal J_0(2,2;x)
+    +\mathcal J_2(0,2;x)\right.\nonumber\\
+    &\hspace{12mm}\left.
+    +2\mathcal J_0(1,1;x)+2\mathcal J_1(1,2;x)
+    +2\mathcal J_1(0,1;x)\right],
+    \label{eq:bubble-Iplusplus}\\
+    \mathcal I_{+-}(x)
+    &=\frac14\left[
+    \mathcal J_0(0,0;x)+\mathcal J_0(2,2;x)
+    +\mathcal J_2(0,2;x)\right.\nonumber\\
+    &\hspace{12mm}\left.
+    -2\mathcal J_0(1,1;x)+2\mathcal J_1(1,2;x)
+    -2\mathcal J_1(0,1;x)\right].
+    \label{eq:bubble-Iplusminus}
+\end{align}
+The remaining entries satisfy
+$\mathcal I_{--}=\mathcal I_{++}$,
+$\mathcal I_{-+}=\mathcal I_{+-}$, and
+$\mathcal I_{L-}=\mathcal I_{+L}=\mathcal I_{-L}=\mathcal I_{L+}$.
+Consequently,
+\begin{equation}
+    \mathcal I_{\rm Bub}
+    =\mathcal I_{LL}+4\mathcal I_{L+}
+    +2\mathcal I_{++}+2\mathcal I_{+-},
+    \label{eq:bubble-channel-sum}
+\end{equation}
+which reduces to \eqref{eq:bubble-polarization-sum} using the moment
+relations in App.~\ref{app:loop-integrals}.
+
+For the $\eta=+1$ branch, the fully reduced sum is
+\begin{equation}
+    \mathcal I_{\rm Bub}(-\ii\tilde\nu)
+    =\frac{3\,2^{-4-4\ii\tilde\nu}(3\ii-2\tilde\nu)^2
+    \Gamma(-3/2-2\ii\tilde\nu)\Gamma(3+2\ii\tilde\nu)
+    \sinh^2(\pi\tilde\nu)}
+    {\pi[1+(3\ii-2\tilde\nu)\tilde\nu]^2}.
+    \label{eq:bubble-I-closed}
+\end{equation}
+Substituting this into \eqref{eq:bubble-coefficient} gives
+\begin{align}
+    C^{\rm Bub}(\tilde\nu)
+    ={}&\frac{3(\tilde\nu-\ii)(\tilde\nu-2\ii)^4}
+    {256\pi^{7/2}\tilde\nu^2(2\tilde\nu-\ii)}
+    \Gamma^2(-2-\ii\tilde\nu)\Gamma^2(5/2+\ii\tilde\nu)
+    \nonumber\\
+    &\times\Gamma(-3/2-2\ii\tilde\nu)
+    \Gamma(1+2\ii\tilde\nu)\sinh^2(\pi\tilde\nu).
+    \label{eq:bubble-C-closed}
+\end{align}
+These expressions retain the Boltzmann suppression. For real
+$\tilde\nu>0$, the opposite nonlocal branch is their complex conjugate.
+
+\section{Triangle Coefficients}
+\label{app:triangle-coefficients}
+\subsection{Polarization sum}
+Let $x=-\ii\eta\tilde\nu$ and let $\beta(x)$ be the longitudinal
+weight in \eqref{eq:bubble-longitudinal-weight}. Summing the nine
+soft-polarization combinations gives
+\begin{align}
+    \mathcal I^L_{\rm Tri}(x,\theta)
+    ={}&[\beta(x)]^2\left\{
+    \frac{\sin^2\theta}{2}\left[
+    \mathcal J_0(2,2;x)+\mathcal J_1(1,2;x)
+    -\mathcal J_2(2,2;x)-\mathcal J_3(1,2;x)\right]\right.
+    \nonumber\\
+    &\hspace{15mm}\left.+\cos^2\theta\left[
+    \mathcal J_2(2,2;x)+\mathcal J_3(1,2;x)
+    +\mathcal J_1(1,2;x)+\mathcal J_2(0,2;x)\right]\right\}
+    \nonumber\\
+    &+\frac{\beta(x)(1+\cos^2\theta)}2
+    \left[\mathcal J_0(0,2;x)-\mathcal J_2(0,2;x)\right]
+    \nonumber\\
+    &+\frac{\sin^2\theta}{2}\left[
+    \mathcal J_2(2,2;x)+\mathcal J_3(1,2;x)
+    +\mathcal J_1(1,2;x)+\mathcal J_2(0,2;x)
+    +\mathcal J_0(0,0;x)\right]
+    \nonumber\\
+    &+\cos^2\theta\left[
+    \mathcal J_0(2,2;x)-\mathcal J_2(2,2;x)
+    +\mathcal J_1(1,2;x)-\mathcal J_3(1,2;x)\right].
+    \label{eq:triangle-IL-explicit}
+\end{align}
+The terms proportional to $\beta^2$, $\beta$, and $1$ arise from
+two longitudinal, mixed, and two transverse soft lines, respectively.
+The hard transverse coefficients follow from
+\eqref{eq:triangle-completeness}; each refers to one helicity.
+
+Reducing the Gamma functions in the moment integrals yields
+\begin{align}
+    \mathcal I^L_{\rm Tri}(-\ii\tilde\nu,\theta)
+    &=\mathcal I^+_{\rm Tri}(-\ii\tilde\nu,\theta)
+    =\mathcal I^-_{\rm Tri}(-\ii\tilde\nu,\theta)
+    =\frac13\mathcal I_{\rm Bub}(-\ii\tilde\nu)
+    \nonumber\\
+    &=\frac{2^{-4-4\ii\tilde\nu}(3\ii-2\tilde\nu)^2
+    \Gamma(-3/2-2\ii\tilde\nu)\Gamma(3+2\ii\tilde\nu)
+    \sinh^2(\pi\tilde\nu)}
+    {\pi[1+(3\ii-2\tilde\nu)\tilde\nu]^2}.
+    \label{eq:triangle-I-closed}
+\end{align}
+Thus the angular dependence of the separate soft-polarization
+contributions cancels in their sum. The coefficient of a single
+triangle reduces to
+\begin{equation}
+    C^{\rm Tri}(\tilde\nu,\theta)
+    =\frac{\Gamma^4(-\ii\tilde\nu)}{3(4\pi)^{7/2}}
+    \mathcal P^{(1)}_+(\tilde\nu)
+    \left[\mathcal P^{(2),L}_+(\tilde\nu)
+    +2\mathcal P^{(2),+}_+(\tilde\nu)\right]
+    \mathcal I_{\rm Bub}(-\ii\tilde\nu).
+    \label{eq:triangle-C-reduced}
+\end{equation}
+
+\subsection{Time-integral coefficients}
+For the auxiliary scalar propagator of \eqref{eq:scalar-propagator},
+the double-folded seed is defined by
+\begin{equation}
+    \mathcal M_{\aa\bb}^{p_1p_2}
+    \equiv(-\aa\bb)k^{5+p_{12}}
+    \int_{-\infty}^0\di\tau_1\di\tau_2\,
+    (-\tau_1)^{p_1}(-\tau_2)^{p_2}
+    e^{\ii\aa k\tau_1+\ii\bb k\tau_2}
+    \frac{D^{\rm(s)}_{\aa\bb}(k;\tau_1,\tau_2)}{H^2},
+    \label{eq:triangle-M-definition}
+\end{equation}
+where $p_{12}=p_1+p_2$ and $\bar p_{12}=p_1-p_2$.
+This is the seed $\widetilde{\mathcal I}_{\aa\bb}^{p_1p_2}(1,1)$
+of Ref.~\cite{qin_closed-form_2023}, with $H$ restored explicitly.
+All seeds below have mass index $\tilde\nu$.
+The closed expressions are
+\begin{align}
+    \mathcal M_{\pm\mp}^{p_1p_2}
+    &=\frac{e^{\mp\ii\pi\bar p_{12}/2}}{2^{5+p_{12}}}
+    \prod_{j=1}^{2}
+    \frac{\Gamma(5/2+p_j-\ii\tilde\nu)
+    \Gamma(5/2+p_j+\ii\tilde\nu)}{\Gamma(3+p_j)},
+    \label{eq:triangle-M-opposite}\\
+    \mathcal M_{\pm\pm}^{p_1p_2}
+    &=\frac{\pm\ii e^{\mp\ii\pi p_{12}/2}e^{-\pi\tilde\nu}}
+    {2^{5+p_{12}}}
+    \prod_{j=1}^{2}
+    \frac{\Gamma(5/2+p_j-\ii\tilde\nu)
+    \Gamma(5/2+p_j+\ii\tilde\nu)}{\Gamma(3+p_j)}
+    \nonumber\\
+    &\quad-\frac{e^{\mp\ii\pi p_{12}/2}}{2^{5+p_{12}}}
+    \Gamma(5+p_{12})\Gamma(5/2+p_1\pm\ii\tilde\nu)
+    \Gamma(5/2+p_2\pm\ii\tilde\nu)
+    \nonumber\\
+    &\qquad\times{}_3\widetilde F_2\left[
+    \begin{matrix}
+    5+p_{12},\;1/2\pm\ii\tilde\nu,\;1\\
+    7/2+p_1\pm\ii\tilde\nu,\;7/2+p_2\pm\ii\tilde\nu
+    \end{matrix}\middle|1\right].
+    \label{eq:triangle-M-same}
+\end{align}
+Here ${}_3\widetilde F_2(a,b,c;d,e;1)
+={}_3F_2(a,b,c;d,e;1)/[\Gamma(d)\Gamma(e)]$ is the regularized
+hypergeometric function.
+
+Set $p_\epsilon=-5/2+\epsilon+\ii\eta\tilde\nu$.
+The two transverse coefficients are
+\begin{align}
+    \mathcal P^{(2),\pm}_\eta(\tilde\nu)
+    ={}&2^{2\ii\eta\tilde\nu}
+    \underset{\epsilon=0}{\operatorname{FP}}
+    \sum_{\aa,\bb=\pm1}
+    \left[
+    \mathcal M_{\aa\bb}^{p_\epsilon,p_\epsilon}
+    +\ii\aa\mathcal M_{\aa\bb}^{p_\epsilon+1,p_\epsilon}
+    +\ii\bb\mathcal M_{\aa\bb}^{p_\epsilon,p_\epsilon+1}
+    -\aa\bb\mathcal M_{\aa\bb}^{p_\epsilon+1,p_\epsilon+1}
+    \right].
+    \label{eq:triangle-P2-transverse}
+\end{align}
+The longitudinal coefficient can be written using the same transverse
+combination:
+\begin{align}
+    \mathcal P^{(2),L}_\eta(\tilde\nu)
+    ={}&\frac{\mathcal P^{(1)}_\eta(\tilde\nu)
+    +(1/2+\ii\eta\tilde\nu)^2
+    \mathcal P^{(2),+}_\eta(\tilde\nu)}{\tilde\nu^2+1/4}
+    \nonumber\\
+    &+\frac{2^{2\ii\eta\tilde\nu}}{\tilde\nu^2+1/4}
+    \underset{\epsilon=0}{\operatorname{FP}}
+    \sum_{\aa,\bb=\pm1}
+    \left\{(1/2+\ii\eta\tilde\nu)
+    \left[
+    \mathcal M_{\aa\bb}^{p_\epsilon+2,p_\epsilon}
+    +\ii\bb\mathcal M_{\aa\bb}^{p_\epsilon+2,p_\epsilon+1}
+    \right.\right.\nonumber\\
+    &\hspace{30mm}\left.\left.
+    +\mathcal M_{\aa\bb}^{p_\epsilon,p_\epsilon+2}
+    +\ii\aa\mathcal M_{\aa\bb}^{p_\epsilon+1,p_\epsilon+2}
+    \right]
+    +\mathcal M_{\aa\bb}^{p_\epsilon+2,p_\epsilon+2}
+    \right\}.
+    \label{eq:triangle-P2-longitudinal}
+\end{align}
+The operator $\operatorname{FP}_{\epsilon=0}$ selects the constant
+coefficient of the Laurent expansion after assembling the indicated
+seed sum. In particular, the seed expressions are combined before
+setting $\epsilon$ to zero. The first term proportional to
+$\mathcal P^{(1)}_\eta$ in \eqref{eq:triangle-P2-longitudinal} is
+the contact contribution in \eqref{eq:triangle-contact}.
+
+\section{Box Polarization Coefficients}
+\label{app:box-coefficients}
+\subsection{Polarization sums}
+Let $\lambda_1,\lambda_3=L,\pm$ denote the polarizations of the
+hard lines with momenta $\mb k_1$ and $\mb k_3$. With
+$\mb K=\mb q+\mb k_s$, define the soft-polarization sum by
+\begin{align}
+    &\sum_{\sigma_1,\sigma_2=L,\pm}
+    [\beta(x)]^{\delta_{\sigma_1L}+\delta_{\sigma_2L}}
+    \int\frac{\di^3\mb q}{(2\pi)^3}
+    \left(\frac q2\right)^{-2x}
+    \left(\frac K2\right)^{-2x}
+    (e_{\mb k_1}^{(\lambda_1)*}\!\cdot e_{\mb K}^{(\sigma_1)})
+    (e_{\mb K}^{(\sigma_1)*}\!\cdot e_{\mb k_3}^{(\lambda_3)})
+    \nonumber\\
+    &\qquad\times
+    (e_{\mb k_3}^{(\lambda_3)*}\!\cdot e_{\mb q}^{(\sigma_2)})
+    (e_{\mb q}^{(\sigma_2)*}\!\cdot e_{\mb k_1}^{(\lambda_1)})
+    =\frac{4^{2x}k_s^{3-4x}}{(4\pi)^{3/2}}
+    \mathcal I^{\lambda_1\lambda_3}_{\rm Box}
+    (x,\theta_1,\theta_3,\phi_3).
+    \label{eq:box-I-definition}
+\end{align}
+The angles follow \eqref{eq:collapsed-kinematics} and the convention
+stated below it. The two transverse hard-line coefficients
+$\mathcal P^{(2),+}_\eta=\mathcal P^{(2),-}_\eta$ are equal, so it
+suffices to retain three groups:
+\begin{align}
+    \mathcal I^{LH}_{\rm Box}
+    &\equiv\sum_{\lambda=\pm}
+    \left(\mathcal I^{L\lambda}_{\rm Box}
+    +\mathcal I^{\lambda L}_{\rm Box}\right),
+    &\mathcal I^{HH}_{\rm Box}
+    &\equiv\sum_{\lambda_1,\lambda_3=\pm}
+    \mathcal I^{\lambda_1\lambda_3}_{\rm Box},
+    \label{eq:box-channel-groups}
+\end{align}
+together with $\mathcal I^{LL}_{\rm Box}$. Here $H$ in a polarization
+superscript denotes the sum over transverse helicities.
+
+For $x=-\ii\tilde\nu$, the longitudinal result is
+\begin{align}
+    &\mathcal I^{LL}_{\rm Box}
+    (-\ii\tilde\nu,\theta_1,\theta_3,\phi_3)
+    \nonumber\\
+    &\quad=-\frac{4^{-3-2\ii\tilde\nu}(2\tilde\nu-3\ii)
+    \Gamma(-3/2-2\ii\tilde\nu)\Gamma(1+2\ii\tilde\nu)
+    \sinh^2(\pi\tilde\nu)}
+    {\pi(\tilde\nu-\ii)(\tilde\nu-2\ii)(2\tilde\nu-\ii)}
+    \nonumber\\
+    &\qquad\times\Big\{
+    -16-19\ii\tilde\nu+6\tilde\nu^2
+    +\tilde\nu(2\tilde\nu-\ii)
+    \big[\cos(2\theta_1)+\cos(2\theta_3)
+    +3\cos(2\theta_1)\cos(2\theta_3)\big]
+    \nonumber\\
+    &\hspace{24mm}
+    +4(2\tilde\nu^2-5\ii\tilde\nu-3)
+    \cos(2\phi_3)\sin^2\theta_1\sin^2\theta_3
+    \nonumber\\
+    &\hspace{24mm}
+    -8\tilde\nu(\tilde\nu-\ii)\cos\phi_3
+    \sin(2\theta_1)\sin(2\theta_3)\Big\}.
+    \label{eq:box-ILL-closed}
+\end{align}
+Polarization completeness and \eqref{eq:triangle-I-closed} reduce
+the other two groups to
+\begin{align}
+    \mathcal I^{LH}_{\rm Box}
+    &=\frac23\mathcal I_{\rm Bub}-2\mathcal I^{LL}_{\rm Box},
+    \label{eq:box-ILH-closed}\\
+    \mathcal I^{HH}_{\rm Box}
+    &=\frac13\mathcal I_{\rm Bub}+\mathcal I^{LL}_{\rm Box}.
+    \label{eq:box-IHH-closed}
+\end{align}
+The arguments are the same as in \eqref{eq:box-ILL-closed}, with
+$\mathcal I_{\rm Bub}$ evaluated at $-\ii\tilde\nu$.
+Together with \eqref{eq:bubble-I-closed}, these are explicit
+Gamma-function expressions for all three groups. They satisfy
+$\mathcal I^{LL}_{\rm Box}+\mathcal I^{LH}_{\rm Box}
++\mathcal I^{HH}_{\rm Box}=\mathcal I_{\rm Bub}$.
+
+The dimensionless box coefficient is consequently
+\begin{align}
+    C^{\rm Box}(\tilde\nu,\theta_1,\theta_3,\phi_3)
+    ={}&\frac{\Gamma^4(-\ii\tilde\nu)}{(4\pi)^{7/2}}
+    \Big\{
+    [\mathcal P^{(2),L}_+-\mathcal P^{(2),+}_+]^2
+    \mathcal I^{LL}_{\rm Box}
+    \nonumber\\
+    &\qquad+\frac13\mathcal P^{(2),+}_+
+    [2\mathcal P^{(2),L}_++\mathcal P^{(2),+}_+]
+    \mathcal I_{\rm Bub}\Big\},
+    \label{eq:box-C-reduced}
+\end{align}
+where all time-integral coefficients have argument $\tilde\nu$ and
+are given in App.~\ref{app:triangle-coefficients}.
+The opposite nonlocal branch follows by complex conjugation.
+
+\subsection{Angular projections}
+\label{app:box-angular-projections}
+The five functions in \eqref{eq:box-angular-expansion} can be
+read off from \eqref{eq:box-C-reduced}, or equivalently obtained
+from the following projections:
+\begin{align}
+    A_1(\tilde\nu)
+    &=\frac12\left[
+    C^{\rm Box}(\tilde\nu,\tfrac\pi2,\tfrac\pi2,0)
+    +C^{\rm Box}(\tilde\nu,\tfrac\pi2,\tfrac\pi2,\tfrac\pi2)
+    \right],\\
+    A_2(\tilde\nu)
+    &=C^{\rm Box}(\tilde\nu,\tfrac\pi2,0,0)-A_1(\tilde\nu),\\
+    A_3(\tilde\nu)
+    &=C^{\rm Box}(\tilde\nu,0,0,0)
+    -A_1(\tilde\nu)-2A_2(\tilde\nu),\\
+    B(\tilde\nu)
+    &=\frac12\left[
+    C^{\rm Box}(\tilde\nu,\tfrac\pi4,\tfrac\pi4,0)
+    -C^{\rm Box}(\tilde\nu,\tfrac\pi4,\tfrac\pi4,\pi)
+    \right],\\
+    D(\tilde\nu)
+    &=\frac12\left[
+    C^{\rm Box}(\tilde\nu,\tfrac\pi2,\tfrac\pi2,0)
+    -C^{\rm Box}(\tilde\nu,\tfrac\pi2,\tfrac\pi2,\tfrac\pi2)
+    \right].
+    \label{eq:box-angular-projections}
+\end{align}
+These projections retain the normalization of the single ordering
+in \eqref{eq:box-single-signal}.
+
+\clearpage
+\bibliography{sample,sms-references}
+\bibliographystyle{utphys}
+
+\end{document}
