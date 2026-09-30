@@ -1,0 +1,6 @@
+PASS left Bose exchange: relative residual 0.000e+00
+PASS right Bose exchange: relative residual 0.000e+00
+PASS hard-pair exchange: relative residual 1.505e-36
+PASS parity: relative residual 0.000e+00
+PASS dimension -5 including H: relative residual 0.000e+00
+Scope: symmetries and dimensions of the assembled leading formula only.

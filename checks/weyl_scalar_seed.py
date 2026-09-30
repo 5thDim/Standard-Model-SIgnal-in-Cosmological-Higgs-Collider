@@ -1,4 +1,7 @@
-"""Top-quark hard blocks from Qin--Xianyu's branch-resolved scalar seed.
+"""Top-quark hard blocks after the Aoki two-component Majorana contraction.
+
+Qin--Xianyu's scalar seed is reused only for the projected hard time integrals;
+no fermionic bubble amplitude is substituted for the box.
 
 The scalar seed is analytically continued to nu = mu - i/2. Equation (92)
 of arXiv:2301.07047 uses REGULARIZED 3F2, defined in its Eq. (138).
@@ -6,7 +9,7 @@ The former implementation omitted its two denominator Gamma factors.
 The nu -> -nu symmetry makes all hypergeometric series convergent without
 an auxiliary mass-index regulator. hard_coefficients cancels the endpoint
 poles analytically before evaluation. regulated_hard_coefficients is an
-independent check of the common-regulator limit, not the main evaluator.
+consistency check of the common-regulator limit, not the main evaluator.
 """
 
 from functools import lru_cache

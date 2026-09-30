@@ -1,0 +1,7 @@
+Command: latexmk -pdf -interaction=nonstopmode -halt-on-error "Top Quark Signal.tex"
+PASS PDF compiled: 17 A4 pages
+PASS no undefined references/citations, duplicate labels, or overfull/underfull boxes
+PASS extracted PDF text has no unresolved reference markers
+Visual review: modes, box routing figure, and clock/mixed result pages rendered and inspected
+Source SHA256: 528991999e06f84e209604a7300969f68fd8bd3f8cd64a1a215a37067a423276
+PDF SHA256: 2020145d716b3bd3a6558390d651fa6100955ff108231b709bab98684311e1ef

@@ -1,0 +1,19 @@
+PASS Whittaker/Hankel, first-order EOM, norm mu=0.2: residual 1.515e-39
+PASS BD asymptotic convergence mu=0.2: ratio 0.500000
+PASS Whittaker/Hankel, first-order EOM, norm mu=0.73: residual 4.733e-41
+PASS BD asymptotic convergence mu=0.73: ratio 0.500000
+PASS Whittaker/Hankel, first-order EOM, norm mu=2.0: residual 5.877e-39
+PASS BD asymptotic convergence mu=2.0: ratio 0.500000
+PASS Whittaker/Hankel, first-order EOM, norm mu=5.0: residual 2.351e-38
+PASS BD asymptotic convergence mu=5.0: ratio 0.500000
+PASS all four two-component SK blocks and canonical anticommutator mu=0.2: residual 5.167e-16
+PASS all four two-component SK blocks and canonical anticommutator mu=0.73: residual 3.989e-16
+PASS all four two-component SK blocks and canonical anticommutator mu=2.0: residual 7.348e-16
+PASS exact nonanalytic 0F1 soft branch vs Hankel-Bessel split mu=0.2: residual 2.121e-41
+PASS exact nonanalytic 0F1 soft branch vs Hankel-Bessel split mu=0.73: residual 1.104e-42
+PASS exact nonanalytic 0F1 soft branch vs Hankel-Bessel split mu=2.0: residual 7.147e-44
+PASS Majorana combinatorics: 48 connected slot pairings = 3 undirected cycles x 16; each vertex retains 1/2
+PASS 8-field Wick enumeration vs all six cycles, two Majoranas vs Dirac, 16 SK choices mu=0.2: residual 9.282e-15
+PASS 8-field Wick enumeration vs all six cycles, two Majoranas vs Dirac, 16 SK choices mu=0.73: residual 3.420e-14
+PASS 8-field Wick enumeration vs all six cycles, two Majoranas vs Dirac, 16 SK choices mu=2.0: residual 2.078e-14
+Scope: exact finite-time contractions on generic edge momenta; no unexpanded-box time/momentum quadrature.

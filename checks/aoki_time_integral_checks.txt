@@ -1,0 +1,6 @@
+PASS direct regulated first-nonzero hard coefficients P1/P2 mu=0.2: relative error 2.602e-09
+PASS direct BD-contour H21/H11 quadrature mu=0.2, clock, delta=0.8: relative seed error 2.719e-09; N=48/72, tail=26/30 change 1.406e-08
+PASS direct regulated first-nonzero hard coefficients P1/P2 mu=0.73: relative error 1.002e-09
+PASS direct BD-contour H21/H11 quadrature mu=0.73, clock, delta=0.8: relative seed error 6.704e-10; N=48/72, tail=26/30 change 3.467e-09
+PASS direct BD-contour H21/H11 quadrature mu=0.73, mixed, delta=0.8: relative seed error 1.884e-06; N=48/72, tail=26/30 change 1.332e-05
+Scope: independently normalized physical-mass time kernels at positive regulator; zero-regulator extrapolation still uses scalar seeds, not this quadrature.

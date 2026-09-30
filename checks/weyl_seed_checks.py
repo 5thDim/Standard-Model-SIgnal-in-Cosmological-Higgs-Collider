@@ -1,4 +1,6 @@
-"""Independent normalization and convergence audit for the physical hard seeds.
+"""Normalization and convergence audit for the physical hard seeds.
+Elementary conformal-scalar tests are independent; branch/finite comparisons
+are algebraic consistency checks of the same published seed.
 Run from the project root: python3 checks/weyl_seed_checks.py
 Writes weyl_seed_checks.txt. This does not integrate the unexpanded box.
 """
