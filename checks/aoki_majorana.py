@@ -1,6 +1,7 @@
 """Aoki two-component Majorana rules; independent Whittaker implementation.
 All fields rescaled, Fourier exp(+ik.x), no i in contractions.
-C^{rs}=<T_C zeta_r zeta_s^T>, zeta=(psi, psi^dagger_lower).
+D denotes the paper's rescaled propagator tilde D, with type order (L,Lbar).
+D^{rs}=<T_C zeta_r zeta_s^T>, zeta=(tilde psi,tilde psi^dagger_lower).
 J=diag(epsilon,-epsilon), O=zeta^T J zeta/2.
 """
 from functools import lru_cache
@@ -9,11 +10,12 @@ import numpy as np
 
 SIGMA = np.array([[[0, 1], [1, 0]], [[0, -1j], [1j, 0]],
                   [[1, 0], [0, -1]]], complex)
-E = np.array([[0, 1], [-1, 0]], complex)
+# epsilon_{12}=+1; epsilon^{alpha beta} is -EPSILON_LOWER.
+EPSILON_LOWER = np.array([[0, 1], [-1, 0]], complex)
 I = np.eye(2, dtype=complex)
 Z = np.zeros((2, 2), complex)
-J = np.block([[E, Z], [Z, -E]])
-T = np.block([[I, Z], [Z, E]])  # zeta=T(psi,psi^dagger_raised)
+J = np.block([[EPSILON_LOWER, Z], [Z, -EPSILON_LOWER]])
+T = np.block([[I, Z], [Z, EPSILON_LOWER]])  # zeta=T(psi,psi^dagger_raised)
 X = np.block([[Z, I], [I, Z]])
 UB = np.block([[I, -I], [I, I]])/np.sqrt(2)
 BETA = np.block([[I, Z], [Z, -I]])
@@ -44,10 +46,10 @@ def greater(k, t1, t2, mu):
         u1, v1 = map(complex, uv(mu, -p*t1, h))
         u2, v2 = map(complex, uv(mu, -p*t2, h))
         P = (I+h*slash(k/p))/2
-        blocks[0] -= u1*v2.conjugate()*P@E
+        blocks[0] -= u1*v2.conjugate()*P@EPSILON_LOWER
         blocks[1] += u1*u2.conjugate()*P
-        blocks[2] -= v1*v2.conjugate()*E@P@E
-        blocks[3] += v1*u2.conjugate()*E@P
+        blocks[2] -= v1*v2.conjugate()*EPSILON_LOWER@P@EPSILON_LOWER
+        blocks[3] += v1*u2.conjugate()*EPSILON_LOWER@P
     return np.block([[blocks[0], blocks[1]], [blocks[2], blocks[3]]])
 
 
@@ -108,9 +110,9 @@ def connected(pairs):
 CONNECTED = [(s, p) for s, p in pairings(list(range(8))) if connected(p)]
 
 
-def wick_four(C):
+def wick_four(D):
     """Connected <O1 O2 O3 O4> by all slots/types and 8-field Wick theorem.
-    C shape (4,4,4,4): vertex,vertex,spin+type,spin+type.
+    D shape (4,4,4,4): vertex,vertex,spin+type,spin+type.
     Includes each O=1/2 zeta^T J zeta; no closed-loop rule assumed.
     """
     import itertools
@@ -122,12 +124,12 @@ def wick_four(C):
         for sign, pairs in CONNECTED:
             product = sign*weight
             for i, j in pairs:
-                product *= C[i//2, j//2, idx[i], idx[j]]
+                product *= D[i//2, j//2, idx[i], idx[j]]
             answer += product
     return answer
 
 
-def cycle_sum(C):
+def cycle_sum(D):
     import itertools
-    return -.5*sum(np.trace(J@C[i,j]@J@C[j,k]@J@C[k,l]@J@C[l,i])
+    return -.5*sum(np.trace(J@D[i,j]@J@D[j,k]@J@D[k,l]@J@D[l,i])
                    for j,k,l in itertools.permutations((1,2,3)) for i in (0,))

@@ -1,7 +1,14 @@
 """Top-quark hard blocks after the Aoki two-component Majorana contraction.
 
-Qin--Xianyu's scalar seed is reused only for the projected hard time integrals;
+Qin--Xianyu's scalar seed is reused only after the original psi/psi-dagger
+type sum has reduced the hard subgraphs to scalar time integrals;
 no fermionic bubble amplitude is substituted for the box.
+
+The paper calls these scalar integrals H_GF and H_FF. Legacy return names
+H21 and H11 respectively denote the same two scalar quantities; they are
+kept for compatibility with the existing result evaluator and check reports.
+The direct field-type derivation is checked in aoki_weyl_checks.py and
+aoki_collapsed_checks.py, neither of which rotates the spinor field basis.
 
 The scalar seed is analytically continued to nu = mu - i/2. Equation (92)
 of arXiv:2301.07047 uses REGULARIZED 3F2, defined in its Eq. (138).

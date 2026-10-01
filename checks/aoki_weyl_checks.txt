@@ -1,0 +1,20 @@
+PASS both soft branches: 0F1 vs Bessel/helicity contractions, mu=0.2: residual 3.688e-16
+PASS both soft branches: 0F1 vs Bessel/helicity contractions, mu=0.73: residual 4.634e-16
+PASS both soft branches: 0F1 vs Bessel/helicity contractions, mu=2.0: residual 4.212e-16
+PASS both soft branches: 0F1 vs Bessel/helicity contractions, mu=5.0: residual 5.696e-16
+PASS four-type scalar coefficients vs Hankel, all SK, mu=0.2: residual 2.150e-16
+PASS full type-cycle vs factorized cut, all SK and soft assignments, mu=0.2: residual 1.618e-15
+PASS zeroth hard block and Bose oddness, mu=0.2: residual 1.342e-16
+PASS mixed scalar hard blocks from original field types, mu=0.2: residual 7.850e-17
+PASS first descendants converge quadratically, mu=0.2: 1.655e-05, 4.136e-06, 1.034e-06
+PASS four-type scalar coefficients vs Hankel, all SK, mu=0.73: residual 7.388e-17
+PASS full type-cycle vs factorized cut, all SK and soft assignments, mu=0.73: residual 1.140e-15
+PASS zeroth hard block and Bose oddness, mu=0.73: residual 7.972e-17
+PASS mixed scalar hard blocks from original field types, mu=0.73: residual 1.618e-16
+PASS first descendants converge quadratically, mu=0.73: 1.031e-05, 2.577e-06, 6.441e-07
+PASS four-type scalar coefficients vs Hankel, all SK, mu=2.0: residual 2.306e-16
+PASS full type-cycle vs factorized cut, all SK and soft assignments, mu=2.0: residual 1.446e-14
+PASS zeroth hard block and Bose oddness, mu=2.0: residual 1.226e-16
+PASS mixed scalar hard blocks from original field types, mu=2.0: residual 2.220e-16
+PASS first descendants converge quadratically, mu=2.0: 4.108e-06, 1.027e-06, 2.569e-07
+Scope: finite-time spin/field-type identities and local soft expansion; not full BD box quadrature.

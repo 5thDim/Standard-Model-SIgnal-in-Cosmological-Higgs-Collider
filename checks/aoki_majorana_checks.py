@@ -6,7 +6,7 @@ from itertools import product, permutations
 from pathlib import Path
 import mpmath as mp
 import numpy as np
-from aoki_majorana import (uv, greater, contraction, dirac_hankel, E, I, J,
+from aoki_majorana import (uv, greater, contraction, dirac_hankel, EPSILON_LOWER, I, J,
                            T, X, UB, BETA, CONNECTED, wick_four, cycle_sum)
 mp.mp.dps = 40
 lines = []
@@ -43,10 +43,10 @@ for mu in (.2, .73, 2.):
     for trial in range(3):
         k = rng.normal(size=3); t1,t2 = -rng.uniform(.05,3,2)
         for a,b in product((1,-1), repeat=2):
-            C = contraction(k,t1,t2,a,b,mu)
-            R = UB.conj().T@T.conj().T@C@X@T@UB
+            D = contraction(k,t1,t2,a,b,mu)
+            R = UB.conj().T@T.conj().T@D@X@T@UB
             old = dirac_hankel(k,t1,t2,a,b,mu)
-            residuals += [np.linalg.norm(R-old), np.linalg.norm(C+contraction(-k,t2,t1,b,a,mu).T)]
+            residuals += [np.linalg.norm(R-old), np.linalg.norm(D+contraction(-k,t2,t1,b,a,mu).T)]
         residuals += [np.linalg.norm(greater(k,t1,t2,mu)[2:,2:]
                                       - greater(k,t2,t1,mu)[:2,:2].conj().T)]
         gt = greater(k,t1,t1,mu)
@@ -84,14 +84,14 @@ for mu in (.2, .73, 2.):
     ts=-rng.uniform(.2,2,4)
     momenta={(i,j):rng.normal(size=3) for i in range(4) for j in range(i+1,4)}
     for branches in product((1,-1),repeat=4):
-        C=np.zeros((4,4,4,4),complex); R=np.zeros_like(C)
+        D=np.zeros((4,4,4,4),complex); R=np.zeros_like(D)
         for (i,j),k in momenta.items():
-            C[i,j]=contraction(k,ts[i],ts[j],branches[i],branches[j],mu)
-            C[j,i]=-C[i,j].T
+            D[i,j]=contraction(k,ts[i],ts[j],branches[i],branches[j],mu)
+            D[j,i]=-D[i,j].T
             R[i,j]=dirac_hankel(k,ts[i],ts[j],branches[i],branches[j],mu)
             R[j,i]=dirac_hankel(-k,ts[j],ts[i],branches[j],branches[i],mu)
-        wick=wick_four(C)
-        trace=cycle_sum(C)
+        wick=wick_four(D)
+        trace=cycle_sum(D)
         old=-sum(np.trace(BETA@R[0,j]@BETA@R[j,k]@BETA@R[k,l]@BETA@R[l,0])
                  for j,k,l in permutations((1,2,3)))
         residuals += [abs(wick-trace), abs(2*wick-old)]

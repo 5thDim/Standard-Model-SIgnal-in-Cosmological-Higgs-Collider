@@ -1,11 +1,11 @@
-PASS full soft endpoints + hard/external momenta mu=0.2, N=20, geometry=0: relative errors 3.366e-04, 8.417e-05, 2.104e-05
-PASS full soft endpoints + hard/external momenta mu=0.2, N=20, geometry=1: relative errors 2.800e-04, 7.001e-05, 1.750e-05
-PASS full soft endpoints + hard/external momenta mu=0.73, N=20, geometry=0: relative errors 1.804e-04, 4.511e-05, 1.128e-05
-PASS full soft endpoints + hard/external momenta mu=0.73, N=20, geometry=1: relative errors 1.687e-04, 4.218e-05, 1.055e-05
-PASS full soft endpoints + hard/external momenta mu=2.0, N=20, geometry=0: relative errors 1.440e-04, 3.601e-05, 9.009e-06
-PASS full soft endpoints + hard/external momenta mu=2.0, N=20, geometry=1: relative errors 1.127e-04, 2.817e-05, 7.043e-06
-PASS full soft endpoints + hard/external momenta mu=0.73, N=32, geometry=0: relative errors 1.804e-04, 4.511e-05, 1.128e-05
-PASS full soft endpoints + hard/external momenta mu=0.73, N=48, geometry=0: relative errors 1.804e-04, 4.511e-05, 1.128e-05
+PASS direct psi/psi-dagger soft endpoints + hard/external momenta mu=0.2, N=20, geometry=0: relative errors 3.366e-04, 8.417e-05, 2.104e-05
+PASS direct psi/psi-dagger soft endpoints + hard/external momenta mu=0.2, N=20, geometry=1: relative errors 2.800e-04, 7.001e-05, 1.750e-05
+PASS direct psi/psi-dagger soft endpoints + hard/external momenta mu=0.73, N=20, geometry=0: relative errors 1.804e-04, 4.511e-05, 1.128e-05
+PASS direct psi/psi-dagger soft endpoints + hard/external momenta mu=0.73, N=20, geometry=1: relative errors 1.687e-04, 4.218e-05, 1.055e-05
+PASS direct psi/psi-dagger soft endpoints + hard/external momenta mu=2.0, N=20, geometry=0: relative errors 1.440e-04, 3.601e-05, 9.009e-06
+PASS direct psi/psi-dagger soft endpoints + hard/external momenta mu=2.0, N=20, geometry=1: relative errors 1.127e-04, 2.817e-05, 7.043e-06
+PASS direct psi/psi-dagger soft endpoints + hard/external momenta mu=0.73, N=32, geometry=0: relative errors 1.804e-04, 4.511e-05, 1.128e-05
+PASS direct psi/psi-dagger soft endpoints + hard/external momenta mu=0.73, N=48, geometry=0: relative errors 1.804e-04, 4.511e-05, 1.128e-05
 PASS finite-domain quadrature refinement 32 -> 48: relative change 2.756e-03
 PASS zeroth-order trace nonzero individually, cancels between external orderings; coefficient scales as soft^2 before d^3q.
 Scope: finite-domain full soft-cut expansion; not an independent BD hard amplitude or uncut-box evaluation.

@@ -1,0 +1,10 @@
+PASS mu=0.2, dps=30, 3 directions x 3 time pairs: whittaker=2.492e-16, hankel=3.069e-16, sk=2.492e-16, conjugation=0.000e+00, canonical=0.000e+00
+PASS mu=0.73, dps=30, 3 directions x 3 time pairs: whittaker=2.335e-16, hankel=2.335e-16, sk=2.335e-16, conjugation=0.000e+00, canonical=1.148e-16
+PASS mu=2.0, dps=30, 3 directions x 3 time pairs: whittaker=2.176e-16, hankel=2.451e-16, sk=2.176e-16, conjugation=0.000e+00, canonical=2.220e-16
+PASS mu=5.0, dps=30, 3 directions x 3 time pairs: whittaker=2.809e-16, hankel=2.992e-16, sk=2.809e-16, conjugation=0.000e+00, canonical=2.282e-16
+PASS mu=0.2, dps=60, 3 directions x 3 time pairs: whittaker=2.492e-16, hankel=3.069e-16, sk=2.492e-16, conjugation=0.000e+00, canonical=0.000e+00
+PASS mu=0.73, dps=60, 3 directions x 3 time pairs: whittaker=2.335e-16, hankel=2.335e-16, sk=2.335e-16, conjugation=0.000e+00, canonical=1.148e-16
+PASS mu=2.0, dps=60, 3 directions x 3 time pairs: whittaker=2.176e-16, hankel=2.451e-16, sk=2.176e-16, conjugation=0.000e+00, canonical=2.220e-16
+PASS mu=5.0, dps=60, 3 directions x 3 time pairs: whittaker=2.809e-16, hankel=2.992e-16, sk=2.809e-16, conjugation=0.000e+00, canonical=2.282e-16
+PASS 30 -> 60 digit stability (matrices stored in complex128): 0.000e+00
+Scope: exact free propagators, all three types and all SK assignments; no late-time approximation. Not an independent box-amplitude verification.

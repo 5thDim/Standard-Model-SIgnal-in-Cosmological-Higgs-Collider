@@ -1,0 +1,17 @@
+CHECK modes mu=0.2: max EOM residual v1=0.925137, v2/Aoki=2.892e-41; |u+/u-| at x=100 is 0.00099996, not 1 as v7_24 (13) requires
+CHECK modes mu=0.73: max EOM residual v1=2.85769, v2/Aoki=3.247e-41; |u+/u-| at x=100 is 0.00364981, not 1 as v7_24 (13) requires
+CHECK modes mu=2.0: max EOM residual v1=7.13004, v2/Aoki=1.027e-40; |u+/u-| at x=100 is 0.00999863, not 1 as v7_24 (13) requires
+CHECK canonical normal anticommutator mu=0.2, x=.7: missing -k residual=1.37951086, corrected residual=0.000e+00
+CHECK canonical normal anticommutator mu=0.73, x=.7: missing -k residual=1.04201837, corrected residual=0.000e+00
+CHECK canonical normal anticommutator mu=2.0, x=.7: missing -k residual=0.44335412, corrected residual=0.000e+00
+CHECK soft normal mu=0.2: You-v2/Aoki coefficient relative difference=1.955e-41; ||D_S,NL,+||/(k^2 tau1 tau2)^i mu magnitude=0.2936558; v7_24 (18) gives 0
+CHECK soft normal mu=0.73: You-v2/Aoki coefficient relative difference=3.212e-41; ||D_S,NL,+||/(k^2 tau1 tau2)^i mu magnitude=0.070646207; v7_24 (18) gives 0
+CHECK soft normal mu=2.0: You-v2/Aoki coefficient relative difference=3.002e-42; ||D_S,NL,+||/(k^2 tau1 tau2)^i mu magnitude=0.0013204768; v7_24 (18) gives 0
+CHECK soft normal mu=5.0: You-v2/Aoki coefficient relative difference=2.568e-41; ||D_S,NL,+||/(k^2 tau1 tau2)^i mu magnitude=1.0656221e-07; v7_24 (18) gives 0
+CHECK Bose cancellation mu=0.2, all 16 SK: largest single-cycle spin coefficient=0.47710998, largest four-ordering sum=0.000e+00
+CHECK Bose cancellation mu=0.73, all 16 SK: largest single-cycle spin coefficient=0.42414011, largest four-ordering sum=0.000e+00
+CHECK Bose cancellation mu=2.0, all 16 SK: largest single-cycle spin coefficient=0.14006893, largest four-ordering sum=0.000e+00
+SK example mu=.73 delta=0.8: ++=(-2.3928167809 - 0.57677050955j), +-=(-0.17746836036 + 0.0069886681073j), -+=(-0.17746836036 + 0.0069886681073j), --=(-0.15116584131 + 0.13021228019j); full=(-2.898919343 - 0.43258089315j)
+SK example mu=.73 delta=0.2: ++=(-0.15232027469 - 3.8935597303j), +-=(-2.0931245466 + 1.3349044691j), -+=(-2.0931245466 + 1.3349044691j), --=(2.4900089243 + 0.13508451072j); full=(-1.8485604435 - 1.0886662814j)
+SK example mu=.73 delta=0.1: ++=(4.5516285743 - 9.9300333557j), +-=(-7.7793762232 + 6.1718730722j), -+=(-7.7793762232 + 6.1718730722j), --=(9.3080121308 - 3.4851163742j); full=(-1.6991117413 - 1.0714035854j)
+Scope: printed mode/EOM and canonical counterexamples; nonzero soft normal coefficient; original-field zeroth-order exchange cancellation. SK table reuses the scalar evaluator. No complete audit of You v2 or numerical reconstruction of v7_24 4F3 coefficients.
