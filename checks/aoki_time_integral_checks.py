@@ -6,7 +6,7 @@ This tests physical fermion mass indices, but not the delta->0 limit.
 from pathlib import Path
 import numpy as np
 import mpmath as mp
-from weyl_scalar_seed import scalar_seed_folded, regulated_diagonal_seed, regulated_hard_coefficients
+from whittaker_scalar_seed import hard_integrals, regulated_hard_coefficients
 mp.mp.dps=28
 
 
@@ -66,12 +66,11 @@ def integrate(mu,alpha,beta,n=40,limit=22.,diagonal_shift=0):
 
 
 def seed_values(mu,alpha,beta,diagonal_shift=0):
-    nu=mu-.5j
-    h21=-sum((1j*a)**j*(1j*b)**k*scalar_seed_folded(a,b,alpha-2+j,beta-2+k,nu)
-             for a in (1,-1) for b in (1,-1) for j in (0,1) for k in (0,1))
-    # alpha,beta already contain the common positive regulator.
-    h11=regulated_diagonal_seed(mu,alpha+diagonal_shift,beta,0,28)
-    return np.array([complex(h21),complex(h11)])
+    # alpha,beta already contain the common positive regulator.  The clock
+    # H1 kernel carries one additional power at its first endpoint.
+    h0=hard_integrals(mu,alpha,beta,28)[0]
+    h1=hard_integrals(mu,alpha+diagonal_shift,beta,28)[1]
+    return np.array([complex(h0),complex(h1)])
 
 
 if __name__=='__main__':
@@ -85,7 +84,7 @@ if __name__=='__main__':
         coarse=integrate(mu,alpha,beta,48,26.,shift)
         fine=integrate(mu,alpha,beta,72,30.,shift)
         if kind=='clock':
-            p1,p2,_,_=regulated_hard_coefficients(mu,delta,0,28)
+            p1,p2,_,_=regulated_hard_coefficients(mu,delta,28)
             direct_p1=fine[0]+2j/(1+2j*mu)*fine[1]
             direct_p2=fine[2]-fine[0]
             perr=max(abs(direct_p1-complex(p1)),abs(direct_p2-complex(p2)))/max(1.,abs(complex(p1)),abs(complex(p2)))

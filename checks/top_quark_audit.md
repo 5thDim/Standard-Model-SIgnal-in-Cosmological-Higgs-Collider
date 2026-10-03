@@ -53,7 +53,7 @@
 
 ## 历史步骤：7.24 参考稿复核（2026-09-30）
 
-详见 [逐式对照报告](v724_comparison.md) 及 `v724_comparison_checks.py/.txt`。工作区 You PDF 是 v1；官方 v2 已修正相对模式相位、lesser 的反向动量，并改用完整 nonlocal 软传播子 cutting。7.24 沿用的 (13)、(14)、(18) 存在可独立检验的错误；其外腿排列、mixed 分支及归一化也未构成完整 box 结果。新增 EOM、BD、等时正则关系及软系数比较检查，未发现需要修改当前振幅的证据。本次未改动主 TeX/PDF，不把 You v1 的问题归于其 v2 的全部计算。
+工作区 You PDF 是 v1；官方 v2 已修正相对模式相位、lesser 的反向动量，并改用完整 nonlocal 软传播子 cutting。7.24 沿用的 (13)、(14)、(18) 存在可独立检验的错误；其外腿排列、mixed 分支及归一化也未构成完整 box 结果。相关专门对照文件已在后续清理中删除；该历史结论不作为当前结果的计算输入。
 
 ## 历史步骤：全程保留原始 Weyl 场传播子（2026-09-30）
 
@@ -63,7 +63,7 @@
 - 新增 `aoki_weyl_checks.py/.txt`：μ=0.2,0.73,2,5 下，0F1 软分支与独立 Bessel 分解后再进行的螺旋度收缩相符，最大相对残差 `5.7e-16`；前三个质量下，类型求和后的标量系数与 Hankel 产品相符，残差低于 `2.4e-16`；全部 16 SK 及四种软分支组合的完整类型迹与因子化迹相符，最大相对残差 `1.5e-14`。同时检验 zeroth-order Bose oddness、mixed 硬块符号和 first descendants 的二阶余项。
 - 重写并运行 `aoki_collapsed_checks.py/.txt`：完全移除基底变换，直接对 `ψ,ψ†` 类型求和。三种质量、两种几何、三个软尺度均通过；软尺度减半时误差约缩小四倍；时间求积 32→48 阶变化 `2.756e-3`。这里仍然只是有限时间区间检验，不是完整 BD box 积分。
 - 因子化迹检验属于代数一致性检查；独立的输入核对来自 Bessel/0F1 与 Whittaker/Hankel 两种模式计算，不能把它们称为完整圈积分的独立求解。
-- 对比修改前后公式：最终 clock、mixed、P1/P2 和 scalar-seed 有限表达式均仅将 `H21,H11` 改为 `H_GF,H_FF`，物理数值与归一化不变。`weyl_scalar_seed.py` 保留旧返回名以兼容已有调用，文档明确了对应关系，未改动其数值算法。
+- 对比修改前后公式：最终 clock、mixed、P1/P2 和 scalar-seed 有限表达式均仅将 `H21,H11` 改为 `H_GF,H_FF`，物理数值与归一化不变。当前计算统一使用直接 Whittaker seed 实现。
 - 重新编译 18 页 PDF，无引用或盒子警告；检查第 6、7、8、16 页的软分支、四种硬收缩及 mixed 结果排版。历史验证的局限仍然适用。
 
 ## 历史步骤：章节合并与符号精简（2026-09-30）
@@ -113,12 +113,8 @@
 | `top_box_signal_checks.py` | 最终公式的两端 Bose 对称、pair 交换、宇称及量纲 | 组装公式的一致性检查，不是独立圈积分 |
 | `top_box_signal.py` | 从守恒的四个三维动量计算最终 clock、mixed 和总和 | 包括两份 Majorana 和 Nc；返回软展开参数；只是结果求值器，不是独立验证 |
 
-保留并重新运行：
-
-- `weyl_signal_checks.py`：模式/传播子局部恒等式、Pauli trace、Gamma 卷积、五角系数及 mixed 因子。
-- `weyl_hard_expansion_check.py`：原 Hankel 表示的有限区间硬展开检查。
-- `weyl_seed_checks.py`：初等 conformal-scalar 积分、regularized seed、共同 regulator 路径、精度和 mixed 步长稳定性。
-- `weyl_scalar_seed.py`：经验证后复用的 scalar seed，不包含 Aoki bubble 振幅。已更新文档说明验证层级。
+当前 scalar seed 由 `whittaker_scalar_seed.py` 唯一实现，并由
+`whittaker_seed_checks.py` 检查传播子归约、共同 regulator、精度和 mixed 步长稳定性。
 
 每个检查脚本对应的 `.txt` 保存实测结果。代表性结果：
 
@@ -147,9 +143,9 @@ python3 checks/aoki_majorana_checks.py
 python3 checks/aoki_weyl_checks.py
 python3 checks/aoki_collapsed_checks.py
 python3 checks/aoki_time_integral_checks.py
-python3 checks/weyl_signal_checks.py
-python3 checks/weyl_hard_expansion_check.py
-python3 checks/weyl_seed_checks.py
+python3 checks/direct_trace_checks.py
+python3 checks/loop_first_checks.py
+python3 checks/whittaker_seed_checks.py
 python3 checks/top_box_signal_checks.py
 python3 checks/top_box_signal.py --mu .73 --soft .02
 latexmk -pdf -interaction=nonstopmode -halt-on-error 'Top Quark Signal.tex'

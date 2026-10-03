@@ -936,17 +936,22 @@ The sum of the four already evaluated traces is consequently
 \end{align}
 The factor $8$ is $2$ from the Pauli trace times $4$ from the four
 diagrams. Restoring the common exact external weight, the complete
-leading same-branch integrand is
+leading same-branch integrand, including both oscillatory branches, is
 \begin{align}
- \mathcal I_{s,+}^{(1,1)}
+ \mathcal I
  ={}&\frac{8c^2}{k_Lk_R}\mathcal E_{\{\aa\}}(\{\tau\};\{k\})
  (qK)^{2\ii\tn-1}\nonumber\\
  &\times\Big[
  2(\mb v_L\cdot\bm\ell)(\mb v_R\cdot\bm\ell)
  -\tfrac12(\mb v_L\cdot\bk_s)(\mb v_R\cdot\bk_s)
- -(\mb v_L\cdot\mb v_R)(\ell^2-k_s^2/4)\Big].
+ -(\mb v_L\cdot\mb v_R)(\ell^2-k_s^2/4)\Big]
+ +\mathrm{c.c.}
  \label{eq:complete-direct-integrand}
 \end{align}
+The complex-conjugate term supplies the $-\ii\tn$ branch in the complete
+SK sum, with all SK labels reversed under conjugation. Below we evaluate
+only the displayed $+\ii\tn$ term and restore its conjugate once in the
+final result.
 All spinor indices have been contracted. The Higgs functions in
 $\mathcal E_{\{\aa\}}$ still use the exact $k_1,k_2,k_3,k_4$ and take
 no part in the loop integral. The equal-energy limit needed for the
@@ -1549,12 +1554,10 @@ The Whittaker reduction is implemented in
 The tests compare all three scalar-derived spinor propagators with
 independent Whittaker mode contractions, for every SK pair at
 $\tn=0.2,0.73,2,5$. They also check the two hard coefficients,
-the zero-chemical-potential seed normalization, the Whittaker bootstrap
-derivative, the regulated hard integrals, and the complete-SK limit.
-The former Hankel implementation is retained only as an independent
-reference for these numerical comparisons; it is not used in the
-Whittaker seed evaluator. The checks below describe the additional
-tests retained from the previous implementation.
+the regulated hard integrals, the complete-SK limit and numerical
+precision stability.
+No auxiliary Hankel seed implementation is required. The checks below
+describe the additional propagator, contraction and collapsed-limit tests.
 
 The Whittaker implementation constructs all normal and anomalous
 contractions directly from Eq.~\eqref{eq:mode-expansion}. It verifies
@@ -1599,10 +1602,9 @@ normalization beyond the conformal-scalar example. It does not directly
 evaluate the zero-regulator limit; that limit still uses the analytically
 summed seeds and regulator-path checks.
 
-The retained scalar-seed tests check the elementary conformal-scalar
-normalization, Gamma reductions, regulator paths and working precision.
+The scalar-seed tests check regulator convergence and working precision.
 Comparing the regulated and analytically summed versions of the same
-seed is a consistency check, not a second derivation of that seed.
+Whittaker seed is a consistency check, not a second derivation of that seed.
 Neither finite-interval soft tests nor special-function agreement is
 a direct numerical integration of the full unexpanded BD box.
 The analytic contact part and its renormalization, overlapping collapsed

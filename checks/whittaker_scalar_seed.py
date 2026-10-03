@@ -4,7 +4,7 @@ Direct Whittaker route, without the auxiliary Hankel modes. The scalar
 propagator is normalized as Qin--Xianyu (2301.07047), Eq. (96), with
 nu=mu and kappa=i*h*chemical_potential=+/-1/2. The physical fermion
 has no chemical potential. Eqs. (130),(131) are continued analytically.
-Legacy implementations are kept separately for independent comparisons.
+This is the sole scalar-seed implementation used by the top-box checks.
 """
 from functools import lru_cache
 import mpmath as mp

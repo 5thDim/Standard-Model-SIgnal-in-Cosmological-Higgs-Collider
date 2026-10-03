@@ -22,11 +22,6 @@ PASS assembled angular signal vs retained final result:
   mu=.73: 1.474e-17 relative
   mu=2: 2.189e-18 relative
 
-Additional regression, evaluated separately:
-  whittaker_scalar_seed.regulated_hard_coefficients(".73",".8",20)
-  vs weyl_scalar_seed.regulated_hard_coefficients(".73",".8",0,20)
-  max absolute residual over P1,P2,H0,H1: 3.66482486799932e-20
-
 Source checks:
   Source before Chapter 3 unchanged.
   Source after Chapter 3 unchanged.

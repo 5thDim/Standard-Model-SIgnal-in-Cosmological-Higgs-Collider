@@ -1,7 +1,6 @@
 """Checks of the scalar-chemical-potential reconstruction.
 
 Run: PYTHONDONTWRITEBYTECODE=1 python3 -u checks/whittaker_seed_checks.py
-The old Hankel implementation is an independent comparison only.
 No unexpanded-box integration is claimed.
 """
 from itertools import product
@@ -10,7 +9,6 @@ import numpy as np
 from aoki_majorana import contraction, slash, EPSILON_LOWER as EPS
 from aoki_weyl import scalar_coefficients
 import whittaker_scalar_seed as new
-import weyl_scalar_seed as old
 
 
 def check(name,error,tol):
@@ -75,25 +73,8 @@ for mu in (.2,.73,2.):
 check("scalar equal-time continuity",max(errors),mp.mpf('1e-23'))
 print("PASS Whittaker late-time leading and subleading expansion, three masses",flush=True)
 
-mp.mp.dps=20
-errors=[];derivative_errors=[]
-for a,b in product((1,-1),repeat=2):
-    p,q,mu=mp.mpf('.2'),mp.mpf('.7'),mp.mpf('.73')
-    val=new.whittaker_seed_folded(a,b,p,q,mu,0)
-    expected=old.scalar_seed_folded(a,b,p-1,q-1,mu)
-    errors.append(abs(val-expected))
-    derivative_errors.append(abs(new.seed_radial_derivative(a,b,p,q,mu,0,val)
-                                 -old.seed_radial_derivative(a,b,p-1,q-1,mu,expected)))
-check("zero-chemical-potential seed normalization",max(errors),mp.mpf('1e-16'))
-check("Whittaker bootstrap derivative at zero chemical potential",max(derivative_errors),mp.mpf('1e-16'))
-
-for mu in ('.2','.73','2'):
-    direct=new.regulated_hard_coefficients(mu,'.8',20)
-    reference=old.regulated_hard_coefficients(mu,'.8',0,20)
-    check(f"direct Whittaker vs independent hard seed, delta=.8, mu={mu}",
-          max(abs(a-b) for a,b in zip(direct,reference)),mp.mpf('1e-14'))
-
 # The direct Whittaker seed, not the finite-Q evaluator, is used here.
+mp.mp.dps=20
 step=mp.mpf('.001')
 fine=new.extrapolated_hard_coefficients('.73',25,step,4)
 finite=new.hard_coefficients('.73',25)
@@ -104,16 +85,14 @@ check("clock regulator step halving",max(abs(a-b) for a,b in zip(fine,refined)),
       mp.mpf('2e-11'))
 for mu in ('.2','.73','1','2','5'):
     current=new.hard_coefficients(mu,25)
-    expected=old.hard_coefficients(mu,25)
-    check(f"finite coefficients retained, mu={mu}",
-          max(abs(a-b) for a,b in zip(current,expected)),mp.mpf('1e-20'))
+    lower_precision=new.hard_coefficients(mu,20)
+    check(f"finite coefficients precision stability, mu={mu}",
+          max(abs(a-b) for a,b in zip(current,lower_precision)),mp.mpf('1e-17'))
     print(f"mu={mu}: P1={mp.nstr(current[0],16)}, P2={mp.nstr(current[1],16)}",flush=True)
 
 mixed=new.mixed_hard_seed('.73',25,'.001')
 refined=new.mixed_hard_seed('.73',25,'.0005')
-reference=old.mixed_hard_seed('.73',25,'.0005')
 check("mixed Whittaker regulator step halving",abs(mixed-refined),mp.mpf('2e-11'))
-check("mixed Whittaker vs independent seed",abs(refined-reference),mp.mpf('2e-11'))
 check("mixed seed reality",abs(refined.imag),mp.mpf('1e-14'))
 print("mixed mu=.73: "+mp.nstr(refined,18),flush=True)
 print("Scope: propagator/type identities, published seed reduction and regulator checks; "

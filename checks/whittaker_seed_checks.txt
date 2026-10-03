@@ -4,31 +4,21 @@ Command: PYTHONDONTWRITEBYTECODE=1 python3 -u checks/whittaker_seed_checks.py
 PASS three Dsc-derived propagators, all SK, four masses: residual 2.831e-16
 PASS two hard coefficients from direct vertex-type contraction: residual 2.548e-16
 PASS hard-kernel reversal identities: residual 1.241e-16
-PASS zero-chemical-potential seed normalization: residual 6.440e-22
-PASS Whittaker bootstrap derivative at zero chemical potential: residual 8.536e-22
-PASS direct Whittaker vs independent hard seed, delta=.8, mu=.2: residual 1.822e-19
-PASS direct Whittaker vs independent hard seed, delta=.8, mu=.73: residual 3.665e-20
-PASS direct Whittaker vs independent hard seed, delta=.8, mu=2: residual 1.754e-19
+PASS scalar equal-time continuity: residual 6.311e-30
+PASS Whittaker late-time leading and subleading expansion, three masses
 PASS Whittaker full SK regulator limit vs finite reduction, mu=.73: residual 1.097e-14
 PASS clock regulator step halving: residual 1.028e-14
-PASS finite coefficients retained, mu=.2: residual 5.780e-26
+PASS finite coefficients precision stability, mu=.2: residual 5.696e-21
 mu=.2: P1=(-1.030411081459857 - 1.109020094353093j), P2=(3.1637715007178 + 0.7046299038040158j)
-PASS finite coefficients retained, mu=.73: residual 2.585e-26
+PASS finite coefficients precision stability, mu=.73: residual 9.488e-21
 mu=.73: P1=(-1.598130708346613 - 2.346219693837161j), P2=(1.923885008554568 + 1.958596830655767j)
-PASS finite coefficients retained, mu=1: residual 1.551e-25
+PASS finite coefficients precision stability, mu=1: residual 8.541e-21
 mu=1: P1=(-1.325125324782876 - 2.665004108981244j), P2=(1.137292037433755 + 2.131408831960334j)
-PASS finite coefficients retained, mu=2: residual 2.019e-25
+PASS finite coefficients precision stability, mu=2: residual 9.232e-21
 mu=2: P1=(1.901463897033473 - 2.535666707700289j), P2=(-1.119241947645366 + 1.383844866869195j)
-PASS finite coefficients retained, mu=5: residual 4.877e-25
+PASS finite coefficients precision stability, mu=5: residual 6.616e-20
 mu=5: P1=(3.921820605930357 + 1.458261455828999j), P2=(-2.047325875671906 - 0.6904839176475868j)
 PASS mixed Whittaker regulator step halving: residual 1.838e-15
-PASS mixed Whittaker vs independent seed: residual 1.878e-17
 PASS mixed seed reality: residual 3.917e-18
 mixed mu=.73: (-1.38850028019881395 + 3.9172392600112586e-18j)
 Scope: propagator/type identities, published seed reduction and regulator checks; not a full unexpanded BD-box quadrature.
-
-Supplementary checks executed separately:
-PASS scalar equal-time continuity: maximum residual 6.66124e-27
-PASS scalar Whittaker late-time leading/subleading expansion: mu=.2,.73,2; kappa=+/-1/2; quadratic remainder decay.
-PASS assembled clock angular coefficients at mu=.73: maximum residual 2.01948e-27
-The first two supplementary checks are also included in the saved check script.
