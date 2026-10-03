@@ -9,7 +9,7 @@ Example: python3 checks/top_box_signal.py --mu .73 --soft .02
 import argparse
 import json
 import mpmath as mp
-from weyl_scalar_seed import clock_angular_coefficients, mixed_hard_seed
+from whittaker_scalar_seed import clock_angular_coefficients, mixed_hard_seed
 
 
 def collapsed_signal(momenta, mu, gt=1, H=1, Nc=3, dps=35):

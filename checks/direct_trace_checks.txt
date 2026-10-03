@@ -1,0 +1,59 @@
+Direct-trace reconstruction, 2026-10-03
+
+Run:
+  PYTHONDONTWRITEBYTECODE=1 python3 -u checks/direct_trace_checks.py
+
+PASS separate 12 and 21 first-order blocks, all SK, mu=0.2: residual 7.731e-09
+PASS zeroth-order reversal identity, all SK, mu=0.2: residual 0.000e+00
+PASS separate 12 and 21 first-order blocks, all SK, mu=0.73: residual 9.858e-09
+PASS zeroth-order reversal identity, all SK, mu=0.73: residual 1.110e-16
+PASS separate 12 and 21 first-order blocks, all SK, mu=2.0: residual 3.097e-09
+PASS zeroth-order reversal identity, all SK, mu=2.0: residual 5.551e-17
+PASS four individual traces vs scalar expression, all 16 SK: residual 2.168e-19
+PASS same equality with common exact unequal Higgs factors: residual 8.941e-19
+PASS direct four-diagram soft-cut expansion mu=0.2: 6.808e-03, 3.422e-03, 1.715e-03
+PASS direct four-diagram soft-cut expansion mu=0.73: 2.349e-03, 1.180e-03, 5.918e-04
+PASS direct four-diagram soft-cut expansion mu=2.0: 8.546e-04, 4.228e-04, 2.103e-04
+Scope: fixed-time original-field contractions and four actual diagrams, with exact external factors; no dummy-pair averaging, no full BD-box integration.
+
+Interpretation:
+  Times and SK labels stay attached to physical external vertices.
+  The 21 and 43 blocks are distinct diagram connections, not a dummy-pair
+  average of 12 or 34. Exact Higgs factors multiply every trace unchanged.
+  Separate first-order blocks were checked against central derivatives of
+  original-field Whittaker contractions. The final direct four-diagram sum
+  agrees with the existing scalar integrand at each tested time/SK assignment.
+  Without time averaging, the unexpanded pointwise soft-cut remainder has
+  O(soft) relative corrections; its errors halve as the scale is halved.
+  No claim of a full unexpanded BD-box integral is made.
+
+Regression:
+  PYTHONDONTWRITEBYTECODE=1 python3 -u checks/loop_first_checks.py
+  All retained checks passed. Its old averaging-route tests are retained only
+  as an independent comparison, not used in the new manuscript derivation.
+  Independent Gamma-sum loop coefficients: max residual 4.517e-21.
+  Assembled angular signal vs retained result:
+    mu=.2: 6.295e-17 relative
+    mu=.73: 1.474e-17 relative
+    mu=2: 2.189e-18 relative
+
+Source/build:
+  Removed the dummy averaging operator and Higgs-mode momentum derivatives.
+  All displayed formulas in Section 3.2 have equation numbers.
+  Exact external energies are kept through the loop integration.
+  Section 3.4 shows the remaining exact-energy time integrals before taking
+  their leading equal-energy limit and evaluating the Whittaker seeds.
+  The final-signal subsection and all subsequent manuscript content are
+  unchanged from the pre-edit snapshot.
+  No unresolved references.
+  21-page PDF, no warnings, overfull or underfull boxes.
+  Inspected the first-order, direct-trace, loop and time-integral pages.
+
+Build command:
+  latexmk -pdf -interaction=nonstopmode -halt-on-error \
+    -outdir=/tmp/top-direct-trace.PNrBqO/build 'Top Quark Signal.tex'
+
+Pre-edit snapshots:
+  /tmp/top-direct-trace.PNrBqO/before.tex
+  /tmp/top-direct-trace.PNrBqO/before.pdf
+

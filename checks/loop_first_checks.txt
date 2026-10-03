@@ -1,0 +1,82 @@
+Chapter 3 loop-first reconstruction checks (2026-10-02)
+
+Run:
+  PYTHONDONTWRITEBYTECODE=1 python3 -u checks/loop_first_checks.py
+
+PASS pointwise dummy-symmetrized first-order block, all SK, mu=0.2:
+  relative error 1.790e-06 at soft scale .002
+  soft-halving errors: 2.863e-05, 7.159e-06, 1.790e-06
+PASS pointwise dummy-symmetrized first-order block, all SK, mu=0.73:
+  relative error 1.939e-06 at soft scale .002
+  soft-halving errors: 3.103e-05, 7.757e-06, 1.939e-06
+PASS pointwise dummy-symmetrized first-order block, all SK, mu=2.0:
+  relative error 1.270e-06 at soft scale .002
+  soft-halving errors: 2.031e-05, 5.078e-06, 1.270e-06
+PASS zeroth-order integrand: four external orderings cancel, single trace nonzero
+PASS full tr(DJDJDJDJ) vs soft factorization, all 16 SK: 1.171e-15
+PASS complete scalar trace with unequal complex left/right kernels: 7.643e-16
+PASS four loop-first coefficients from independent Gamma sums: 4.517e-21
+PASS loop-first normalization and phase, mu=.2,.73,1,2,5: max 2.033e-31
+PASS assembled angular signal vs retained final result:
+  mu=.2: 6.295e-17 relative
+  mu=.73: 1.474e-17 relative
+  mu=2: 2.189e-18 relative
+
+Additional regression, evaluated separately:
+  whittaker_scalar_seed.regulated_hard_coefficients(".73",".8",20)
+  vs weyl_scalar_seed.regulated_hard_coefficients(".73",".8",0,20)
+  max absolute residual over P1,P2,H0,H1: 3.66482486799932e-20
+
+Source checks:
+  Source before Chapter 3 unchanged.
+  Source after Chapter 3 unchanged.
+  Final oscillatory signal formulas unchanged.
+  No unresolved label references.
+  Existing Whittaker seed evaluator unchanged.
+
+Build:
+  latexmk -pdf -interaction=nonstopmode -halt-on-error \
+    -outdir=/tmp/top-loop-first.1TGVZu/build 'Top Quark Signal.tex'
+  19 pages; no warnings, undefined references, overfull or underfull boxes.
+  Visually inspected the scalar trace, loop coefficients and time-integral pages.
+
+Scope:
+  Local soft expansion, permutation and dummy-variable identities, scalar loop
+  algebra, normalization and seed regression. This does not evaluate the full
+  unexpanded BD box. UV-dependent analytic contact terms remain excluded.
+  The zeros require external-ordering summation; a single 1234 trace is nonzero.
+  The compact first-order integrand uses dummy-time/SK-pair averaging before
+  either time or momentum integration.
+
+Pre-edit snapshots:
+  /tmp/top-loop-first.1TGVZu/before.tex
+  /tmp/top-loop-first.1TGVZu/before.pdf
+
+Section 3.2 intermediate-step expansion (2026-10-03)
+
+The same check command was rerun after adding three tests for the new
+unaveraged first-order integrand. All previous tests still pass.
+New results:
+  Three raw sources vs the derivative of the unexpanded fixed-1234 left
+  subgraph, mu=.2,.73,2 and all four SK pairs:
+    maximum relative residual 8.405e-09 (central step 1e-4).
+  Dummy average of the three sources vs the displayed Pi1,Pi2 combination:
+    maximum relative residual 8.370e-13.
+  Antisymmetric external-mode term plus its dummy-reversed counterpart:
+    maximum absolute residual 1.688e-16.
+The tests omit only the common time/SK weight on both sides of each identity.
+
+Only Section 3.2 prose and unnumbered intermediate displays were changed.
+All equation labels and numbers, including (47)-(51), are unchanged.
+The hard/soft/external sources are shown before dummy averaging; the
+restored four-time scalar integrand is shown after the spin trace.
+The PDF is now 21 pages. Build and reference checks passed without warnings.
+Pages containing the added integrand, averaging steps, and final scalar
+trace were visually inspected.
+
+Build:
+  latexmk -pdf -interaction=nonstopmode -halt-on-error \
+    -outdir=/tmp/top-integrand-steps.QUQEfu/build 'Top Quark Signal.tex'
+Pre-edit snapshots:
+  /tmp/top-integrand-steps.QUQEfu/before.tex
+  /tmp/top-integrand-steps.QUQEfu/before.pdf
