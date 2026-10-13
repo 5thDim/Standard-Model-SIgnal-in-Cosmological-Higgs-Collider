@@ -488,7 +488,12 @@ With the four external momenta understood, the $s$-channel contribution is
     \qquad \mb K=\mb q+\mb k_s.
     \label{eq:bubble-sk}
 \end{align}
-The symmetry factor $1/2$ is included. Throughout this section,
+The symmetry factor $1/2$ which is associated with exchanging the two identical
+internal lines is included. For the fixed partition $(12)\mid(34)$,
+exchanges within either external Higgs pair leave the graph unchanged.
+There is therefore no additional external-permutation factor in the
+$s$-channel signal. 
+And throughout this section,
 the $W^\pm$ contribution is obtained by multiplying the expressions
 by $2$, and the $Z$ contribution by making the replacement $g\to g/c_W$,
 with the corresponding mass used in each case.
@@ -739,8 +744,15 @@ The simplified loop
 coefficients make $C^{\mathrm{Tri}}$ independent of $\theta$ at this order
 and its reduced expression is given in \eqref{eq:triangle-C-reduced}.
 
-The second triangle has the quartic vertex on the $(1,2)$ side and
-follows by $(1,2)\leftrightarrow(3,4)$. Adding the two placements gives
+In the collapsed $s$ channel, the quartic vertex carries either the
+pair $(3,4)$, as in Triangle 1, or the pair $(1,2)$, as in Triangle 2.
+For either placement, exchanging the two Higgs legs at the cubic
+vertices reproduces the same undirected triangle after reflection.
+Exchanging the two legs at the quartic vertex also leaves the graph
+unchanged, since both attach to the same vertex. Each placement is
+therefore counted once. Triangle 2 follows from Triangle 1 by
+$(1,2)\leftrightarrow(3,4)$, and their leading collapsed signals are
+equal. Adding these two contributions gives
 \begin{align}
     \left[\langle\delta h^4\rangle'_{\mathrm{Tri}}\right]_{\mathrm{NonL}}
     \simeq{}&\frac{g^6h_0^2H^2k_s^3}
@@ -770,15 +782,16 @@ of a single triangle.
 \FloatBarrier
 \subsection{Box Diagram}
 \label{sec:gauge-box}
-Now we consider the Higgs trispectrum from the box diagram.
-The four cubic vertices give the coupling factor
-$(g^2h_0/2)^4=g^8h_0^4/16$, and the diagram symmetry
-factor is unity. 
+We first consider the box with cyclic ordering $1234$, shown in
+Fig.~\ref{fig:box-cutting}. With the external labels fixed, its
+diagram symmetry factor is unity. The four cubic vertices give the
+coupling factor $(g^2h_0/2)^4=g^8h_0^4/16$.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{figure/Box NL.pdf}
-    \caption{The leading nonlocal part of the box. Cutting the two soft lines separates
+    \caption{The leading nonlocal part of the box with cyclic ordering $1234$.
+    Cutting the two soft lines separates
     two tree subgraphs, each containing one hard gauge-boson
     propagator. The central factor contains the nonlocal parts
     of the two soft propagators and their loop momentum integral.}
@@ -807,12 +820,27 @@ factorize into two copies of
 They contribute
 $\mathcal P^{(2),\lambda_1}_{\eta}(\tilde\nu)$ and
 $\mathcal P^{(2),\lambda_3}_{\eta}(\tilde\nu)$.
-Combining the two branches gives
+
+The collapsed $s$ channel contains a second inequivalent box,
+obtained from the diagram shown in Fig.~\ref{fig:box-cutting} by
+exchanging the external momenta $\mb k_1$ and $\mb k_2$. Exchanging
+$\mb k_3$ and $\mb k_4$ gives the same additional undirected graph,
+while exchanging both pairs returns the original graph.
+At leading collapsed order, $\mb k_2\simeq-\mb k_1$, so the first
+exchange sends $(\theta_1,\phi_3)$ to $(\pi-\theta_1,\phi_3+\pi)$.
+The coefficient $C^{\mathrm{Box}}$ is invariant under this
+transformation, as follows from its angular decomposition below.
+The two boxes therefore contribute equally.
+
+For each box, the vertex factor $1/16$ and the normalization $1/4$
+from each hard subgraph give $1/256$. Summing the two distinct boxes
+supplies a further factor $2$, giving $1/128$. Including the
+complex-conjugate soft branch, the total $s$-channel signal is
 \begin{align}
     \left[\langle\delta h^4\rangle'_{\mathrm{Box}}
     \right]_{\mathrm{NonL}}
     \simeq{}&\frac{g^8h_0^4k_s^3}
-    {256k_1^3k_2^3k_3^3k_4^3}
+    {128k_1^3k_2^3k_3^3k_4^3}
     \left[
     \left(\frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tilde\nu}
     \times
@@ -820,7 +848,8 @@ Combining the two branches gives
     +\text{c.c.}\right],
     \label{eq:box-single-signal}
 \end{align}
-where
+Here $C^{\mathrm{Box}}$ denotes the coefficient of the representative
+box, before summing the external orderings:
 \begin{align}
     C^{\mathrm{Box}}(\tilde\nu,\theta_1,\theta_3,\phi_3)
     ={}&\frac{\Gamma^4(-\ii\tilde\nu)}{(4\pi)^{7/2}}
@@ -912,13 +941,14 @@ treated as constant and the chemical potential vanishes. The Yukawa
 coupling and mass parameter are
 \begin{equation}
  g_t\equiv\frac{y_t}{\sqrt2},\qquad m_t=g_th_0,\qquad
- \tilde\nu\equiv\frac{m_t}{H}>0,\qquad N_c=3.
+ \tilde\nu\equiv\frac{m_t}{H}>0.
  \label{eq:top-parameters}
 \end{equation}
 Thus the relation between $\tilde\nu$ and the mass differs from that
-of the vector field. The constant-background approximation requires
-$|\dot h_0|\ll H|h_0|$, while the external Higgs modes are evaluated
-at $|m_H^2|\ll H^2$ \cite{lu_cosmological_2020}.
+of the vector field. 
+% The constant-background approximation requires
+% $|\dot h_0|\ll H|h_0|$, while the external Higgs modes are evaluated
+% at $|m_H^2|\ll H^2$ \cite{lu_cosmological_2020}.
 
 Let $t$ and $t^c$ denote the conformally rescaled left-handed top and
 the left-handed charge conjugate of the right-handed top. Rescaling
@@ -940,12 +970,11 @@ $t^c=(\psi_1-\ii\psi_2)/\sqrt2$. The action becomes
  -\frac a2(m_t+g_t\delta h)(\psi_I\psi_I+\mathrm{h.c.})\right].
  \label{eq:top-majorana-action}
 \end{equation}
-The two sectors are identical and independent for the Yukawa loop
-considered here. We calculate one sector and restore $2N_c$.
-Each vertex retains one factor of $a(\tau)$; the propagators below
+The two sectors are identical.
+Each vertex retains one factor of $a(\tau)$ and the propagators below
 are those of the rescaled field and contain no factors of $a^{-3/2}$.
 
-For one sector, the normalized Bunch--Davies modes can be written as
+For one sector, the normalized Bunch--Davies state mode functions can be written as
 \begin{equation}
  u_+=v_- =\frac{\tilde\nu}{\sqrt{2x}}
  W_{-1/2,\ii\tilde\nu}(-2\ii x),\qquad
@@ -953,8 +982,8 @@ For one sector, the normalized Bunch--Davies modes can be written as
  W_{1/2,\ii\tilde\nu}(-2\ii x),\qquad x=-k\tau.
  \label{eq:top-modes}
 \end{equation}
-The helicity is $s=\pm1$, $|u_s|^2+|v_s|^2=1$, and the creation
-part of the field contains $v_s^*$. We use the three propagators
+The helicity is $h=\pm1$, $|u_s|^2+|v_s|^2=1$, and the creation
+part of the field contains $v_h^*$. We use the three propagators
 \cite{you_neutrino_2026}
 \begin{align}
  D_{\aa\bb,\alpha\dot\beta}(\mb k;\tau_1,\tau_2)
@@ -970,8 +999,10 @@ part of the field contains $v_s^*$. We use the three propagators
                       \psi^\dagger_{\bb,\dot\beta}(-\mb k,\tau_2)\rangle'.
  \label{eq:top-propagators}
 \end{align}
-There is no overall $\ii$ in these definitions. Their mode sums and
-fermionic reversal rules are given in App.~\ref{app:top-propagators}.
+Here $T_C$ denotes ordering along the Schwinger--Keldysh closed time
+contour $C$. 
+Their mode
+sums and fermionic reversal rules are given in App.~\ref{app:top-propagators}.
 For each of the three types, the time-ordered components obey
 \begin{equation}
  \mathcal D_{++}=\theta_{12}\mathcal D_{-+}+\theta_{21}\mathcal D_{+-},
@@ -980,7 +1011,6 @@ For each of the three types, the time-ordered components obey
  \qquad \theta_{ij}=\theta(\tau_i-\tau_j).
  \label{eq:top-sk}
 \end{equation}
-The fermionic exchange sign is included in $\mathcal D_{+-}$.
 
 To display the soft expansion, write
 $\sigma_p=\bm\sigma\cdot\widehat{\mb p}$ and
@@ -1014,13 +1044,14 @@ allow the two soft lines to be cut, while the remaining hard lines
 retain their full time dependence and SK ordering
 \cite{qin_inflation_2023,you_neutrino_2026}.
 
-\subsection{The Box Diagram and Soft Expansion}
-\label{sec:top-box}
 The Yukawa interaction gives two vertex types, labelled
 $r=\mathrm L,\overline{\mathrm L}$ for $\psi\psi$ and
 $\psi^\dagger\psi^\dagger$, respectively. Their amputated rules are
 $-\ii\aa g_ta(\tau)J_r$, where
 $J_{\mathrm L}=\epsmat$ and $J_{\overline{\mathrm L}}=-\epsmat$.
+
+\subsection{The Box Diagram and Soft Expansion}
+\label{sec:top-box}
 For a fixed ordering $1234$, including both sectors and all colors,
 the box is
 \begin{align}
