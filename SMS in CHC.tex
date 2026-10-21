@@ -174,7 +174,7 @@
 
 \newcommand{\one}{\mathbf1_2}
 \newcommand{\epsmat}{\boldsymbol{\epsilon}}
-\newcommand{\Dsc}[1]{D^{\mathrm{sc},#1}}
+\newcommand{\Dsc}[1]{D^{(#1)}}
 
 \begin{document}
 
@@ -194,6 +194,7 @@
 \label{sec:introduction}
 % Intentionally left blank.
 
+\newpage
 \section{Gauge Boson Signal}
 \label{sec:gauge-boson}
 % Follow the calculation in Gauge Boson Signal.tex and its companion PDF.
@@ -501,8 +502,10 @@ with the corresponding mass used in each case.
 Replacing the two soft propagators by
 \eqref{eq:transverse-nonlocal}--\eqref{eq:longitudinal-nonlocal}
 removes their SK-index dependence, as illustrated in
-Fig.~\ref{fig:bubble-cutting}. After summing the polarizations,
-the oscillatory part of the loop integral is
+Fig.~\ref{fig:bubble-cutting}.
+The oscillatory signal comes from the two soft propagators
+with the same branch label $\eta$.
+After summing the polarizations, this contribution is
 \begin{align}
     &\left[\int\frac{\di^3\mb q}{(2\pi)^3}
     D_{\aa\bb,ij}(\mb q;\tau_1,\tau_2)
@@ -1014,7 +1017,8 @@ For each of the three types, the time-ordered components obey
 
 To display the soft expansion, write
 $\sigma_p=\bm\sigma\cdot\widehat{\mb p}$ and
-$\epsmat=\ii\sigma^2$, with $\epsilon_{12}=1$ and
+$\epsmat=\ii\sigma^2=\bigl(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\bigr)$,
+with $\epsilon_{12}=1$ and
 $\epsilon^{12}=-1$. Define the common branch coefficient
 \begin{equation}
  c_\eta=\frac{2^{-1-2\ii\eta\tilde\nu}}{\pi}
@@ -1052,25 +1056,49 @@ $J_{\mathrm L}=\epsmat$ and $J_{\overline{\mathrm L}}=-\epsmat$.
 
 \subsection{The Box Diagram and Soft Expansion}
 \label{sec:top-box}
-For a fixed ordering $1234$, including both sectors and all colors,
-the box is
+We first consider the box shown in Fig.~\ref{fig:top-box}, with ordering
+$1234$, for a single Majorana sector and a fixed color. We sum over all
+assignments of the two Yukawa vertex types at its four vertices,
+including the corresponding propagator combinations. External-momentum
+permutations will be included after this vertex-type sum. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{figure/quark box.pdf}
+    \caption{The top-quark box with cyclic ordering $1234$.
+    Black solid lines denote external Higgs modes and blue solid
+    lines denote fermion propagators. The labels $r_i$ specify the
+    Yukawa vertex types, which are summed independently at each vertex.}
+    \label{fig:top-box}
+\end{figure}
+
+For the collapsed $s$-channel contribution, we retain the original term
+together with those obtained by exchanging $\mb k_1\leftrightarrow\mb k_2$,
+exchanging $\mb k_3\leftrightarrow\mb k_4$, and performing both exchanges.
+The two single exchanges describe the same additional connection,
+while the simultaneous exchange describes the original connection
+traversed in reverse. 
+Reversing the traversal does not generate new
+Wick pairings, so this prescription represents each set of pairings
+twice. 
+We therefore multiply the four-term sum by $1/2$. 
+With this normalization, the
+sum over vertex types for ordering $1234$ is
 \begin{align}
- \langle\delta h^4\rangle'_{t,1234}
- ={}&-N_cg_t^4\sum_{\aa_1,\ldots,\aa_4=\pm1}
+ \langle\delta h^4\rangle'_{1234}
+ ={}&-\frac{g_t^4}{2}\sum_{\aa_1,\ldots,\aa_4=\pm1}
  \left(\prod_{v=1}^4\aa_v\right)
  \int_{-\infty}^0\prod_{v=1}^4
  [\di\tau_v\,a(\tau_v)G_{\aa_v}(k_v;\tau_v)]\nonumber\\
  &\times\int\frac{\di^3\mb q}{(2\pi)^3}
  \sum_{r_1,\ldots,r_4}
- \tr_2[D_{12}J_{r_2}D_{23}J_{r_3}D_{34}J_{r_4}D_{41}J_{r_1}],
+ \tr_2[D^{12}J_{r_2}D^{23}J_{r_3}D^{34}J_{r_4}D^{41}J_{r_1}],
  \label{eq:top-box-integral}
 \end{align}
-where $D_{ij}=D^{r_ir_j}_{\aa_i\aa_j}(\mb p_{ij};\tau_i,\tau_j)$
-and $\tr_2$ contracts the two spinor components. The minus sign is
-the closed-fermion-loop sign. A single Majorana sector has the
-coefficient $-g_t^4/2$ in this directed-cycle convention; multiplication
-by $2N_c$ gives the prefactor in \eqref{eq:top-box-integral}.
-The vertex-type sum does not include external permutations.
+where $D^{ij}=D^{r_ir_j}_{\aa_i\aa_j}(\mb p_{ij};\tau_i,\tau_j)$
+and $\tr_2$ contracts the two spinor components. The sum over
+$r_1,\ldots,r_4$ includes all assignments of the two Yukawa vertex types
+for this fixed ordering. 
 
 Choose the successive momenta as $\mb q+\mb k_1$,
 $\mb K=\mb q+\mb k_s$, $\mb q-\mb k_4$, and $\mb q$.
@@ -1089,28 +1117,19 @@ At leading collapsed order, $k_L\simeq k_{12}/2$ and
 $k_R\simeq k_{34}/2$.
 
 \begin{figure}[htbp]
- \centering
- \begin{tikzpicture}[scale=0.95]
-  \coordinate (v1) at (0,1.7); \coordinate (v2) at (0,0);
-  \coordinate (v3) at (5,0); \coordinate (v4) at (5,1.7);
-  \draw[thick,blue,dashed] (v1)--node[above] {$\mb q$} (v4);
-  \draw[thick,blue,dashed] (v2)--node[below] {$\mb K=\mb q+\mb k_s$} (v3);
-  \draw[thick] (v1)--node[right] {$\mb k_L+\bm\ell$} (v2);
-  \draw[thick] (v3)--node[left] {$\mb k_R+\bm\ell$} (v4);
-  \draw (v1)--++(-0.7,0.5) node[left] {$\mb k_1$};
-  \draw (v2)--++(-0.7,-0.5) node[left] {$\mb k_2$};
-  \draw (v3)--++(0.7,-0.5) node[right] {$\mb k_3$};
-  \draw (v4)--++(0.7,0.5) node[right] {$\mb k_4$};
-  \foreach \i in {1,2,3,4} \fill (v\i) circle (1.5pt);
- \end{tikzpicture}
- \caption{The double-soft region of the top-quark box. Cutting the
- two dashed lines separates the left and right hard exchanges.
- All momentum labels are vectors; the hard propagators retain
- their complete time dependence.}
- \label{fig:top-cut}
+    \centering
+    \includegraphics[width=\textwidth]{figure/quark box NL.pdf}
+    \caption{The leading nonlocal part of the top-quark box with cyclic
+    ordering $1234$. Cutting the two soft lines separates two tree
+    subgraphs, each containing one hard fermion propagator. The central
+    factor contains the nonlocal parts of the two soft propagators and
+    their loop momentum integral. Spinor indices are contracted between
+    the three factors.}
+    \label{fig:top-cut}
 \end{figure}
 
-For the same-sign soft branch $\eta=+1$, attaching the soft
+The corresponding factorization is shown in Fig.~\ref{fig:top-cut}.
+We take the branch $\eta=+1$ for example, and attaching the soft
 endpoints to each hard line gives matrices $V_{12}$ and $V_{34}$.
 Their normalization is fixed in App.~\ref{app:top-soft} so that
 the cut spin factor of this ordering is
@@ -1132,25 +1151,25 @@ At zeroth soft order, the vertex-type sum at a hard end is
 proportional to its direction. Writing its scalar coefficient as
 $F_{0;\aa\bb}$, one finds
 \begin{align}
- V_{12}^{(0)}&=-F_{0;\aa_1\aa_2}(k_L;\tau_1,\tau_2)
+ &V_{12}^{(0)}=-F_{0;\aa_1\aa_2}(k_L;\tau_1,\tau_2)
                   \bm\sigma\cdot\mb n_L,
- &V_{21}^{(0)}&=+F_{0;\aa_1\aa_2}(k_L;\tau_1,\tau_2)
+ &&V_{21}^{(0)}=+F_{0;\aa_1\aa_2}(k_L;\tau_1,\tau_2)
                   \bm\sigma\cdot\mb n_L,\nonumber\\
- V_{12}^{(0)}+V_{21}^{(0)}&=0,
- &V_{34}^{(0)}+V_{43}^{(0)}&=0,
+ &V_{12}^{(0)}+V_{21}^{(0)}=0,
+ &&V_{34}^{(0)}+V_{43}^{(0)}=0,
  \label{eq:top-cancellation}
 \end{align}
 where $\mb n_L=\widehat{\mb k}_L$ and
 $\mb n_R=\widehat{\mb k}_R$. The scalar coefficient is invariant
-under reversal of its two time and SK labels. Thus the cancellation
-holds before the time integrations or the SK sum. A single ordering
+under reversal of its two time and SK labels. 
+Thus the cancellation holds at the integrand level. 
+A single ordering 
 has a nonzero zeroth-order trace, but the sum removes the candidate
 $k_s^{3\pm4\ii\tilde\nu}$ oscillatory signal.
 
-The first surviving term has one soft power at each hard end.
-Both the magnitude and direction of the hard momentum must be
-expanded, together with the first-order soft terms in
-\eqref{eq:top-soft-propagators}. Their sum can be organized as
+The first-order corrections to both the hard and soft propagators
+contribute to the hard-end matrices.
+Their sum can be organized as
 \begin{align}
  V_{12}^{(1)}+V_{21}^{(1)}&=-\frac2{k_L}\bm\sigma\cdot\mb v_L,
  &\mb v_L&=\Pi^L_1\bm\ell+
@@ -1160,16 +1179,37 @@ expanded, together with the first-order soft terms in
                   \Pi^R_2\mb n_R(\mb n_R\cdot\bm\ell).
  \label{eq:top-first-order}
 \end{align}
-The two scalar functions $\Pi_i$ depend on the endpoint times and
-SK labels but not on $\mb q$; their explicit expressions are given
-in \eqref{eq:top-Pi}. Terms with a zeroth-order end, including the
-second-order expansion at the other end, vanish by
-\eqref{eq:top-cancellation}. Consequently the first nonzero
+The two scalar functions $\Pi_i$ depend on the hard momentum, the endpoint
+times and SK labels, and their explicit expressions are given in
+\eqref{eq:top-Pi}.
+The function $\Pi_1$ includes the hard-direction correction and
+the two soft-endpoint corrections, and $\Pi_2$ contains the
+hard-magnitude derivative and its associated direction correction.
+Substituting \eqref{eq:top-first-order} into \eqref{eq:top-four-orderings}
+and using $\tr_2[(\bm\sigma\cdot\mb a)(\bm\sigma\cdot\mb b)
+(\bm\sigma\cdot\mb c)(\bm\sigma\cdot\mb d)]
+=2[(\mb a\cdot\mb b)(\mb c\cdot\mb d)
+-(\mb a\cdot\mb c)(\mb b\cdot\mb d)
++(\mb a\cdot\mb d)(\mb b\cdot\mb c)]$, the leading term of the sum of the four
+traces becomes:
+\begin{align}
+ &\tr_2[(V_{12}^{(1)}+V_{21}^{(1)})\sigma_K
+                    (V_{34}^{(1)}+V_{43}^{(1)})\sigma_q]
+ \nonumber\\
+ &\quad=\frac{8}{k_Lk_RqK}\left[
+ 2(\mb v_L\cdot\bm\ell)(\mb v_R\cdot\bm\ell)
+ -\frac12(\mb v_L\cdot\mb k_s)(\mb v_R\cdot\mb k_s)
+ -(\mb v_L\cdot\mb v_R)(\ell^2-k_s^2/4)\right].
+ \label{eq:top-scalar-trace}
+\end{align}
+The factor $8$ consists of $2$ from the Pauli identity and $4$
+from the two ordering sums. 
+Consequently the first nonzero
 oscillatory signal scales as $k_s^{5\pm4\ii\tilde\nu}$.
 
 \subsection{Factorized Loop and Time Integrals}
 \label{sec:top-factorized}
-The Pauli trace in \eqref{eq:top-four-orderings} reduces the
+The scalar trace in \eqref{eq:top-scalar-trace} reduces the
 remaining loop to a scalar integral. We define its dimensionless
 coefficients by
 \begin{align}
@@ -1178,48 +1218,65 @@ coefficients by
  -\frac12(\mb v_L\cdot\mb k_s)(\mb v_R\cdot\mb k_s)
  -(\mb v_L\cdot\mb v_R)(\ell^2-k_s^2/4)\right]\nonumber\\
  &\hspace{20mm}=k_s^{5+4\ii\tilde\nu}
- \sum_{i,j=1}^2\mathcal I^{ij}_{t,\mathrm{Box}}
- (\tilde\nu,\theta_1,\theta_3,\phi_3)\Pi^L_i\Pi^R_j.
+ \sum_{i,j=1}^2\mathcal I^{ij}_{\mathrm{top}}
+ (-\ii\tilde\nu,\theta_1,\theta_3,\phi_3)\Pi^L_i\Pi^R_j.
  \label{eq:top-loop-definition}
 \end{align}
-The trace supplies a further factor $8/(k_Lk_R)$, consisting of
-$2$ from the Pauli identity and $4$ from the two ordering sums.
-At this order the angles of the centered hard directions can be
-identified with those in Sec.~\ref{sec:gauge-preliminaries}.
-Every polynomial momentum moment in \eqref{eq:top-loop-definition}
-reduces to the scalar convolution $f_0$ of \eqref{eq:f0}.
+Then we will complete this loop integral and obtain the non-analytic term of $k_s$.
+% Every polynomial momentum moment in \eqref{eq:top-loop-definition}
+% reduces to the scalar convolution $f_0$ of \eqref{eq:f0}.
 The resulting coefficients satisfy
 \begin{equation}
- \mathcal I^{11}_{t,\mathrm{Box}}
- =3\mathcal I^{12}_{t,\mathrm{Box}}
- =3\mathcal I^{21}_{t,\mathrm{Box}}.
+ \mathcal I^{11}_{\mathrm{top}}
+ =3\mathcal I^{12}_{\mathrm{top}}
+ =3\mathcal I^{21}_{\mathrm{top}}.
  \label{eq:top-loop-relations}
 \end{equation}
 These three coefficients are independent of angles. All angular
-dependence is carried by $\mathcal I^{22}_{t,\mathrm{Box}}$, whose
+dependence is carried by $\mathcal I^{22}_{\mathrm{top}}$, whose
 explicit expression is collected in App.~\ref{app:top-soft}.
-The integrals are defined by analytic continuation, as in
-\eqref{eq:fr-definition}; polynomial contact terms are excluded.
+
+For the same-branch oscillatory contribution, the nonlocal part
+of the loop integral in \eqref{eq:top-box-integral}, summed over
+the four orderings, is
+\begin{align}
+ &\left[\int\frac{\di^3\mb q}{(2\pi)^3}
+ \sum_{\mathrm{ord}}\sum_{r_1,\ldots,r_4}
+ \tr_2[D^{12}J_{r_2}D^{23}J_{r_3}D^{34}J_{r_4}D^{41}J_{r_1}]
+ \right]_{\mathrm{NonL}}
+ \nonumber\\
+ &\quad\simeq\frac{8}{k_Lk_R}\sum_{\eta=\pm1}c_\eta^2
+ k_s^{5+4\ii\eta\tilde\nu}
+ \prod_{v=1}^4(-\tau_v)^{\ii\eta\tilde\nu}
+ \sum_{i,j=1}^2\mathcal I^{ij}_{\mathrm{top}}
+ (-\ii\eta\tilde\nu,\theta_1,\theta_3,\phi_3)
+ \Pi_{i,\eta}^L\Pi_{j,\eta}^R.
+ \label{eq:top-cut-loop}
+\end{align}
+Here $\sum_{\mathrm{ord}}$ acts on the loop as in
+\eqref{eq:top-four-orderings}, and $c_\eta$ is defined in
+\eqref{eq:top-soft-normalization}. The kernels $\Pi_{i,\eta}$ are
+given explicitly in \eqref{eq:top-Pi}.
 
 The two time integrations on each side are now independent.
-For their leading collapsed values, set the two external energies
-equal to the hard magnitude $k$ and define
+For the left subgraph, the leading collapsed term at
+$k_1\simeq k_2\simeq k_L$ defines
 \begin{align}
- &\frac{4k^6}{H^4}\sum_{\aa,\bb=\pm1}\aa\bb
- \int_{-\infty}^0\di\tau_1\di\tau_2\,
- (-\tau_1)^{\ii\tilde\nu-1}(-\tau_2)^{\ii\tilde\nu-1}
- G_{\aa}(k;\tau_1)G_{\bb}(k;\tau_2)
- \Pi_{i;\aa\bb}(k;\tau_1,\tau_2)
+ &\sum_{\aa,\bb=\pm1}\aa\bb
+ \int_{-\infty}^0 \frac{\di\tau_1}{H\tau_1} \frac{\di\tau_2}{H\tau_2} \,
+ (-\tau_1)^{\ii\eta\tilde\nu}(-\tau_2)^{\ii\eta\tilde\nu}
+ G_{\aa}(k_1;\tau_1)G_{\bb}(k_2;\tau_2)
+ \Pi_{i,\eta;\aa\bb}(k_L;\tau_1,\tau_2)
  \nonumber\\
- &\hspace{35mm}=k^{-2\ii\tilde\nu}\mathcal P_{t,i}(\tilde\nu),
- \qquad i=1,2.
+ &\hspace{20mm}\simeq\frac{H^2}{4k_1^3k_2^3}
+ k_L^{-2\ii\eta\tilde\nu}\mathcal P_{\mathrm{top},i,\eta}(\tilde\nu),
+ \qquad i=1,2,\quad\eta=\pm1.
  \label{eq:top-time-definition}
 \end{align}
-The left and right subgraphs use $k=k_L$ and $k=k_R$, respectively.
-The coefficient $\mathcal P_{t,1}$ includes the hard-direction
-correction and the two soft-endpoint corrections;
-$\mathcal P_{t,2}$ contains the hard-magnitude derivative and its
-associated direction correction. The exact external propagators
+Below, $\mathcal P_{\mathrm{top},i}\equiv\mathcal P_{\mathrm{top},i,+}$
+denotes the positive-branch coefficient.
+The right subgraph follows by $(1,2,L)\to(3,4,R)$.
+The exact external propagators
 were common factors throughout the cancellation and loop integral.
 Corrections to their equal-energy limit enter beyond the leading
 nonzero term.
@@ -1227,37 +1284,40 @@ nonzero term.
 These time integrals reduce to the Whittaker seed of
 Ref.~\cite{qin_closed-form_2023}, denoted here by
 $\mathcal K_{\aa\bb}^{\kappa;p_1p_2}$ with $\kappa=\pm1/2$.
-This plays the same role for $\mathcal P_{t,i}$ as
+This plays the same role for $\mathcal P_{\mathrm{top},i}$ as
 $\mathcal M_{\aa\bb}^{p_1p_2}$ does for the gauge-boson coefficients.
 Its scalar kernel has a different normalization from
 $D^{(\mathrm{s})}$ in \eqref{eq:scalar-propagator}.
-The continuation in $\kappa$ is an auxiliary method of evaluating
-the fermion modes; the physical top chemical potential remains zero.
 The seed normalization, its closed form and the combinations giving
-$\mathcal P_{t,i}$ are given in App.~\ref{app:top-seed}.
+$\mathcal P_{\mathrm{top},i}$ are given in App.~\ref{app:top-seed}.
 A common endpoint regulator is removed after the complete SK sum
 has been assembled.
 
 \subsection{Oscillatory Signal}
 \label{sec:top-clock}
+We now restore the sector and color multiplicities in the final signals.
+The two identical Majorana sectors supply a factor of $2$, and the color
+sum supplies $N_c$, giving an overall factor $2N_c$ relative to the
+single-sector, fixed-color normalization in \eqref{eq:top-box-integral}.
 Combining the soft loop and the two hard subgraphs, and adding the
 complex-conjugate branch, gives
 \begin{align}
- \left[\langle\delta h^4\rangle'_{t,s}\right]_{\mathrm{osc}}
+ \left[\langle\delta h^4\rangle'_{\mathrm{top},s}\right]_{\mathrm{osc}}
  \simeq{}&-\frac{N_cg_t^4H^4k_s^5}
  {16k_1^3k_2^3k_3^3k_4^3k_Lk_R}\nonumber\\
  &\times\left[
  \left(\frac{k_s^2}{4k_{12}k_{34}}\right)^{2\ii\tilde\nu}
- C_t^{\mathrm{Box}}(\tilde\nu,\theta_1,\theta_3,\phi_3)
+ C_{\mathrm{top}}(\tilde\nu,\theta_1,\theta_3,\phi_3)
  +\text{c.c.}\right],
  \label{eq:top-clock-signal}
 \end{align}
 where
 \begin{equation}
- C_t^{\mathrm{Box}}
+ C_{\mathrm{top}}
  =8c_+^2\,16^{2\ii\tilde\nu}
- \sum_{i,j=1}^2\mathcal P_{t,i}\mathcal P_{t,j}
-                    \mathcal I^{ij}_{t,\mathrm{Box}}.
+ \sum_{i,j=1}^2\mathcal P_{\mathrm{top},i}\mathcal P_{\mathrm{top},j}
+ \mathcal I^{ij}_{\mathrm{top}}
+ (-\ii\tilde\nu,\theta_1,\theta_3,\phi_3).
  \label{eq:top-clock-coefficient}
 \end{equation}
 All four $s$-channel orderings are included. The phase factor
@@ -1268,25 +1328,25 @@ $4k_{12}k_{34}\simeq16k_Lk_R$.
 The angular decomposition takes the same form as
 \eqref{eq:box-angular-expansion}:
 \begin{align}
- C_t^{\mathrm{Box}}={}&A_{1,t}
- +A_{2,t}(\cos^2\theta_1+\cos^2\theta_3)
- +A_{3,t}\cos^2\theta_1\cos^2\theta_3\nonumber\\
- &+B_t\sin(2\theta_1)\sin(2\theta_3)\cos\phi_3
- +D_t\sin^2\theta_1\sin^2\theta_3\cos(2\phi_3).
+ C_{\mathrm{top}}={}&A_{1,\mathrm{top}}
+ +A_{2,\mathrm{top}}(\cos^2\theta_1+\cos^2\theta_3)
+ +A_{3,\mathrm{top}}\cos^2\theta_1\cos^2\theta_3\nonumber\\
+ &+B_{\mathrm{top}}\sin(2\theta_1)\sin(2\theta_3)\cos\phi_3
+ +D_{\mathrm{top}}\sin^2\theta_1\sin^2\theta_3\cos(2\phi_3).
  \label{eq:top-angular}
 \end{align}
 The five coefficients depend only on $\tilde\nu$ and satisfy
-$A_{3,t}=-3A_{2,t}$. Their analytic expressions are given in
+$A_{3,\mathrm{top}}=-3A_{2,\mathrm{top}}$. Their analytic expressions are given in
 App.~\ref{app:top-coefficients}. In particular all nonconstant
-angular terms are proportional to $\mathcal P_{t,2}^2$.
+angular terms are proportional to $\mathcal P_{\mathrm{top},2}^2$.
 The result is even under either Higgs-pair exchange and under parity.
 
 At fixed angles the oscillatory bracket in
 \eqref{eq:top-clock-signal} is
 \begin{equation}
- 2|C_t^{\mathrm{Box}}|\cos\left[
+ 2|C_{\mathrm{top}}|\cos\left[
  2\tilde\nu\log\!\left(\frac{k_s^2}{4k_{12}k_{34}}\right)
- +\arg C_t^{\mathrm{Box}}\right].
+ +\arg C_{\mathrm{top}}\right].
  \label{eq:top-clock-phase}
 \end{equation}
 The frequency in $\log k_s$ is $4m_t/H$.
@@ -1314,14 +1374,14 @@ The corresponding soft convolution is
  \label{eq:top-mixed-loop}
 \end{equation}
 Both hard subgraphs give the same real time coefficient
-$\mathcal P_{t,\mathrm{mix}}$, evaluated through $\mathcal K$ in
+$\mathcal P_{\mathrm{top},\mathrm{mix}}$, evaluated through $\mathcal K$ in
 \eqref{eq:top-P-from-seed}. Summing the two opposite-branch
 assignments and the four orderings yields
 \begin{equation}
- \left[\langle\delta h^4\rangle'_{t,s}\right]_{\mathrm{mix}}
+ \left[\langle\delta h^4\rangle'_{\mathrm{top},s}\right]_{\mathrm{mix}}
  \simeq\frac{N_cg_t^4H^4k_s^3}{16k_1^3k_2^3k_3^3k_4^3}
  \frac{2\tilde\nu(1+\tilde\nu^2)}{3\pi\sinh(2\pi\tilde\nu)}
- \mathcal P_{t,\mathrm{mix}}^2.
+ \mathcal P_{\mathrm{top},\mathrm{mix}}^2.
  \label{eq:top-mixed-signal}
 \end{equation}
 This term has no angular dependence at leading order.
@@ -1336,6 +1396,7 @@ The coincident branches at $\tilde\nu=0$ require a combined limit.
 Analytic contact terms and the conversion of Higgs fluctuations
 into curvature perturbations are not included.
 
+\clearpage
 \section{Conclusions}
 \label{sec:conclusions}
 % Intentionally left blank.
@@ -1846,7 +1907,7 @@ The modes in \eqref{eq:top-modes} satisfy
 $\ii\partial_\tau u_s+sku_s=am_tv_s$ and
 $\ii\partial_\tau v_s-skv_s=am_tu_s$.
 With $u_{sj}=u_s(k,\tau_j)$ and $v_{sj}=v_s(k,\tau_j)$,
-the three unordered contractions are
+the three kinds of propagators are
 \begin{equation}
  D_{-+}=\sum_su_{s1}u_{s2}^*P_s,\qquad
  \widehat D_{-+}=-\sum_su_{s1}v_{s2}^*P_s\epsmat,\qquad
@@ -1856,8 +1917,8 @@ the three unordered contractions are
 The signs follow from
 $h^s(\epsmat h^{s*})^T=-P_s\epsmat$.
 
-For the seed reduction it is useful to express these contractions
-through the scalar-valued Whittaker kernel
+For the seed reduction it is useful to express these propagators
+through the scalar propagator with chemical potential
 \cite{qin_closed-form_2023}. With $X=-k\tau_1$, $Y=-k\tau_2$,
 \begin{align}
  \Dsc{\kappa}_{-+}(k;\tau_1,\tau_2)
@@ -1870,44 +1931,41 @@ through the scalar-valued Whittaker kernel
  W_{\kappa,\ii\tilde\nu}(-2\ii Y).
  \label{eq:top-scalar-kernel}
 \end{align}
+Here $W_{-\kappa,\ii\tilde\nu}$ is the Whittaker W function.
 The other two SK components follow from \eqref{eq:top-sk}.
-In the notation of the reference, $\kappa=\ii h\widetilde\mu$;
-both Wightman kernels are analytically continued to
-$\kappa=\pm1/2$. Complex conjugation of the continued parameter
-is not performed separately. Write $\Dsc{\pm}=\Dsc{\pm1/2}$.
-The normalization $1/(2k)$ differs from that of the covariant
-scalar propagator in \eqref{eq:scalar-propagator}.
+In the notation of the reference, $\kappa=\ii h\widetilde\mu$,
+and in the spinor case this parameter is analytically continued to
+$\kappa=\pm1/2$. 
+We denote the kernels at these two values
+explicitly by $\Dsc{+1/2}$ and $\Dsc{-1/2}$, respectively. 
 
-Whittaker recurrences then give, for all four SK choices,
+Then thees three kinds of spinor propagator can be expressed as:
 \begin{align}
  D_{\aa\bb}
  &=\frac{\ii k}{\sqrt{XY}}\left[
- (-X\partial_X-\ii X+\tfrac12)\Dsc{-}_{\aa\bb}P_-
- -(X\partial_X-\ii X-\tfrac12)\Dsc{+}_{\aa\bb}P_+\right],
+ (-X\partial_X-\ii X+\tfrac12)\Dsc{-1/2}_{\aa\bb}P_-
+ -(X\partial_X-\ii X-\tfrac12)\Dsc{+1/2}_{\aa\bb}P_+\right],
  \nonumber\\
  \widehat D_{\aa\bb}
  &=-\frac{\tilde\nu k}{\sqrt{XY}}
- [\Dsc{-}_{\aa\bb}P_++\Dsc{+}_{\aa\bb}P_-]\epsmat,
+ [\Dsc{-1/2}_{\aa\bb}P_++\Dsc{+1/2}_{\aa\bb}P_-]\epsmat,
  \nonumber\\
  \check D_{\aa\bb}
  &=\frac{\tilde\nu k}{\sqrt{XY}}\epsmat
- [\Dsc{+}_{\aa\bb}P_++\Dsc{-}_{\aa\bb}P_-].
+ [\Dsc{+1/2}_{\aa\bb}P_++\Dsc{-1/2}_{\aa\bb}P_-].
  \label{eq:top-scalar-reconstruction}
 \end{align}
-The derivatives act only on the kernels. Their Wightman values
-coincide at equal times, so these first derivatives generate no
-delta function from the SK step functions.
-The remaining field-type block is fixed by fermionic reversal:
+And they satisfy:
 \begin{equation}
  D^{\mathrm L\overline{\mathrm L}}=D,\quad
  D^{\mathrm L\mathrm L}=\widehat D,\quad
  D^{\overline{\mathrm L}\overline{\mathrm L}}=\check D,\quad
  D^{\overline{\mathrm L}\mathrm L}_{\aa\bb}(\mb k;\tau_1,\tau_2)
- =-D^T_{\bb\aa}(-\mb k;\tau_2,\tau_1).
+ =-[D_{\bb\aa}(-\mb k;\tau_2,\tau_1)]^T.
  \label{eq:top-reversal}
 \end{equation}
-Both the reversed momentum and the minus sign are required.
-Expanding
+
+Expanding the Whittaker W function:
 \begin{equation}
  W_{\kappa,\ii\tilde\nu}(z)
  =\sum_{\eta=\pm1}
@@ -1917,46 +1975,37 @@ Expanding
  \left[1-\frac{\kappa z}{1+2\ii\eta\tilde\nu}+O(z^2)\right]
  \label{eq:top-whittaker-expansion}
 \end{equation}
-in \eqref{eq:top-scalar-reconstruction} gives
-\eqref{eq:top-soft-propagators}.
 
-Two scalar hard coefficients suffice for the vertex-type sums.
-At hard momentum $p$, set $X=-p\tau_1$, $Y=-p\tau_2$ and define
+At hard momentum $p$, set $X=-p\tau_1$, $Y=-p\tau_2$.
+For contraction with soft endpoints on branch $\eta=\pm1$, define
 \begin{align}
- F_{0;\aa\bb}(p;\tau_1,\tau_2)
+ F_{0,\eta;\aa\bb}(p;\tau_1,\tau_2)
  &=\frac{\ii p}{2\sqrt{XY}}\left[
- (X\partial_X-\ii X-\tfrac12-\ii\tilde\nu)\Dsc{+}_{\aa\bb}
- +(-X\partial_X-\ii X+\tfrac12+\ii\tilde\nu)\Dsc{-}_{\aa\bb}
+ (X\partial_X-\ii X-\tfrac12-\ii\eta\tilde\nu)\Dsc{+1/2}_{\aa\bb}
+ +(-X\partial_X-\ii X+\tfrac12+\ii\eta\tilde\nu)\Dsc{-1/2}_{\aa\bb}
  \right],\nonumber\\
- F_{1;\aa\bb}(p;\tau_1,\tau_2)
+ F_{1,\eta;\aa\bb}(p;\tau_1,\tau_2)
  &=\frac{\ii p}{2\sqrt{XY}}\left[
- (-X\partial_X-\ii X+\tfrac12-\ii\tilde\nu)\Dsc{-}_{\aa\bb}
- -(X\partial_X-\ii X-\tfrac12+\ii\tilde\nu)\Dsc{+}_{\aa\bb}
+ (-X\partial_X-\ii X+\tfrac12-\ii\eta\tilde\nu)\Dsc{-1/2}_{\aa\bb}
+ -(X\partial_X-\ii X-\tfrac12+\ii\eta\tilde\nu)\Dsc{+1/2}_{\aa\bb}
  \right].
  \label{eq:top-hard-kernels}
 \end{align}
-Every kernel has arguments $(p;\tau_1,\tau_2)$.
+The scalar propagators $\Dsc{\pm1/2}_{\aa\bb}$ are the same for
+both values of $\eta$, with mass parameter $\tilde\nu$ and fixed SK
+labels $\aa,\bb$. We abbreviate $F_{j,+;\aa\bb}$ as $F_{j;\aa\bb}$.
 In particular
 $F_{0;\aa\bb}(p;\tau_1,\tau_2)
 =F_{0;\bb\aa}(p;\tau_2,\tau_1)$.
-These dimensionless functions describe the hard spin matrices;
-the calligraphic $\mathcal K$ below is reserved for the time seed.
-
-For fixed external labels, the four bilinear insertions have
-48 connected Wick pairings: 16 for each of the three undirected
-cycles. The four factors of $1/2$ in the interaction cancel these
-16 pairings. Expressing each undirected cycle as its two directed
-orientations therefore assigns $-g_t^4/2$ to each orientation in
-one Majorana sector. The closed-loop sign and the restoration of
-$2N_c$ give \eqref{eq:top-box-integral}.
+These dimensionless functions describe the hard line propagator.
 
 \subsection{Soft Expansion and Loop Integrals}
 \label{app:top-soft}
-For the $\eta=+1$ branch, factor the two soft endpoints as
+For the $\eta=+1$ branch, soft line can be factorized as:
 \begin{equation}
- D^{rs}_{\mathrm{NonL},+}(p;\tau,\tau')
+ D^{r_1 r_2}_{\mathrm{NonL},+}(p;\tau,\tau')
  \simeq-\frac{c_+}{2}(p^2\tau\tau')^{\ii\tilde\nu}
- L_r(p,\tau)\sigma_pU_s(p,\tau'),
+ L_{r_1}(p,\tau) \sigma_p U_{r_2}(p,\tau'),
  \label{eq:top-endpoint-factorization}
 \end{equation}
 where, through first order,
@@ -1983,11 +2032,12 @@ The matrices in \eqref{eq:top-cut-trace} are the vertex-type sums
 \end{align}
 The right matrices follow by $(L,1,2,q,K)\to(R,3,4,K,q)$.
 The factors $-1/2$ in these definitions reproduce the normalization
-of the two cut lines. Summing the four vertex choices at one hard
+of the two cut lines. 
+
+Summing the four vertex choices at one hard
 end first gives $V_{12}^{(0)}=-F_0\bm\sigma\cdot\mb n_L$.
 Reversal changes the direction but leaves $F_0$ unchanged, proving
 \eqref{eq:top-cancellation}.
-
 At first order, the hard-line correction in $V_{12}$ is
 \begin{equation}
  -\frac1{k_L}\bm\sigma\cdot\left[
@@ -2006,154 +2056,147 @@ while the two soft endpoints supply
 The reversed ordering has the same hard correction and interchanges
 the coefficients of $\mb q$ and $\mb K$. Since
 $\mb q+\mb K=2\bm\ell$, adding the two orderings gives
-\eqref{eq:top-first-order}, with
+\eqref{eq:top-first-order}. Repeating the endpoint contraction for
+either branch $\eta=\pm1$ gives
 \begin{align}
- \Pi_{1;\aa\bb}(k;\tau_1,\tau_2)
- &=F_{0;\aa\bb}(k;\tau_1,\tau_2)
- -\frac{\ii k}{1+2\ii\tilde\nu}
- [\tau_1F_{1;\aa\bb}(k;\tau_1,\tau_2)
- +\tau_2F_{1;\bb\aa}(k;\tau_2,\tau_1)],\nonumber\\
- \Pi_{2;\aa\bb}(k;\tau_1,\tau_2)
- &=\left.(p\partial_p-1)F_{0;\aa\bb}(p;\tau_1,\tau_2)\right|_{p=k}.
+ \Pi_{1,\eta;\aa\bb}(k;\tau_1,\tau_2)
+ &=F_{0,\eta;\aa\bb}(k;\tau_1,\tau_2)
+ -\frac{\ii k}{1+2\ii\eta\tilde\nu}
+ [\tau_1F_{1,\eta;\aa\bb}(k;\tau_1,\tau_2)
+ +\tau_2F_{1,\eta;\bb\aa}(k;\tau_2,\tau_1)],\nonumber\\
+ \Pi_{2,\eta;\aa\bb}(k;\tau_1,\tau_2)
+ &=\left.(p\partial_p-1)F_{0,\eta;\aa\bb}(p;\tau_1,\tau_2)\right|_{p=k}.
  \label{eq:top-Pi}
 \end{align}
-The momentum derivative is at fixed times. No equality between the
-two $F_1$ terms is assumed. This addition involves two physical
+Setting $\eta=+1$ or $-1$ gives $\Pi_{i,+;\aa\bb}$ or
+$\Pi_{i,-;\aa\bb}$ at the same SK labels and endpoint times;
+$\Pi_{i;\aa\bb}\equiv\Pi_{i,+;\aa\bb}$ in the positive-branch
+derivation above and in the time integrals below.
+The momentum derivative is at fixed times. 
+This addition involves two physical
 diagrams and does not average their time or SK labels.
-Using $\tr_2[(\bm\sigma\cdot\mb a)(\bm\sigma\cdot\mb b)
-(\bm\sigma\cdot\mb c)(\bm\sigma\cdot\mb d)]
-=2[(\mb a\cdot\mb b)(\mb c\cdot\mb d)
--(\mb a\cdot\mb c)(\mb b\cdot\mb d)
-+(\mb a\cdot\mb d)(\mb b\cdot\mb c)]$, the sum of the four
-first-order traces becomes
-\begin{align}
- &\tr_2[(V_{12}^{(1)}+V_{21}^{(1)})\sigma_K
-                    (V_{34}^{(1)}+V_{43}^{(1)})\sigma_q]
- \nonumber\\
- &\quad=\frac{8}{k_Lk_RqK}\left[
- 2(\mb v_L\cdot\bm\ell)(\mb v_R\cdot\bm\ell)
- -\frac12(\mb v_L\cdot\mb k_s)(\mb v_R\cdot\mb k_s)
- -(\mb v_L\cdot\mb v_R)(\ell^2-k_s^2/4)\right].
- \label{eq:top-scalar-trace}
-\end{align}
 
-To reduce the polynomial numerator in \eqref{eq:top-loop-definition},
-measure all loop momenta in units of $k_s$ and set
-$u=q^2/k_s^2$, $v=K^2/k_s^2$, and
-$\rho=1/2-\ii\tilde\nu$. Then
-\begin{equation}
- \frac{\ell^2}{k_s^2}=\frac{u+v}{2}-\frac14,\qquad
- \frac{\ell_\parallel}{k_s}=\frac{v-u}{2},\qquad
- \ell_\perp^2=\ell^2-\ell_\parallel^2.
- \label{eq:top-loop-polynomials}
-\end{equation}
-Azimuthal averaging replaces two transverse components by
-$\ell_\perp^2\delta^\perp_{ij}/2$ and four by
-$\ell_\perp^4(\delta^\perp_{ij}\delta^\perp_{mn}
-+\delta^\perp_{im}\delta^\perp_{jn}
-+\delta^\perp_{in}\delta^\perp_{jm})/8$.
-Each resulting monomial is integrated using
-\begin{equation}
- u^mv^n\ \longmapsto\
- \frac{f_0(\rho-m,\rho-n)}{(4\pi)^{3/2}},\qquad
- \frac{f_0(\rho-m,\rho-n)}{f_0(\rho,\rho)}
- =\frac{(3/2-\rho)_m(3/2-\rho)_n(1-\rho)_m(1-\rho)_n}
- {(5/2-2\rho)_{m+n}(3-2\rho)_{m+n}}.
- \label{eq:top-loop-reduction}
-\end{equation}
-Here $(a)_m$ is the Pochhammer symbol and $m+n\leq4$.
-The coefficients defined in \eqref{eq:top-loop-definition} are
+For the loop coefficients, set $x=-\ii\tilde\nu$ and
+$c_i=\cos\theta_i$. We use $\mathcal J_r(m,n;x)$ as defined in
+\eqref{eq:Jr-definition}. The common argument $x$ of
+$\mathcal I^{ij}_{\mathrm{top}}$ and $\mathcal J_r$, and the angular
+arguments of $\mathcal I^{ij}_{\mathrm{top}}$, are suppressed below.
+Azimuthal averaging and the scalar-convolution identities give
 \begin{align}
- \mathcal I^{11}_{t,\mathrm{Box}}
- &=3\mathcal I^{12}_{t,\mathrm{Box}}=3\mathcal I^{21}_{t,\mathrm{Box}},\nonumber\\
- \mathcal I^{12}_{t,\mathrm{Box}}
- &=\frac{f_0(\rho,\rho)}{(4\pi)^{3/2}}
- \frac{(\rho-1)(2\rho-3)}{8(\rho-2)(4\rho-7)(4\rho-5)},\nonumber\\
- \mathcal I^{22}_{t,\mathrm{Box}}
- &=\frac{f_0(\rho,\rho)}
- {32(4\pi)^{3/2}(\rho-3)(\rho-2)(4\rho-7)(4\rho-5)}
- \Big\{(\rho-1)(2\rho-3)(2\rho-5)\nonumber\\
- &\quad-(\rho-1)(2\rho-3)^2
- [\cos^2\theta_1+\cos^2\theta_3-3\cos^2\theta_1\cos^2\theta_3]
+ \mathcal I^{11}_{\mathrm{top}}
+ &=3\mathcal I^{12}_{\mathrm{top}}=3\mathcal I^{21}_{\mathrm{top}},
  \nonumber\\
- &\quad-2(\rho-1)(\rho-2)(2\rho-3)
+ (4\pi)^{3/2}\mathcal I^{12}_{\mathrm{top}}
+ &=\frac12[\mathcal J_0(3,1)-\mathcal J_2(3,1)
+ +\mathcal J_1(2,1)-\mathcal J_3(2,1)]
+ \nonumber\\
+ &\quad+\frac14[\mathcal J_0(1,1)-\mathcal J_2(1,1)],
+ \nonumber\\
+ (4\pi)^{3/2}\mathcal I^{22}_{\mathrm{top}}
+ &=\frac14[2\mathcal J_4(3,1)-3\mathcal J_2(3,1)+\mathcal J_0(3,1)
+ +\mathcal J_3(2,1)-\mathcal J_1(2,1)]\nonumber\\
+ &\quad+\frac14\Big[-6\mathcal J_4(3,1)+7\mathcal J_2(3,1)-\mathcal J_0(3,1)
+ +5\mathcal J_1(2,1)-5\mathcal J_3(2,1)\nonumber\\
+ &\hspace{22mm}+\mathcal J_0(1,1)-\mathcal J_2(1,1)\Big]
+ (c_1^2+c_3^2-3c_1^2c_3^2)\nonumber\\
+ &\quad+\frac1{16}\Big[-16\mathcal J_4(3,1)+14\mathcal J_2(3,1)-2\mathcal J_0(3,1)
+ +10\mathcal J_1(2,1)-18\mathcal J_3(2,1)\nonumber\\
+ &\hspace{22mm}+2\mathcal J_0(1,1)-7\mathcal J_2(1,1)-\mathcal J_1(0,1)\Big]
  \sin(2\theta_1)\sin(2\theta_3)\cos\phi_3\nonumber\\
- &\quad+(\rho-2)(2\rho-5)(2\rho-3)
+ &\quad+\frac14[\mathcal J_4(3,1)-\mathcal J_2(3,1)
+ +\mathcal J_3(2,1)-\mathcal J_1(2,1)]
+ \sin^2\theta_1\sin^2\theta_3\cos(2\phi_3).
+ \label{eq:top-loop-reduction}
+\end{align}
+The finite sum \eqref{eq:fr-finite-sum} and the Gamma recurrence
+give the closed form below, with the common factor
+\begin{equation}
+ \mathcal G_{\mathrm{top}}(\tilde\nu)
+ =\frac{\Gamma(-\tfrac12-2\ii\tilde\nu)\Gamma^2(1+\ii\tilde\nu)}
+ {(4\pi)^{3/2}\Gamma(2+2\ii\tilde\nu)
+ \Gamma^2(\tfrac12-\ii\tilde\nu)}.
+ \label{eq:top-loop-Gamma}
+\end{equation}
+For $x=-\ii\tilde\nu$, the fully reduced coefficients are
+\begin{align}
+ \mathcal I^{12}_{\mathrm{top}}(-\ii\tilde\nu)
+ &=-\mathcal G_{\mathrm{top}}\,
+ \frac{(1+\ii\tilde\nu)(1+2\ii\tilde\nu)}
+ {4(3+2\ii\tilde\nu)(5+4\ii\tilde\nu)(3+4\ii\tilde\nu)},
+ \nonumber\\
+ \mathcal I^{22}_{\mathrm{top}}(-\ii\tilde\nu,\theta_1,\theta_3,\phi_3)
+ &=-\frac{\mathcal G_{\mathrm{top}}(1+\ii\tilde\nu)}
+ {4(5+2\ii\tilde\nu)(3+2\ii\tilde\nu)(5+4\ii\tilde\nu)(3+4\ii\tilde\nu)}
+ \nonumber\\
+ &\quad\times\Big\{(2+\ii\tilde\nu)(1+2\ii\tilde\nu)
+ -(1+\ii\tilde\nu)(1+2\ii\tilde\nu)
+ [c_1^2+c_3^2-3c_1^2c_3^2]\nonumber\\
+ &\qquad-\frac12(1+2\ii\tilde\nu)(3+2\ii\tilde\nu)
+ \sin(2\theta_1)\sin(2\theta_3)\cos\phi_3\nonumber\\
+ &\qquad+(2+\ii\tilde\nu)(3+2\ii\tilde\nu)
  \sin^2\theta_1\sin^2\theta_3\cos(2\phi_3)\Big\}.
  \label{eq:top-loop-closed}
 \end{align}
-The scalar convolution is first defined in its convergence domain
-and continued after the shifted moments are combined. Extending
-the soft region beyond $q\sim k_s$ produces ultraviolet power
-divergences; analytic continuation isolates the nonanalytic
-coefficient, while polynomial terms belong to matching with the
-hard region. This prescription does not determine contact-term
-renormalization.
+The $\eta=-1$ branch follows by complex conjugation.
+As in the gauge-boson calculation, the $\mathcal J_r$ are evaluated
+by analytic continuation. This extracts the nonanalytic soft
+coefficient; polynomial contact terms from matching to the hard
+region are not included.
+
 
 \subsection{Whittaker Seed and Time Integrals}
 \label{app:top-seed}
 We denote the Whittaker seed $\mathcal I$ of
 Ref.~\cite{qin_closed-form_2023} by $\mathcal K$.
 For equal external energies $k$, internal magnitude $p=rk$, and
-$u=2r/(1+r)$, its diagonal restriction is defined by
+$u=2r/(1+r)$, the integral seed is defined by
 \begin{align}
- \mathcal K_{\aa\bb}^{\kappa;P,Q}(u,u)
- \equiv{}&(-\aa\bb)p^{3+P+Q}
+ \mathcal K_{\aa\bb}^{\kappa;p_1,p_2}(u,u)
+ \equiv{}&(-\aa\bb)p^{3+p_1+p_2}
  \int_{-\infty}^0\di\tau_1\di\tau_2\,
- (-\tau_1)^P(-\tau_2)^Q
+ (-\tau_1)^{p_1}(-\tau_2)^{p_2}
  e^{\ii\aa k\tau_1+\ii\bb k\tau_2}
  \Dsc{\kappa}_{\aa\bb}(p;\tau_1,\tau_2).
  \label{eq:top-K-definition}
 \end{align}
-The phase $e^{\ii\pi\kappa}$ is already included in the scalar
-kernel. In terms of $x=-k\tau_1$, $y=-k\tau_2$, its time moment is
-\begin{equation}
- \int_0^\infty\di x\di y\,x^Py^Qe^{-\ii\aa x-\ii\bb y}
- k\Dsc{\kappa}_{\aa\bb}(rk;-x/k,-y/k)
- =-\aa\bb\,r^{-3-P-Q}\mathcal K_{\aa\bb}^{\kappa;P,Q}(u,u).
- \label{eq:top-K-scaling}
-\end{equation}
-There is no shift of the mass index $\tilde\nu$ in this reduction.
+% In terms of $x=-k\tau_1$, $y=-k\tau_2$, its time moment is
+% \begin{equation}
+%  \int_0^\infty\di x\di y\,x^{p_1}y^{p_2}e^{-\ii\aa x-\ii\bb y}
+%  k\Dsc{\kappa}_{\aa\bb}(rk;-x/k,-y/k)
+%  =-\aa\bb\,r^{-3-p_1-p_2}\mathcal K_{\aa\bb}^{\kappa;p_1,p_2}(u,u).
+%  \label{eq:top-K-scaling}
+% \end{equation}
+% There is no shift of the mass index $\tilde\nu$ in this reduction.
 
-For brevity, the seed formulas below use
-$\Gamma[z_1,\ldots,z_n]=\prod_i\Gamma(z_i)$.
 At $r=1$, write
-$\mathcal K_{\aa\bb}^{\kappa;P,Q}
-\equiv\mathcal K_{\aa\bb}^{\kappa;P,Q}(1,1)$.
+$\mathcal K_{\aa\bb}^{\kappa;p_1,p_2}
+\equiv\mathcal K_{\aa\bb}^{\kappa;p_1,p_2}(1,1)$.
 The closed expressions are
 \begin{align}
- \mathcal K_{\aa,-\aa}^{\kappa;P,Q}
- &=\frac{e^{-\ii\aa\pi(P-Q)/2+\ii\pi\kappa}}{2^{3+P+Q}}
- \frac{\Gamma[\tfrac32+P-\ii\tilde\nu,\tfrac32+P+\ii\tilde\nu,
-               \tfrac32+Q-\ii\tilde\nu,\tfrac32+Q+\ii\tilde\nu]}
- {\Gamma[2+P+\aa\kappa,2+Q-\aa\kappa]},
+ \mathcal K_{\pm\mp}^{\kappa;p_1,p_2}
+ &=\frac{e^{\mp\ii\pi(p_1-p_2)/2+\ii\pi\kappa}}{2^{3+p_1+p_2}}
+ \frac{\Gamma[\tfrac32+p_1-\ii\tilde\nu,\tfrac32+p_1+\ii\tilde\nu,
+               \tfrac32+p_2-\ii\tilde\nu,\tfrac32+p_2+\ii\tilde\nu]}
+ {\Gamma[2+p_1\pm\kappa,2+p_2\mp\kappa]},
  \label{eq:top-K-opposite}\\
- \mathcal K_{\aa\aa}^{\kappa;P,Q}
- &=\frac{-\aa\ii e^{-\ii\aa\pi(P+Q)/2}}{2^{3+P+Q}}
- \Gamma[\tfrac32+P+\aa\ii\tilde\nu,\tfrac32+Q+\aa\ii\tilde\nu]
+ \mathcal K_{\pm\pm}^{\kappa;p_1,p_2}
+ &=\frac{\mp\ii e^{\mp\ii\pi(p_1+p_2)/2}}{2^{3+p_1+p_2}}
+ \Gamma[\tfrac32+p_1\pm\ii\tilde\nu,\tfrac32+p_2\pm\ii\tilde\nu]
  \nonumber\\
  &\quad\times\left\{
  \frac{e^{2\ii\pi\kappa}+e^{-2\pi\tilde\nu}}{2\pi}
- \frac{\Gamma[\tfrac32+P-\aa\ii\tilde\nu,\tfrac32+Q-\aa\ii\tilde\nu,
-               \tfrac12+\aa\kappa-\ii\tilde\nu,\tfrac12+\aa\kappa+\ii\tilde\nu]}
- {\Gamma[2+P+\aa\kappa,2+Q+\aa\kappa]}
+ \frac{\Gamma[\tfrac32+p_1\mp\ii\tilde\nu,\tfrac32+p_2\mp\ii\tilde\nu,
+               \tfrac12\pm\kappa-\ii\tilde\nu,\tfrac12\pm\kappa+\ii\tilde\nu]}
+ {\Gamma[2+p_1\pm\kappa,2+p_2\pm\kappa]}
  \right.\nonumber\\
  &\qquad\left.
- +\aa\ii\Gamma(3+P+Q)
+ \pm\ii\Gamma(3+p_1+p_2)
  {}_3\widetilde F_2\!\left[
- \begin{matrix}3+P+Q,\ \tfrac12-\aa\kappa+\aa\ii\tilde\nu,\ 1\\
- \tfrac52+P+\aa\ii\tilde\nu,\ \tfrac52+Q+\aa\ii\tilde\nu
+ \begin{matrix}3+p_1+p_2,\ \tfrac12\mp\kappa\pm\ii\tilde\nu,\ 1\\
+ \tfrac52+p_1\pm\ii\tilde\nu,\ \tfrac52+p_2\pm\ii\tilde\nu
  \end{matrix}\middle|1\right]\right\}.
  \label{eq:top-K-same}
 \end{align}
-The regularized hypergeometric function has the same definition as
-in App.~\ref{app:triangle-coefficients}, namely
-\[
- {}_3\widetilde F_2(a,b,c;d,e;1)
- =\frac{{}_3F_2(a,b,c;d,e;1)}{\Gamma(d)\Gamma(e)}.
-\]
-At the required powers these formulas denote analytic continuation
-of the complete seed combination.
 
 Only two scalar time moments are needed to express all three hard
 coefficients. Define
@@ -2169,32 +2212,32 @@ coefficients. Define
 \end{align}
 Scale invariance makes the right-hand side independent of $k$.
 Expanding the external polynomials with indices $m,n=0,1$, put
-$P=\alpha-3/2+m$, $Q=\beta-3/2+n$.
+$p_1=\alpha-3/2+m$, $p_2=\beta-3/2+n$.
 Integration by parts sends $x\partial_x$ to
-$-(P+1)+\ii\aa x$. Substituting \eqref{eq:top-K-scaling}
+$-(p_1+1)+\ii\aa x$. Using the definition \eqref{eq:top-K-definition}
 therefore gives directly
 \begin{align}
  \mathcal H_0(\alpha,\beta;r)
  ={}&-\frac{\ii}{2}
  \sum_{\aa,\bb=\pm1}\sum_{m,n=0}^1
- (\ii\aa)^m(\ii\bb)^n r^{-3-P-Q}
- \Big\{(P+\tfrac32+\ii\tilde\nu)
- [\mathcal K_{\aa\bb}^{-;P,Q}-\mathcal K_{\aa\bb}^{+;P,Q}]
+ (\ii\aa)^m(\ii\bb)^n r^{-3-p_1-p_2}
+ \Big\{(p_1+\tfrac32+\ii\tilde\nu)
+ [\mathcal K_{\aa\bb}^{-;p_1,p_2}-\mathcal K_{\aa\bb}^{+;p_1,p_2}]
  \nonumber\\
  &\hspace{23mm}
- +\frac{\ii(\aa-r)}r\mathcal K_{\aa\bb}^{+;P+1,Q}
- -\frac{\ii(\aa+r)}r\mathcal K_{\aa\bb}^{-;P+1,Q}\Big\},
+ +\frac{\ii(\aa-r)}r\mathcal K_{\aa\bb}^{+;p_1+1,p_2}
+ -\frac{\ii(\aa+r)}r\mathcal K_{\aa\bb}^{-;p_1+1,p_2}\Big\},
  \label{eq:top-H0-K}\\
  \mathcal H_1(\alpha,\beta;r)
  ={}&-\frac{\ii}{2}
  \sum_{\aa,\bb=\pm1}\sum_{m,n=0}^1
- (\ii\aa)^m(\ii\bb)^n r^{-3-P-Q}
- \Big\{(P+\tfrac32-\ii\tilde\nu)
- [\mathcal K_{\aa\bb}^{-;P,Q}+\mathcal K_{\aa\bb}^{+;P,Q}]
+ (\ii\aa)^m(\ii\bb)^n r^{-3-p_1-p_2}
+ \Big\{(p_1+\tfrac32-\ii\tilde\nu)
+ [\mathcal K_{\aa\bb}^{-;p_1,p_2}+\mathcal K_{\aa\bb}^{+;p_1,p_2}]
  \nonumber\\
  &\hspace{23mm}
- -\frac{\ii(\aa-r)}r\mathcal K_{\aa\bb}^{+;P+1,Q}
- -\frac{\ii(\aa+r)}r\mathcal K_{\aa\bb}^{-;P+1,Q}\Big\}.
+ -\frac{\ii(\aa-r)}r\mathcal K_{\aa\bb}^{+;p_1+1,p_2}
+ -\frac{\ii(\aa+r)}r\mathcal K_{\aa\bb}^{-;p_1+1,p_2}\Big\}.
  \label{eq:top-H1-K}
 \end{align}
 Every seed here has arguments $(u,u)$, and its superscript $\pm$
@@ -2206,34 +2249,34 @@ The bootstrap equation supplies the hard-momentum derivative at the
 folded point without introducing another integral:
 \begin{align}
  &\left.\frac{\di}{\di r}
- \mathcal K_{\aa\bb}^{\kappa;P,Q}(u(r),u(r))\right|_{r=1}
+ \mathcal K_{\aa\bb}^{\kappa;p_1,p_2}(u(r),u(r))\right|_{r=1}
  \nonumber\\
  &\quad=\frac12\left[
- \frac{\tilde\nu^2+(P+\tfrac32)^2}{2+P+\aa\kappa}
- +\frac{\tilde\nu^2+(Q+\tfrac32)^2}{2+Q+\bb\kappa}\right]
- \mathcal K_{\aa\bb}^{\kappa;P,Q}(1,1)
+ \frac{\tilde\nu^2+(p_1+\tfrac32)^2}{2+p_1+\aa\kappa}
+ +\frac{\tilde\nu^2+(p_2+\tfrac32)^2}{2+p_2+\bb\kappa}\right]
+ \mathcal K_{\aa\bb}^{\kappa;p_1,p_2}(1,1)
  \nonumber\\
  &\qquad+\frac{\delta_{\aa\bb}}2
- \left[\frac1{2+P+\aa\kappa}+\frac1{2+Q+\bb\kappa}\right]
- e^{-\ii\aa\pi(P+Q)/2}2^{-3-P-Q}\Gamma(3+P+Q).
+ \left[\frac1{2+p_1+\aa\kappa}+\frac1{2+p_2+\bb\kappa}\right]
+ e^{-\ii\aa\pi(p_1+p_2)/2}2^{-3-p_1-p_2}\Gamma(3+p_1+p_2).
  \label{eq:top-K-derivative}
 \end{align}
 Both the explicit powers of $r$ and the factors $(\aa\pm r)/r$
 in \eqref{eq:top-H0-K} must also be differentiated.
 The coefficients used in the main text are
 \begin{align}
- \mathcal P_{t,1}
+ \mathcal P_{\mathrm{top},1}
  &=\lim_{\delta\to0}\left[
  \mathcal H_0(\ii\tilde\nu+\delta,\ii\tilde\nu+\delta;1)
  +\frac{2\ii}{1+2\ii\tilde\nu}
  \mathcal H_1(1+\ii\tilde\nu+\delta,\ii\tilde\nu+\delta;1)\right],
  \nonumber\\
- \mathcal P_{t,2}
+ \mathcal P_{\mathrm{top},2}
  &=\lim_{\delta\to0}
  \left.(\partial_r-1)
  \mathcal H_0(\ii\tilde\nu+\delta,\ii\tilde\nu+\delta;r)\right|_{r=1},
  \nonumber\\
- \mathcal P_{t,\mathrm{mix}}
+ \mathcal P_{\mathrm{top},\mathrm{mix}}
  &=\lim_{\delta\to0}
  \mathcal H_1(-\ii\tilde\nu+\delta,\ii\tilde\nu+\delta;1).
  \label{eq:top-P-from-seed}
@@ -2245,7 +2288,7 @@ All SK terms and both Whittaker indices are combined before removing
 the common regulator. The identity
 $\mathcal H_1(\alpha,\beta;1)^*
 =\mathcal H_1(\beta^*,\alpha^*;1)$ makes
-$\mathcal P_{t,\mathrm{mix}}$ real.
+$\mathcal P_{\mathrm{top},\mathrm{mix}}$ real.
 
 For a finite expression of the oscillatory coefficients, it is useful
 to retain one symmetric family of special functions,
@@ -2264,14 +2307,14 @@ Only $\mathcal Q_{00},\mathcal Q_{01},\mathcal Q_{11},
 balance $1+\ii\tilde\nu$ and is convergent for real $\tilde\nu$.
 Reducing the full SK sums in \eqref{eq:top-P-from-seed} gives
 \begin{align}
- \mathcal P_{t,1}
+ \mathcal P_{\mathrm{top},1}
  ={}&2\cosh(\pi\tilde\nu)
  \left[\mathcal Q_{00}+2\mathcal Q_{01}+\mathcal Q_{11}
  +\frac{2(\mathcal Q_{02}+\mathcal Q_{12})}{1+2\ii\tilde\nu}\right]
  -\pi^2 2^{-1-2\ii\tilde\nu}
  \frac{\Gamma(1+2\ii\tilde\nu)^2}{\Gamma(1+\ii\tilde\nu)^2},
  \label{eq:top-P1-finite}\\
- \mathcal P_{t,2}
+ \mathcal P_{\mathrm{top},2}
  ={}&2\cosh(\pi\tilde\nu)\sum_{m,n=0}^1
  \left[\frac{m(1+2\ii\tilde\nu+m)}{2(1+\ii\tilde\nu+m)}
  +\frac{n(1+2\ii\tilde\nu+n)}{2(1+\ii\tilde\nu+n)}
@@ -2293,7 +2336,7 @@ in \eqref{eq:top-P-from-seed} provides the corresponding evaluation.
 \label{app:top-coefficients}
 With $\rho=1/2-\ii\tilde\nu$, define the common soft factor
 \begin{equation}
- \mathcal B_t(\tilde\nu)=
+ \mathcal B_{\mathrm{top}}(\tilde\nu)=
  \frac{2^{1+4\ii\tilde\nu}\Gamma(\tfrac12-\ii\tilde\nu)^4
  f_0(\rho,\rho)}
  {32\pi^2(4\pi)^{3/2}(\rho-3)(\rho-2)(4\rho-7)(4\rho-5)}.
@@ -2306,15 +2349,15 @@ $8c_+^2\,16^{2\ii\tilde\nu}
 =2^{1+4\ii\tilde\nu}\Gamma(1/2-\ii\tilde\nu)^4/\pi^2$.
 Substituting \eqref{eq:top-loop-closed} gives
 \begin{align}
- A_{1,t}&=\mathcal B_t(\rho-1)(2\rho-3)
- \left[4(\rho-3)(3\mathcal P_{t,1}^2
- +2\mathcal P_{t,1}\mathcal P_{t,2})
- +(2\rho-5)\mathcal P_{t,2}^2\right],\nonumber\\
- A_{2,t}&=-\mathcal B_t\mathcal P_{t,2}^2(\rho-1)(2\rho-3)^2,
- \qquad A_{3,t}=-3A_{2,t},\nonumber\\
- B_t&=-2\mathcal B_t\mathcal P_{t,2}^2
+ A_{1,\mathrm{top}}&=\mathcal B_{\mathrm{top}}(\rho-1)(2\rho-3)
+ \left[4(\rho-3)(3\mathcal P_{\mathrm{top},1}^2
+ +2\mathcal P_{\mathrm{top},1}\mathcal P_{\mathrm{top},2})
+ +(2\rho-5)\mathcal P_{\mathrm{top},2}^2\right],\nonumber\\
+ A_{2,\mathrm{top}}&=-\mathcal B_{\mathrm{top}}\mathcal P_{\mathrm{top},2}^2(\rho-1)(2\rho-3)^2,
+ \qquad A_{3,\mathrm{top}}=-3A_{2,\mathrm{top}},\nonumber\\
+ B_{\mathrm{top}}&=-2\mathcal B_{\mathrm{top}}\mathcal P_{\mathrm{top},2}^2
        (\rho-1)(\rho-2)(2\rho-3),\nonumber\\
- D_t&=\mathcal B_t\mathcal P_{t,2}^2
+ D_{\mathrm{top}}&=\mathcal B_{\mathrm{top}}\mathcal P_{\mathrm{top},2}^2
        (\rho-2)(2\rho-5)(2\rho-3).
  \label{eq:top-angular-closed}
 \end{align}

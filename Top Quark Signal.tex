@@ -1002,71 +1002,155 @@ directions relative to $\bk_s$ as well as on their mutual angle.
 
 \paragraph{Reduction of the polynomial numerator.}
 \label{sec:bubble-reduction}
-For the reduction only, measure $q,K,\ell$ in units of $k_s$, put
-$u=q^2$, $v=K^2$, and set $\rho=1/2-\ii\tn$. Then
+Write the numerator as
+$N=\sum_{i,j}\Pi_i^L\Pi_j^R N_{ij}$, and set
+$x=-\ii\tn$ and $z=\widehat{\mb q}\cdot\widehat{\mb k}_s$.
+The angular moments are defined through the scalar convolution by
 \begin{equation}
- \ell^2=(u+v)/2-1/4,\qquad
- \ell_\parallel\equiv\bm\ell\cdot\mb n_s=(v-u)/2,\qquad
- \ell_\perp^2=\ell^2-\ell_\parallel^2.
-\end{equation}
-Azimuthal averaging replaces two transverse components by
-$\ell_\perp^2\delta^\perp_{ij}/2$ and four by
-$\ell_\perp^4(\delta^\perp_{ij}\delta^\perp_{kl}
-+\delta^\perp_{ik}\delta^\perp_{jl}+\delta^\perp_{il}\delta^\perp_{jk})/8$,
-where $\delta^\perp_{ij}=\delta_{ij}-n_{s i}n_{s j}$.
-The numerator in Eq.~\eqref{eq:spin-bubble} consequently becomes a polynomial
-in $u,v$ and the three external angles. Each monomial is integrated by
-\begin{align}
- u^mv^n&\quad\longmapsto\quad
- \frac{f_0(\rho-m,\rho-n)}{(4\pi)^{3/2}},\\
- \frac{f_0(\rho-m,\rho-n)}{f_0(\rho,\rho)}&=
- \frac{(3/2-\rho)_m(3/2-\rho)_n(1-\rho)_m(1-\rho)_n}
- {(5/2-2\rho)_{m+n}(3-2\rho)_{m+n}}.
+ \mathcal J_r(m,n;x)=\frac1{2^r}
+ \sum_{u+v+w=r}\frac{r!}{u!v!w!}(-1)^{v+w}
+ f_0\left(x-\frac m2+\frac r2-v,x+\frac n2-u\right),
+ \qquad r=0,1,2,3,4,
  \label{eq:bubble-reduction}
-\end{align}
-Only nonnegative integers $m,n$ with $m+n\leq4$ occur. Thus the bubble is a
-finite Gamma sum, and all its terms reduce to the same $f_0(\rho,\rho)$ times
-rational functions. For example the coefficient of $\Pi^L_1\Pi^R_1$ in the
-square bracket of Eq.~\eqref{eq:spin-bubble} is
-$\ell^4+\ell^2/4-\ell_\parallel^2/2$, whose integral is
-\begin{equation}
- \frac{f_0(\rho,\rho)}{(4\pi)^{3/2}}
- \frac{3(\rho-1)(2\rho-3)}{8(\rho-2)(4\rho-7)(4\rho-5)}.
 \end{equation}
-For the cross terms, the azimuthal average has the form
-\[
- \frac{(\ell^2+1/4)\ell_\perp^2}{2}
- +(\mb n_{L,R}\cdot\mb n_s)^2
- \left[(\ell^2+1/4)(\ell_\parallel^2-\ell_\perp^2/2)
-                        -\ell_\parallel^2/2\right].
-\]
-The square bracket has zero scalar convolution by
-Eq.~\eqref{eq:bubble-reduction}. Thus the two cross coefficients are
-equal and angle independent, even though the left and right time
-kernels are still different. The complete result of the loop integral is
+where the sum runs over nonnegative integers. This follows from
+$z=(K^2-q^2-k_s^2)/(2qk_s)$.
+Thus $K^2=q^2+k_s^2+2qk_sz$. Let an overline denote the average
+over the azimuth of $\mb q$ about $\mb k_s$, holding the external
+directions $\mb n_L$ and $\mb n_R$ fixed.
+Writing $c_1=\cos\theta_1$ and $c_3=\cos\theta_3$, the numerator is
 \begin{align}
- \mathscr L_{11}&=3\mathscr L_{12}=3\mathscr L_{21},\qquad
- \mathscr L_{12}=
- \frac{f_0(\rho,\rho)}{(4\pi)^{3/2}}\,
- \frac{(\rho-1)(2\rho-3)}
-      {8(\rho-2)(4\rho-7)(4\rho-5)},\nonumber\\
+ \overline N_{11}&=M,\qquad
+ \overline N_{12}=P+c_3^2Q,\qquad
+ \overline N_{21}=P+c_1^2Q,\nonumber\\
+ \overline N_{22}&=H_0+H_2(c_1^2+c_3^2)+H_3c_1^2c_3^2
+ +H_B\sin(2\theta_1)\sin(2\theta_3)\cos\phi_3\nonumber\\
+ &\quad+H_D\sin^2\theta_1\sin^2\theta_3\cos(2\phi_3).
+ \label{eq:top-loop-numerator}
+\end{align}
+Using $\bm\ell=\mb q+\mb k_s/2$ and performing this azimuthal
+average gives the following polynomials:
+\begin{align}
+ M={}&q^4+2k_sq^3z+\frac{k_s^2q^2}{4}(3+2z^2)
+       +\frac{k_s^3qz}{4},\nonumber\\
+ P={}&\frac{q^4}{2}(1-z^2)+\frac{k_sq^3}{2}(z-z^3)
+       +\frac{k_s^2q^2}{4}(1-z^2),\nonumber\\
+ Q={}&\frac{q^4}{2}(3z^2-1)+\frac{k_sq^3}{2}(3z^3+z)
+       +\frac54 k_s^2q^2z^2+\frac{k_s^3qz}{4},\nonumber\\
+ H_0={}&\frac{q^4}{4}(2z^4-3z^2+1)
+       +\frac{k_sq^3}{4}(z^3-z),\nonumber\\
+ H_2={}&\frac{q^4}{4}(-6z^4+7z^2-1)
+       +\frac54 k_sq^3(z-z^3)+\frac{k_s^2q^2}{4}(1-z^2),\nonumber\\
+ H_3={}&\frac{q^4}{4}(18z^4-15z^2+1)
+       +\frac{k_sq^3}{4}(21z^3-13z)
+       +\frac{k_s^2q^2}{4}(8z^2-3)+\frac{k_s^3qz}{4},\nonumber\\
+ H_B={}&\frac{q^4}{8}(-8z^4+7z^2-1)
+       +\frac{k_sq^3}{8}(5z-9z^3)
+       +\frac{k_s^2q^2}{16}(2-7z^2)-\frac{k_s^3qz}{16},\nonumber\\
+ H_D={}&\frac{q^4}{4}(z^4-z^2)+\frac{k_sq^3}{4}(z^3-z).
+ \label{eq:top-loop-polynomials}
+\end{align}
+The common weight is $(qK)^{-2x-1}$. Each monomial therefore
+reduces directly to the functions defined in \eqref{eq:bubble-reduction}:
+\begin{equation}
+ \int\frac{\di^3\mb q}{(2\pi)^3}
+ (qK)^{-2x-1}k_s^{4-a}q^a z^r
+ =\frac{k_s^{5-4x}}{(4\pi)^{3/2}}\,
+ \mathcal J_r(a-1,1;x).
+ \label{eq:top-loop-J-map}
+\end{equation}
+There is no factor $4^{2x}$ here, since the soft weight contains
+$qK$ rather than $(q/2)(K/2)$.
+For brevity, the common argument $x$ of $\mathcal J_r(m,n;x)$
+is suppressed below. Define
+\begin{align}
+ \mathcal U_M={}&\mathcal J_0(3,1)+2\mathcal J_1(2,1)
+ +\frac12\mathcal J_2(1,1)+\frac34\mathcal J_0(1,1)
+ +\frac14\mathcal J_1(0,1),\nonumber\\
+ \mathcal U_P={}&\frac12[\mathcal J_0(3,1)-\mathcal J_2(3,1)]
+ +\frac12[\mathcal J_1(2,1)-\mathcal J_3(2,1)]
+ +\frac14[\mathcal J_0(1,1)-\mathcal J_2(1,1)],\nonumber\\
+ \mathcal U_Q={}&\frac12[3\mathcal J_2(3,1)-\mathcal J_0(3,1)]
+ +\frac12[3\mathcal J_3(2,1)+\mathcal J_1(2,1)]
+ +\frac54\mathcal J_2(1,1)+\frac14\mathcal J_1(0,1).
+ \label{eq:top-loop-J-isotropic}
+\end{align}
+The five angular coefficients are
+\begin{align}
+ \mathcal U_0={}&\frac14[2\mathcal J_4(3,1)-3\mathcal J_2(3,1)
+ +\mathcal J_0(3,1)+\mathcal J_3(2,1)-\mathcal J_1(2,1)],\nonumber\\
+ \mathcal U_2={}&\frac14[-6\mathcal J_4(3,1)+7\mathcal J_2(3,1)-\mathcal J_0(3,1)]
+ +\frac54[\mathcal J_1(2,1)-\mathcal J_3(2,1)]\nonumber\\
+ &+\frac14[\mathcal J_0(1,1)-\mathcal J_2(1,1)],\nonumber\\
+ \mathcal U_3={}&\frac14[18\mathcal J_4(3,1)-15\mathcal J_2(3,1)+\mathcal J_0(3,1)]
+ +\frac14[21\mathcal J_3(2,1)-13\mathcal J_1(2,1)]\nonumber\\
+ &+2\mathcal J_2(1,1)-\frac34\mathcal J_0(1,1)+\frac14\mathcal J_1(0,1),\nonumber\\
+ \mathcal U_B={}&\frac18[-8\mathcal J_4(3,1)+7\mathcal J_2(3,1)-\mathcal J_0(3,1)]
+ +\frac18[5\mathcal J_1(2,1)-9\mathcal J_3(2,1)]\nonumber\\
+ &+\frac1{16}[2\mathcal J_0(1,1)-7\mathcal J_2(1,1)-\mathcal J_1(0,1)],\nonumber\\
+ \mathcal U_D={}&\frac14[\mathcal J_4(3,1)-\mathcal J_2(3,1)
+ +\mathcal J_3(2,1)-\mathcal J_1(2,1)].
+ \label{eq:top-loop-J-angular}
+\end{align}
+The unreduced loop coefficients are consequently
+\begin{align}
+ (4\pi)^{3/2}\mathscr L_{11}&=\mathcal U_M,\qquad
+ (4\pi)^{3/2}\mathscr L_{12}=\mathcal U_P+c_3^2\mathcal U_Q,\qquad
+ (4\pi)^{3/2}\mathscr L_{21}=\mathcal U_P+c_1^2\mathcal U_Q,
+ \nonumber\\
+ (4\pi)^{3/2}\mathscr L_{22}
+ &=\mathcal U_0+\mathcal U_2(c_1^2+c_3^2)+\mathcal U_3c_1^2c_3^2
+ \nonumber\\
+ &\quad+\mathcal U_B\sin(2\theta_1)\sin(2\theta_3)\cos\phi_3
+ \nonumber\\
+ &\quad+\mathcal U_D\sin^2\theta_1\sin^2\theta_3\cos(2\phi_3).
+ \label{eq:top-loop-reduction}
+\end{align}
+Applying the finite sum \eqref{eq:bubble-reduction} and the Gamma
+recurrence relation gives
+$\mathcal U_Q=0$, $\mathcal U_M=3\mathcal U_P$, and
+$\mathcal U_3=-3\mathcal U_2$.
+In particular, the angular dependence of
+$\mathscr L_{12}$ and $\mathscr L_{21}$
+cancels only after the loop integration.
+The common Gamma factor is
+\begin{equation}
+ \mathcal G_{\mathrm{top}}(\tn)
+ =\frac{\Gamma(-\tfrac12-2\ii\tn)\Gamma^2(1+\ii\tn)}
+ {(4\pi)^{3/2}\Gamma(2+2\ii\tn)
+ \Gamma^2(\tfrac12-\ii\tn)}.
+ \label{eq:top-loop-Gamma}
+\end{equation}
+The fully reduced coefficients are
+\begin{align}
+ \mathscr L_{11}
+ &=3\mathscr L_{12}=3\mathscr L_{21},
+ \nonumber\\
+ \mathscr L_{12}
+ &=-\mathcal G_{\mathrm{top}}\,
+ \frac{(1+\ii\tn)(1+2\ii\tn)}
+ {4(3+2\ii\tn)(5+4\ii\tn)(3+4\ii\tn)},
+ \nonumber\\
  \mathscr L_{22}
- &=\frac{f_0(\rho,\rho)}
- {32(4\pi)^{3/2}(\rho-3)(\rho-2)(4\rho-7)(4\rho-5)}
- \Big[(\rho-1)(2\rho-3)(2\rho-5)\nonumber\\
- &\quad-(\rho-1)(2\rho-3)^2
-   (\cos^2\theta_1+\cos^2\theta_3-3\cos^2\theta_1\cos^2\theta_3)\nonumber\\
- &\quad-2(\rho-1)(\rho-2)(2\rho-3)
-    \sin(2\theta_1)\sin(2\theta_3)\cos\phi_3\nonumber\\
- &\quad+(\rho-2)(2\rho-5)(2\rho-3)
-    \sin^2\theta_1\sin^2\theta_3\cos(2\phi_3)\Big].
+ &=-\frac{\mathcal G_{\mathrm{top}}(1+\ii\tn)}
+ {4(5+2\ii\tn)(3+2\ii\tn)(5+4\ii\tn)(3+4\ii\tn)}
+ \nonumber\\
+ &\quad\times\Big\{(2+\ii\tn)(1+2\ii\tn)
+ -(1+\ii\tn)(1+2\ii\tn)
+ [c_1^2+c_3^2-3c_1^2c_3^2]\nonumber\\
+ &\qquad-\frac12(1+2\ii\tn)(3+2\ii\tn)
+ \sin(2\theta_1)\sin(2\theta_3)\cos\phi_3\nonumber\\
+ &\qquad+(2+\ii\tn)(3+2\ii\tn)
+ \sin^2\theta_1\sin^2\theta_3\cos(2\phi_3)\Big\}.
  \label{eq:loop-first-coefficients}
 \end{align}
-No time integral was used to obtain these coefficients. Interchanging
-the order of the regulated scalar integrations is understood first in
-a convergence domain and then by analytic continuation of the summed
-expression, retaining the BD prescription and excluding analytic
-contact terms as above.
+The $\eta=-1$ branch follows by complex conjugation.
+The $\mathcal J_r$ are evaluated
+by analytic continuation. This extracts the nonanalytic soft
+coefficient; polynomial contact terms from matching to the hard
+region are not included.
+No time integral was used to obtain these coefficients. The left and
+right time kernels remain independent throughout the loop reduction.
 
 \subsection{Left and right time integrals from the Whittaker seed}
 \label{sec:seed-eval}
