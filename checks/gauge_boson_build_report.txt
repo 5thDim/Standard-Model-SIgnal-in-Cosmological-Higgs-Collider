@@ -1,0 +1,128 @@
+START 1 BeginPackage["GaugeBosonSignal`"]; ClearAll["GaugeBosonSignal`*"];
+DONE 1 seconds=0.0055595 messages={}
+START 2 wp=30; massGrid=Range[1/100,1,1/100];
+assumptions=nu>0; formGauge[expr_]:=Apply[Traditiona
+DONE 2 seconds=0.0000637 messages={}
+START 3 f0[a_, b_] := (Gamma[a + b - 3/2]*Gamma[3/2 - a]*Gamma[3/2 - b])/(Gamma[3 - a - b]*Gamma[a
+DONE 3 seconds=0.0001134 messages={}
+START 4 gSoft[v_]:=f0[-I v,-I v];
+shiftRatio[j_Integer,k_Integer,x_]:=FunctionExpand[Pochhammer[2 
+DONE 4 seconds=0.143798 messages={}
+START 5 softResults={{(3*(3*I - 2*nu)^2)/(I - 2*nu)^2, (3*I - 2*nu)^2/(I - 2*nu)^2, (3*I - 2*nu)^2
+DONE 5 seconds=17.044 messages={}
+START 6 loopIdentities=FullSimplify[{softRatios[[2]]-rBubble/3,softRatios[[3]]-rBubble/3,softRatio
+DONE 6 seconds=0.0221521 messages={}
+START 7 angularBasis={1,Cos[t1]^2+Cos[t3]^2,Cos[t1]^2 Cos[t3]^2,Sin[2t1]Sin[2t3]Cos[ph],Sin[t1]^2 
+DONE 7 seconds=0.0250323 messages={}
+START 8 p1Gauge[v_]:=(2+I v)/(2v) Sinh[Pi v] Gamma[2+2I v];
+formGauge[FullSimplify[p1Gauge[nu],ass
+DONE 8 seconds=0.0272193 messages={}
+START 9 masterExpressions={HypergeometricPFQ[{1, 1/2 + I*nu, (2*I)*nu}, {1 + (2*I)*nu, 1 + (2*I)*n
+DONE 9 seconds=0.0078076 messages={}
+START 10 commonRules[v_]:={u->I v,w->Exp[Pi v],gg->Gamma[2I v],hh->Gamma[1/2+I v],ps->PolyGamma[0,2
+DONE 10 seconds=0.0000939 messages={}
+START 11 pMatrix={{-((gg^2*ps^2*(1 + 2*u)*(-1 + w)*(1 + w))/(hh^2*(-1 + 2*u)*w^2)) + (gg^2*qh1*(1 +
+DONE 11 seconds=0.0005823 messages={}
+START 12 pCompact=Map[Collect[#,Array[master,4],Function[c,FullSimplify[c,w>1,TimeConstraint->2]]]&
+DONE 12 seconds=6.32149 messages={}
+START 13 pAnalytic[v_]:=(pMatrix/.commonRules[v]).Prepend[masterExpressions/.nu->v,1];
+P2LGauge[v_]
+DONE 13 seconds=0.0000333 messages={}
+START 14 (* Numerically evaluate the one genuinely mixed parameter derivative. *)
+mixedMaster[v_?Nu
+DONE 14 seconds=0.0001227 messages={}
+START 15 hardCache=<||>; hardEvaluations=0;
+hardValues[v_?NumericQ,prec_Integer:30]:=Module[{vv=N[v
+DONE 15 seconds=5.98197 messages={}
+START 16 commonLoop[v_]:=Gamma[-I v]^4 gSoft[v]/(4Pi)^(7/2);
+boxTemplate=Factor /@ FullSimplify[(pl
+DONE 16 seconds=0.297675 messages={}
+START 17 coefficientsAnalytic[v_]:=commonLoop[v](allTemplates/.{nu->v,pOne->p1Gauge[v],pl->P2LGauge
+DONE 17 seconds=0.0003245 messages={}
+START 18 clearGaugeCache[];
+{scanSeconds,massData}=AbsoluteTiming[Table[Prepend[coefficientValues[v
+DONE 18 seconds=318.019 messages={}
+START 19 sampleRows=Select[massData,MemberQ[{1/100,1/10,1/5,1/2,3/5,1},First[#]]&];
+Grid[Prepend[N[
+DONE 19 seconds=0.0005262 messages={}
+START 20 logData[j_Integer]:=({#[[1]],Log[Abs[#[[j+1]]]]}& /@massData);
+phaseData[j_Integer]:=({#[[
+DONE 20 seconds=0.0134335 messages={}
+START 21 overview=ListLinePlot[Table[logData[j],{j,3,7}],Frame->True,Axes->False,FrameLabel->{"nu",
+DONE 21 seconds=0.828217 messages={}
+START 22 coefficientPlot[1]=GraphicsRow[{magPlot[1],phasePlot[1]},ImageSize->900];
+coefficientPlot[
+DONE 22 seconds=6.45529 messages={}
+START 23 coefficientPlot[2]=GraphicsRow[{magPlot[2],phasePlot[2]},ImageSize->900];
+coefficientPlot[
+DONE 23 seconds=0.204246 messages={}
+START 24 coefficientPlot[3]=GraphicsRow[{magPlot[3],phasePlot[3]},ImageSize->900];
+coefficientPlot[
+DONE 24 seconds=0.342149 messages={}
+START 25 coefficientPlot[4]=GraphicsRow[{magPlot[4],phasePlot[4]},ImageSize->900];
+coefficientPlot[
+DONE 25 seconds=0.188966 messages={}
+START 26 coefficientPlot[5]=GraphicsRow[{magPlot[5],phasePlot[5]},ImageSize->900];
+coefficientPlot[
+DONE 26 seconds=0.195284 messages={}
+START 27 coefficientPlot[6]=GraphicsRow[{magPlot[6],phasePlot[6]},ImageSize->900];
+coefficientPlot[
+DONE 27 seconds=0.180856 messages={}
+START 28 coefficientPlot[7]=GraphicsRow[{magPlot[7],phasePlot[7]},ImageSize->900];
+coefficientPlot[
+DONE 28 seconds=0.2078 messages={}
+START 29 deboltzmannPlot=ListLinePlot[Table[deboltzmannData[j],{j,7}],Frame->True,Axes->False,Frame
+DONE 29 seconds=0.0766343 messages={}
+START 30 physicalMassPlot=ListLinePlot[Table[physicalMassData[j],{j,3,7}],Frame->True,Axes->False,F
+DONE 30 seconds=0.0757182 messages={}
+START 31 bubbleILL[ν_] := Module[{x = (-I)*ν}, ((-2^(-1) + I*ν)^4/(ν^2 + 1/4)^2)*(1/4)*(f0[x + 1, x
+DONE 31 seconds=0.0002636 messages={}
+START 32 bubbleP1[x_] := ((2 + I*x)/(2*I*x))*I*Sinh[Pi*x]*Gamma[2 + 2*I*x];
+bubblePolarizationSum[ν
+DONE 32 seconds=0.0000441 messages={}
+START 33 ILLL[nu_, theta1_] := Module[{s1 = Sin[theta1], c1 = Cos[theta1], x = (-I)*nu}, ((-2^(-1) 
+DONE 33 seconds=0.0001401 messages={}
+START 34 IPLL[nu_, theta1_] := Module[{s1 = Sin[theta1], c1 = Cos[theta1], x = (-I)*nu}, ((-2^(-1) 
+DONE 34 seconds=0.0001293 messages={}
+START 35 P1[ν_] := ((2 + I*ν)/(2*I*ν))*I*Sinh[Pi*ν]*Gamma[2 + 2*I*ν];
+DONE 35 seconds=0.0000331 messages={}
+START 36 Mpp[p1_, p2_, ν_] := Module[{p12 = p1 + p2}, (Plus[I])*Exp[(-I)*Pi*(p12/2)]*(Exp[(-Pi)*ν]/
+DONE 36 seconds=0.0000753 messages={}
+START 37 P2PM[ν_, regulator_] := 2^(2*I*ν)*((Mpp[-5/2 + regulator + I*ν, -5/2 + regulator + I*ν, ν]
+DONE 37 seconds=0.0000459 messages={}
+START 38 Mab[a_, b_, p1_, p2_, nu_] := Switch[{a, b}, {Plus[1], Plus[1]}, Mpp[p1, p2, nu], {-1, -1}
+DONE 38 seconds=0.0000827 messages={}
+START 39 P2LSimp[nu_] := (1/12)*((3*Gamma[1 + 2*I*nu]^2)/((1 + 4*nu^2)*Gamma[3/2 + I*nu]^2) - (3*Ga
+DONE 39 seconds=0.0004092 messages={}
+START 40 P2PMSimp[nu_] := (1/12)*((3*Gamma[1 + 2*I*nu]^2)/Gamma[3/2 + I*nu]^2 - (3*Gamma[1 + 2*I*nu
+DONE 40 seconds=0.0001063 messages={}
+START 41 SLL[nu_, theta1_, theta3_, phi3_] := Module[{s1 = Sin[theta1], c1 = Cos[theta1], s3 = Sin[
+DONE 41 seconds=0.0001414 messages={}
+START 42 SLLSimp[x_, t1_, t2_, p_] := (-(1/(Pi*(-I + x)*(-2*I + x)*(-I + 2*x))))*4^(-3 - 2*I*x)*(-3
+DONE 42 seconds=0.0000459 messages={}
+START 43 SHH[nu_, theta1_, theta3_, phi3_] := Module[{s1 = Sin[theta1], c1 = Cos[theta1], s3 = Sin[
+DONE 43 seconds=0.0002099 messages={}
+START 44 SHHSimp[x_, t1_, t2_, p_] := (1/(512*Pi^(3/2)*(2 + I*x)*x*(1 + (3*I - 2*x)*x)^2))*Gamma[1 
+DONE 44 seconds=0.0000886 messages={}
+START 45 SLH[nu_, theta1_, theta3_, phi3_] := Module[{s1 = Sin[theta1], c1 = Cos[theta1], s3 = Sin[
+DONE 45 seconds=0.0002426 messages={}
+START 46 SLHSimp[x_, t1_, t2_, p_] := (1/(64*Pi^(3/2)*(2 + I*x)*x*(1 + (3*I - 2*x)*x)^2))*Gamma[1 +
+DONE 46 seconds=0.0000617 messages={}
+START 47 relativeError[a_,b_]:=Max[Abs[a-b]/Map[Max[10^-50,Abs[#]]&,b]];
+referencePChecks=Table[Mod
+DONE 47 seconds=45.2935 messages={}
+START 48 precisionChecks=Table[{v,relativeError[coefficientValues[v,25],coefficientValues[v,40]]},{
+DONE 48 seconds=30.5209 messages={}
+START 49 softChecks=Table[Module[{vv=N[v,50],new,old},new=gSoft[vv](softRatios/.{nu->vv,t1->2/5,t3-
+DONE 49 seconds=4.37409 messages={}
+START 50 angleChecks=Table[Module[{vv=N[v,50],pv=hardValues[v,40],new,old},new=Drop[coefficientValu
+DONE 50 seconds=0.0315226 messages={}
+START 51 regulatorExtrapolate[v_,levels_Integer]:=Module[{vv=N[v,55],deltas,values,weights},deltas=
+DONE 51 seconds=9.09168 messages={}
+START 52 validation=<|"One hard evaluation per mass"->TrueQ[cacheScanCount==Length[massGrid]],"Comp
+DONE 52 seconds=0.000307 messages={}
+START 53 EndPackage[];
+DONE 53 seconds=0.0000342 messages={}
+VALIDATION: <|"One hard evaluation per mass" -> True, "Compact P presentation" -> True, "Loop completeness identities" -> True, "LL angular reconstruction" -> True, "A3 = -3 A2" -> True, "Original analytic P" -> True, "Precision stability" -> True, "Cauchy convergence" -> True, "Original soft-loop expressions" -> True, "Box angular reconstruction" -> True, "Regulator convergence" -> True, "Regulator finite limit" -> True, "Finite mass scan" -> True|>
+ERRORS: {}
+TOTAL SECONDS: 465.6530962

@@ -1,0 +1,94 @@
+Gauge Boson Signal.nb optimization validation (Wolfram 15)
+
+The saved notebook is self-contained: definitions, FullSimplify outputs,
+complex coefficient tables and native Mathematica plots are included.
+53 active Input cells; 100 exact mass-index points nu=0.01,...,1; requested
+30-digit scan. The vector physical mass is mA/H=Sqrt[nu^2+1/4].
+
+Changes:
+- Gamma recurrence isolates one common soft-loop factor.
+- Exact polarization completeness reduces the box to two loop structures.
+- P_L,P_T share four special-function objects: one 3F2 and three parameter
+  derivatives. Gauss summation removes the other reducible derivatives.
+- P_L is displayed as beta P_T plus one special-function term and a
+  Gamma/polygamma remainder. The displayed decomposition is checked exactly.
+- A Cauchy coefficient integral evaluates the remaining mixed second
+  derivative; first derivatives use Mathematica's native evaluator.
+- One hard-integral evaluation per mass and precision. A keyed Association
+  stores only valid length-two numerical vectors. All seven coefficients
+  and all plots reuse the same mass data.
+- Original normalization, phases and contact contribution are retained.
+- The original notebook is preserved byte-for-byte in the backup and its
+  cells/outputs are retained in a closed, non-evaluatable archive.
+
+13 notebook validations passed. The full build had no Mathematica messages.
+The separate fresh-kernel inspector emitted two harmless shadow-name
+messages for its own Global symbols b,x; numerical reevaluation passed.
+All seven magnitude/phase pairs, the overview and the compact P formula
+were visually inspected. Principal-phase branch jumps are not connected.
+
+Measured performance:
+- 100-point, seven-coefficient, 30-digit scan: 318.019 seconds.
+- Complete build including symbolic work and regression checks: 465.653 seconds.
+- Cold-cache P_L,P_T evaluation at nu=0.6, requested 25 digits:
+  original 42.525 s; optimized 1.546 s; ratio 27.51.
+  This is a single-point P benchmark, not an end-to-end speedup claim.
+- Original analytic P and optimized P agree within the reported 25-digit
+  numerical precision at the benchmark point.
+- Regulator extrapolation vs optimized P: relative error 4.0003e-20;
+  four-level vs five-level extrapolation: relative change 2.0936e-15.
+- Fresh evaluation matches saved data at 30 digits. Repeating the same
+  mass/precision reuses the cache; a new precision forces recomputation.
+
+Reproducibility:
+- build_gauge_boson_notebook.wl builds and evaluates the candidate in /tmp.
+- gauge_boson_reduction.wl rederives the compact P and soft-loop formulas
+  from the original notebook backup. Its regenerated expressions matched
+  the builder's embedded expressions exactly.
+- The final notebook requires neither script nor any external .wl file.
+
+Scope: these checks validate the optimization against the original gauge
+calculation and numerical stability on the stated grid. They do not
+rederive physical diagram multiplicities or overall normalization.
+
+Original/backup SHA256: 0277537c23f04340189002ddb7917569249f2379ed2c3fb74e566b2eccbe59fb
+Optimized notebook SHA256: 413cf5ded1f9dfb6f27539e532003c4aea306e4743c7c306aae792233202c41a
+
+Saved-artifact checks:
+"Original archive preserved" -> True
+"Active inputs parse" -> True
+"Active input cells" -> 53
+"All validation checks" -> True
+"Saved numeric rows" -> 100
+"Scan seconds" -> 318.0192063
+"P reference error" -> 0``24.99999565707689
+"Precision error" -> 0``25.
+"Circle error" -> 0``30.
+"Soft error" -> 0``46.30409394977472
+"Angle error" -> 0``39.12098453869052
+"Regulator error" -> {2.0935718150750912041144102375507951701722006`24.192881729725315*^-15, 4.00025169156651364594039438132375228708`19.7600783385439*^-20}
+"Native serialization stable" -> True
+
+Fresh-kernel checks:
+{2, {}}
+{3, {HoldForm[b::shdw], HoldForm[x::shdw]}}
+{4, {}}
+{5, {}}
+{6, {}}
+{7, {}}
+{8, {}}
+{9, {}}
+{10, {}}
+{11, {}}
+{12, {}}
+{13, {}}
+{14, {}}
+{15, {}}
+{16, {}}
+{17, {}}
+{"cache counts", {0, 1, 1, 2}, "expected", {0, 1, 1, 2}}
+{"vector shape", {7}, "numeric", True}
+{"fresh vs saved", 0``29.555871389326025}
+{"precision-key isolation", 0``29.85690138494658}
+
+Installation: LF/line-end whitespace normalization preserved the complete native notebook expression (SameQ=True). git diff --check passed.
