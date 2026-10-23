@@ -1,9 +1,18 @@
-Top Quark Signal.nb validation
-Implementation: SMS in CHC Eq. (59), Appendix B.2-B.4; positive soft branch.
-Notebook is self-contained; all input cells, 31 outputs, and native Mathematica plots are saved.
-39 input cells; 171 mass points over 0.1 <= mt/H <= 5; 50-digit scan.
-Plot outputs: one five-coefficient overview and five magnitude/phase pairs.
+Top Quark Signal.nb validation -- 2026-10-23
+Implementation: current SMS in CHC Eqs. (59)-(65), (102), (105)-(120); positive soft branch.
+Notebook is self-contained; all 39 input cells were evaluated in Wolfram 15.
+31 outputs and native Mathematica plots are saved.
+171 mass points over 0.1 <= mt/H <= 5; 50-digit scan.
+Plots: one five-coefficient overview and five magnitude/phase pairs.
 Magnitude uses natural log; phase is principal Arg in radians, split at branch jumps.
+
+Synchronized conventions (relative to the previous notebook):
+V has no -1/2 prefactor; H0 and H1 are multiplied by -2.
+P1 and P2 are multiplied by -2 * 2^(2 I nu), including the k12 convention.
+Iij and Gtop exclude the universal loop factor (4 Pi)^(-3/2).
+The scalar soft-line coefficient is explicit, including eta dependence.
+Ctop prefactor: 8 Gamma(1/2-I nu)^4/(4 Pi)^(7/2), matching Eq. (64).
+The common angular factor softBTop matches Eq. (119).
 
 Checks:
 PASS Soft Gamma normalization
@@ -12,24 +21,36 @@ PASS Loop coefficients: direct Gamma sums
 PASS Four Q reductions
 PASS Regulated SK sum vs finite P and H
 PASS Regulator convergence: four vs five levels
-PASS Eq. (58) vs angular coefficients
+PASS Eq. (64) vs angular coefficients
 PASS A3 = -3 A2
 PASS Precision stability
 PASS Independent angle projections
 PASS Mass scan contains finite numeric values
 
-Maximum relative error: regulated SK finite limit vs P1/P2/H0/H1 = 6.633414738121006e-19
+Maximum relative error: regulated SK limit vs P1/P2/H0/H1 = 6.633414738121006e-19
 Maximum relative change: 4 vs 5 regulator levels = 1.897507802249952e-14
 40 vs 60 digit coefficient evaluation passed the 1e-25 relative threshold.
-Independent Python checks: five masses (0.1, 0.2, 0.73, 2, 5); maximum relative difference < 4e-40.
-All saved input cells parse; selected definitions reevaluate in a fresh kernel with no messages.
-Saved notebook serialization is stable; whitespace normalization preserves the full notebook expression.
-All five plot pairs and the overview were visually inspected; the saved analytic P output was rendered and inspected.
+All 39 input cells evaluated without Wolfram messages.
+All saved input cells parse; native notebook serialization is stable.
+Whitespace cleanup preserves the complete notebook expression (native SameQ check).
+All five plot pairs and the overview were visually inspected.
 
-Scope: numerical regulator agreement verifies the finite representation at the tested masses;
-it is not a full symbolic proof of the regulator limit or a new physical audit of the full box.
+Before/after comparison:
+Previous notebook inputs were extracted with native Wolfram tools and reevaluated
+on the same 171-point mass grid to obtain a fresh baseline.
+All 855 final complex angular coefficients agree within the 1e-35 relative threshold.
+Computed maximum relative difference is zero at retained precision
+(Wolfram InputForm: 0``46.096548165857875).
+P1/P2/H0/H1 obey the expected rescaling at nu = 0.2, 0.73, 1, 2, 5;
+maximum relative error is zero at retained precision
+(Wolfram InputForm: 0``47.425647854137985).
 
-Rebuild source: checks/build_top_quark_notebook.wl (native Wolfram MakeBoxes/ToBoxes; no external data needed by the notebook).
-The builder stages its evaluated candidate and previews in /tmp; this validated candidate was copied to the project.
-Notebook SHA256: c0a62ada9db04722ca1e4d4155e7aefd6f8532873731073a82508787e5690cb2
-Source PDF SHA256: 4e8b77b9c61b0ec1674f53d82b51f499f45390a197a6868d6721097e91c1b4b9
+Scope: the numerical regulator comparison tests the finite representation at selected masses;
+it is not a full symbolic proof of that limit or a new physical audit of the full box.
+
+Rebuild source: checks/build_top_quark_notebook.wl (native Wolfram MakeBoxes/ToBoxes).
+The builder stages its evaluated candidate and previews in /tmp.
+The validated candidate was copied to the project after whitespace and expression checks.
+Previous notebook SHA256: 9037cd7c6496921311fe393083ec269c969461e1ad9b3927fba8a91d20df3cb5
+Notebook SHA256: 57e6f52d4d946807d4f295af26561c973dc372806835f630133681c6860c0c7f
+Source TeX SHA256: 63d16ca2d9f6f56d1639baaa62aff16f6e0fc3ea58a7970affaa62a9ce5397f8
