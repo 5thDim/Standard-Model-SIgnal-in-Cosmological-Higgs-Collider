@@ -1,0 +1,82 @@
+{
+  "gauge": [
+    {
+      "type": "Section",
+      "source": "Explicit finite coefficients for Appendices A.3.2 and A.4.2"
+    },
+    {
+      "type": "Text",
+      "source": "The finite hard coefficients are reduced to four exact hypergeometric functions (three include parameter derivatives). No regulator limit remains in these formulas. FullSimplify and FunctionExpand are attempted below; the remaining special functions are retained exactly. The five box coefficients are then simplified together, with all P symbols substituted."
+    },
+    {
+      "type": "Input",
+      "source": "BeginPackage[\"GaugeBosonSignal`\"];"
+    },
+    {
+      "type": "Input",
+      "source": "gaugeFurtherReduction=Map[TimeConstrained[FullSimplify[FunctionExpand[#],nu>0,TimeConstraint->12],30,#]&,masterExpressions];\nGrid[MapIndexed[{\"F\"<>ToString[First[#2]],formGauge[#1]}&,gaugeFurtherReduction],Frame->All,Alignment->Left]"
+    },
+    {
+      "type": "Input",
+      "source": "tFiniteCore=(gg/hh^2) ((1-w^-2)(ps^2-qh1-4u ps/(1+2u)-2/(1+2u))-4 I Pi/(1+w^2)(ps-2u/(1+2u))+Pi^2(1+4(w^2-1)/(1+w^2)^2))-I ((2+u)w-u/w)/(1+2u)+I(-w master[1]/(4u^2)+2u master[2]/w+master[4]/w);\ndFiniteCore=4gg/((1-2u)(3+2u)hh^2)((1-w^-2)((1+4u)/(1+2u)+2u ps)-4 I Pi u/(1+w^2))+2 I/((1-2u)(3+2u))((8+10u+3u^2)w-(6+8u+3u^2)/w)-2 I u(1+2u)master[3]/((1-2u)w);\ngaugeFiniteP=gg{(1+2u)/(1-2u)tFiniteCore+dFiniteCore,tFiniteCore};\ngaugeFinitePCheck=Factor /@ Together[gaugeFiniteP-pTemplates];\nGrid[{{\"Tg\",formGauge[tFiniteCore]},{\"Dg\",formGauge[dFiniteCore]},{\"P_L,P_T algebraic residual\",gaugeFinitePCheck}},Frame->All,Alignment->Left]"
+    },
+    {
+      "type": "Input",
+      "source": "gaugePaperP[v_]:=gaugeFiniteP/.commonRules[v]/.Table[master[j]->masterExpressions[[j]]/.nu->v,{j,4}];\ngaugePFullSimplify=Map[TimeConstrained[FullSimplify[#,nu>0,TimeConstraint->15],25,#]&,gaugePaperP[nu]];\n{LeafCount /@ gaugePaperP[nu],LeafCount /@ gaugePFullSimplify}"
+    },
+    {
+      "type": "Input",
+      "source": "gaugeY=(1-2 I nu)dg+4 I nu tg;\ngaugeAngularPolynomial={(4+5 I nu-2nu^2)gaugeY^2+2(2+I nu)(3+2 I nu)(1-2 I nu)tg((3+2 I nu)tg+2(1-2 I nu)dg),-I nu(1+2 I nu)gaugeY^2,3 I nu(1+2 I nu)gaugeY^2,-2 I nu(1+I nu)gaugeY^2,(1+I nu)(3+2 I nu)gaugeY^2};\ngaugeNRatio=(3+2 I nu)/(2(2+I nu)(1+2 I nu)^2(1-2 I nu)^2);\ngaugeAngularCheck=Factor /@ Together[(boxTemplate/.{pl->((1+2 I nu)/(1-2 I nu)tg+dg),pt->tg})-gaugeNRatio gaugeAngularPolynomial];\ngaugeNPaper[v_]:=Gamma[-I v]^2 Gamma[-3/2-2 I v] Gamma[3/2+I v]^2 Gamma[2 I v]^2(3+2 I v)/((4Pi)^(7/2) Gamma[3+2 I v] 2(2+I v)(1+2 I v)^2(1-2 I v)^2);\ngaugeNCheck=FullSimplify[gaugeNPaper[nu]/(commonLoop[nu] Gamma[2 I nu]^2 gaugeNRatio),nu>0,TimeConstraint->8];\nGrid[MapThread[{#1,formGauge[#2]}&,{{\"A1/Ng\",\"A2/Ng\",\"A3/Ng\",\"B/Ng\",\"D/Ng\"},gaugeAngularPolynomial}],Frame->All,Alignment->Left]"
+    },
+    {
+      "type": "Input",
+      "source": "gaugeAngularFullySubstituted=gaugeNPaper[nu](gaugeAngularPolynomial/.{tg->(tFiniteCore/.commonRules[nu]),dg->(dFiniteCore/.commonRules[nu])})/.Table[master[j]->masterExpressions[[j]],{j,4}];\ngaugeAngularFullSimplify=Map[TimeConstrained[FullSimplify[#,nu>0,TimeConstraint->15],25,#]&,gaugeAngularFullySubstituted];\nGrid[Prepend[MapThread[{#1,#2,#3}&,{{\"A1\",\"A2\",\"A3\",\"B\",\"D\"},LeafCount/@gaugeAngularFullySubstituted,LeafCount/@gaugeAngularFullSimplify}],{\"coefficient\",\"explicit leaf count\",\"FullSimplify leaf count\"}],Frame->All]"
+    },
+    {
+      "type": "Input",
+      "source": "gaugeExplicitChecks=Table[Module[{vv=N[v,50],pv,mv,td,newP,newC,oldC},mv=Append[N[Take[masterExpressions,3]/.nu->vv,40],mixedMaster[v,40]];td=N[{tFiniteCore,dFiniteCore}/.commonRules[vv]/.Table[master[j]->mv[[j]],{j,4}],35];newP=Gamma[2 I vv]{(1+2 I vv)/(1-2 I vv)td[[1]]+td[[2]],td[[1]]};pv=hardValues[v,40];newC=N[gaugeNPaper[vv](gaugeAngularPolynomial/.{nu->vv,tg->td[[1]],dg->td[[2]]}),35];oldC=Drop[coefficientValues[v,40],2];{v,Max[Abs[(newP-pv)/pv]],Max[Abs[(newC-oldC)/oldC]]}],{v,{1/100,1/10,3/5,1}}];\ngaugeExplicitValidation=<|\"Exact finite P\"->TrueQ[gaugeFinitePCheck=={0,0}],\"Exact five angular polynomials\"->TrueQ[gaugeAngularCheck==ConstantArray[0,5]],\"Common Gamma normalization\"->TrueQ[gaugeNCheck==1],\"Numerical finite P\"->TrueQ[Max[gaugeExplicitChecks[[All,2]]]<10^-25],\"Numerical angular coefficients\"->TrueQ[Max[gaugeExplicitChecks[[All,3]]]<10^-25],\"No P functions in explicit angles\"->FreeQ[gaugeAngularFullySubstituted,P2LGauge|P2TGauge|pl|pt]|>;\nColumn[{Grid[Prepend[N[gaugeExplicitChecks,6],{\"nu\",\"P relative error\",\"angular relative error\"}],Frame->All],Grid[KeyValueMap[{#1,#2}&,gaugeExplicitValidation],Frame->All]}]"
+    },
+    {
+      "type": "Input",
+      "source": "EndPackage[];"
+    }
+  ],
+  "top": [
+    {
+      "type": "Section",
+      "source": "Explicit finite coefficients for Appendices B.2 and B.3"
+    },
+    {
+      "type": "Text",
+      "source": "The finite SK sum reduces to one ordinary 3F2(1). The two P coefficients below include the current V normalization and the k12 phase convention. Their five angular coefficients are simplified after substitution. Numerical regulator checks above remain separate from a symbolic proof of the finite-part limit."
+    },
+    {
+      "type": "Input",
+      "source": "BeginPackage[\"TopQuarkSignal`\"];"
+    },
+    {
+      "type": "Input",
+      "source": "topMaster[v_]:=HypergeometricPFQ[{1,1+I v,1+2 I v},{2+2 I v,2+2 I v},1];\ntopMasterReduction=TimeConstrained[FullSimplify[FunctionExpand[topMaster[nu]],nu>0,TimeConstraint->20],30,topMaster[nu]];\nformTop[topMasterReduction]"
+    },
+    {
+      "type": "Input",
+      "source": "topR1[v_]:=(5+2 I v)(4+9 I v-4v^2)/(2(1+I v)(2+I v)(1+2 I v));\ntopR2[v_]:=I v(5+2 I v)/(2(1+I v)(2+I v));\ntopEPaper[v_]:=Pi^2 Gamma[1+2 I v]/(Cosh[Pi v] Gamma[1+I v]^2);\ntopTPaper[v_]:=Cosh[Pi v] Gamma[1+2 I v];\ntopPReduced=topTPaper[nu]{ee-2 ff/(1+2 I nu)^2-topR1[nu],-(1+2 I nu)ee+2ff/(1+2 I nu)+topR2[nu]};\ntopTemplateSub={q00->2^(-1-2 I nu) Gamma[1+2 I nu]ff/(1+2 I nu)^2,tGamma->2^(-1-2 I nu)Gamma[1+2 I nu],eEndpoint->2^(-1-2 I nu)topTPaper[nu]ee};\ntopPExactCheck=FullSimplify[({p1Template,p2Template}/.topTemplateSub)-topPReduced,nu>0,TimeConstraint->15];\ntopPExplicit=topPReduced/.{ff->topMaster[nu],ee->topEPaper[nu]};\ntopPFullSimplify=Map[TimeConstrained[FullSimplify[FunctionExpand[#],nu>0,TimeConstraint->15],25,#]&,topPExplicit];\nGrid[{{\"P1\",formTop[topPExplicit[[1]]]},{\"P2\",formTop[topPExplicit[[2]]]},{\"exact algebraic residual\",topPExactCheck}},Frame->All,Alignment->Left]"
+    },
+    {
+      "type": "Input",
+      "source": "topZPaper[v_]:=2topMaster[v]/(1+2 I v)-(1+2 I v)topEPaper[v]+topR2[v];\ntopCShift[v_]:=2(1+I v)(5+2 I v)/(2+I v);\ntopAngularPolynomial={-2(1+I nu)/(1+2 I nu)((7-9 I nu-4nu^2-4 I nu^3)zz^2+8(1+nu^2)(5+2 I nu)^2/(2+I nu)zz+12(1+I nu)^2(5+2 I nu)^3/(2+I nu)^2),2(1+I nu)^2(1+2 I nu)zz^2,-6(1+I nu)^2(1+2 I nu)zz^2,(1+I nu)(1+2 I nu)(3+2 I nu)zz^2,-2(1+I nu)(2+I nu)(3+2 I nu)zz^2};\ntopAngularCheck=Factor /@ Together[(coefficientSimp/.{bb->1,pp1->-(zz+topCShift[nu])/(1+2 I nu),pp2->zz})-topAngularPolynomial];\ntopNPaper[v_]:=2^(4 I v)Pi Gamma[-1/2-2 I v]Gamma[1+I v]^4/((4Pi)^(7/2)Gamma[2+2 I v](5+2 I v)(3+2 I v)(5+4 I v)(3+4 I v));\ntopNormalizationRatio=softBTop[nu]topTPaper[nu]^2/topNPaper[nu];\ntopNormalizationCheck=FullSimplify[FunctionExpand[topNormalizationRatio],nu>0,TimeConstraint->20];\nGrid[MapThread[{#1,formTop[#2]}&,{{\"A1/Nt\",\"A2/Nt\",\"A3/Nt\",\"B/Nt\",\"D/Nt\"},topAngularPolynomial}],Frame->All,Alignment->Left]"
+    },
+    {
+      "type": "Input",
+      "source": "topAngularFullySubstituted=topNPaper[nu](topAngularPolynomial/.zz->topZPaper[nu]);\ntopAngularFullSimplify=Map[TimeConstrained[FullSimplify[#,nu>0,TimeConstraint->15],25,#]&,topAngularFullySubstituted];\nGrid[Prepend[MapThread[{#1,#2,#3}&,{{\"A1\",\"A2\",\"A3\",\"B\",\"D\"},LeafCount/@topAngularFullySubstituted,LeafCount/@topAngularFullSimplify}],{\"coefficient\",\"explicit leaf count\",\"FullSimplify leaf count\"}],Frame->All]"
+    },
+    {
+      "type": "Input",
+      "source": "topExplicitChecks=Table[Module[{vv=N[v,60],pnew,cnew,pold,cold},pnew=N[topPExplicit/.nu->vv,45];pold=hardValuesTop[v,50][[1;;2]];cnew=N[topAngularFullySubstituted/.nu->vv,45];cold=coefficientValuesTop[v,50];{v,Max[Abs[(pnew-pold)/pold]],Max[Abs[(cnew-cold)/cold]],Abs[(topNPaper[vv]-softBTop[vv]topTPaper[vv]^2)/topNPaper[vv]]}],{v,{1/10,1/5,73/100,1,2,5}}];\ntopExplicitValidation=<|\"Exact finite P\"->TrueQ[topPExactCheck=={0,0}],\"Exact five angular polynomials\"->TrueQ[topAngularCheck==ConstantArray[0,5]],\"Common Gamma normalization\"->TrueQ[topNormalizationCheck==1],\"Numerical finite P\"->TrueQ[Max[topExplicitChecks[[All,2]]]<10^-35],\"Numerical angular coefficients\"->TrueQ[Max[topExplicitChecks[[All,3]]]<10^-35],\"No P functions in explicit angles\"->FreeQ[topAngularFullySubstituted,P1Top|P2Top|pp1|pp2]|>;\nColumn[{Grid[Prepend[N[topExplicitChecks,6],{\"nu\",\"P relative error\",\"angular relative error\",\"Gamma normalization error\"}],Frame->All],Grid[KeyValueMap[{#1,#2}&,topExplicitValidation],Frame->All]}]"
+    },
+    {
+      "type": "Input",
+      "source": "EndPackage[];"
+    }
+  ]
+}

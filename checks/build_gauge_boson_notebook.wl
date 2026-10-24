@@ -19,7 +19,7 @@ addInput[source_String] := Module[{held,boxes,parsed,result,elapsed,messages,gro
  Block[{$MessageList={}},
  {elapsed,result}=AbsoluteTiming[TimeConstrained[ReleaseHold[parsed],900,$Aborted]];
  messages=$MessageList];
- If[result===$Aborted || result===$Failed || messages=!={},AppendTo[errors,{cellIndex,messages,Head[result]}]];
+ If[result===$Aborted || result===$Failed || DeleteCases[messages,HoldForm[FullSimplify::time]|HoldForm[General::stop]]=!={},AppendTo[errors,{cellIndex,messages,Head[result]}]];
  group={Cell[BoxData[boxes],"Input",CellLabel->"In["<>ToString[cellIndex]<>"]:="]};
  If[result=!=Null,AppendTo[group,Cell[BoxData[ToBoxes[result,StandardForm]],"Output",CellLabel->"Out["<>ToString[cellIndex]<>"]="]]];
  AppendTo[cells,Cell[CellGroupData[group,Open]]];
@@ -96,11 +96,14 @@ GaugeNotebookBuild`addInput["angleChecks=Table[Module[{vv=N[v,50],pv=hardValues[
 GaugeNotebookBuild`addInput["regulatorExtrapolate[v_,levels_Integer]:=Module[{vv=N[v,55],deltas,values,weights},deltas=Table[1/1000/2^j,{j,0,levels-1}];values=Table[N[{P2L[vv,N[d,55]],P2PM[vv,N[d,55]]},40],{d,deltas}];weights=Table[Product[If[k==j,1,-deltas[[k]]/(deltas[[j]]-deltas[[k]])],{k,levels}],{j,levels}];weights.values];\nregulatorCheck=Module[{lo=regulatorExtrapolate[3/5,4],hi=regulatorExtrapolate[3/5,5],target=hardValues[3/5,40]},{relativeError[lo,hi],relativeError[hi,target]}];\nGrid[{{\"regulator: four vs five levels\",regulatorCheck[[1]]},{\"regulator extrapolation vs optimized P\",regulatorCheck[[2]]}},Frame->All]"];
 GaugeNotebookBuild`addInput["validation=<|\"One hard evaluation per mass\"->TrueQ[cacheScanCount==Length[massGrid]],\"Compact P presentation\"->TrueQ[pPresentationCheck=={0,0}],\"Loop completeness identities\"->TrueQ[loopIdentities=={0,0,0,0}],\"LL angular reconstruction\"->TrueQ[loopReconstruction==0],\"A3 = -3 A2\"->TrueQ[a3Identity==0],\"Original analytic P\"->TrueQ[Max[referencePChecks[[All,2]]]<10^-20],\"Precision stability\"->TrueQ[Max[precisionChecks[[All,2]]]<10^-20],\"Cauchy convergence\"->TrueQ[Max[circleChecks[[All,2]]]<10^-25],\"Original soft-loop expressions\"->TrueQ[Max[softChecks[[All,2]]]<10^-35],\"Box angular reconstruction\"->TrueQ[Max[angleChecks[[All,2]]]<10^-30],\"Regulator convergence\"->TrueQ[regulatorCheck[[1]]<10^-8],\"Regulator finite limit\"->TrueQ[regulatorCheck[[2]]<10^-9],\"Finite mass scan\"->TrueQ[scanFinite]|>;\nGrid[Prepend[KeyValueMap[{#1,If[#2,Style[\"PASS\",Darker[Green]],Style[\"FAIL\",Red]]}&,validation],{\"Check\",\"Result\"}],Frame->All]"];
 GaugeNotebookBuild`addInput["EndPackage[];"];
+GaugeNotebookBuild`explicitCells=Import[FileNameJoin[{GaugeNotebookBuild`root,"checks","explicit_signal_cells.json"}],"RawJSON"]["gauge"];
+Scan[If[#["type"]=="Input",GaugeNotebookBuild`addInput[#["source"]],GaugeNotebookBuild`addText[#["type"],#["source"]]]&,GaugeNotebookBuild`explicitCells];
 GaugeNotebookBuild`addText["Section","6. Original notebook archive"];
 GaugeNotebookBuild`addText["Text","All original cells and outputs follow in a closed group. Archived Input cells are non-evaluatable so Evaluate Notebook runs the optimized workflow once. To rerun the original workflow unchanged, open checks/Gauge Boson Signal.before-optimization.nb. No original derivation was deleted from the archive."];
 GaugeNotebookBuild`original=Get[FileNameJoin[{GaugeNotebookBuild`root,"checks","Gauge Boson Signal.before-optimization.nb"}]];
 GaugeNotebookBuild`archive=First[GaugeNotebookBuild`original]/.Cell[b_,"Input",opts___]:>Cell[b,"Input",Evaluatable->False,opts];
 AppendTo[GaugeNotebookBuild`cells,Cell[CellGroupData[Prepend[GaugeNotebookBuild`archive,Cell["Original derivation and saved results (read-only archive)","Subsection"]],Closed]]];
+If[!And@@Values[GaugeBosonSignal`validation] || !And@@Values[GaugeBosonSignal`gaugeExplicitValidation] || GaugeNotebookBuild`errors=!={},GaugeNotebookBuild`writeLog[];Close[GaugeNotebookBuild`messageStream];Quit[1]];
 GaugeNotebookBuild`nb=Notebook[GaugeNotebookBuild`cells,WindowSize->{1200,900},StyleDefinitions->"Default.nb",TaggingRules->{"OptimizationDate"->"2026-10-23","OriginalSHA256"->"0277537c23f04340189002ddb7917569249f2379ed2c3fb74e566b2eccbe59fb"}];
 Put[GaugeNotebookBuild`nb,GaugeNotebookBuild`outputPath];
 AppendTo[GaugeNotebookBuild`log,"VALIDATION: "<>ToString[GaugeBosonSignal`validation,InputForm]];

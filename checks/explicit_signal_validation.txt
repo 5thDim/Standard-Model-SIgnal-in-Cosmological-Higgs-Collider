@@ -1,0 +1,51 @@
+Explicit finite hard and angular coefficients -- 2026-10-24
+
+Manuscript locations:
+A.3.2: Eqs. (87)-(91), finite gauge P_L and P_+ = P_-.
+A.4.2: Eqs. (105)-(106), five gauge box angular coefficients.
+B.2: Eqs. (126)-(127), finite top P1 and P2.
+B.3: Eqs. (130)-(131), five top box angular coefficients.
+Existing seed definitions, intermediate formulas and labels were retained.
+PDF compiled successfully; new formula pages 24, 26, 30 and 31 were visually checked.
+No unresolved references or overfull boxes in the final TeX log.
+
+Notebook work:
+Original cells and saved plots were preserved as native Wolfram expressions.
+One evaluated section was appended to each notebook (8 gauge inputs, 7 top inputs).
+Top manuscript equation references were updated for the inserted appendix formulas.
+Native notebook round-trip, whitespace equivalence and input syntax checks passed.
+The reusable builders include the new sections from explicit_signal_cells.json.
+simplify_signal_notebooks.wl appends/replaces those sections while preserving the existing notebook.
+
+Validation:
+The complete original gauge workflow was rerun: all 13 checks passed, including its
+100-point mass scan, original analytic P comparison and regulator extrapolation.
+The complete original top workflow was rerun: all 11 checks passed, including its
+171-point mass scan, regulated SK comparison and independent angular projections.
+Each new section passed six additional checks: exact finite-P identities, exact angular
+polynomials, common Gamma normalization, numerical P, numerical angular coefficients,
+and elimination of the P functions from the explicit angular expressions.
+New gauge comparisons used nu = 0.01, 0.1, 0.6, 1 with relative threshold 1e-25.
+New top comparisons used nu = 0.1, 0.2, 0.73, 1, 2, 5 with relative threshold 1e-35.
+All reported differences were zero at retained precision; this denotes numerical
+agreement, not an assertion of exact arithmetic for the numerical checks.
+
+Simplification limits:
+Gauge: one ordinary 3F2 and three exact lower-parameter derivatives remain.
+Top: one ordinary 3F2 remains, along with Gamma and elementary functions.
+Further FullSimplify attempts on the fully substituted gauge expressions reached the
+configured time limits. The exact factored expressions and all equivalence tests passed.
+The first full gauge run had already passed every baseline and new mathematical check;
+a subsequent save pass reused that verified baseline and reran the new calculations,
+classifying FullSimplify time warnings as bounded exploration rather than failed algebra.
+No claim of irreducibility or of a symbolic proof of the regulated finite-part limit is made.
+
+Native final file checks:
+{{"gauge", "native expression unchanged by whitespace", True}, {"gauge", "one explicit-formula section", True}, {"gauge", "mass sample count", 4}, {"gauge", "maximum relative P error", 0``34.64341217078856}, {"gauge", "maximum relative angle error", 0``33.65013648424418}, {"top", "native expression unchanged by whitespace", True}, {"top", "one explicit-formula section", True}, {"top", "mass sample count", 6}, {"top", "maximum relative P error", 0``44.84978029453618}, {"top", "maximum relative angle error", 0``44.837925825977784}}
+
+SHA256:
+SMS in CHC.tex: c5b42e8c781e67534af2108d5072a3beb121081b125cf97dfd19b025b7d5b930
+SMS in CHC.pdf: 3959598c8da30b7dc27b747acf6143209f7bc4c6b616a7255c011b744bcdbcc5
+Gauge Boson Signal.nb: c232ddaf2a2ef7749f555458962db10832bfe04cdb7df2aa75270b0b313aa9e6
+Top Quark Signal.nb: ee061d60a40c52d355667c48c69356f9f41ab87050aca083a01e24b8037b1d1a
+checks/explicit_signal_cells.json: 20083104289c5b1b28081a551364f9072079440921ca8fbd8c0e4868252993a4
