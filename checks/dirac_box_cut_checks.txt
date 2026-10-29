@@ -1,0 +1,5 @@
+PASS independent eight-field Wick enumeration: six connected directed cycles, each with sign -1; explicit index-sum residual 2.393e-15; color trace 3.
+PASS exactly four s-channel cuts; all physical endpoint assignments and centered momentum routes conserve momentum.
+PASS exact four-dimensional endpoint factorization against Whittaker branches: 9.279e-16.
+PASS 3 masses x 2 common soft branches x all 16 SK: individual traces=6.144e-17, common phase=3.270e-16, four-trace sum=1.030e-17, exact unequal external weights=1.030e-17.
+Scope: Dirac Wick combinatorics, momentum routing and exact cut-trace factorization. No leading-order cancellation proof, loop integral or time integral is claimed.

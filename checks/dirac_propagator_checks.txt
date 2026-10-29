@@ -1,0 +1,6 @@
+PASS exact Clifford, charge-conjugation and projector algebra.
+PASS 30 digits, 4 masses x 3 directions x 3 time pairs, all 4 SK: hankel=0.000e+00, scalar_sk=3.749e-16, canonical=1.736e-16, conjugation=1.391e-16, charge_reversal=1.391e-16, mode_equation=6.405e-15, polarization=1.415e-16
+PASS 50 digits, 4 masses x 3 directions x 3 time pairs, all 4 SK: hankel=0.000e+00, scalar_sk=3.749e-16, canonical=1.736e-16, conjugation=1.391e-16, charge_reversal=1.391e-16, mode_equation=6.405e-15, polarization=1.415e-16
+PASS 30 -> 50 digit stability (complex128 matrices): 0.000e+00
+PASS exact nonlocal branches: greater=lesser residual 5.265e-16; first-order remainder step-halving ratios 3.999911--3.999999.
+Scope: free Dirac fields, scalar reconstruction, canonical jump and soft branches; no box integral or diagram-counting validation.

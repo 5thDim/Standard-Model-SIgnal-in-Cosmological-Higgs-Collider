@@ -1,0 +1,38 @@
+PASS exact projected four-gamma identity for both soft branches
+PASS modes vs scalar F0,F1; reversal; projected zero; first derivative
+  3 masses, both branches, all four hard SK choices, both time orders
+  maximum residuals: 8.18e-16 2.29e-16 1.24e-16 1.19e-10
+  unprojected zeroth-order sum is nonzero (sample maximum 1.77137)
+PASS exact four physical cut traces -> displayed scalar numerator
+  2 masses, both branches, all 16 SK assignments; soft scales .01,.005,.0025
+  max relative residual at .0025: 0.00192; error ratios 1.91308--2.01025
+PASS four original vector numerators vs azimuthal polynomials
+PASS actual Appendix A J sums against azimuthal numerator polynomials
+M: polynomial = q**4 + 2*q**3*z + q**2*z**2/2 + 3*q**2/4 + q*z/4
+M: reduced / f0 = 3*(x - 1)*(2*x - 1)/(4*(2*x - 3)*(4*x - 5)*(4*x - 3))
+P: polynomial = -q**4*z**2/2 + q**4/2 - q**3*z**3/2 + q**3*z/2 - q**2*z**2/4 + q**2/4
+P: reduced / f0 = (x - 1)*(2*x - 1)/(4*(2*x - 3)*(4*x - 5)*(4*x - 3))
+Q: polynomial = 3*q**4*z**2/2 - q**4/2 + 3*q**3*z**3/2 + q**3*z/2 + 5*q**2*z**2/4 + q*z/4
+Q: reduced / f0 = 0
+H0: polynomial = q**4*z**4/2 - 3*q**4*z**2/4 + q**4/4 + q**3*z**3/4 - q**3*z/4
+H0: reduced / f0 = (x - 2)*(x - 1)*(2*x - 1)/(4*(2*x - 5)*(2*x - 3)*(4*x - 5)*(4*x - 3))
+H2: polynomial = -3*q**4*z**4/2 + 7*q**4*z**2/4 - q**4/4 - 5*q**3*z**3/4 + 5*q**3*z/4 - q**2*z**2/4 + q**2/4
+H2: reduced / f0 = -(x - 1)**2*(2*x - 1)/(4*(2*x - 5)*(2*x - 3)*(4*x - 5)*(4*x - 3))
+H3: polynomial = 9*q**4*z**4/2 - 15*q**4*z**2/4 + q**4/4 + 21*q**3*z**3/4 - 13*q**3*z/4 + 2*q**2*z**2 - 3*q**2/4 + q*z/4
+H3: reduced / f0 = 3*(x - 1)**2*(2*x - 1)/(4*(2*x - 5)*(2*x - 3)*(4*x - 5)*(4*x - 3))
+HB: polynomial = -q**4*z**4 + 7*q**4*z**2/8 - q**4/8 - 9*q**3*z**3/8 + 5*q**3*z/8 - 7*q**2*z**2/16 + q**2/8 - q*z/16
+HB: reduced / f0 = -(x - 1)*(2*x - 1)/(8*(2*x - 5)*(4*x - 5)*(4*x - 3))
+HD: polynomial = q**4*z**4/4 - q**4*z**2/4 + q**3*z**3/4 - q**3*z/4
+HD: reduced / f0 = (x - 2)*(x - 1)/(4*(2*x - 5)*(4*x - 5)*(4*x - 3))
+PASS all eight J combinations vs previous closed coefficients
+PASS independent Gamma sums at four masses: scaled residual 1.018e-71
+PASS final nu-only rational factors multiplying the common Gamma function
+PASS finite single-3F2 coefficients vs independent Q-family reduction
+  3 masses; relative residual 5.4566e-31
+PASS complete regulated SK/kappa sums vs final finite P1,P2 at nu=.73
+  four common regulators; relative residual 1.6365e-15
+PASS five angular coefficients, A3=-3 A2, final overall normalization
+PASS soft-branch conjugation at reversed SK signs, residual 5.4e-12
+PASS single-ordering hard and endpoint correction formulas, residual 1.37e-10
+PASS 17 scalar equation blocks identical to SMS after label/macro normalization
+Scope: leading same-branch collapsed signal; no direct unexpanded box integral.
