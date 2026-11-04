@@ -1713,48 +1713,48 @@ kinematics
 The Yukawa coupling and mass parameter are
 \begin{equation}
  g_t\equiv\frac{y_t}{\sqrt2},\qquad m_t=g_th_0,\qquad
- \tn\equiv\frac{m_t}{H}>0,\qquad N_c=3.
+ \tn\equiv\frac{m_t}{H}>0.
  \label{eq:dirac-parameters}
 \end{equation}
 
-With $a=-1/(H\tau)$ and
-$\eta^{AB}=\operatorname{diag}(-1,1,1,1)$, we use
-\begin{equation}
- \{\gamma^A,\gamma^B\}=-2\eta^{AB}\mathbf1_4,\qquad
- \bar T=T^\dagger\gamma^0,\qquad
- \gamma^5=\ii\gamma^0\gamma^1\gamma^2\gamma^3,\qquad
- P_{L,R}=\frac{\mathbf1_4\mp\gamma^5}{2}.
- \label{eq:dirac-clifford}
-\end{equation}
-
-Here $e_A{}^\mu=a^{-1}\delta_A{}^\mu$,
-$(\gamma^0)^\dagger=\gamma^0$ and $(\gamma^i)^\dagger=-\gamma^i$.
-Let $t_{L,\mathrm{cov}}$ and $t_{R,\mathrm{cov}}$ denote the covariant
-left- and right-handed top fields, represented by four-component
-spinors satisfying $P_Lt_{L,\mathrm{cov}}=t_{L,\mathrm{cov}}$ and
-$P_Rt_{R,\mathrm{cov}}=t_{R,\mathrm{cov}}$. Their action is
+Let $t_L$ and $t_R$ denote the covariant two-component left- and
+right-handed top quark fields. With $a=-1/(H\tau)$,
+$e_A{}^\mu=a^{-1}\delta_A{}^\mu$ and
+$\eta^{AB}=\operatorname{diag}(-1,1,1,1)$, their action is
 \begin{align}
  S_t=\int\di^4x\sqrt{-g}\,\Big[&
- \ii\bar t_{L,\mathrm{cov}}\gamma^Ae_A{}^\mu\nabla_\mu
- t_{L,\mathrm{cov}}
- +\ii\bar t_{R,\mathrm{cov}}\gamma^Ae_A{}^\mu\nabla_\mu
- t_{R,\mathrm{cov}}\nonumber\\
- &-(m_t+g_t\delta h)
- (\bar t_{L,\mathrm{cov}}t_{R,\mathrm{cov}}
-  +\bar t_{R,\mathrm{cov}}t_{L,\mathrm{cov}})\Big].
+ \ii t_L^\dagger\bar\sigma^Ae_A{}^\mu\nabla_\mu t_L
+ +\ii t_R^\dagger\sigma^Ae_A{}^\mu\nabla_\mu t_R-(m_t+g_t\delta h)
+ (t_L^\dagger t_R+t_R^\dagger t_L)\Big].
  \label{eq:dirac-chiral-action}
 \end{align}
+Here $\sigma^A=(\mathbf1_2,\bm\sigma)$ and
+$\bar\sigma^A=(\mathbf1_2,-\bm\sigma)$, with $\sigma^i$ the Pauli
+matrices. The covariant derivative acts in the corresponding chiral
+representation, and color indices are suppressed.
 
-Color indices are suppressed. We combine the chiral fields into
+We choose the Dirac basis, with
+$\gamma^5=\ii\gamma^0\gamma^1\gamma^2\gamma^3$:
+\begin{align}
+ &\gamma^0=\begin{pmatrix}\mathbf1_2&0\\0&-\mathbf1_2\end{pmatrix},\qquad
+ \gamma^i=\begin{pmatrix}0&\sigma^i\\-\sigma^i&0\end{pmatrix},\qquad
+ \gamma^5=\begin{pmatrix}0&\mathbf1_2\\\mathbf1_2&0\end{pmatrix},
+ \nonumber\\
+ &\{\gamma^A,\gamma^B\}=-2\eta^{AB}\mathbf1_4,\qquad
+ \bar T=T^\dagger\gamma^0,\qquad
+ P_{L,R}=\frac{\mathbf1_4\mp\gamma^5}{2}.
+ \label{eq:dirac-clifford}
+\end{align}
+The covariant Dirac field and its chiral projections are
 \begin{equation}
- T_{\mathrm{cov}}=t_{L,\mathrm{cov}}+t_{R,\mathrm{cov}},\qquad
- t_{L,\mathrm{cov}}=P_LT_{\mathrm{cov}},\qquad
- t_{R,\mathrm{cov}}=P_RT_{\mathrm{cov}}.
+ T_{\mathrm{cov}}=\frac1{\sqrt2}
+ \begin{pmatrix}t_L+t_R\\t_R-t_L\end{pmatrix},\qquad
+ P_LT_{\mathrm{cov}}=\frac1{\sqrt2}\begin{pmatrix}t_L\\-t_L\end{pmatrix},\qquad
+ P_RT_{\mathrm{cov}}=\frac1{\sqrt2}\begin{pmatrix}t_R\\t_R\end{pmatrix}.
  \label{eq:dirac-field}
 \end{equation}
-
-Using $\bar t_{L,\mathrm{cov}}=\bar T_{\mathrm{cov}}P_R$ and
-$\bar t_{R,\mathrm{cov}}=\bar T_{\mathrm{cov}}P_L$, the action becomes
+Then $\bar T_{\mathrm{cov}}T_{\mathrm{cov}}
+=t_L^\dagger t_R+t_R^\dagger t_L$, and the action becomes
 \begin{equation}
  S_t=\int\di^4x\sqrt{-g}\,
  \bar T_{\mathrm{cov}}
@@ -1762,7 +1762,6 @@ $\bar t_{R,\mathrm{cov}}=\bar T_{\mathrm{cov}}P_L$, the action becomes
  T_{\mathrm{cov}}.
  \label{eq:dirac-covariant-action}
 \end{equation}
-
 Rescaling $T=a^{3/2}T_{\mathrm{cov}}$ removes the spin-connection
 term and gives
 \begin{equation}
@@ -1793,7 +1792,6 @@ The mode expansion is
        +V_s(\mb k,\tau)d^{s\dagger}_{\mb k}e^{-\ii\mb k\cdot\mb x}\right],
  \label{eq:dirac-mode-expansion}
 \end{equation}
-
 where $b^s_{\mb k}$ and $d^s_{\mb k}$ annihilate the top and antitop,
 with
 \begin{equation}
@@ -1809,9 +1807,9 @@ The positive- and negative-frequency spinors are
  V_s=C\bar U_s^{\,T},\qquad \bar U_s=U_s^\dagger\gamma^0,
  \label{eq:dirac-mode-spinors}
 \end{equation}
-
 Here $C(\gamma^A)^TC^{-1}=-\gamma^A$, $C^T=-C$ and
-$C^\dagger C=\mathbf1_4$; the label $s$ on $V_s$ refers to $U_s$,
+$C^\dagger C=\mathbf1_4$. 
+The label $s$ on $V_s$ refers to $U_s$,
 so $\Sigma_kV_s=-sV_s$. The normalized Bunch--Davies mode functions are
 \begin{equation}
  u_+=v_- =\frac{\tn}{\sqrt{2x}}
@@ -1820,7 +1818,6 @@ so $\Sigma_kV_s=-sV_s$. The normalized Bunch--Davies mode functions are
  W_{1/2,\ii\tn}(-2\ii x),\qquad x=-k\tau.
  \label{eq:dirac-radial-modes}
 \end{equation}
-
 They satisfy
 \begin{equation}
  \ii\partial_\tau u_s+sku_s=am_tv_s,\qquad
@@ -1832,13 +1829,13 @@ They satisfy
 We use the propagator
 \begin{equation}
  D_{\aa\bb,\alpha\beta}(\mb k;\tau_1,\tau_2)
- =\langle T_C T_{\aa,\alpha}(\mb k,\tau_1)
+ =\langle \hat{T}_C T_{\aa,\alpha}(\mb k,\tau_1)
                  \bar T_{\bb,\beta}(-\mb k,\tau_2)\rangle',
  \qquad \alpha,\beta=1,\ldots,4.
  \label{eq:dirac-propagator-definition}
 \end{equation}
 
-Here $T_C$ denotes ordering along the Schwinger--Keldysh contour,
+Here $\hat T_C$ denotes ordering along the Schwinger--Keldysh contour,
 and $\aa,\bb=\pm1$ are its branch labels. The Wightman components are
 \begin{align}
  D_{-+}(\mb k;\tau_1,\tau_2)
@@ -1863,9 +1860,9 @@ The fermionic reversal rule is
  \label{eq:dirac-reversal}
 \end{equation}
 
-For the seed reduction, express the propagator through the scalar
-kernel with chemical potential \cite{qin-seed}. With
-$X=-k\tau_1$ and $Y=-k\tau_2$, define
+For the seed reduction, it is useful to express these propagators through the scalar propagator
+with chemical potential \cite{qin-seed}. With
+$X=-k\tau_1$ and $Y=-k\tau_2$,
 \begin{align}
  D^{(\kappa)}_{-+}(k;\tau_1,\tau_2)
  &=\frac{e^{\ii\pi\kappa}}{2k}
@@ -1878,22 +1875,26 @@ $X=-k\tau_1$ and $Y=-k\tau_2$, define
 
 The time-ordered components obey \eqref{eq:dirac-sk}. The seed
 parameter is analytically continued to $\kappa=\pm1/2$.
-The Dirac propagator is then
+With $\sigma_k=\bm\sigma\cdot\widehat{\mb k}$, the Dirac propagator is
 \begin{align}
  D_{\aa\bb}
- =\frac{k}{2\sqrt{XY}}\Big\{&
- \tn\left[D^{(-1/2)}_{\aa\bb}(\mathbf1_4-\gamma^0\gamma_k)
-          +D^{(+1/2)}_{\aa\bb}(\mathbf1_4+\gamma^0\gamma_k)\right]
- \nonumber\\
- &+\ii\Big[
- \big((-X\partial_X-\ii X+\tfrac12)D^{(-1/2)}_{\aa\bb}\big)
-       (\mathbf1_4+\gamma^0\gamma_k)\nonumber\\
- &\hspace{13mm}-
- \big((X\partial_X-\ii X-\tfrac12)D^{(+1/2)}_{\aa\bb}\big)
-       (\mathbf1_4-\gamma^0\gamma_k)\Big]\gamma^0\Big\}.
+ =\frac{k}{2\sqrt{XY}}\Bigg[&
+ \begin{pmatrix}
+ (\tn+X-\ii X\partial_X+\tfrac\ii2)\mathbf1_2
+ &-(\tn+X-\ii X\partial_X+\tfrac\ii2)\sigma_k\\
+ -(\tn-X+\ii X\partial_X-\tfrac\ii2)\sigma_k
+ &(\tn-X+\ii X\partial_X-\tfrac\ii2)\mathbf1_2
+ \end{pmatrix}
+ D^{(-1/2)}_{\aa\bb}\nonumber\\
+ &+\begin{pmatrix}
+ (\tn-X-\ii X\partial_X+\tfrac\ii2)\mathbf1_2
+ &(\tn-X-\ii X\partial_X+\tfrac\ii2)\sigma_k\\
+ (\tn+X+\ii X\partial_X-\tfrac\ii2)\sigma_k
+ &(\tn+X+\ii X\partial_X-\tfrac\ii2)\mathbf1_2
+ \end{pmatrix}
+ D^{(+1/2)}_{\aa\bb}\Bigg].
  \label{eq:dirac-scalar-reconstruction}
 \end{align}
-
 The derivatives act on the scalar kernels at fixed $Y$.
 The soft limit follows from the small-argument expansion
 \begin{equation}
@@ -1905,7 +1906,6 @@ The soft limit follows from the small-argument expansion
  \left[1-\frac{\kappa z}{1+2\ii\eta\tn}+O(z^2)\right].
  \label{eq:dirac-whittaker-soft}
 \end{equation}
-
 Substituting this expansion gives, at
 $|k\tau_1|,|k\tau_2|\ll1$, the required nonlocal terms
 \begin{align}
@@ -1913,13 +1913,16 @@ $|k\tau_1|,|k\tau_2|\ll1$, the required nonlocal terms
  ={}&-\frac1{4\pi}\sum_{\eta=\pm1}
  \Gamma^2(\tfrac12-\ii\eta\tn)
  \left(\frac{k^2\tau_1\tau_2}{4}\right)^{\ii\eta\tn}\nonumber\\
- &\times\left[(\mathbf1_4+\eta\gamma^0)\gamma_k
- +\frac{\ii k}{1+2\ii\eta\tn}
- \big((\tau_1-\tau_2)\gamma^0
-       -\eta(\tau_1+\tau_2)\mathbf1_4\big)+\cdots\right].
+ &\times\left[
+ \begin{pmatrix}
+ \dfrac{\ii k[(1-\eta)\tau_1-(1+\eta)\tau_2]}{1+2\ii\eta\tn}\mathbf1_2
+ &(1+\eta)\sigma_k\\[2mm]
+ -(1-\eta)\sigma_k
+ &\dfrac{\ii k[(1-\eta)\tau_2-(1+\eta)\tau_1]}{1+2\ii\eta\tn}\mathbf1_2
+ \end{pmatrix}
+ +\cdots\right].
  \label{eq:dirac-soft-propagator}
 \end{align}
-
 The omitted terms are second order in soft momentum at fixed times.
 These nonlocal terms are independent of the SK indices, allowing the
 two soft lines to be cut while the hard lines retain their full time
@@ -1929,13 +1932,32 @@ $-\ii\aa g_ta(\tau)\mathbf1_4$.
 
 \subsection{The Box Diagram and Soft Expansion}
 \label{sec:dirac-box}
-We first consider the ordering $1234$ in
-Fig.~\ref{fig:dirac-four-cuts}. Writing
-$D^{ij}(\mb p)=D_{\aa_i\aa_j}(\mb p;\tau_i,\tau_j)$,
-the four-point function is
+We first consider the box shown in Fig.~\ref{fig:dirac-box} with ordering
+$1234$ for a fixed color. 
+For the collapsed $s$-channel contribution, we retain the original term
+together with those obtained by exchanging $\mb k_1\leftrightarrow\mb k_2$,
+exchanging $\mb k_3\leftrightarrow\mb k_4$, and performing both exchanges.
+% The two single exchanges describe the same additional connection,
+% while the simultaneous exchange describes the original connection
+% traversed in reverse. 
+% Reversing the traversal does not generate new
+% Wick pairings, so this prescription represents each set of pairings
+% twice. 
+% We therefore multiply the four-term sum by $1/2$. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.48\textwidth]{figure/quark.pdf}
+\caption{The top-quark box with cyclic ordering $1234$.
+Black lines denote external Higgs modes and blue lines denote Dirac
+propagators. The arrows run from $j$ to $i$ for $D^{ij}$.}
+\label{fig:dirac-box}
+\end{figure}
+
+The Higgs four-point function is
 \begin{align}
  \langle\delta h^4\rangle'_{1234}
- ={}&-N_cg_t^4\sum_{\aa_1,\ldots,\aa_4=\pm1}
+ ={}&-g_t^4\sum_{\aa_1,\ldots,\aa_4=\pm1}
  \left(\prod_{v=1}^4\aa_v\right)
  \int_{-\infty}^0\prod_{v=1}^4
  [\di\tau_v\,a(\tau_v)G_{\aa_v}(k_v;\tau_v)]\nonumber\\
@@ -1945,112 +1967,84 @@ the four-point function is
  \qquad \mb K=\mb q+\mb k_s.
  \label{eq:dirac-box-integral}
 \end{align}
-
-The closed fermion loop supplies a minus sign and the color factor
-$N_c$. The $4!$ external attachments cancel the interaction-expansion
-factorial, leaving unit weight for each directed Dirac contraction.
-The six orderings are $1234,1243,1324,1342,1423,1432$.
+where $D^{ij}(\mb p)=D_{\aa_i\aa_j}(\mb p;\tau_i,\tau_j)$.
 
 In the double-soft region $q,K\sim k_s$, introduce centered hard momenta
 \begin{equation}
  \mb k_L=\frac{\mb k_1-\mb k_2}{2},\qquad
  \mb k_R=\frac{\mb k_3-\mb k_4}{2},\qquad
- \bm\ell=\mb q+\frac{\mb k_s}{2},
+ \bm\ell=\mb q+\frac{\mb k_s}{2}.
  \label{eq:dirac-centered-momenta}
 \end{equation}
-
 The hard lines carry $\mb k_L+\bm\ell$ and $\mb k_R+\bm\ell$.
 At leading collapsed order, $k_L\simeq k_{12}/2$ and
 $k_R\simeq k_{34}/2$.
 The cutting rule \cite{qin} replaces the two soft propagators by
-$D^{ij}_{\NL}=[D^{ij}]_{\NL}$.
-The four orderings contributing to this cut have spin factors
+$D^{ij}_{\NL}=[D^{ij}]_{\NL}$, giving the factorization in
+Fig.~\ref{fig:dirac-cut}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figure/quark NL.pdf}
+\caption{The leading nonlocal part of the top-quark box with cyclic ordering
+$1234$ in the collapsed $s$ channel. Cutting the two soft lines
+separates two tree subgraphs, each containing one hard Dirac propagator.
+The central factor contains the nonlocal parts of the two soft
+propagators and their loop momentum integral. Four-component spinor
+indices are contracted between the three factors.}
+\label{fig:dirac-cut}
+\end{figure}
+
+We combain the contributions from diagrams with different oddering at the integrand level.
+The four integrand factors are
 \begin{align}
- \mathcal T^{\mathrm{cut}}_{1234}
+ \mathcal T^{}_{1234}
  &=\tr_4[D^{12}(\mb k_L+\bm\ell)D^{23}_{\NL}(\mb K)
           D^{34}(\mb k_R+\bm\ell)D^{41}_{\NL}(\mb q)],\nonumber\\
- \mathcal T^{\mathrm{cut}}_{1243}
+ \mathcal T^{}_{1243}
  &=\tr_4[D^{12}(\mb k_L+\bm\ell)D^{24}_{\NL}(\mb K)
           D^{43}(-\mb k_R+\bm\ell)D^{31}_{\NL}(\mb q)],\nonumber\\
- \mathcal T^{\mathrm{cut}}_{1342}
+ \mathcal T^{}_{1342}
  &=\tr_4[D^{21}(-\mb k_L+\bm\ell)D^{13}_{\NL}(\mb K)
           D^{34}(\mb k_R+\bm\ell)D^{42}_{\NL}(\mb q)],\nonumber\\
- \mathcal T^{\mathrm{cut}}_{1432}
+ \mathcal T^{}_{1432}
  &=\tr_4[D^{21}(-\mb k_L+\bm\ell)D^{14}_{\NL}(\mb K)
           D^{43}(-\mb k_R+\bm\ell)D^{32}_{\NL}(\mb q)].
  \label{eq:dirac-four-cut-traces}
 \end{align}
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[scale=.87]
- \foreach \vl/\vb/\vr/\vt/\cycle/\dx/\dy in
- {1/2/3/4/1234/0/0,1/2/4/3/1243/7.2/0,
-  2/1/3/4/1342/0/-4.2,2/1/4/3/1432/7.2/-4.2}{
-  \begin{scope}[xshift=\dx cm,yshift=\dy cm]
-   \coordinate (a) at (0,1.7); \coordinate (b) at (0,0);
-   \coordinate (c) at (3.2,0); \coordinate (d) at (3.2,1.7);
-   \draw[thick] (a)--node[left] {$\mb q+\mb k_{\vl}$}(b);
-   \draw[thick] (c)--node[right] {$\mb q-\mb k_{\vt}$}(d);
-   \draw[thick,blue,dashed] (b)--node[below] {$\mb K$}(c);
-   \draw[thick,blue,dashed] (d)--node[above] {$\mb q$}(a);
-   \draw (a)--++(-.55,.5) node[above] {$\mb k_{\vl}$};
-   \draw (b)--++(-.55,-.5) node[below] {$\mb k_{\vb}$};
-   \draw (c)--++(.55,-.5) node[below] {$\mb k_{\vr}$};
-   \draw (d)--++(.55,.5) node[above] {$\mb k_{\vt}$};
-   \foreach \point/\number/\position in
-     {a/\vl/below right,b/\vb/above right,c/\vr/above left,d/\vt/below left}
-     {\fill (\point) circle (1.5pt);
-      \node[\position] at (\point) {$\number$};}
-   \node at (1.6,.85) {$\cycle$};
-  \end{scope}
- }
-\end{tikzpicture}
-\caption{The four physical orderings in the collapsed $s$ channel.
-Dashed lines carry the nonlocal soft propagators; solid internal lines
-are hard. Momentum labels are the arguments of the propagators in
-\eqref{eq:dirac-four-cut-traces}. Each vertex $i$ retains
-$(\mb k_i,\tau_i,\aa_i)$.}
-\label{fig:dirac-four-cuts}
-\end{figure}
-
-Every time and SK label remains attached to its physical external
-vertex, so all four terms have the same Higgs factors. The cut
-contribution is
+Every time and SK label remains attached to its physical external vertex. 
+So the total nonlocal signal at the collapsed s channel is:
 \begin{align}
- [\langle\delta h^4\rangle'_{t}]_{s,\NL}
- \simeq{}&-N_cg_t^4\sum_{\aa_1,\ldots,\aa_4=\pm1}
+ [\langle\delta h^4\rangle'_{t}]_{\mathrm{NS}}
+ \simeq{}&-g_t^4\sum_{\aa_1,\ldots,\aa_4=\pm1}
  \left(\prod_{v=1}^4\aa_v\right)
  \int_{-\infty}^0\prod_{v=1}^4
  [\di\tau_v\,a(\tau_v)G_{\aa_v}(k_v;\tau_v)]\nonumber\\
- &\times\int_{\mathrm{soft}}\frac{\di^3\mb q}{(2\pi)^3}
- \left(\mathcal T^{\mathrm{cut}}_{1234}
-       +\mathcal T^{\mathrm{cut}}_{1243}
-       +\mathcal T^{\mathrm{cut}}_{1342}
-       +\mathcal T^{\mathrm{cut}}_{1432}\right).
+ &\times\int\frac{\di^3\mb q}{(2\pi)^3}
+ \left(\mathcal T^{\mathrm{}}_{1234}
+       +\mathcal T^{\mathrm{}}_{1243}
+       +\mathcal T^{\mathrm{}}_{1342}
+       +\mathcal T^{\mathrm{}}_{1432}\right).
  \label{eq:dirac-cut-integral}
 \end{align}
 
-Here $\int_{\mathrm{soft}}$ means the soft expansion at $q,K\sim k_s$,
-with the loop coefficients defined by analytic continuation.
-
 We take the common branch $\eta=+1$ for example and suppress its
-label. Attaching the soft endpoints to each hard line gives matrices
-$V_{12}$ and $V_{34}$, defined in App.~\ref{app:dirac-expansion}.
+label. Using the endpoint factorization,
+attaching the soft endpoints to each hard line gives matrices
+$V_{12}$ and $V_{34}$, defined in \eqref{eq:dirac-hard-blocks}
+of App.~\ref{app:dirac-expansion}.
 With $\gamma_{\mb n}=\bm\gamma\cdot\mb n$ and
 $M(\mb n)=(\mathbf1_4+\gamma^0)\gamma_{\mb n}$,
-the cut spin factor is
+the spin factor is
 \begin{align}
- \mathcal T^{\mathrm{cut}}_{1234,+}
+ \mathcal T^{\mathrm{}}_{1234,+}
  ={}&\frac{4^{-2\ii\tn}\Gamma^4(\tfrac12-\ii\tn)}{(4\pi)^2}
  (qK)^{2\ii\tn}\prod_{v=1}^4(-\tau_v)^{\ii\tn}
- \nonumber\\
- &\times\tr_4[V_{12}M(\widehat{\mb K})
+ \times\tr_4[V_{12}M(\widehat{\mb K})
                   V_{34}M(\widehat{\mb q})].
  \label{eq:dirac-cut-trace}
 \end{align}
-
-The four orderings replace the trace by
+Then the total four orderings replace the trace by
 \begin{equation}
  \tr_4[(V_{12}+V_{21})M(\widehat{\mb K})
        (V_{34}+V_{43})M(\widehat{\mb q})].
@@ -2059,34 +2053,43 @@ The four orderings replace the trace by
 
 To expand the hard ends, define
 \begin{equation}
- \Lambda_\pm=\frac{\mathbf1_4\pm\gamma^0}{2},\qquad
- M(\mb n)=2\Lambda_+\gamma_{\mb n}
-         =2\gamma_{\mb n}\Lambda_-.
+ \begin{aligned}
+ &\Lambda_+=\frac{\mathbf1_4+\gamma^0}{2}
+ =\begin{pmatrix}\mathbf1_2&0\\0&0\end{pmatrix},\qquad
+ \Lambda_-=\frac{\mathbf1_4-\gamma^0}{2}
+ =\begin{pmatrix}0&0\\0&\mathbf1_2\end{pmatrix},\\[2mm]
+ &M(\mb n)=2\Lambda_+\gamma_{\mb n}
+          =2\gamma_{\mb n}\Lambda_-
+          =\begin{pmatrix}0&2\bm\sigma\cdot\mb n\\0&0\end{pmatrix}.
+ \end{aligned}
  \label{eq:dirac-soft-projectors}
 \end{equation}
+So only $\Lambda_-V\Lambda_+$ enters the trace. 
 
-Only $\Lambda_-V\Lambda_+$ enters the trace. At zeroth soft order,
-writing the scalar coefficient as $F_{0;\aa\bb}$ gives
+At zeroth soft order,
+the projections give the following
+expressions, with $F_{0;\aa\bb}=F_{0,+;\aa\bb}$ defined in
+\eqref{eq:dirac-hard-kernel-traces}:
 \begin{align}
  \Lambda_-V_{12}^{(0)}\Lambda_+
- &=\frac12F_{0;\aa_1\aa_2}(k_L;\tau_1,\tau_2)
-       \Lambda_-\gamma_{\mb n_L}\Lambda_+,
+ &=-\frac12F_{0;\aa_1\aa_2}(k_L;\tau_1,\tau_2)
+       \begin{pmatrix}0&0\\\bm\sigma\cdot\mb n_L&0\end{pmatrix},
  \nonumber\\
  \Lambda_-V_{21}^{(0)}\Lambda_+
- &=-\frac12F_{0;\aa_1\aa_2}(k_L;\tau_1,\tau_2)
-       \Lambda_-\gamma_{\mb n_L}\Lambda_+,
+ &=\frac12F_{0;\aa_1\aa_2}(k_L;\tau_1,\tau_2)
+       \begin{pmatrix}0&0\\\bm\sigma\cdot\mb n_L&0\end{pmatrix},
  \qquad \mb n_L=\mb k_L/k_L.
  \label{eq:dirac-cancellation}
 \end{align}
-
 The right pair obeys the same relation with $(L,1,2)\to(R,3,4)$.
-The coefficient $F_{0;\aa\bb}$ is invariant under reversal of its
-time and SK labels. Thus each projected ordering sum vanishes at the
+Thus each projected ordering sum vanishes at the
 integrand level, removing the candidate $k_s^{3\pm4\ii\tn}$ signal.
-Every term with a zeroth-order hard end vanishes, so the first
-surviving term is first order on both sides.
 
-The first-order corrections to the hard and soft propagators give
+
+
+So we need to expand the intrgand to the next to leading order on soft momentum.
+Combining the hard-line correction \eqref{eq:dirac-hard-expansion}
+and the endpoint correction \eqref{eq:dirac-endpoint-correction} gives
 \begin{align}
  \Lambda_-(V_{12}^{(1)}+V_{21}^{(1)})\Lambda_+
  &=\frac1{k_L}\Lambda_-
@@ -2100,7 +2103,6 @@ The first-order corrections to the hard and soft propagators give
        +\Pi^R_2\mb n_R(\mb n_R\cdot\bm\ell).
  \label{eq:dirac-first-order}
 \end{align}
-
 Here $\mb n_R=\widehat{\mb k}_R$ and
 $\Pi_i^L=\Pi_{i;\aa_1\aa_2}(k_L;\tau_1,\tau_2)$, with the analogous
 right definition. The scalar functions $\Pi_i$ are given in
@@ -2114,8 +2116,7 @@ right definition. The scalar functions $\Pi_i$ are given in
  +(\mb a\cdot\mb d)(\mb b\cdot\mb c)],
  \label{eq:dirac-four-gamma-trace}
 \end{align}
-
-the leading term of the sum of four traces becomes
+the non-vanishing leading term of the sum of four traces becomes
 \begin{align}
  &\tr_4[(V_{12}^{(1)}+V_{21}^{(1)})M(\widehat{\mb K})
         (V_{34}^{(1)}+V_{43}^{(1)})M(\widehat{\mb q})]
@@ -2134,14 +2135,7 @@ oscillatory signal scales as $k_s^{5\pm4\ii\tn}$.
 \subsection{Factorized Loop and Time Integrals}
 \label{sec:dirac-factorized}
 The scalar trace in \eqref{eq:dirac-scalar-trace} reduces the
-remaining loop to a scalar integral. We use the angular convention
-\begin{equation}
- \widehat{\mb k}_s=(0,0,1),\qquad
- \mb n_L=(\sin\theta_1,0,\cos\theta_1),\qquad
- \mb n_R=(\sin\theta_3\cos\phi_3,\sin\theta_3\sin\phi_3,\cos\theta_3).
- \label{eq:dirac-angles}
-\end{equation}
-
+remaining loop to a scalar integral. 
 For each common soft branch $\eta=\pm1$, put
 $\mb v_{A,\eta}=\Pi^A_{1,\eta}\bm\ell
 +\Pi^A_{2,\eta}\mb n_A(\mb n_A\cdot\bm\ell)$, with $A=L,R$.
@@ -2162,15 +2156,14 @@ The resulting coefficients satisfy
  \mathcal I^{11}_t=3\mathcal I^{12}_t=3\mathcal I^{21}_t.
  \label{eq:dirac-loop-relations}
 \end{equation}
-
 These three coefficients are independent of angles. All angular
 dependence is carried by $\mathcal I_t^{22}$, whose explicit expression
 is given in App.~\ref{app:dirac-expansion}.
-For one common soft branch, the loop summed over the four orderings is
+The loop integral summed over the four orderings is
 \begin{align}
- &\int_{\mathrm{soft}}\frac{\di^3\mb q}{(2\pi)^3}
- \sum_{\mathrm{ord}}\mathcal T^{\mathrm{cut}}_{\mathrm{ord},\eta}
- \simeq\frac{8\,4^{-2\ii\eta\tn}\Gamma^4(\tfrac12-\ii\eta\tn)
+ & \left[ \int_{}\frac{\di^3\mb q}{(2\pi)^3}
+ \sum_{\mathrm{ord}}\mathcal T^{\mathrm{}}_{\mathrm{ord}} \right]_{\mathrm{NS}}
+ \simeq \sum_{\eta=\pm} \frac{8\cdot4^{-2\ii\eta\tn}\Gamma^4(\tfrac12-\ii\eta\tn)
  k_s^{5+4\ii\eta\tn}}{(4\pi)^{7/2}k_Lk_R}
  \prod_{v=1}^4(-\tau_v)^{\ii\eta\tn}\nonumber\\
  &\hspace{30mm}\times
@@ -2202,6 +2195,7 @@ $\mathcal P_{t,i}$ are given in App.~\ref{app:dirac-seed}.
 
 \subsection{Oscillatory Signal}
 \label{sec:dirac-clock}
+We now restore color multiplicities in the final signals.
 Combining the soft loop and the two hard subgraphs, setting $N_c=3$,
 and adding the complex-conjugate branch gives
 \begin{align}
@@ -2234,15 +2228,20 @@ The five coefficients depend only on $\tn$ and satisfy
 $A_{3,t}=-3A_{2,t}$. Their analytic expressions are given in
 App.~\ref{app:dirac-coefficients}. All nonconstant angular terms are
 proportional to $\mathcal P_{t,2}^2$.
+Figure~\ref{fig:top-angular-coefficients} shows the mass dependence
+of the five angular coefficients.
 At fixed angles the oscillatory bracket in \eqref{eq:dirac-clock-signal} is
 \begin{equation}
  2|C_t|\cos\!\left[2\tn\log\!\left(\frac{k_s^2}{4k_{12}k_{34}}\right)
                    +\arg C_t\right].
  \label{eq:dirac-clock-phase}
 \end{equation}
-
 This is the leading same-branch oscillatory contribution in the
 collapsed $s$ channel. The other channels follow by external permutations.
+The frequency in $\log k_s$ is $4m_t/H$.
+Compared with the gauge-boson signals, the top oscillation carries
+an additional soft suppression $k_s^2/(k_{12} k_{34})$ from
+\eqref{eq:top-cancellation}.
 
 \appendix
 \section{Top Quark Integrals and Coefficients}
@@ -2250,32 +2249,43 @@ collapsed $s$ channel. The other channels follow by external permutations.
 
 \subsection{Soft Expansion and Loop Integrals}
 \label{app:dirac-expansion}
-For either soft branch $\eta=\pm1$, a nonlocal line factorizes as
+For either soft branch $\eta=\pm1$, with
+$\sigma_p=\bm\sigma\cdot\widehat{\mb p}$, the nonlocal line in
+\eqref{eq:dirac-soft-propagator} factorizes as
 \begin{align}
- D^{ij}_{\NL,\eta}(\mb p)
- ={}&-\frac{\Gamma^2(\tfrac12-\ii\eta\tn)}{4\pi}
- \left(\frac{p^2\tau_i\tau_j}{4}\right)^{\ii\eta\tn}
- L_\eta(\mb p,\tau_i)M_\eta(\widehat{\mb p})
- U_\eta(\mb p,\tau_j),\nonumber\\
- M_\eta(\widehat{\mb p})&=(\mathbf1_4+\eta\gamma^0)\gamma_p,\qquad
- L_\eta(\mb p,\tau)=U_\eta(\mb p,\tau)
- =\mathbf1_4+\frac{\ii\eta p\tau}{1+2\ii\eta\tn}\gamma_p+O(p^2\tau^2).
+ &D_{\NL,\eta}(\mb p,\tau_1,\tau_2)
+ ={}-\frac{\Gamma^2(\tfrac12-\ii\eta\tn)}{4\pi}
+ \left(\frac{p^2\tau_1\tau_2}{4}\right)^{\ii\eta\tn}
+ L_\eta(\mb p,\tau_1)M_\eta(\widehat{\mb p})
+ U_\eta(\mb p,\tau_2),\nonumber\\
+ &M_\eta(\widehat{\mb p})=
+ \begin{pmatrix}
+ 0&(1+\eta)\sigma_p\\
+ -(1-\eta)\sigma_p&0
+ \end{pmatrix},\nonumber\\
+ &L_\eta(\mb p,\tau)=U_\eta(\mb p,\tau)=
+ \begin{pmatrix}
+ \mathbf1_2&\dfrac{\ii\eta p\tau}{1+2\ii\eta\tn}\sigma_p\\[2mm]
+ -\dfrac{\ii\eta p\tau}{1+2\ii\eta\tn}\sigma_p&\mathbf1_2
+ \end{pmatrix}
+ +O(p^2\tau^2).
  \label{eq:dirac-endpoint-factorization}
 \end{align}
 
-The unexpanded endpoint functions are
-\begin{align}
- L_\eta(\mb p,\tau)=U_\eta(\mb p,\tau)
- ={}&{}_0F_1\!\left(;\tfrac12+\ii\eta\tn;
-                         -\frac{p^2\tau^2}{4}\right)\mathbf1_4
- \nonumber\\
- &+\frac{\ii\eta p\tau}{1+2\ii\eta\tn}
- {}_0F_1\!\left(;\tfrac32+\ii\eta\tn;
-                         -\frac{p^2\tau^2}{4}\right)\gamma_p.
- \label{eq:dirac-exact-endpoints}
-\end{align}
+% The unexpanded endpoint functions are
+% \begin{align}
+%  L_\eta(\mb p,\tau)=U_\eta(\mb p,\tau)
+%  ={}&{}_0F_1\!\left(;\tfrac12+\ii\eta\tn;
+%                          -\frac{p^2\tau^2}{4}\right)\mathbf1_4
+%  \nonumber\\
+%  &+\frac{\ii\eta p\tau}{1+2\ii\eta\tn}
+%  {}_0F_1\!\left(;\tfrac32+\ii\eta\tn;
+%                          -\frac{p^2\tau^2}{4}\right)\gamma_p.
+%  \label{eq:dirac-exact-endpoints}
+% \end{align}
 
-The hard matrices are
+The hard matrices used in \eqref{eq:dirac-cut-trace} and
+\eqref{eq:dirac-four-orderings} are
 \begin{align}
  V_{12,\eta}&=U_\eta(\mb q,\tau_1)
  D^{12}(\mb k_L+\bm\ell)L_\eta(\mb K,\tau_2),\nonumber\\
@@ -2289,19 +2299,17 @@ The hard matrices are
 \end{align}
 
 We write $V_{ij}=V_{ij,+}$ in the positive-branch derivation.
-For $\Lambda_\eta=(\mathbf1_4+\eta\gamma^0)/2$, define two scalar
-functions to express the subgraph contributions:
+We define two scalar functions to express the subgraph contributions:
 \begin{align}
  F_{0,\eta;\aa\bb}(p;\tau_1,\tau_2)
- &=-\tr_4[\Lambda_{-\eta}D_{\aa\bb}(p\mb n;\tau_1,\tau_2)
+ &=-\tr_4[\Lambda_{-\eta}D_{\aa\bb}(\mb p;\tau_1,\tau_2)
                       \gamma_{\mb n}],\nonumber\\
  F_{1,\eta;\aa\bb}(p;\tau_1,\tau_2)
- &=-\eta\tr_4[\Lambda_\eta D_{\aa\bb}(p\mb n;\tau_1,\tau_2)].
+ &=-\eta\tr_4[\Lambda_\eta D_{\aa\bb}(\mb p;\tau_1,\tau_2)].
  \label{eq:dirac-hard-kernel-traces}
 \end{align}
 
-With $X=-p\tau_1$, $Y=-p\tau_2$, the scalar reconstruction
-\eqref{eq:dirac-scalar-reconstruction} gives
+With $X=-p\tau_1$, $Y=-p\tau_2$, the auxiliary functions $F$ are:
 \begin{align}
  F_{0,\eta;\aa\bb}(p;\tau_1,\tau_2)
  &=-\frac{\ii p}{\sqrt{XY}}\left[
@@ -2316,24 +2324,25 @@ With $X=-p\tau_1$, $Y=-p\tau_2$, the scalar reconstruction
  \label{eq:dirac-hard-kernels}
 \end{align}
 
-We write $F_j=F_{j,+}$. Since
-$F_{0,\eta;\aa\bb}(p;\tau_1,\tau_2)
-=F_{0,\eta;\bb\aa}(p;\tau_2,\tau_1)$, reversing the hard momentum
-changes the sign of $\Lambda_{-\eta}D\Lambda_\eta$, proving
-\eqref{eq:dirac-cancellation}. The projections needed through first
-order are
-\begin{align}
- \Lambda_{-\eta}D_{\aa\bb}\Lambda_\eta
- &=\tfrac12F_{0,\eta;\aa\bb}\Lambda_{-\eta}\gamma_{\mb n}\Lambda_\eta,
- \nonumber\\
- \Lambda_\eta D_{\aa\bb}\Lambda_\eta
- &=-\tfrac\eta2 F_{1,\eta;\aa\bb}\Lambda_\eta,\qquad
- \Lambda_{-\eta}D_{\aa\bb}\Lambda_{-\eta}
- =-\tfrac\eta2F_{1,\eta;\bb\aa}(p;\tau_2,\tau_1)\Lambda_{-\eta}.
- \label{eq:dirac-hard-projections}
-\end{align}
-
-The hard-line correction in $V_{12,\eta}$ is
+We write $F_j=F_{j,+}$. 
+At zeroth order, the contributions from different ordering diagrams conceil.
+% Since
+% $F_{0,\eta;\aa\bb}(p;\tau_1,\tau_2)
+% =F_{0,\eta;\bb\aa}(p;\tau_2,\tau_1)$, reversing the hard momentum
+% changes the sign of $\Lambda_{-\eta}D\Lambda_\eta$, proving
+% \eqref{eq:dirac-cancellation}. The projections needed through first
+% order are
+% \begin{align}
+%  \Lambda_{-\eta}D_{\aa\bb}\Lambda_\eta
+%  &=\tfrac12F_{0,\eta;\aa\bb}\Lambda_{-\eta}\gamma_{\mb n}\Lambda_\eta,
+%  \nonumber\\
+%  \Lambda_\eta D_{\aa\bb}\Lambda_\eta
+%  &=-\tfrac\eta2 F_{1,\eta;\aa\bb}\Lambda_\eta,\qquad
+%  \Lambda_{-\eta}D_{\aa\bb}\Lambda_{-\eta}
+%  =-\tfrac\eta2F_{1,\eta;\bb\aa}(p;\tau_2,\tau_1)\Lambda_{-\eta}.
+%  \label{eq:dirac-hard-projections}
+% \end{align}
+And the hard-line correction in $V_{12,\eta}$ at the first order is
 \begin{align}
  \left.\Lambda_{-\eta}V_{12,\eta}^{(1)}\Lambda_\eta\right|_{\mathrm{hard}}
  =\frac1{2k_L}\Lambda_{-\eta}\bm\gamma\cdot
@@ -2342,7 +2351,6 @@ The hard-line correction in $V_{12,\eta}$ is
        \mb n_L(\mb n_L\cdot\bm\ell)\right]_{p=k_L}\Lambda_\eta.
  \label{eq:dirac-hard-expansion}
 \end{align}
-
 while the two soft endpoints supply
 \begin{align}
  \left.\Lambda_{-\eta}V_{12,\eta}^{(1)}\Lambda_\eta\right|_{\mathrm{end}}
@@ -2366,43 +2374,45 @@ $\mb q+\mb K=2\bm\ell$, gives \eqref{eq:dirac-first-order}, where
  \label{eq:dirac-Pi}
 \end{align}
 
-The momentum derivative is at fixed times, and
-$\Pi_{i;\aa\bb}\equiv\Pi_{i,+;\aa\bb}$.
-For real $\tn$, $F_{0,-;\aa\bb}=F_{0,+;-\aa,-\bb}^*$ and
-$F_{1,-;\aa\bb}=-F_{1,+;-\aa,-\bb}^*$, implying
-$\mathcal P_{t,i,-}=\mathcal P_{t,i,+}^*$.
+% The momentum derivative is at fixed times, and
+% $\Pi_{i;\aa\bb}\equiv\Pi_{i,+;\aa\bb}$.
+% For real $\tn$, $F_{0,-;\aa\bb}=F_{0,+;-\aa,-\bb}^*$ and
+% $F_{1,-;\aa\bb}=-F_{1,+;-\aa,-\bb}^*$, implying
+% $\mathcal P_{t,i,-}=\mathcal P_{t,i,+}^*$.
 
-The loop moments reduce to the scalar convolution
-\begin{align}
- \int\frac{\di^3\mb q}{(2\pi)^3}
- \frac1{(q^2)^\alpha(K^2)^\beta}
- &=\frac{k_s^{3-2\alpha-2\beta}}{(4\pi)^{3/2}}f_0(\alpha,\beta),
- \nonumber\\
- f_0(\alpha,\beta)
- &=\frac{\Gamma(\alpha+\beta-3/2)
- \Gamma(3/2-\alpha)\Gamma(3/2-\beta)}
- {\Gamma(3-\alpha-\beta)\Gamma(\alpha)\Gamma(\beta)}.
- \label{eq:dirac-f0}
-\end{align}
+% The loop moments generated by the scalar trace
+% \eqref{eq:dirac-scalar-trace} reduce to the scalar convolution
+% \begin{align}
+%  \int\frac{\di^3\mb q}{(2\pi)^3}
+%  \frac1{(q^2)^\alpha(K^2)^\beta}
+%  &=\frac{k_s^{3-2\alpha-2\beta}}{(4\pi)^{3/2}}f_0(\alpha,\beta),
+%  \nonumber\\
+%  f_0(\alpha,\beta)
+%  &=\frac{\Gamma(\alpha+\beta-3/2)
+%  \Gamma(3/2-\alpha)\Gamma(3/2-\beta)}
+%  {\Gamma(3-\alpha-\beta)\Gamma(\alpha)\Gamma(\beta)}.
+%  \label{eq:dirac-f0}
+% \end{align}
 
-With $z=\widehat{\mb q}\cdot\widehat{\mb k}_s$ and
-$x=-\ii\eta\tn$, define
-\begin{align}
- &\int\frac{\di^3\mb q}{(2\pi)^3}
- q^{m-2x}K^{-n-2x}z^r
- =\frac{k_s^{3+m-n-4x}}{(4\pi)^{3/2}}\mathcal J_r(m,n;x),
- \nonumber\\
- &\mathcal J_r(m,n;x)=\frac1{2^r}
- \sum_{u+v+w=r}\frac{r!}{u!v!w!}(-1)^{v+w}
- f_0\!\left(x-\frac m2+\frac r2-v,x+\frac n2-u\right).
- \label{eq:dirac-Jr-definition}
-\end{align}
+% With $z=\widehat{\mb q}\cdot\widehat{\mb k}_s$ and
+% $x=-\ii\eta\tn$, define
+% \begin{align}
+%  &\int\frac{\di^3\mb q}{(2\pi)^3}
+%  q^{m-2x}K^{-n-2x}z^r
+%  =\frac{k_s^{3+m-n-4x}}{(4\pi)^{3/2}}\mathcal J_r(m,n;x),
+%  \nonumber\\
+%  &\mathcal J_r(m,n;x)=\frac1{2^r}
+%  \sum_{u+v+w=r}\frac{r!}{u!v!w!}(-1)^{v+w}
+%  f_0\!\left(x-\frac m2+\frac r2-v,x+\frac n2-u\right).
+%  \label{eq:dirac-Jr-definition}
+% \end{align}
 
-The sum runs over nonnegative integers and follows from
-$z=(K^2-q^2-k_s^2)/(2qk_s)$. The convolutions are defined by
-analytic continuation, retaining the nonanalytic term.
+% The sum runs over nonnegative integers and follows from
+% $z=(K^2-q^2-k_s^2)/(2qk_s)$. The convolutions are defined by
+% analytic continuation, retaining the nonanalytic term.
 
-For the loop coefficients, set $x=-\ii\tn$.
+For the loop coefficients defined in \eqref{eq:dirac-loop-definition},
+set $x=-\ii\tn$.
 We use $\mathcal J_r(m,n;x)$ as defined in
 \eqref{eq:dirac-Jr-definition}. The common argument $x$ of
 $\mathcal I^{ij}_{t}$ and $\mathcal J_r$, and the angular
@@ -2469,7 +2479,8 @@ The $\eta=-1$ branch follows by complex conjugation.
 We denote the Whittaker seed $\mathcal I$ of
 Ref.~\cite{qin-seed} by $\mathcal K$.
 For equal external energies $k$, internal magnitude $p=rk$, and
-$u=2r/(1+r)$, the integral seed is defined by
+$u=2r/(1+r)$, using the scalar kernels
+\eqref{eq:dirac-scalar-kernels}, the integral seed is defined by
 \begin{align}
  \mathcal K_{\aa\bb}^{\kappa;p_1,p_2}(u,u)
  \equiv{}&(-\aa\bb)p^{3+p_1+p_2}
@@ -2520,8 +2531,9 @@ The closed expressions are
  \label{eq:dirac-K-same}
 \end{align}
 
-Only two scalar time moments are needed to express all these hard
-coefficients. Define
+Only two scalar time moments are needed to express the hard
+coefficients in \eqref{eq:dirac-time-definition}. Using
+$F_j=F_{j,+}$ from \eqref{eq:dirac-hard-kernels}, define
 \begin{align}
  \mathcal H_j(q_1,q_2;r)
  ={}&\sum_{\aa,\bb=\pm1}\aa\bb
@@ -2595,10 +2607,6 @@ The factor $2^{2\ii\tn}$ converts the seed normalization at
 $k_L$ to the $k_{12}\simeq2k_L$ convention in
 \eqref{eq:dirac-time-definition}.
 
-Here $\operatorname{FP}_{\delta=0}$ takes the constant Laurent
-coefficient after summing all SK and $\kappa=\pm1/2$ branches with
-the same regulator $\delta$ in both time exponents.
-
 After combining the SK branches, the finite coefficients
 can be expressed using a single ordinary hypergeometric function,
 \begin{align}
@@ -2638,7 +2646,9 @@ the common soft factor
  (5+4\ii\tn)(3+4\ii\tn)}.
  \label{eq:dirac-common-factor}
 \end{equation}
-Substituting \eqref{eq:dirac-loop-closed} gives
+Substituting \eqref{eq:dirac-loop-closed} into
+\eqref{eq:dirac-clock-coefficient} and using the angular decomposition
+\eqref{eq:dirac-angular} gives
 \begin{align}
  A_{1,t}&=-2\mathcal B_{t}(1+\ii\tn)(1+2\ii\tn)
  \nonumber\\
@@ -2654,6 +2664,43 @@ Substituting \eqref{eq:dirac-loop-closed} gives
        (1+\ii\tn)(2+\ii\tn)(3+2\ii\tn).
  \label{eq:dirac-angular-closed}
 \end{align}
+
+The remaining time coefficients can also be substituted explicitly.
+Using \eqref{eq:top-finite-master}, set
+\begin{align}
+ \mathcal Z_t&=\frac{2\mathcal F_t}{1+2\ii\tilde\nu}
+ -(1+2\ii\tilde\nu)\mathcal E_t
+ +\frac{\ii\tilde\nu(5+2\ii\tilde\nu)}
+ {2(1+\ii\tilde\nu)(2+\ii\tilde\nu)},\nonumber\\
+ \mathcal N_t&=\mathcal B_t\Gamma^2(1+2\ii\tilde\nu)
+ \cosh^2(\pi\tilde\nu)\nonumber\\
+ &=\frac{2^{4\ii\tilde\nu}\pi\Gamma(-\tfrac12-2\ii\tilde\nu)
+ \Gamma^4(1+\ii\tilde\nu)}
+ {(4\pi)^{7/2}\Gamma(2+2\ii\tilde\nu)
+ (5+2\ii\tilde\nu)(3+2\ii\tilde\nu)
+ (5+4\ii\tilde\nu)(3+4\ii\tilde\nu)}.
+ \label{eq:top-angular-explicit-common}
+\end{align}
+Gamma duplication and reflection give the second form of
+$\mathcal N_t$. The five coefficients then become
+\begin{align}
+ A_{1,t}={}&-\frac{2(1+\ii\tilde\nu)}{1+2\ii\tilde\nu}\mathcal N_t
+ \Bigg[(7-9\ii\tilde\nu-4\tilde\nu^2-4\ii\tilde\nu^3)\mathcal Z_t^2
+ \nonumber\\
+ &\hspace{18mm}
+ +\frac{8(1+\tilde\nu^2)(5+2\ii\tilde\nu)^2}{2+\ii\tilde\nu}\mathcal Z_t
+ +\frac{12(1+\ii\tilde\nu)^2(5+2\ii\tilde\nu)^3}{(2+\ii\tilde\nu)^2}
+ \Bigg],\nonumber\\
+ A_{2,t}={}&2(1+\ii\tilde\nu)^2(1+2\ii\tilde\nu)\mathcal N_t\mathcal Z_t^2,
+ \qquad A_{3,t}=-3A_{2,t},\nonumber\\
+ B_t={}&(1+\ii\tilde\nu)(1+2\ii\tilde\nu)(3+2\ii\tilde\nu)
+ \mathcal N_t\mathcal Z_t^2,\nonumber\\
+ D_t={}&-2(1+\ii\tilde\nu)(2+\ii\tilde\nu)(3+2\ii\tilde\nu)
+ \mathcal N_t\mathcal Z_t^2.
+ \label{eq:top-angular-explicit-finite}
+\end{align}
+Thus all five functions depend on the single hypergeometric function
+$\mathcal F_t$, together with Gamma and elementary functions.
 
 \begin{thebibliography}{9}
 \bibitem{aoki} S.~Aoki, Z.~Qin, M.~Yamaguchi and Y.~Zhu,
