@@ -1,8 +1,4 @@
 % SMS in CHC -- manuscript draft.
-% Typography and notation: Gauge Boson Signal.tex.
-% Front-matter structure: Qin and Xianyu (2023), Closed-Form Formulae
-% for Inflation Correlators (local PDF in ref/).
-% Sections 2.1--2.4 and the associated integral appendices are populated.
 % Build: latexmk -pdf -interaction=nonstopmode -halt-on-error "SMS in CHC.tex"
 
 \documentclass[a4paper,12pt]{article}
@@ -169,8 +165,8 @@
 \setcounter{tocdepth}{2}
 
 \title{\Large\textbf{Standard Model Signal in Cosmological Higgs Collider}\\[2mm]}
-\author{}
-\date{}
+\author{JD}
+\date{\today}
 
 \newcommand{\NL}{\mathrm{NonL}}
 \newcommand{\one}{\mathbf1_2}
@@ -181,23 +177,176 @@
 
 \maketitle
 
-% \vspace{20mm}
-% \begin{abstract}
-% % Abstract intentionally left blank.
-% \vspace{10mm}
-% \end{abstract}
+\vspace{20mm}
+\begin{abstract}
 
-% \clearpage
+    In this article, we ...
+    
+\vspace{10mm}
+\end{abstract}
+
+\clearpage
 \tableofcontents
 
 \clearpage
-% \section{Introduction}
-% \label{sec:introduction}
-% Intentionally left blank.
+\section{Introduction}
+\label{sec:introduction}
+
+\section{Overview of Cosmological Higgs Collider}
+\label{sec:chc-overview}
+We firstly give a brief introduction to cosmological Higgs collider.
+Reader can find more detail in CITE.
+
+The cosmological Higgs collider is based on Higgs modulated reheating.
+We still have a usual single-field slow-roll inflation in this senario.
+During inflation, the Higgs acts as a light spectator field and develops fluctuations around its background value,
+\begin{equation}
+    h(t,\mb x)=h_0(t)+\delta h(t,\mb x).
+    \label{eq:overview-higgs-split}
+\end{equation}
+After inflation, the inflaton decays and transfers its energy to radiation.
+Its decay rate can depend on the Higgs background through the masses of the decay products or through Higgs dependent interactions. 
+The Higgs fluctuations then change the decay rate in different regions. 
+These regions reheat at different times and undergo different amounts of expansion.
+In this way, the Higgs fluctuations contribute to the primordial curvature perturbation. 
+
+The conversion can be described by the local number of e-folds $N$.
+Let $h$ denote the Higgs value at a equal time slice when inflation ended. 
+The Higgs contribution to the curvature perturbation is
+\begin{equation}
+    \zeta_h=N_h\delta h
+    +\frac12N_{hh}\left(\delta h^2-\langle\delta h^2\rangle\right)
+    +\cdots,
+    \label{eq:overview-delta-n}
+\end{equation}
+where $N_h=\partial N/\partial h$ and $N_{hh}=\partial^2N/\partial h^2$. 
+These coefficients depend on the detailed dynamic of post-inflation and reheating.
+At linear order in this conversion, the connected Higgs correlators give
+\begin{equation}
+    \left\langle\zeta_{\mb k_1}\cdots\zeta_{\mb k_n}\right\rangle_c'
+    \supset N_h^n
+    \left\langle\delta h_{\mb k_1}\cdots
+    \delta h_{\mb k_n}\right\rangle_c'.
+    \label{eq:overview-correlator-transfer}
+\end{equation}
+Thus, interactions with external Higgs modes during inflation can leave unique signals in primordial perturbations. 
+This gives us a direct motivation to compute the inflationary Higgs correlators.
+
+We next summarize the Higgs dynamics during inflation. 
+Given that inflation Hubble $H$ is much larger then the electroweak scale, the Higgs potential is dominated by $V(h)\simeq\lambda h^4/4$.
+In this article, we do not care about the Higgs stability and just assume it is satisfied in our scenario.
+We take $\lambda$ to be positive and small at the inflation scale.
+As Higgs modes leave the horizon, their fluctuations accumulate and the quartic interaction limits their growth. 
+The resulting variance and dynamical mass are
+\begin{equation}
+    \langle h^2\rangle\sim\frac{H^2}{\sqrt\lambda},\qquad
+    m_H^2\simeq\sqrt{\frac{6\lambda}{\pi^3}}\,H^2,
+    \label{eq:overview-higgs-mass}
+\end{equation}
+where the mass estimate follows from the Euclidean de Sitter zero-mode approximation. 
+For small $\lambda$, $m_H^2\ll H^2$ and the Higgs fluctuations have a nearly scale-invariant spectrum. 
+We therefore use massless scalar modes for the external Higgs legs at leading order in $m_H^2/H^2$.
+
+Modes with wavelengths larger than the observable patch form an approximately homogeneous background $h_0$. 
+During inflation, its classical equation of motion is
+\begin{equation}
+    \ddot h_0+3H\dot h_0+\lambda h_0^3=0.
+    \label{eq:overview-higgs-eom}
+\end{equation}
+The local potential curvature is $V''(h_0)=3\lambda h_0^2$.
+For the typical background size $h_0^2\sim\langle h^2\rangle$, it satisfies $V''(h_0)/H^2\sim\sqrt\lambda\ll1$.
+So the potential is flat and $h_0$ will have a slow-roll solution, which the force by quartic potential is balanced by the Hubble friction.
+% For nearly constant $H$, this solution satisfies $|\ddot h_0|/(3H|\dot h_0|)\simeq\lambda h_0^2/(3H^2)\ll1$.
+We can therefore neglect the second time derivative and obtain
+\begin{equation}
+    3H\dot h_0\simeq-\lambda h_0^3,\qquad
+    \frac{|\dot h_0|}{H|h_0|}\simeq
+    \frac{\lambda h_0^2}{3H^2}\sim\sqrt\lambda\ll1.
+    \label{eq:overview-higgs-slow-roll}
+\end{equation}
+Thus $h_0$ changes slowly over a Hubble time. Over an interval of $\Delta N$ e-folds with $\lambda h_0^2\Delta N/(3H^2)\ll1$, its fractional change remains small. 
+We treat $h_0$ as constant over this interval at leading order.
+
+The background gives the tree-level masses $m_{W,\mathrm{tree}}=g|h_0|/2$,
+$m_{Z,\mathrm{tree}}=m_{W,\mathrm{tree}}/c_W$, and $m_t=y_t|h_0|/\sqrt2$.
+The infrared part of the Higgs loop also contributes to the $W$ and $Z$ masses,
+\begin{equation}
+    \Delta m_W^2\simeq\frac{3g^2H^4}{8\pi^2m_H^2},\qquad
+    \Delta m_Z^2\simeq\frac{\Delta m_W^2}{c_W^2},
+    \label{eq:overview-vector-mass-corrections}
+\end{equation}
+where $c_W=\cos\theta_W$. 
+These positive corrections are enhanced by $H^2/m_H^2$ and can dominate the vector masses in the light-Higgs regime. 
+
+The Standard Model provides a natural starting point for this calculation.
+Signals generated through additional inflaton interactions depend on the unknown couplings between the inflaton and other particles. 
+Introducing more such interactions adds more free parameters to the signal. 
+However, the Higgs already couples to the SM particles through known gauge and Yukawa interactions. 
+Their contributions therefore provide a reference with which to calibrate the cosmological Higgs collider, after we consider the possible RG running of these couplings. 
+The particle interactions determine the Higgs correlator, while the reheating process encodes its imformation into the curvature perturbation.
+We focus on the $W$ and $Z$ bosons and the top quark, which have the largest gauge and Yukawa couplings to the Higgs.
+Their contributions to the Higgs correlators first appear at one loop.
+
+We work in the de Sitter approximation, with constant masses, couplings, and Higgs background, and use the Bunch--Davies state.
+The $W$ and $Z$ interactions contain both $\delta h V_\mu V^\mu$ and $(\delta h)^2 V_\mu V^\mu$, where $V=W,Z$ schematically.
+They generate a three-point bubble with one cubic and one quartic vertex, and a triangle with three cubic vertices.
+The top Yukawa interaction contains $\delta h\bar t t$ but no $(\delta h)^2\bar t t$ vertex, so its one-loop three-point diagram is a triangle.
+For the vector bubbles, the scalar operator $V_\mu V^\mu$ admits a spectral decomposition of its two-point function into scalar propagators.
+Each term gives a tree diagram whose one-Higgs vertex is a mass mixing $\rho_M\delta h S_M$, where $S_M$ is a scalar of spectral mass $M$.
+A linear field redefinition removes this mixing at the order considered, using $\Box\delta h=0$ for the massless external mode.
+The remaining contact and late-time boundary terms carry no massive oscillation.
+This is the same mechanism that removes the Yukawa bubble signal in \cite{aoki_fermionic_2026}.
+Thus the $W$ and $Z$ bubbles give no oscillatory collider signal, while a top bubble is absent for the SM vertices used here.
+
+For the $W$, $Z$, and top triangles, the corresponding constraint follows from the operator product expansion at the late-time boundary.
+In the squeezed limit, the product of the two nearby Higgs insertions can be expanded in conformal primary operators $\mathcal O_A$ and their derivatives.
+Their contribution to the three-point function then contains the two-point function $\langle\mathcal O_A\delta h\rangle$ with the distant Higgs insertion.
+De Sitter isometries act as conformal transformations on this boundary.
+For primary operators, conformal symmetry allows this two-point function at separated points only when $\mathcal O_A$ is a scalar with the same scaling dimension as $\delta h$.
+The heavy-pair operators that would produce mass dependent oscillations have complex dimensions and do not satisfy this condition.
+Their coefficients in the squeezed three-point function therefore vanish.
+The derivative terms also vanish because they differentiate the same zero two-point functions.
+This symmetry argument applies to the complete vector and fermion triangles, including their tensor and spinor contractions.
+It excludes oscillatory collider signals, while allowing nonoscillatory contributions to the Higgs bispectrum.
+The estimates in \cite{lu_cosmological_2020} use a late-time expansion of the soft internal lines throughout the time integrals and replace the hard triangle line by a simple factor.
+At the long-wavelength vertex, however, $q\sim k_L$ and the integration includes $|k_L\tau|\sim1$, where that late-time expansion is invalid.
+These approximations do not retain the full contributions required by the symmetry constraint.
+Four-point functions have conformal cross ratios and can retain the massive oscillations \cite{arkani_hamed_cosmological_2015}.
+
+We therefore compute the connected Higgs four-point function,
+\begin{equation}
+    \left\langle\delta h_{\mb k_1}\delta h_{\mb k_2}
+    \delta h_{\mb k_3}\delta h_{\mb k_4}\right\rangle_c'.
+    \label{eq:overview-four-point}
+\end{equation}
+Specifically, we aim to the leading nonlocal signal in the collapsed $s$ channel,
+\begin{equation}
+    \mb k_s=\mb k_1+\mb k_2=-(\mb k_3+\mb k_4),
+    \qquad k_s\ll k_i.
+    \label{eq:overview-collapsed-channel}
+\end{equation}
+Here the two pairs of external momenta exchange a small momentum $k_s$.
+The nonlocal signal has a nonanalytic dependence on this momentum.
+For massive particles in the oscillatory regime, it contains oscillations
+in the logarithm of
+\begin{equation}
+    \frac{k_s^2}{k_{12}k_{34}},\qquad
+    k_{12}=k_1+k_2,\qquad k_{34}=k_3+k_4.
+    \label{eq:overview-momentum-ratio}
+\end{equation}
+The oscillation frequency carries information about the particle mass
+in units of the inflationary Hubble scale $H$.
+
+In the following sections, we calculate the amplitude of this leading
+nonlocal signal and its dependence on the particle masses and Higgs
+couplings. For the gauge bosons, we use the mass parameter
+$\tilde\nu=\sqrt{m_V^2/H^2-1/4}$ and the couplings $g$ for $W$ and
+$g/c_W$ for $Z$. For the top quark, we use $\tilde\nu=m_t/H$ and
+the Yukawa coupling $y_t$. These results give the SM reference signals
+for calibrating the cosmological Higgs collider.
 
 \section{Gauge Boson Signal}
 \label{sec:gauge-boson}
-% Follow the calculation in Gauge Boson Signal.tex and its companion PDF.
 
 \subsection{Preliminaries}
 \label{sec:gauge-preliminaries}
@@ -588,16 +737,6 @@ The bracket in \eqref{eq:bubble-signal} equals
     \label{eq:bubble-phase}
 \end{equation}
 
-% Thus $|C^{\mathrm{Bub}}|$ and $\arg C^{\mathrm{Bub}}$ determine the amplitude
-% and phase, respectively. Figure~\ref{fig:bubble-coefficient} shows their
-% mass dependence, including the Boltzmann suppression of the amplitude.
-% The $W$ and $Z$ signals are added using their respective
-% $\tilde\nu_W$ and $\tilde\nu_Z$ in \eqref{eq:bubble-signal},
-% with the multiplicity and coupling replacements stated above.
-% The other exchange channels follow by permuting the external labels;
-% \eqref{eq:bubble-signal} describes the leading signal in the
-% $s$-channel collapsed limit.
-
 \begin{figure}[tp]
     \centering
     \includegraphics[width=0.80\textwidth]{figure/CBub.png}
@@ -665,21 +804,6 @@ After summing the soft polarizations, the cut loop takes the form
 This equation defines the dimensionless coefficients
 $\mathcal I^\lambda_{\mathrm{Tri}}(x,\theta)$, with
 $x=-\ii\eta\tilde\nu$. 
-% Rotational symmetry and polarization
-% completeness imply
-% \begin{align}
-%     \mathcal I^L_{\mathrm{Tri}}(x,\theta)
-%     &=\sin^2\theta\,\mathcal I^L_{\mathrm{Tri}}(x,\pi/2)
-%       +\cos^2\theta\,\mathcal I^L_{\mathrm{Tri}}(x,0),
-%       \label{eq:triangle-angular-structure}\\
-%     \mathcal I^+_{\mathrm{Tri}}(x,\theta)
-%     &=\mathcal I^-_{\mathrm{Tri}}(x,\theta)
-%       =\frac12\left[\mathcal I_{\mathrm{Bub}}(x)
-%       -\mathcal I^L_{\mathrm{Tri}}(x,\theta)\right].
-%       \label{eq:triangle-completeness}
-% \end{align}
-% Thus only one longitudinal coefficient is needed in addition to the bubble sum. 
-% Its expression in terms of $\mathcal J_r$ is given in App.~\ref{app:triangle-coefficients}. 
 After simplification, we find that all three
 coefficients equal $\mathcal I_{\mathrm{Bub}}(x)/3$ and the apparent angular
 dependence cancels, as shown in \eqref{eq:triangle-I-closed}.
@@ -906,13 +1030,6 @@ in \eqref{eq:box-channel-groups}
 where $H$ means $+$ component contributions plus $-$ component contributions. 
 Their explicit expressions are
 given in App.~\ref{app:box-coefficients}. 
-% In particular,
-% \eqref{eq:box-C-reduced} shows that all angular dependence is
-% carried by $\mathcal I^{LL}_{\mathrm{Box}}$ and multiplied by
-% $[\mathcal P^{(2),L}_{+}-\mathcal P^{(2),+}_{+}]^2$.
-% The difference between the longitudinal and transverse hard-line
-% time integrals therefore controls the angular dependence of the
-% box signal.
 
 The result contains five angular structures:
 \begin{align}
@@ -1209,13 +1326,6 @@ $1234$ for a fixed color.
 For the collapsed $s$-channel contribution, we retain the original term
 together with those obtained by exchanging $\mb k_1\leftrightarrow\mb k_2$,
 exchanging $\mb k_3\leftrightarrow\mb k_4$, and performing both exchanges.
-% The two single exchanges describe the same additional connection,
-% while the simultaneous exchange describes the original connection
-% traversed in reverse. 
-% Reversing the traversal does not generate new
-% Wick pairings, so this prescription represents each set of pairings
-% twice. 
-% We therefore multiply the four-term sum by $1/2$. 
 
 \begin{figure}[htbp]
 \centering
@@ -1527,9 +1637,6 @@ an additional soft suppression $k_s^2/(k_{12} k_{34})$ from
 
 \clearpage
 
-% \section{Conclusions}
-% \label{sec:conclusions}
-% Intentionally left blank.
 
 \appendix
 \section{Gauge Boson Integrals and Coefficients}
@@ -1780,9 +1887,6 @@ The closed expressions are
     \end{matrix}\middle|1\right].
     \label{eq:triangle-M-same}
 \end{align}
-% Here ${}_3\widetilde F_2(a,b,c;d,e;1)
-% ={}_3F_2(a,b,c;d,e;1)/[\Gamma(d)\Gamma(e)]$ is the regularized
-% hypergeometric function.
 
 Set $p_\epsilon=-5/2+\epsilon+\ii\eta\tilde\nu$.
 The two transverse coefficients are
@@ -1899,8 +2003,6 @@ The coefficients after taking the finite part are therefore
  +\mathcal D_g\right].
  \label{eq:gauge-P2-finite}
 \end{align}
-% These expressions include the longitudinal contact term and retain the
-% parameter derivatives in \eqref{eq:gauge-finite-masters} exactly.
 The negative branch is obtained by complex conjugation.
 
 \subsection{Box Coefficients}
@@ -2056,32 +2158,6 @@ The opposite nonlocal branch follows by complex conjugation.
 
 \subsubsection{Angular Coefficients}
 \label{app:box-angular-projections}
-% The five functions in \eqref{eq:box-angular-expansion} can be
-% read off from \eqref{eq:box-C-reduced}, or equivalently obtained
-% from the following projections:
-% \begin{align}
-%     A_{1,g}(\tilde\nu)
-%     &=\frac12\left[
-%     C^{\mathrm{Box}}(\tilde\nu,\tfrac\pi2,\tfrac\pi2,0)
-%     +C^{\mathrm{Box}}(\tilde\nu,\tfrac\pi2,\tfrac\pi2,\tfrac\pi2)
-%     \right],\\
-%     A_{2,g}(\tilde\nu)
-%     &=C^{\mathrm{Box}}(\tilde\nu,\tfrac\pi2,0,0)-A_{1,g}(\tilde\nu),\\
-%     A_{3,g}(\tilde\nu)
-%     &=C^{\mathrm{Box}}(\tilde\nu,0,0,0)
-%     -A_{1,g}(\tilde\nu)-2A_{2,g}(\tilde\nu),\\
-%     B_g(\tilde\nu)
-%     &=\frac12\left[
-%     C^{\mathrm{Box}}(\tilde\nu,\tfrac\pi4,\tfrac\pi4,0)
-%     -C^{\mathrm{Box}}(\tilde\nu,\tfrac\pi4,\tfrac\pi4,\pi)
-%     \right],\\
-%     D_g(\tilde\nu)
-%     &=\frac12\left[
-%     C^{\mathrm{Box}}(\tilde\nu,\tfrac\pi2,\tfrac\pi2,0)
-%     -C^{\mathrm{Box}}(\tilde\nu,\tfrac\pi2,\tfrac\pi2,\tfrac\pi2)
-%     \right].
-%     \label{eq:box-angular-projections}
-% \end{align}
 
 Now we give the explicit expressions for these angular coefficients.
 Define
@@ -2140,17 +2216,6 @@ $\sigma_p=\bm\sigma\cdot\widehat{\mb p}$, the nonlocal line in
  \label{eq:dirac-endpoint-factorization}
 \end{align}
 
-% The unexpanded endpoint functions are
-% \begin{align}
-%  L_\eta(\mb p,\tau)=U_\eta(\mb p,\tau)
-%  ={}&{}_0F_1\!\left(;\tfrac12+\ii\eta\tn;
-%                          -\frac{p^2\tau^2}{4}\right)\mathbf1_4
-%  \nonumber\\
-%  &+\frac{\ii\eta p\tau}{1+2\ii\eta\tn}
-%  {}_0F_1\!\left(;\tfrac32+\ii\eta\tn;
-%                          -\frac{p^2\tau^2}{4}\right)\gamma_p.
-%  \label{eq:dirac-exact-endpoints}
-% \end{align}
 
 The hard matrices used in \eqref{eq:dirac-cut-trace} and
 \eqref{eq:dirac-four-orderings} are
@@ -2194,22 +2259,6 @@ With $X=-p\tau_1$, $Y=-p\tau_2$, the auxiliary functions $F$ are:
 
 We write $F_j=F_{j,+}$. 
 At zeroth order, the contributions from different ordering diagrams conceil.
-% Since
-% $F_{0,\eta;\aa\bb}(p;\tau_1,\tau_2)
-% =F_{0,\eta;\bb\aa}(p;\tau_2,\tau_1)$, reversing the hard momentum
-% changes the sign of $\Lambda_{-\eta}D\Lambda_\eta$, proving
-% \eqref{eq:dirac-cancellation}. The projections needed through first
-% order are
-% \begin{align}
-%  \Lambda_{-\eta}D_{\aa\bb}\Lambda_\eta
-%  &=\tfrac12F_{0,\eta;\aa\bb}\Lambda_{-\eta}\gamma_{\mb n}\Lambda_\eta,
-%  \nonumber\\
-%  \Lambda_\eta D_{\aa\bb}\Lambda_\eta
-%  &=-\tfrac\eta2 F_{1,\eta;\aa\bb}\Lambda_\eta,\qquad
-%  \Lambda_{-\eta}D_{\aa\bb}\Lambda_{-\eta}
-%  =-\tfrac\eta2F_{1,\eta;\bb\aa}(p;\tau_2,\tau_1)\Lambda_{-\eta}.
-%  \label{eq:dirac-hard-projections}
-% \end{align}
 And the hard-line correction in $V_{12,\eta}$ at the first order is
 \begin{align}
  \left.\Lambda_{-\eta}V_{12,\eta}^{(1)}\Lambda_\eta\right|_{\mathrm{hard}}
@@ -2242,42 +2291,9 @@ $\mb q+\mb K=2\bm\ell$, gives \eqref{eq:dirac-first-order}, where
  \label{eq:dirac-Pi}
 \end{align}
 
-% The momentum derivative is at fixed times, and
-% $\Pi_{i;\aa\bb}\equiv\Pi_{i,+;\aa\bb}$.
-% For real $\tn$, $F_{0,-;\aa\bb}=F_{0,+;-\aa,-\bb}^*$ and
-% $F_{1,-;\aa\bb}=-F_{1,+;-\aa,-\bb}^*$, implying
-% $\mathcal P_{t,i,-}=\mathcal P_{t,i,+}^*$.
 
-% The loop moments generated by the scalar trace
-% \eqref{eq:dirac-scalar-trace} reduce to the scalar convolution
-% \begin{align}
-%  \int\frac{\di^3\mb q}{(2\pi)^3}
-%  \frac1{(q^2)^\alpha(K^2)^\beta}
-%  &=\frac{k_s^{3-2\alpha-2\beta}}{(4\pi)^{3/2}}f_0(\alpha,\beta),
-%  \nonumber\\
-%  f_0(\alpha,\beta)
-%  &=\frac{\Gamma(\alpha+\beta-3/2)
-%  \Gamma(3/2-\alpha)\Gamma(3/2-\beta)}
-%  {\Gamma(3-\alpha-\beta)\Gamma(\alpha)\Gamma(\beta)}.
-%  \label{eq:dirac-f0}
-% \end{align}
 
-% With $z=\widehat{\mb q}\cdot\widehat{\mb k}_s$ and
-% $x=-\ii\eta\tn$, define
-% \begin{align}
-%  &\int\frac{\di^3\mb q}{(2\pi)^3}
-%  q^{m-2x}K^{-n-2x}z^r
-%  =\frac{k_s^{3+m-n-4x}}{(4\pi)^{3/2}}\mathcal J_r(m,n;x),
-%  \nonumber\\
-%  &\mathcal J_r(m,n;x)=\frac1{2^r}
-%  \sum_{u+v+w=r}\frac{r!}{u!v!w!}(-1)^{v+w}
-%  f_0\!\left(x-\frac m2+\frac r2-v,x+\frac n2-u\right).
-%  \label{eq:dirac-Jr-definition}
-% \end{align}
 
-% The sum runs over nonnegative integers and follows from
-% $z=(K^2-q^2-k_s^2)/(2qk_s)$. The convolutions are defined by
-% analytic continuation, retaining the nonanalytic term.
 
 For the loop coefficients defined in \eqref{eq:dirac-loop-definition},
 set $x=-\ii\tn$.
