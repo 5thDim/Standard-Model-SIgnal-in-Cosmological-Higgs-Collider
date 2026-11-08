@@ -192,12 +192,19 @@
 \section{Introduction}
 \label{sec:introduction}
 
+\paragraph{Notations and conventions}
+We work with the inflation patch of the dS spacetime with coordinates $x^\mu=(\tau,\bm x)$ and metric $\di s^2=(-\di\tau^2+\di\bm x^2)/\tau^2$, where $\tau\in(-\infty,0)$ and $\bm x\in\mathbb{R}^3$. 
+We denote a three-momentum by $\bm k$ and its magnitude by $k\equiv|\bm k|$.
+We also use the condensed subscripts to denote summations, such as $k_{12}\equiv k_1+k_2$, $p_{12}=p_1+p_2$, etc. 
+Our conventions for Euler $\Gamma$ products, the Pochhammer symbol, and hypergeometric functions are collected in App.~\ref{app:useful-functions}.
+A prime on a momentum-space correlator, such as $\langle\zeta_{\bm k_1}\cdots\zeta_{\bm k_n}\rangle'$, indicates that the overall factor $(2\pi)^3\delta^{(3)}(\sum_{i=1}^n\bm k_i)$ has been removed.
+
 \section{Overview of Cosmological Higgs Collider}
 \label{sec:chc-overview}
-We firstly give a brief introduction to cosmological Higgs collider.
-Reader can find more detail in CITE.
+We begin with a brief introduction to the cosmological Higgs collider.
+Further details can be found in \cite{lu_cosmological_2020}.
 
-The cosmological Higgs collider is based on Higgs modulated reheating.
+The cosmological Higgs collider is based on Higgs-modulated reheating.
 We still have a usual single-field slow-roll inflation in this senario.
 During inflation, the Higgs acts as a light spectator field and develops fluctuations around its background value,
 \begin{equation}
@@ -205,7 +212,7 @@ During inflation, the Higgs acts as a light spectator field and develops fluctua
     \label{eq:overview-higgs-split}
 \end{equation}
 After inflation, the inflaton decays and transfers its energy to radiation.
-Its decay rate can depend on the Higgs background through the masses of the decay products or through Higgs dependent interactions. 
+Its decay rate can depend on the Higgs background through the masses of the decay products or through Higgs-dependent interactions. 
 The Higgs fluctuations then change the decay rate in different regions. 
 These regions reheat at different times and undergo different amounts of expansion.
 In this way, the Higgs fluctuations contribute to the primordial curvature perturbation. 
@@ -220,7 +227,7 @@ The Higgs contribution to the curvature perturbation is
     \label{eq:overview-delta-n}
 \end{equation}
 where $N_h=\partial N/\partial h$ and $N_{hh}=\partial^2N/\partial h^2$. 
-These coefficients depend on the detailed dynamic of post-inflation and reheating.
+These coefficients depend on the detailed dynamics of post-inflationary evolution and reheating.
 At linear order in this conversion, the connected Higgs correlators give
 \begin{equation}
     \left\langle\zeta_{\mb k_1}\cdots\zeta_{\mb k_n}\right\rangle_c'
@@ -229,12 +236,12 @@ At linear order in this conversion, the connected Higgs correlators give
     \delta h_{\mb k_n}\right\rangle_c'.
     \label{eq:overview-correlator-transfer}
 \end{equation}
-Thus, interactions with external Higgs modes during inflation can leave unique signals in primordial perturbations. 
+Thus, interactions with external Higgs modes during inflation can leave characteristic signatures in primordial perturbations. 
 This gives us a direct motivation to compute the inflationary Higgs correlators.
 
 We next summarize the Higgs dynamics during inflation. 
-Given that inflation Hubble $H$ is much larger then the electroweak scale, the Higgs potential is dominated by $V(h)\simeq\lambda h^4/4$.
-In this article, we do not care about the Higgs stability and just assume it is satisfied in our scenario.
+Given that the inflationary Hubble scale $H$ is much larger than the electroweak scale, the Higgs potential is dominated by $V(h)\simeq\lambda h^4/4$.
+We assume that the Higgs potential remains stable over the relevant field range.
 We take $\lambda$ to be positive and small at the inflation scale.
 As Higgs modes leave the horizon, their fluctuations accumulate and the quartic interaction limits their growth. 
 The resulting variance and dynamical mass are
@@ -255,7 +262,7 @@ During inflation, its classical equation of motion is
 \end{equation}
 The local potential curvature is $V''(h_0)=3\lambda h_0^2$.
 For the typical background size $h_0^2\sim\langle h^2\rangle$, it satisfies $V''(h_0)/H^2\sim\sqrt\lambda\ll1$.
-So the potential is flat and $h_0$ will have a slow-roll solution, which the force by quartic potential is balanced by the Hubble friction.
+The background therefore admits a slow-roll solution in which the force from the quartic potential is balanced by Hubble friction.
 % For nearly constant $H$, this solution satisfies $|\ddot h_0|/(3H|\dot h_0|)\simeq\lambda h_0^2/(3H^2)\ll1$.
 We can therefore neglect the second time derivative and obtain
 \begin{equation}
@@ -282,35 +289,65 @@ The Standard Model provides a natural starting point for this calculation.
 Signals generated through additional inflaton interactions depend on the unknown couplings between the inflaton and other particles. 
 Introducing more such interactions adds more free parameters to the signal. 
 However, the Higgs already couples to the SM particles through known gauge and Yukawa interactions. 
-Their contributions therefore provide a reference with which to calibrate the cosmological Higgs collider, after we consider the possible RG running of these couplings. 
-The particle interactions determine the Higgs correlator, while the reheating process encodes its imformation into the curvature perturbation.
+After accounting for the renormalization-group running of these couplings, the SM contributions provide a reference for calibrating the cosmological Higgs collider. 
+Particle interactions determine the Higgs correlators, whose signatures are transferred to the curvature perturbation through reheating.
 We focus on the $W$ and $Z$ bosons and the top quark, which have the largest gauge and Yukawa couplings to the Higgs.
 Their contributions to the Higgs correlators first appear at one loop.
 
+We firstly consider the most simple non-Gaussianity, namely the three-point function $\langle\delta h^3\rangle$ as in \cite{lu_cosmological_2020}.
 We work in the de Sitter approximation, with constant masses, couplings, and Higgs background, and use the Bunch--Davies state.
-The $W$ and $Z$ interactions contain both $\delta h V_\mu V^\mu$ and $(\delta h)^2 V_\mu V^\mu$, where $V=W,Z$ schematically.
+The $W$ and $Z$ interactions contain both $\delta h A_\mu A^\mu$ and $(\delta h)^2 A_\mu A^\mu$, where $A=W,Z$ schematically.
 They generate a three-point bubble with one cubic and one quartic vertex, and a triangle with three cubic vertices.
 The top Yukawa interaction contains $\delta h\bar t t$ but no $(\delta h)^2\bar t t$ vertex, so its one-loop three-point diagram is a triangle.
-For the vector bubbles, the scalar operator $V_\mu V^\mu$ admits a spectral decomposition of its two-point function into scalar propagators.
-Each term gives a tree diagram whose one-Higgs vertex is a mass mixing $\rho_M\delta h S_M$, where $S_M$ is a scalar of spectral mass $M$.
-A linear field redefinition removes this mixing at the order considered, using $\Box\delta h=0$ for the massless external mode.
-The remaining contact and late-time boundary terms carry no massive oscillation.
-This is the same mechanism that removes the Yukawa bubble signal in \cite{aoki_fermionic_2026}.
-Thus the $W$ and $Z$ bubbles give no oscillatory collider signal, while a top bubble is absent for the SM vertices used here.
 
-For the $W$, $Z$, and top triangles, the corresponding constraint follows from the operator product expansion at the late-time boundary.
-In the squeezed limit, the product of the two nearby Higgs insertions can be expanded in conformal primary operators $\mathcal O_A$ and their derivatives.
-Their contribution to the three-point function then contains the two-point function $\langle\mathcal O_A\delta h\rangle$ with the distant Higgs insertion.
-De Sitter isometries act as conformal transformations on this boundary.
-For primary operators, conformal symmetry allows this two-point function at separated points only when $\mathcal O_A$ is a scalar with the same scaling dimension as $\delta h$.
-The heavy-pair operators that would produce mass dependent oscillations have complex dimensions and do not satisfy this condition.
-Their coefficients in the squeezed three-point function therefore vanish.
-The derivative terms also vanish because they differentiate the same zero two-point functions.
-This symmetry argument applies to the complete vector and fermion triangles, including their tensor and spinor contractions.
-It excludes oscillatory collider signals, while allowing nonoscillatory contributions to the Higgs bispectrum.
-The estimates in \cite{lu_cosmological_2020} use a late-time expansion of the soft internal lines throughout the time integrals and replace the hard triangle line by a simple factor.
-At the long-wavelength vertex, however, $q\sim k_L$ and the integration includes $|k_L\tau|\sim1$, where that late-time expansion is invalid.
-These approximations do not retain the full contributions required by the symmetry constraint.
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figure/3pt spectrum decomposition.pdf}
+    \caption{Spectral decomposition of the vector bubble contributing to the Higgs three-point function.
+    Black solid lines denote Higgs modes, blue wavy lines denote vector propagators, and the blue straight line denotes a scalar propagator of spectral mass $m_\sigma$.}
+    \label{fig:overview-bubble-spectral}
+\end{figure}
+\FloatBarrier
+
+For the vector bubbles, the scalar operator $A_\mu A^\mu$ admits a spectral decomposition of its two-point function into scalar propagators, as illustrated in Fig.~\ref{fig:overview-bubble-spectral}.
+Each term gives a tree diagram whose one-Higgs vertex is a mass mixing $g\,\delta h\,\sigma$, where $\sigma$ is a scalar of spectral mass $m_\sigma$.
+Here $g$ denotes the mixing coefficient.
+A linear field redefinition removes this mixing at the order considered, using $\Box\delta h=0$ for the massless external mode, as illustrated in Fig.~\ref{fig:overview-bubble-redefinition}.
+The remaining contact and late-time boundary terms carry no oscillation signal.
+This is the same mechanism that removes the Yukawa bubble signal in \cite{aoki_fermionic_2026}.
+Thus the $W$ and $Z$ bubbles give no cosmological colliser signal.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{figure/3pt redefination.pdf}
+    \caption{Field-redefinition identity for a scalar-exchange contribution in Fig.~\ref{fig:overview-bubble-spectral}.
+    The mixing diagram reduces to a local three-Higgs contact term minus a term with a massive scalar on the late-time external leg.
+    The latter vanishes at the future boundary, while the contact term carries no oscilation signal.}
+    \label{fig:overview-bubble-redefinition}
+\end{figure}
+\FloatBarrier
+
+For the $W$, $Z$, and top triangles, the absence of an oscillatory signal follows from de Sitter symmetry.
+De Sitter isometries act as conformal transformations at the future boundary.
+We first keep a small positive Higgs mass, for which the late-time Higgs mode has a real scaling dimension.
+In the squeezed limit, the product of the two nearby Higgs insertions can be expanded in conformal primary operators and their derivatives.
+Each contribution contains the two-point function of the exchanged operator with the remaining Higgs insertion.
+At separated points, conformal symmetry allows this two-point function only for a scalar primary with the same scaling dimension as the Higgs.
+The heavy-pair components responsible for mass-dependent oscillations have complex dimensions, so their overlap with the Higgs vanishes.
+Their descendants also give zero, since they differentiate the same vanishing two-point function.
+
+The massless approximation used here requires a separate treatment of late-time terms, since interactions can generate logarithmic evolution outside the horizon \cite{creminelli_conformal_2012}.
+In the complete Schwinger--Keldysh sum, the latest vertex contains a retarded Higgs propagator.
+At fixed loop momentum, this factor suppresses the oscillatory future-boundary terms, which vanish in the late-time limit.
+The surviving contributions from loop momenta that grow with the scale factor are described by local effective interactions.
+They can generate late-time logarithms, but these affect only nonoscillatory shapes.
+Thus the massless approximation preserves the symmetry constraint on the oscillatory part of the bispectrum.
+
+This constraint applies separately to each complete triangle, including all time orderings and vector or spinor contractions.
+Each cubic interaction is de Sitter invariant, so the contribution with three such vertices obeys the constraint independently of the quartic interaction.
+Nonoscillatory contributions to the bispectrum are still allowed.
+The estimates in \cite{lu_cosmological_2020} expand the soft internal lines at late times throughout the time integrals and replace the hard triangle line by a simple factor.
+At the long-wavelength vertex, however, $q\sim k_L$ and the integration includes $|k_L\tau|\sim1$, where this expansion is invalid and can miss the contributions required for the cancellation.
 Four-point functions have conformal cross ratios and can retain the massive oscillations \cite{arkani_hamed_cosmological_2015}.
 
 We therefore compute the connected Higgs four-point function,
@@ -326,24 +363,16 @@ Specifically, we aim to the leading nonlocal signal in the collapsed $s$ channel
     \label{eq:overview-collapsed-channel}
 \end{equation}
 Here the two pairs of external momenta exchange a small momentum $k_s$.
+In particular, the leading nonlocal signal can be obtained by one loop factorization theorem in \cite{qin_inflation_2023}.
 The nonlocal signal has a nonanalytic dependence on this momentum.
-For massive particles in the oscillatory regime, it contains oscillations
-in the logarithm of
-\begin{equation}
-    \frac{k_s^2}{k_{12}k_{34}},\qquad
-    k_{12}=k_1+k_2,\qquad k_{34}=k_3+k_4.
-    \label{eq:overview-momentum-ratio}
-\end{equation}
-The oscillation frequency carries information about the particle mass
-in units of the inflationary Hubble scale $H$.
+For massive particles in the oscillatory regime, it contains oscillations in the logarithm of $\frac{k_s^2}{k_{12}k_{34}}$.
+The oscillation frequency carries information about the particle mass in units of the inflationary Hubble scale $H$.
+And the angular dependence of the signal carries information about the particle spin.
 
-In the following sections, we calculate the amplitude of this leading
-nonlocal signal and its dependence on the particle masses and Higgs
-couplings. For the gauge bosons, we use the mass parameter
-$\tilde\nu=\sqrt{m_V^2/H^2-1/4}$ and the couplings $g$ for $W$ and
-$g/c_W$ for $Z$. For the top quark, we use $\tilde\nu=m_t/H$ and
-the Yukawa coupling $y_t$. These results give the SM reference signals
-for calibrating the cosmological Higgs collider.
+In the following sections, we calculate the amplitude of this leading nonlocal signal and its dependence on the particle masses and Higgs couplings. 
+For the gauge bosons, we use the mass parameter $\tilde\nu=\sqrt{m_V^2/H^2-1/4}$ and the couplings $g$ for $W$ and $g/c_W$ for $Z$. 
+For the top quark, we use $\tilde\nu=m_t/H$ and the Yukawa coupling $y_t$. 
+These results give the SM reference signals for calibrating the cosmological Higgs collider.
 
 \section{Gauge Boson Signal}
 \label{sec:gauge-boson}
@@ -1639,6 +1668,76 @@ an additional soft suppression $k_s^2/(k_{12} k_{34})$ from
 
 
 \appendix
+\section{Useful Functions}
+\label{app:useful-functions}
+We summarize the special-function conventions used in this work.\footnote{Adapted, with minor wording changes, from Appendix A of Ref.~\cite{liu_-shell_2026}, distributed under the \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International} license.}
+
+\paragraph{Gamma functions}
+Products and ratios of Euler $\Gamma$ functions are written in the compact forms
+\begin{equation}
+    \Gamma[a_1,a_2,\ldots,a_n]
+    \equiv\Gamma(a_1)\Gamma(a_2)\cdots\Gamma(a_n),
+    \label{eq:useful-gamma-product}
+\end{equation}
+\begin{equation}
+    \Gamma\!\left[\begin{matrix}
+        a_1,a_2,\ldots,a_n\\
+        b_1,b_2,\ldots,b_m
+    \end{matrix}\right]
+    \equiv\frac{\Gamma(a_1)\Gamma(a_2)\cdots\Gamma(a_n)}
+    {\Gamma(b_1)\Gamma(b_2)\cdots\Gamma(b_m)}.
+    \label{eq:useful-gamma-ratio}
+\end{equation}
+The Pochhammer symbol is defined by
+\begin{equation}
+    (a)_n\equiv\frac{\Gamma(a+n)}{\Gamma(a)}.
+    \label{eq:useful-pochhammer}
+\end{equation}
+
+\paragraph{Hypergeometric functions}
+The generalized hypergeometric function is specified by the series
+\begin{equation}
+    {}_p\mathrm{F}_q\!\left[\begin{matrix}
+        a_1,a_2,\ldots,a_p\\
+        b_1,b_2,\ldots,b_q
+    \end{matrix}\middle|z\right]
+    \equiv\sum_{n=0}^{\infty}
+    \frac{(a_1)_n(a_2)_n\cdots(a_p)_n}
+    {(b_1)_n(b_2)_n\cdots(b_q)_n}\frac{z^n}{n!},
+    \label{eq:useful-hypergeometric}
+\end{equation}
+within its region of convergence, and by analytic continuation elsewhere.
+The regularized hypergeometric function is denoted by
+\begin{equation}
+    {}_p\widetilde{\mathrm{F}}_q\!\left[\begin{matrix}
+        a_1,a_2,\ldots,a_p\\
+        b_1,b_2,\ldots,b_q
+    \end{matrix}\middle|z\right]
+    \equiv\frac{1}{\Gamma(b_1)\Gamma(b_2)\cdots\Gamma(b_q)}
+    {}_p\mathrm{F}_q\!\left[\begin{matrix}
+        a_1,a_2,\ldots,a_p\\
+        b_1,b_2,\ldots,b_q
+    \end{matrix}\middle|z\right].
+    \label{eq:useful-regularized-hypergeometric}
+\end{equation}
+Differentiation of ${}_p\widetilde{\mathrm{F}}_q$ with respect to a lower parameter $b_j$ is understood to follow the Leibniz rule, acting on the $b_j$ dependence of both the reciprocal Gamma prefactor and the ordinary hypergeometric function ${}_p\mathrm{F}_q$.
+We also use the dressed hypergeometric function
+\begin{equation}
+    {}_p\mathcal{F}_q\!\left[\begin{matrix}
+        a_1,a_2,\ldots,a_p\\
+        b_1,b_2,\ldots,b_q
+    \end{matrix}\middle|z\right]
+    \equiv\Gamma\!\left[\begin{matrix}
+        a_1,a_2,\ldots,a_p\\
+        b_1,b_2,\ldots,b_q
+    \end{matrix}\right]
+    {}_p\mathrm{F}_q\!\left[\begin{matrix}
+        a_1,a_2,\ldots,a_p\\
+        b_1,b_2,\ldots,b_q
+    \end{matrix}\middle|z\right].
+    \label{eq:useful-dressed-hypergeometric}
+\end{equation}
+
 \section{Gauge Boson Integrals and Coefficients}
 \label{app:gauge}
 \subsection{Loop Integral Formulae}
