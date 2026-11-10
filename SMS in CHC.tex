@@ -294,61 +294,93 @@ Particle interactions determine the Higgs correlators, whose signatures are tran
 We focus on the $W$ and $Z$ bosons and the top quark, which have the largest gauge and Yukawa couplings to the Higgs.
 Their contributions to the Higgs correlators first appear at one loop.
 
-We firstly consider the most simple non-Gaussianity, namely the three-point function $\langle\delta h^3\rangle$ as in \cite{lu_cosmological_2020}.
-We work in the de Sitter approximation, with constant masses, couplings, and Higgs background, and use the Bunch--Davies state.
+We first consider the simplest non-Gaussianity, namely the three-point function $\langle\delta h^3\rangle$ following the setup of \cite{lu_cosmological_2020}.
+We work in the de Sitter approximation, with constant masses, couplings, and Higgs background.
 The $W$ and $Z$ interactions contain both $\delta h A_\mu A^\mu$ and $(\delta h)^2 A_\mu A^\mu$, where $A=W,Z$ schematically.
-They generate a three-point bubble with one cubic and one quartic vertex, and a triangle with three cubic vertices.
-The top Yukawa interaction contains $\delta h\bar t t$ but no $(\delta h)^2\bar t t$ vertex, so its one-loop three-point diagram is a triangle.
+The top Yukawa interaction contains the $\delta h\bar t t$ vertex.
+These interactions preserve all the de Sitter isometries.
+For the three-point function, the momentum dependence of the full shape is completely fixed by the dimensions and spins of the operators at the future boundary, when all dS isometries are preserved.
+In our case, there are three light Higgs modes at the future boundary, so no signal will appear in the squeezed limit. 
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.95\textwidth]{figure/3pt spectrum decomposition.pdf}
-    \caption{Spectral decomposition of the vector bubble contributing to the Higgs three-point function.
-    Black solid lines denote Higgs modes, blue wavy lines denote vector propagators, and the blue straight line denotes a scalar propagator of spectral mass $m_\sigma$.}
-    \label{fig:overview-bubble-spectral}
-\end{figure}
-\FloatBarrier
+% \begin{figure}[!htbp]
+%     \centering
+%     \includegraphics[width=0.95\textwidth]{figure/3pt spectrum decomposition.pdf}
+%     \caption{Spectral decomposition of the vector bubble contributing to the Higgs three-point function.
+%     Black solid lines denote Higgs modes, blue wavy lines denote vector propagators, and the blue straight line denotes a scalar propagator of spectral mass $m_\sigma$.}
+%     \label{fig:overview-bubble-spectral}
+% \end{figure}
+% \FloatBarrier
 
-For the vector bubbles, the scalar operator $A_\mu A^\mu$ admits a spectral decomposition of its two-point function into scalar propagators, as illustrated in Fig.~\ref{fig:overview-bubble-spectral}.
-Each term gives a tree diagram whose one-Higgs vertex is a mass mixing $g\,\delta h\,\sigma$, where $\sigma$ is a scalar of spectral mass $m_\sigma$.
-Here $g$ denotes the mixing coefficient.
-A linear field redefinition removes this mixing at the order considered, using $\Box\delta h=0$ for the massless external mode, as illustrated in Fig.~\ref{fig:overview-bubble-redefinition}.
-The remaining contact and late-time boundary terms carry no oscillation signal.
-This is the same mechanism that removes the Yukawa bubble signal in \cite{aoki_fermionic_2026}.
-Thus the $W$ and $Z$ bubbles give no cosmological colliser signal.
+% For the vector bubbles, the scalar operator $A_\mu A^\mu$ admits a spectral decomposition of its two-point function into scalar propagators, as illustrated in Fig.~\ref{fig:overview-bubble-spectral}.
+% Each term gives a tree diagram whose one-Higgs vertex is a mass mixing $g\,\delta h\,\sigma$, where $\sigma$ is a scalar of spectral mass $m_\sigma$.
+% Here $g$ denotes the mixing coefficient.
+% A linear field redefinition removes this mixing at the order considered, using $\Box\delta h=0$ for the massless external mode, as illustrated in Fig.~\ref{fig:overview-bubble-redefinition}.
+% The remaining contact and late-time boundary terms carry no oscillation signal.
+% This is the same mechanism that removes the Yukawa bubble signal in \cite{aoki_fermionic_2026}.
+% Thus the $W$ and $Z$ bubbles give no cosmological colliser signal.
 
-\begin{figure}[!htbp]
-    \centering
-    \includegraphics[width=0.95\textwidth]{figure/3pt redefination.pdf}
-    \caption{Field-redefinition identity for a scalar-exchange contribution in Fig.~\ref{fig:overview-bubble-spectral}.
-    The mixing diagram reduces to a local three-Higgs contact term minus a term with a massive scalar on the late-time external leg.
-    The latter vanishes at the future boundary, while the contact term carries no oscilation signal.}
-    \label{fig:overview-bubble-redefinition}
-\end{figure}
-\FloatBarrier
+% \begin{figure}[!htbp]
+%     \centering
+%     \includegraphics[width=0.95\textwidth]{figure/3pt redefination.pdf}
+%     \caption{Field-redefinition identity for a scalar-exchange contribution in Fig.~\ref{fig:overview-bubble-spectral}.
+%     The mixing diagram reduces to a local three-Higgs contact term minus a term with a massive scalar on the late-time external leg.
+%     The latter vanishes at the future boundary, while the contact term carries no oscilation signal.}
+%     \label{fig:overview-bubble-redefinition}
+% \end{figure}
+% \FloatBarrier
 
-For the $W$, $Z$, and top triangles, the absence of an oscillatory signal follows from de Sitter symmetry.
-De Sitter isometries act as conformal transformations at the future boundary.
-We first keep a small positive Higgs mass, for which the late-time Higgs mode has a real scaling dimension.
-In the squeezed limit, the product of the two nearby Higgs insertions can be expanded in conformal primary operators and their derivatives.
-Each contribution contains the two-point function of the exchanged operator with the remaining Higgs insertion.
-At separated points, conformal symmetry allows this two-point function only for a scalar primary with the same scaling dimension as the Higgs.
-The heavy-pair components responsible for mass-dependent oscillations have complex dimensions, so their overlap with the Higgs vanishes.
-Their descendants also give zero, since they differentiate the same vanishing two-point function.
+% For the $W$, $Z$, and top triangles, the absence of an oscillatory signal follows from de Sitter symmetry.
+% De Sitter isometries act as conformal transformations at the future boundary.
+% We first keep a small positive Higgs mass and write the late-time mode as $\delta h(\tau,\mb x)\simeq(-H\tau)^{\Delta_h}\widehat h(\mb x)$, where $\Delta_h=3/2 \pm \sqrt{9/4-m_H^2/H^2}$ is real.
+% In the squeezed limit, the two nearby Higgs insertions admit an operator product expansion,
+% \begin{equation}
+%     \langle\widehat h(\mb x_1)\widehat h(\mb x_2)\widehat h(\mb x_3)\rangle
+%     \sim\sum_A\mathcal C_A(\mb x_{12},\partial_2)
+%     \langle\mathcal O_A(\mb x_2)\widehat h(\mb x_3)\rangle,
+%     \label{eq:overview-triangle-ope}
+% \end{equation}
+% where $\mb x_{12}=\mb x_1-\mb x_2$ and $\mathcal C_A$ includes the primary coefficient and its descendants.
+% For a primary of spin $s_A$ and dimension $\Delta_A$, conformal symmetry at separated points requires
+% \begin{equation}
+%     \langle\mathcal O_A(\mb x)\widehat h(\mb0)\rangle\ne0
+%     \quad\Longrightarrow\quad
+%     s_A=0,\qquad\Delta_A=\Delta_h,
+%     \qquad\mb x\ne\mb0.
+%     \label{eq:overview-triangle-selection}
+% \end{equation}
+% To obtain an oscillation signals, the operator $O_A$ that is associated with massive particles must have $\Im\Delta_A\ne0$, so the two point function vanishes.
+% % Their descendants also give zero, since they differentiate the same vanishing two-point function.
+% So such a bispectrum that preserves all dS isometries will have no signal.
+% This constraint applies separately to each complete triangle, including all time orderings and vector or spinor contractions.
+% Each cubic interaction is de Sitter invariant, so the contribution with three such vertices obeys the constraint.
+% Nonoscillatory contributions to the bispectrum are still allowed.
 
-The massless approximation used here requires a separate treatment of late-time terms, since interactions can generate logarithmic evolution outside the horizon \cite{creminelli_conformal_2012}.
-In the complete Schwinger--Keldysh sum, the latest vertex contains a retarded Higgs propagator.
-At fixed loop momentum, this factor suppresses the oscillatory future-boundary terms, which vanish in the late-time limit.
-The surviving contributions from loop momenta that grow with the scale factor are described by local effective interactions.
-They can generate late-time logarithms, but these affect only nonoscillatory shapes.
-Thus the massless approximation preserves the symmetry constraint on the oscillatory part of the bispectrum.
+% The massless approximation used here requires a separate treatment of late-time terms, since interactions can generate logarithmic evolution outside the horizon \cite{creminelli_conformal_2012}.
+% The latest vertex in the complete Schwinger--Keldysh sum contains the retarded Higgs propagator
+% \begin{equation}
+%     R_h(k;0,\tau)\equiv
+%     \ii\langle[\delta h_{\mb k}(0),\delta h_{-\mb k}(\tau)]\rangle'
+%     =-\frac{H^2\tau^3}{3}\bigl[1+\mathcal O(k^2\tau^2)\bigr].
+%     \label{eq:overview-higgs-retarded}
+% \end{equation}
+% Here $|k\tau|\ll1$ and the prime removes the momentum-conserving delta function.
+% At fixed loop momentum, the oscillatory pair factors in the covariant bilinears $g^{\mu\nu}A_\mu A_\nu$ or $\bar t t$, with unrescaled fields, decay at least as $|\tau|^3$.
+% Together with the vertex measure $a^4\propto|\tau|^{-4}$, Eq.~\eqref{eq:overview-higgs-retarded} makes the latest-vertex integrand of order $|\tau|^2$ or smaller.
+% Its future-boundary contribution therefore vanishes as $|\tau_0|^3$, up to logarithms when several vertices approach the boundary at $\tau_0\to0^-$.
+% The surviving contributions from loop momenta that grow with the scale factor are described by local effective interactions.
+% They can generate late-time logarithms, but these affect only nonoscillatory shapes.
+% Thus the massless approximation preserves the symmetry constraint on the oscillatory part of the bispectrum.
 
-This constraint applies separately to each complete triangle, including all time orderings and vector or spinor contractions.
-Each cubic interaction is de Sitter invariant, so the contribution with three such vertices obeys the constraint independently of the quartic interaction.
-Nonoscillatory contributions to the bispectrum are still allowed.
-The estimates in \cite{lu_cosmological_2020} expand the soft internal lines at late times throughout the time integrals and replace the hard triangle line by a simple factor.
-At the long-wavelength vertex, however, $q\sim k_L$ and the integration includes $|k_L\tau|\sim1$, where this expansion is invalid and can miss the contributions required for the cancellation.
-Four-point functions have conformal cross ratios and can retain the massive oscillations \cite{arkani_hamed_cosmological_2015}.
+% The estimates in \cite{lu_cosmological_2020} expand the soft internal lines at late times throughout the time integrals and replace the hard triangle line by a simple factor.
+% For soft internal momentum $q\sim k_L$, the horizon-crossing times of the short and long external modes instead give
+% \begin{equation}
+%     |q\tau_S|\sim\frac{k_L}{k_S}\ll1,
+%     \qquad |q\tau_L|\sim1,
+%     \qquad |\tau_{S,L}|\sim k_{S,L}^{-1}.
+%     \label{eq:overview-triangle-time-scales}
+% \end{equation}
+% Thus the same late-time expansion is not valid at the long-wavelength vertex and can miss the contributions required for the cancellation.
+% Four-point functions have conformal cross ratios and can retain the massive oscillations \cite{arkani_hamed_cosmological_2015}.
 
 We therefore compute the connected Higgs four-point function,
 \begin{equation}
@@ -356,15 +388,16 @@ We therefore compute the connected Higgs four-point function,
     \delta h_{\mb k_3}\delta h_{\mb k_4}\right\rangle_c'.
     \label{eq:overview-four-point}
 \end{equation}
-Specifically, we aim to the leading nonlocal signal in the collapsed $s$ channel,
+Specifically, we focus on the leading nonlocal signal in the collapsed $s$ channel,
 \begin{equation}
     \mb k_s=\mb k_1+\mb k_2=-(\mb k_3+\mb k_4),
     \qquad k_s\ll k_i.
     \label{eq:overview-collapsed-channel}
 \end{equation}
 Here the two pairs of external momenta exchange a small momentum $k_s$.
-In particular, the leading nonlocal signal can be obtained by one loop factorization theorem in \cite{qin_inflation_2023}.
-The nonlocal signal has a nonanalytic dependence on this momentum.
+Given that the gauge bosons and top quark have SM charges, their leading contributions to the trispectrum appear at one loop level.
+The leading nonlocal signal can be obtained by the one-loop factorization theorem in \cite{qin_inflation_2023}.
+The nonlocal signal has a nonanalytic dependence on $k_s$.
 For massive particles in the oscillatory regime, it contains oscillations in the logarithm of $\frac{k_s^2}{k_{12}k_{34}}$.
 The oscillation frequency carries information about the particle mass in units of the inflationary Hubble scale $H$.
 And the angular dependence of the signal carries information about the particle spin.
@@ -372,6 +405,7 @@ And the angular dependence of the signal carries information about the particle 
 In the following sections, we calculate the amplitude of this leading nonlocal signal and its dependence on the particle masses and Higgs couplings. 
 For the gauge bosons, we use the mass parameter $\tilde\nu=\sqrt{m_V^2/H^2-1/4}$ and the couplings $g$ for $W$ and $g/c_W$ for $Z$. 
 For the top quark, we use $\tilde\nu=m_t/H$ and the Yukawa coupling $y_t$. 
+We also analyze the characteristic angular partial-wave structures in the nonlocal signal, which are determined by the spin of the exchanged particle.
 These results give the SM reference signals for calibrating the cosmological Higgs collider.
 
 \section{Gauge Boson Signal}
@@ -379,23 +413,22 @@ These results give the SM reference signals for calibrating the cosmological Hig
 
 \subsection{Preliminaries}
 \label{sec:gauge-preliminaries}
-We will compute the connected four-point function
+We first compute the connected four-point function
 $\langle\delta h_{\mb k_1}\delta h_{\mb k_2}
 \delta h_{\mb k_3}\delta h_{\mb k_4}\rangle'$
 generated by a massive gauge-boson loop. 
-Our interest is the leading nonlocal signal in the collapsed $s$ channel,
+We focus on the leading nonlocal signal in the collapsed $s$ channel. 
+Thus $\mb k_1 \simeq - \mb k_2$ and $\mb k_3 \simeq - \mb k_4$ at leading order. 
+We choose $\mb k_s$ along the $z$ axis and set the azimuth of $\mb k_1$ to zero. 
+Here $\theta_1$ and $\theta_3$ are the polar angles of $\mb k_1$ and $\mb k_3$, respectively, and $\phi_3$ is their relative azimuth.
 \begin{equation}
-    \mb k_s\equiv\mb k_1+\mb k_2=-(\mb k_3+\mb k_4),
-    \qquad k_s\ll k_i,\qquad
-    k_{12}\equiv k_1+k_2,\quad k_{34}\equiv k_3+k_4,
-    \label{eq:collapsed-kinematics}
+    \begin{aligned}
+        \mb k_1 &= k_1(\sin\theta_1,\,0,\,\cos\theta_1), \\
+        \mb k_3 &= k_3(\sin\theta_3\cos\phi_3,\,\sin\theta_3\sin\phi_3,\,\cos\theta_3), \\
+        \mb k_s &= k_s(0,\,0,\,1).
+    \end{aligned}
+    \label{eq:gauge-momenta-cartesian}
 \end{equation}
-where $k_i\equiv|\mb k_i|$. Thus $k_1\simeq k_2$ and
-$k_3\simeq k_4$ at leading order. 
-We choose $\mb k_s$ along the
-$z$ axis and set the azimuth of $\mb k_1$ to zero. Here $\theta_1$ and
-$\theta_3$ are the polar angles of $\mb k_1$ and $\mb k_3$, respectively, and
-$\phi_3$ is their relative azimuth.
 
 The Higgs--gauge couplings follow from the Higgs kinetic term
 \cite{lu_cosmological_2020}:
@@ -409,8 +442,7 @@ where $g$ is the weak gauge coupling, $c_W=\cos\theta_W$, and the
 Lorentz contractions on the right use the flat conformal metric.
 The terms linear and quadratic in $\delta h$ generate the cubic and
 quartic vertices, respectively. 
-They give the bubble, two triangle placements, and box shown in
-Fig.~\ref{fig:gauge-diagrams}.
+They give the bubble, two triangle placements, and box shown in Fig.~\ref{fig:gauge-diagrams}.
 
 \begin{figure}[htbp]
     \centering
@@ -441,30 +473,27 @@ Fig.~\ref{fig:gauge-diagrams}.
     \label{fig:gauge-diagrams}
 \end{figure}
 
-In the light-Higgs regime, the dominant infrared Higgs loop contribution to the vector masses is
-\cite{lu_cosmological_2020}
-\begin{equation}
-    m_W^2\simeq\frac{3g^2H^4}{8\pi^2m_H^2},\qquad
-    m_Z^2\simeq\frac{m_W^2}{c_W^2}.
-    \label{eq:gauge-masses}
-\end{equation}
-Here $m_H$ is the effective Higgs mass. We use a constant vector mass
-$m_V$ and the parameter
-$\tilde\nu\equiv\sqrt{m_V^2/H^2-1/4}>0$ in the following.
-The $W$ and $Z$ contributions are obtained with their respective masses
-and couplings in \eqref{eq:higgs-gauge-couplings}.
+% In the light-Higgs regime, the dominant infrared Higgs loop contribution to the vector masses is
+% \cite{lu_cosmological_2020}
+% \begin{equation}
+%     m_W^2\simeq\frac{3g^2H^4}{8\pi^2m_H^2},\qquad
+%     m_Z^2\simeq\frac{m_W^2}{c_W^2}.
+%     \label{eq:gauge-masses}
+% \end{equation}
+% Here $m_H$ is the effective Higgs mass. 
+We use a constant vector mass $m_V$ and the parameter $\tilde\nu\equiv\sqrt{m_V^2/H^2-1/4}>0$ in the following.
+The $W$ and $Z$ contributions are obtained with their respective masses and couplings in \eqref{eq:higgs-gauge-couplings}.
 
-We use $\lambda,\sigma=L,+,-,T$ for vector polarization-basis labels, and
-$\eta=\pm1$ for the two nonlocal branches.
+We use $\lambda,\sigma=L,+,-,T$ for vector polarization-basis labels, and $\eta=\pm1$ for the two nonlocal branches.
 The SK branch at vertex $v$ is denoted by $\aa_v=\pm1$, with $v=1,2,\ldots$.
-Neglecting the Higgs mass in the external mode functions, 
-the bulk-to-boundary propagator is:
+Neglecting the Higgs mass in the external mode functions, we use the massless bulk-to-boundary propagator
 \begin{equation}
     G_{\aa_v}(k;\tau)=\frac{H^2}{2k^3}
     (1-\ii\aa_v k\tau)e^{\ii\aa_v k\tau}.
     \label{eq:higgs-propagator}
 \end{equation}
-The gauge boson propagator decomposes as
+
+The gauge-boson propagator decomposes as
 \begin{align}
     D_{\aa_1\aa_2,\mu\nu}(\mb k;\tau_1,\tau_2)
     ={}&\sum_{\lambda=T,L,\pm}
@@ -477,19 +506,26 @@ The gauge boson propagator decomposes as
     D^{(LT)}_{\aa_1\aa_2}(k;\tau_1,\tau_2),
     \label{eq:polarization-decomposition}
 \end{align}
-where $\mu,\nu=0,1,2,3$. In the comoving frame, the covariant
-polarization basis is \cite{qin_helical_2023}
-\[
+where $\mu,\nu=0,1,2,3$. 
+In the comoving frame, for $\mb k = k(\sin\theta\cos\phi, \sin\theta\sin\phi,\cos\theta)$, the covariant polarization basis is \cite{qin_helical_2023}
+\begin{align}
+    \begin{gathered}
     e^{(T)}_{\mb k,\mu}=(1,\mb0),\qquad
-    e^{(L)}_{\mb k,\mu}=(0,\widehat{\mb k}),\qquad
+    e^{(L)}_{\mb k,\mu}=(0,\widehat{\mb k}),\\
     e^{(\pm)}_{\mb k,\mu}
-    =\frac1{\sqrt2}(0,\mb e_\theta\pm\ii\mb e_\phi),
-\]
+    =\frac1{\sqrt2}(0,\mb e_\theta\pm\ii\mb e_\phi)
+    =\frac1{\sqrt2}\begin{pmatrix}
+        0\\
+        \cos\theta\cos\phi\mp\ii\sin\phi\\
+        \cos\theta\sin\phi\pm\ii\cos\phi\\
+        -\sin\theta
+    \end{pmatrix},
+    \end{gathered}
+\end{align}
 with $(\widehat{\mb k},\mb e_\theta,\mb e_\phi)$ the orthonormal
 spherical basis. 
 The label $T$ denotes the temporal component of the longitudinal mode.
-At zero chemical potential, all components of the vector propagator can be expressed through an auxiliary scalar
-propagator with the same mass index
+At zero chemical potential, all components of the vector propagator can be expressed through an auxiliary scalar propagator with the same mass index
 \cite{qin_helical_2023,qin_closed-form_2023}:
 \begin{align}
     D^{(\mathrm{s})}_>(k;\tau_1,\tau_2)
@@ -530,11 +566,9 @@ But for $D^{(T)}$, the $++$ and $--$ propagators have a delta-function term beca
     D_{--}^{(T)}&=\theta(\tau_2-\tau_1)D_>^{(T)}
               +\theta(\tau_1-\tau_2)D_<^{(T)} - \frac{\ii \delta(\tau_1-\tau_2)}{H^2(\tn^2+1/4) a(\tau_1)^2}.
 \end{align}
-We will show that the propagators $D^{(T)},D^{(TL)}$ and $D^{(LT)}$ do not contribute to the leading nonlocal signal
-under the one-loop factorization theorem.
+We will show that the propagators $D^{(T)},D^{(TL)}$ and $D^{(LT)}$ do not contribute to the leading nonlocal signal under the one-loop factorization theorem.
 
-The leading nonlocal parts of the spatial propagators are independent
-of the SK indices:
+The leading nonlocal parts of the spatial propagators are independent of the SK indices:
 \begin{align}
     \left[D^{(\pm)}_{\aa_1\aa_2}(k;\tau_1,\tau_2)\right]_{\mathrm{NonL}}
     &=\frac{(\tau_1\tau_2)^{1/2}}{4\pi}
@@ -549,7 +583,7 @@ of the SK indices:
       \left(\frac{k^2\tau_1\tau_2}{4}\right)^{\ii\eta\tilde\nu}.
     \label{eq:longitudinal-nonlocal}
 \end{align}
-The temporal nonlocal part is
+The corresponding nonlocal part of the temporal propagator is
 \begin{equation}
     \left[D^{(T)}_{\aa_1\aa_2}(k;\tau_1,\tau_2)\right]_{\mathrm{NonL}}
     =\frac{k^2(\tau_1\tau_2)^{3/2}}
@@ -559,58 +593,42 @@ The temporal nonlocal part is
     \label{eq:temporal-nonlocal}
 \end{equation}
 
-The one-loop factorization theorem and cutting rule
-\cite{qin_inflation_2023} isolate the leading nonlocal signal in the
-collapsed channel. 
-We first identify the two internal lines,
-whose momenta can be chosen as $\mb q$ and
-$\mb K\equiv\mb q+\mb k_s$. The relevant loop region has
-$q,K\sim k_s\ll k_i$. We replace these two propagators by the
-leading nonlocal terms of their late-time expansions, keeping their
-polarization tensors, and expand the remaining hard propagators
-to leading order in the soft momenta. The hard propagators retain
-their full time dependence and SK ordering.
-The cut propagators are independent of the SK indices, and their
-time dependence separates between the two endpoints. The time
-integrals thus factorize into two tree subgraphs with additional
-time powers supplied by the cut lines. Multiplying these subgraphs
-by the soft momentum integral and summing over polarizations gives
-the nonlocal signal. 
-The branches $\eta=\pm1$ combine into the oscillatory signal
-retained below. Higher terms in the soft expansion give subleading
-corrections in the collapsed limit.
+The one-loop factorization theorem and cutting rule \cite{qin_inflation_2023} isolate the leading nonlocal signal in the collapsed channel. 
+We first identify the two internal lines, whose momenta can be chosen as $\mb q$ and $\mb K\equiv\mb q+\mb k_s$. 
+The relevant loop region has $q,K\sim k_s\ll k_i$. 
+We replace these two propagators by the leading nonlocal terms of their late-time expansions, keeping their polarization tensors, and expand the remaining hard propagators to leading order in the soft momenta. 
+The hard propagators retain their full time dependence and SK ordering.
+The cut propagators are independent of the SK indices, and their time dependence separates between the two endpoints. 
+The time integrals thus factorize into two tree subgraphs with additional time powers supplied by the cut lines. 
+Multiplying these subgraphs by the soft momentum integral and summing over polarizations gives the nonlocal signal. 
+The branches $\eta=\pm1$ combine into the oscillatory signal retained below. 
+Higher terms in the soft expansion give subleading corrections in the collapsed limit.
 
-Now we will show that the propagators $D^{(T)}$, $D^{(TL)}$, and $D^{(LT)}$ do not
-contribute to the leading nonlocal signal. On a soft line, each
-temporal mode function $B^{(T)}$ carries an additional factor of
-$k\tau$ relative to the spatial modes $B^{(L)}$ and $B^{(\pm)}$.
-Their nonanalytic contributions are therefore suppressed in the
-collapsed limit. The contact term in $D^{(T)}$ is analytic in the
-soft momentum and does not contribute to the nonlocal signal.
-On a hard line, a temporal endpoint has a vanishing polarization
-contraction with the spatial components of the attached soft line.
-A nonzero contraction would require a temporal soft component,
-which is already suppressed. We therefore omit propagators with
-temporal components when computing the leading signal below.
+Now we will show that the propagators $D^{(T)}$, $D^{(TL)}$, and $D^{(LT)}$ do not contribute to the leading nonlocal signal. 
+On a soft line, each temporal mode function $B^{(T)}$ carries an additional factor of $k\tau$ relative to the spatial modes $B^{(L)}$ and $B^{(\pm)}$.
+Their nonanalytic contributions are therefore suppressed in the collapsed limit. 
+The contact term in $D^{(T)}$ is analytic in the soft momentum and does not contribute to the nonlocal signal.
+On a hard line, a temporal endpoint has a vanishing polarization contraction with the spatial components of the attached soft line.
+A nonzero contraction would require a temporal soft component, which is already suppressed. 
+We therefore omit propagators with temporal components when computing the leading signal below.
 
-All required soft momentum integrals reduce to five dimensionless
-functions $f_r$, $r=0,1,2,3,4$. With
-$z\equiv\widehat{\mb q}\cdot\widehat{\mb k}_s$, we define
+All required soft momentum integrals reduce to five dimensionless functions $f_r$, $r=0,1,2,3,4$. 
+With $z\equiv\widehat{\mb q}\cdot\widehat{\mb k}_s$, we define
 \begin{equation}
     \left[ \int\frac{\di^3\mb q}{(2\pi)^3}
-    q^{-2\alpha}K^{-2\beta}z^r \right]_{\mathsf{NonL}}
+    q^{-2\alpha}K^{-2\beta}z^r \right]_{\mathrm{Nonanalytic}}
     =\frac{k_s^{3-2\alpha-2\beta}}{(4\pi)^{3/2}}
     f_r(\alpha,\beta),\qquad r=0,1,2,3,4.
     \label{eq:fr-definition}
 \end{equation}
-These expressions are understood by analytic continuation from the
-convergent domain, with only the nonanalytic term retained.
+These expressions are understood by analytic continuation from the convergent domain, with only the nonanalytic term retained.
 The first three functions are
 \begin{align}
     f_0(\alpha,\beta)
-    &=\frac{\Gamma(\alpha+\beta-3/2)
-    \Gamma(3/2-\alpha)\Gamma(3/2-\beta)}
-    {\Gamma(3-\alpha-\beta)\Gamma(\alpha)\Gamma(\beta)},
+    &=\Gamma\!\left[\begin{matrix}
+        \alpha+\beta-\tfrac32,\,\tfrac32-\alpha,\,\tfrac32-\beta\\
+        3-\alpha-\beta,\,\alpha,\,\beta
+    \end{matrix}\right],
     \label{eq:f0}\\
     f_1(\alpha,\beta)
     &=\frac12\left[
@@ -627,11 +645,9 @@ The first three functions are
     +2f_0(\alpha,\beta)\right].
     \label{eq:f2}
 \end{align}
-The functions $f_3$ and $f_4$ are likewise finite sums of $f_0$
-and their explicit expressions are collected in App.~\ref{app:loop-integrals}.
+The functions $f_3$ and $f_4$ are likewise finite sums of $f_0$ and their explicit expressions are collected in App.~\ref{app:loop-integrals}.
 
-For the nonlocal branch $\eta$, it is convenient to set
-$x=-\ii\eta\tilde\nu$ and define
+For the nonlocal branch $\eta$, it is convenient to set $x=-\ii\eta\tilde\nu$ and define
 \begin{equation}
     \mathcal J_r(m,n;x)
     \equiv f_r\left(x-\frac m2,x+\frac n2\right),
@@ -641,9 +657,11 @@ $x=-\ii\eta\tilde\nu$ and define
 Here $m,n$ are integer shifts of momentum powers.
 In particular,
 \begin{equation}
+    \left[
     \int\frac{\di^3\mb q}{(2\pi)^3}
     \left(\frac q2\right)^{-2x}
     \left(\frac K2\right)^{-2x}q^mK^{-n}z^r
+    \right]_{\mathrm{Nonanalytic}}
     =\frac{4^{2x}k_s^{3-4x+m-n}}{(4\pi)^{3/2}}
     \mathcal J_r(m,n;x).
     \label{eq:Jr-normalization}
@@ -668,22 +686,16 @@ With the four external momenta fixed, the $s$-channel contribution is
     \qquad \mb K=\mb q+\mb k_s.
     \label{eq:bubble-sk}
 \end{align}
-The symmetry factor $1/2$ which is associated with exchanging the two identical
-internal lines is included. For the fixed partition $(12)\mid(34)$,
-exchanges within either external Higgs pair leave the graph unchanged.
-There is therefore no additional external-permutation factor in the
-$s$-channel signal. 
-Throughout this section,
-the $W^\pm$ contribution is obtained by multiplying the expressions
-by $2$, and the $Z$ contribution by making the replacement $g\to g/c_W$,
-with the corresponding mass used in each case.
+The symmetry factor $1/2$ which is associated with exchanging the two identical internal lines is included. 
+For the fixed partition $(12)\mid(34)$, exchanges within either external Higgs pair leave the graph unchanged.
+There is therefore no additional external-permutation factor in the $s$-channel signal. 
+Throughout this section, the $W^\pm$ contribution is obtained by multiplying the expressions by $2$, and the $Z$ contribution by making the replacement $g\to g/c_W$, with the corresponding mass used in each case.
 
 Replacing the two soft propagators by
 \eqref{eq:transverse-nonlocal}--\eqref{eq:longitudinal-nonlocal}
 removes their SK-index dependence, as illustrated in
 Fig.~\ref{fig:bubble-cutting}.
-The oscillatory signal comes from the two soft propagators
-with the same branch label $\eta$.
+The oscillatory signal comes from the two soft propagators with the same branch label $\eta$.
 After summing the polarizations, this contribution is
 \begin{align}
     &\left[\int\frac{\di^3\mb q}{(2\pi)^3}
@@ -771,7 +783,7 @@ The bracket in \eqref{eq:bubble-signal} equals
     \includegraphics[width=0.80\textwidth]{figure/CBub.png}
     \caption{The bubble coefficient defined in \eqref{eq:bubble-coefficient}.
     The red and blue curves show $\log|C^{\mathrm{Bub}}|$ and
-    $\arg C^{\mathrm{Bub}}$ in radians, respectively, as functions of
+    $\arg C^{\mathrm{Bub}}$ as functions of
     $\tilde\nu$. }
     \label{fig:bubble-coefficient}
 \end{figure}
@@ -780,8 +792,7 @@ The bracket in \eqref{eq:bubble-signal} equals
 \subsection{Triangle Diagram}
 \label{sec:gauge-triangle}
 The triangle diagram contains two cubic vertices and one quartic vertex.
-We first consider the diagram ``Triangle 1''.
-The triangle has a unit diagram symmetry factor. 
+We first consider the diagram ``Triangle 1'' and the triangle has a unit diagram symmetry factor. 
 In the conventions of Sec.~\ref{sec:gauge-bubble}, its integral expression is
 \begin{align}
     \langle\delta h^4\rangle'_{\mathrm{Tri1}}
@@ -889,7 +900,7 @@ where
     \mathcal P^{(1)}_{+}(\tilde\nu)
     \sum_{\lambda=L,\pm}
     \mathcal P^{(2),\lambda}_{+}(\tilde\nu)
-    \mathcal I^\lambda_{\mathrm{Tri}}(-\ii\tilde\nu,\theta).
+    \mathcal I^\lambda_{\mathrm{Tri}}(-\ii\tilde\nu).
     \label{eq:triangle-coefficient}
 \end{equation}
 Since $\mathcal P^{(2),+}_{\eta}=\mathcal P^{(2),-}_{\eta}$, the two
@@ -926,13 +937,14 @@ of a single triangle.
     \includegraphics[width=0.80\textwidth]{figure/CTri.png}
     \caption{The coefficient $C^{\mathrm{Tri}}(\tilde\nu)$  defined in \eqref{eq:triangle-coefficient}.
     The red and blue curves show $\log|C^{\mathrm{Tri}}|$ and
-    $\arg C^{\mathrm{Tri}}$ in radians, respectively.}
+    $\arg C^{\mathrm{Tri}}$.}
     \label{fig:triangle-coefficient}
 \end{figure}
 
 \FloatBarrier
 \subsection{Box Diagram}
 \label{sec:gauge-box}
+Now we turn to the box diagram, which contains four cubic vertices.
 We first consider the box with cyclic ordering $1234$, shown in
 Fig.~\ref{fig:box-cutting}. With the external labels fixed, its
 diagram symmetry factor is unity. The four cubic vertices give the
@@ -1073,25 +1085,21 @@ The result contains five angular structures:
     \label{eq:box-angular-expansion}
 \end{align}
 The five complex functions depend only on $\tilde\nu$.
-The signal is symmetric
-under $\theta_1\leftrightarrow\theta_3$ and
-$\phi_3\to-\phi_3$. Its oscillatory momentum dependence is the
-same as in \eqref{eq:bubble-phase}, with an angle-dependent
-amplitude and phase supplied by $C^{\mathrm{Box}}$.
+% The signal is symmetric under $\theta_1\leftrightarrow\theta_3$ and $\phi_3\to-\phi_3$. 
+Its oscillatory momentum dependence is the same as in \eqref{eq:bubble-phase}, with an angle-dependent amplitude and phase supplied by $C^{\mathrm{Box}}$.
 
-Figures~\ref{fig:box-A-coefficients} and
-~\ref{fig:box-BD-coefficients} show the five coefficient functions.
+Figures~\ref{fig:box-A-coefficients} and ~\ref{fig:box-BD-coefficients} show the five coefficient functions.
 Their magnitudes decrease
 over the displayed mass range. The jumps in the plotted phases
 reflect the principal branch of $\arg$, defined modulo $2\pi$.
 
-\begin{figure}[p]
+\begin{figure}[hp]
     \centering
-    \includegraphics[width=0.70\textwidth]{figure/CBoxA1.png}
+    \includegraphics[width=0.60\textwidth]{figure/CBoxA1.png}
     \par\medskip
-    \includegraphics[width=0.70\textwidth]{figure/CBoxA2.png}
+    \includegraphics[width=0.60\textwidth]{figure/CBoxA2.png}
     \par\medskip
-    \includegraphics[width=0.70\textwidth]{figure/CBoxA3.png}
+    \includegraphics[width=0.60\textwidth]{figure/CBoxA3.png}
     \caption{The angular coefficients $A_{1,g}$, $A_{2,g}$, and $A_{3,g}$
     (top to bottom) in \eqref{eq:box-angular-expansion} for the
     box diagram. Red curves show the logarithmic
@@ -1119,15 +1127,7 @@ reflect the principal branch of $\arg$, defined modulo $2\pi$.
 
 \subsection{Preliminaries}
 \label{sec:dirac-action}
-We next compute the Higgs four-point function generated by the top-quark
-loop. We use the external propagator \eqref{eq:higgs-propagator} and the collapsed
-kinematics
-\begin{equation}
- \mb k_s=\mb k_1+\mb k_2=-(\mb k_3+\mb k_4),\qquad
- k_s\ll k_i,\qquad k_{12}=k_1+k_2,\qquad k_{34}=k_3+k_4.
- \label{eq:dirac-collapsed-kinematics}
-\end{equation}
-
+We next compute the Higgs four-point function generated by the top-quark loop. 
 The Yukawa coupling and mass parameter are
 \begin{equation}
  g_t\equiv\frac{y_t}{\sqrt2},\qquad m_t=g_th_0,\qquad
@@ -1252,7 +1252,6 @@ We use the propagator
  \qquad \alpha,\beta=1,\ldots,4.
  \label{eq:dirac-propagator-definition}
 \end{equation}
-
 Here $\hat T_C$ denotes ordering along the Schwinger--Keldysh contour,
 and $\aa,\bb=\pm1$ are its branch labels. The Wightman components are
 \begin{align}
@@ -1263,12 +1262,12 @@ and $\aa,\bb=\pm1$ are its branch labels. The Wightman components are
  \label{eq:dirac-wightman}
 \end{align}
 
-With $\theta_{ij}=\theta(\tau_i-\tau_j)$, the time-ordered components are
-\begin{equation}
- D_{++}=\theta_{12}D_{-+}+\theta_{21}D_{+-},\qquad
- D_{--}=\theta_{21}D_{-+}+\theta_{12}D_{+-}.
- \label{eq:dirac-sk}
-\end{equation}
+% With $\theta_{ij}=\theta(\tau_i-\tau_j)$, the time-ordered components are
+% \begin{equation}
+%  D_{++}=\theta_{12}D_{-+}+\theta_{21}D_{+-},\qquad
+%  D_{--}=\theta_{21}D_{-+}+\theta_{12}D_{+-}.
+%  \label{eq:dirac-sk}
+% \end{equation}
 
 The fermionic reversal rule is
 \begin{equation}
@@ -1278,10 +1277,8 @@ The fermionic reversal rule is
  \label{eq:dirac-reversal}
 \end{equation}
 
-For the seed reduction, it is useful to express these propagators through the scalar propagator
-with chemical potential \cite{qin_closed-form_2023}. With
-$X=-k\tau_1$ and $Y=-k\tau_2$,
-\begin{align}
+For the seed reduction, it is useful to express these propagators through the scalar propagator with chemical potential \cite{qin_closed-form_2023}. 
+With $X=-k\tau_1$ and $Y=-k\tau_2$, we define the scalar propagators with chemical potential parameter $\kappa$ as\begin{align}
  D^{(\kappa)}_{-+}(k;\tau_1,\tau_2)
  &=\frac{e^{\ii\pi\kappa}}{2k}
  W_{\kappa,\ii\tn}(-2\ii X)W_{-\kappa,\ii\tn}(2\ii Y),\nonumber\\
@@ -1290,9 +1287,8 @@ $X=-k\tau_1$ and $Y=-k\tau_2$,
  W_{-\kappa,\ii\tn}(2\ii X)W_{\kappa,\ii\tn}(-2\ii Y).
  \label{eq:dirac-scalar-kernels}
 \end{align}
-
-The time-ordered components obey \eqref{eq:dirac-sk}. The seed
-parameter is analytically continued to $\kappa=\pm1/2$.
+where $W_{\kappa,\ii\tn}$ is the Whittaker W function.
+The seed parameter is analytically continued to $\kappa=\pm1/2$.
 With $\sigma_k=\bm\sigma\cdot\widehat{\mb k}$, the Dirac propagator is
 \begin{align}
  D_{\aa\bb}
@@ -1496,7 +1492,19 @@ The right pair obeys the same relation with $(L,1,2)\to(R,3,4)$.
 Thus each projected ordering sum vanishes at the
 integrand level, removing the candidate $k_s^{3\pm4\ii\tn}$ signal.
 
+The cancellation above admits a partial-wave interpretation.
+At zeroth order in the soft-momentum expansion, the $J=0$ contribution is absent from the projected integrand, while the remaining $J=1$ contribution cancels upon summing the orderings related by exchanging the two external Higgs legs.
+Here $J$ denotes the total angular momentum of the Higgs pair.
 
+To understand this structure, consider the left cut subgraph as the analogue of an $hh\to t\bar t$ amplitude mediated by a hard $t$-channel fermion exchange.
+An individual exchange generally contains an infinite tower of partial waves, but higher orbital angular momenta are suppressed by additional powers of the relative momentum.
+So the first two leading terms will be $J=0$ and $J=1$ partial waves.
+The absence of the $J=0$ term has a simple flat-space interpretation.
+In this channel, the incoming Higgs pair has positive parity, whereas the outgoing $L=0$ $t\bar t$ state has negative parity, since a fermion--antifermion pair has parity $P=(-1)^{L+1}$.
+The transition is therefore forbidden by the parity-conserving Yukawa interaction.
+And the $J=1$ terms is excluded by Bose symmetry: since the two incoming Higgs particles are identical scalars, their symmetrized state contains only even $J$.
+This is the partial-wave counterpart of the cancellation between the two external orderings.
+Therefore the zeroth-order soft contribution vanishes, and we must retain the terms linear in the soft momenta in each cut subgraph to obtain the first nonzero signal.
 
 So we need to expand the intrgand to the next to leading order on soft momentum.
 Combining the hard-line correction \eqref{eq:dirac-hard-expansion}
@@ -1670,7 +1678,7 @@ an additional soft suppression $k_s^2/(k_{12} k_{34})$ from
 \appendix
 \section{Useful Functions}
 \label{app:useful-functions}
-We summarize the special-function conventions used in this work.\footnote{Adapted, with minor wording changes, from Appendix A of Ref.~\cite{liu_-shell_2026}, distributed under the \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International} license.}
+We summarize the special-function conventions used in this work.
 
 \paragraph{Gamma functions}
 Products and ratios of Euler $\Gamma$ functions are written in the compact forms
@@ -1839,7 +1847,7 @@ For the $\eta=+1$ branch, the fully reduced sum is
 \begin{equation}
     \mathcal I_{\mathrm{Bub}}(-\ii\tilde\nu)
     =\frac{3\cdot2^{-4-4\ii\tilde\nu}(3\ii-2\tilde\nu)^2
-    \Gamma(-3/2-2\ii\tilde\nu)\Gamma(3+2\ii\tilde\nu)
+    \Gamma[-\tfrac32-2\ii\tilde\nu,\,3+2\ii\tilde\nu]
     \sinh^2(\pi\tilde\nu)}
     {\pi[1+(3\ii-2\tilde\nu)\tilde\nu]^2}.
     \label{eq:bubble-I-closed}
@@ -1847,12 +1855,13 @@ For the $\eta=+1$ branch, the fully reduced sum is
 Substituting this into \eqref{eq:bubble-coefficient} gives
 \begin{align}
     C^{\mathrm{Bub}}(\tilde\nu)
-    ={}&\frac{3(\tilde\nu-\ii)(\tilde\nu-2\ii)^4}
+    ={}&\frac{3(\tilde\nu-\ii)(\tilde\nu-2\ii)^4\sinh^2(\pi\tilde\nu)}
     {256\pi^{7/2}\tilde\nu^2(2\tilde\nu-\ii)}
-    \Gamma^2(-2-\ii\tilde\nu)\Gamma^2(5/2+\ii\tilde\nu)
     \nonumber\\
-    &\times\Gamma(-3/2-2\ii\tilde\nu)
-    \Gamma(1+2\ii\tilde\nu)\sinh^2(\pi\tilde\nu).
+    &\times\Gamma\!\bigl[
+    -2-\ii\tilde\nu,\,-2-\ii\tilde\nu,\,
+    \tfrac52+\ii\tilde\nu,\,\tfrac52+\ii\tilde\nu,\,
+    -\tfrac32-2\ii\tilde\nu,\,1+2\ii\tilde\nu\bigr].
     \label{eq:bubble-C-closed}
 \end{align}
 For real $\tilde\nu>0$,
@@ -1916,7 +1925,7 @@ For a hard line with helicity $+$, the corresponding expression is
     +\mathcal J_1(1,2;x)-\mathcal J_3(1,2;x)\right].
     \label{eq:triangle-IP-explicit}
 \end{align}
-At zero chemical potential, reducing the Gamma functions gives the same
+Reducing the Gamma functions gives the same
 result for all three hard-line polarizations:
 \begin{align}
     \mathcal I^L_{\mathrm{Tri}}(-\ii\tilde\nu,\theta)
@@ -1925,7 +1934,7 @@ result for all three hard-line polarizations:
     =\frac13\mathcal I_{\mathrm{Bub}}(-\ii\tilde\nu)
     \nonumber\\
     &=\frac{2^{-4-4\ii\tilde\nu}(3\ii-2\tilde\nu)^2
-    \Gamma(-3/2-2\ii\tilde\nu)\Gamma(3+2\ii\tilde\nu)
+    \Gamma[-\tfrac32-2\ii\tilde\nu,\,3+2\ii\tilde\nu]
     \sinh^2(\pi\tilde\nu)}
     {\pi[1+(3\ii-2\tilde\nu)\tilde\nu]^2}.
     \label{eq:triangle-I-closed}
@@ -1965,19 +1974,23 @@ The closed expressions are
     \mathcal M_{\pm\mp}^{p_1p_2}
     &=\frac{e^{\mp\ii\pi\bar p_{12}/2}}{2^{5+p_{12}}}
     \prod_{j=1}^{2}
-    \frac{\Gamma(5/2+p_j-\ii\tilde\nu)
-    \Gamma(5/2+p_j+\ii\tilde\nu)}{\Gamma(3+p_j)},
+    \Gamma\!\left[\begin{matrix}
+    \tfrac52+p_j-\ii\tilde\nu,\,\tfrac52+p_j+\ii\tilde\nu\\
+    3+p_j
+    \end{matrix}\right],
     \label{eq:triangle-M-opposite}\\
     \mathcal M_{\pm\pm}^{p_1p_2}
     &=\frac{\pm\ii e^{\mp\ii\pi p_{12}/2}e^{-\pi\tilde\nu}}
     {2^{5+p_{12}}}
     \prod_{j=1}^{2}
-    \frac{\Gamma(5/2+p_j-\ii\tilde\nu)
-    \Gamma(5/2+p_j+\ii\tilde\nu)}{\Gamma(3+p_j)}
+    \Gamma\!\left[\begin{matrix}
+    \tfrac52+p_j-\ii\tilde\nu,\,\tfrac52+p_j+\ii\tilde\nu\\
+    3+p_j
+    \end{matrix}\right]
     \nonumber\\
     &\quad-\frac{e^{\mp\ii\pi p_{12}/2}}{2^{5+p_{12}}}
-    \Gamma(5+p_{12})\Gamma(5/2+p_1\pm\ii\tilde\nu)
-    \Gamma(5/2+p_2\pm\ii\tilde\nu)
+    \Gamma[5+p_{12},\,\tfrac52+p_1\pm\ii\tilde\nu,\,
+    \tfrac52+p_2\pm\ii\tilde\nu]
     \nonumber\\
     &\qquad\times{}_3\widetilde F_2\left[
     \begin{matrix}
@@ -1986,7 +1999,7 @@ The closed expressions are
     \end{matrix}\middle|1\right].
     \label{eq:triangle-M-same}
 \end{align}
-
+where $\bar{p}_{12}=p_1-p_2$.
 Set $p_\epsilon=-5/2+\epsilon+\ii\eta\tilde\nu$.
 The two transverse coefficients are
 \begin{align}
@@ -2002,6 +2015,7 @@ The two transverse coefficients are
     \right].
     \label{eq:triangle-P2-transverse}
 \end{align}
+The operator $\operatorname{FP}_{\epsilon=0}$ selects the constant coefficient of the Laurent expansion after assembling the indicated seed sum. 
 The longitudinal coefficient can be written using the same transverse
 combination:
 \begin{align}
@@ -2026,9 +2040,7 @@ combination:
     \right\}.
     \label{eq:triangle-P2-longitudinal}
 \end{align}
-The operator $\operatorname{FP}_{\epsilon=0}$ selects the constant
-coefficient of the Laurent expansion after assembling the indicated
-seed sum. The first term proportional to
+The first term proportional to
 $\mathcal P^{(1)}_{\eta}$ in \eqref{eq:triangle-P2-longitudinal} is
 the contact contribution from differentiating the time-ordering
 step functions.
@@ -2055,10 +2067,15 @@ Introduce four functions at unit argument,
 The derivatives act on the lower parameters, including these Gamma factors.
 For compactness, write
 \begin{equation}
- w=e^{\pi\tilde\nu},\qquad
- R=\frac{\Gamma(2\ii\tilde\nu)}{\Gamma^2(\tfrac12+\ii\tilde\nu)},\qquad
- \Psi=\psi(2\ii\tilde\nu),\qquad
- \Xi=\psi^{(1)}(\tfrac12+\ii\tilde\nu),
+ \begin{alignedat}{2}
+ w&=e^{\pi\tilde\nu},\qquad
+ &R&=\Gamma\!\left[\begin{matrix}
+ 2\ii\tilde\nu\\
+ \tfrac12+\ii\tilde\nu,\,\tfrac12+\ii\tilde\nu
+ \end{matrix}\right],\\
+ \Psi&=\psi(2\ii\tilde\nu),\qquad
+ &\Xi&=\psi^{(1)}(\tfrac12+\ii\tilde\nu),
+ \end{alignedat}
  \label{eq:gauge-finite-abbreviations}
 \end{equation}
 where $\psi$ and $\psi^{(1)}$ are the digamma and trigamma functions.
@@ -2092,6 +2109,7 @@ The remaining longitudinal contribution is
  \mathcal F_{g,3}.
  \label{eq:gauge-finite-D}
 \end{align}
+
 The coefficients after taking the finite part are therefore
 \begin{align}
  \mathcal P^{(2),\pm}_{+}(\tilde\nu)
@@ -2127,8 +2145,7 @@ $\mb K=\mb q+\mb k_s$, define the soft-polarization sum by
     (x,\theta_1,\theta_3,\phi_3).
     \label{eq:box-I-definition}
 \end{align}
-The angles are defined by the convention stated below
-\eqref{eq:collapsed-kinematics}. The two transverse hard-line coefficients
+The two transverse hard-line coefficients
 $\mathcal P^{(2),+}_{\eta}=\mathcal P^{(2),-}_{\eta}$ are equal, so it
 suffices to retain three groups:
 \begin{align}
@@ -2150,7 +2167,7 @@ For $x=-\ii\tilde\nu$, the longitudinal result is
     (-\ii\tilde\nu,\theta_1,\theta_3,\phi_3)
     \nonumber\\
     &\quad=-\frac{4^{-3-2\ii\tilde\nu}(2\tilde\nu-3\ii)
-    \Gamma(-3/2-2\ii\tilde\nu)\Gamma(1+2\ii\tilde\nu)
+    \Gamma[-\tfrac32-2\ii\tilde\nu,\,1+2\ii\tilde\nu]
     \sinh^2(\pi\tilde\nu)}
     {\pi(\tilde\nu-\ii)(\tilde\nu-2\ii)(2\tilde\nu-\ii)}
     \nonumber\\
@@ -2176,7 +2193,7 @@ basis gives
     (-\ii\tilde\nu,\theta_1,\theta_3,\phi_3)
     \nonumber\\
     &\quad=-\frac{2\cdot4^{-3-2\ii\tilde\nu}(2\tilde\nu-3\ii)
-    \Gamma(-3/2-2\ii\tilde\nu)\Gamma(1+2\ii\tilde\nu)
+    \Gamma[-\tfrac32-2\ii\tilde\nu,\,1+2\ii\tilde\nu]
     \sinh^2(\pi\tilde\nu)}
     {\pi(\tilde\nu-\ii)(\tilde\nu-2\ii)(2\tilde\nu-\ii)}
     \nonumber\\
@@ -2198,7 +2215,7 @@ basis gives
     (-\ii\tilde\nu,\theta_1,\theta_3,\phi_3)
     \nonumber\\
     &\quad=-\frac{4^{-3-2\ii\tilde\nu}(2\tilde\nu-3\ii)
-    \Gamma(-3/2-2\ii\tilde\nu)\Gamma(1+2\ii\tilde\nu)
+    \Gamma[-\tfrac32-2\ii\tilde\nu,\,1+2\ii\tilde\nu]
     \sinh^2(\pi\tilde\nu)}
     {\pi(\tilde\nu-\ii)(\tilde\nu-2\ii)(2\tilde\nu-\ii)}
     \nonumber\\
@@ -2217,6 +2234,7 @@ basis gives
     \sin(2\theta_1)\sin(2\theta_3)\Big\}.
     \label{eq:box-IHH-explicit}
 \end{align}
+
 These expressions satisfy the relations implied by polarization
 completeness and \eqref{eq:triangle-I-closed}:
 \begin{align}
@@ -2264,11 +2282,16 @@ Define
  \mathcal Y_g&=(1-2\ii\tilde\nu)\mathcal D_g
               +4\ii\tilde\nu\mathcal T_g,\nonumber\\
  \mathcal N_g&=
- \frac{(3+2\ii\tilde\nu)\Gamma^2(-\ii\tilde\nu)
- \Gamma(-\tfrac32-2\ii\tilde\nu)
- \Gamma^2(\tfrac32+\ii\tilde\nu)\Gamma^2(2\ii\tilde\nu)}
+ \frac{3+2\ii\tilde\nu}
  {2(4\pi)^{7/2}(2+\ii\tilde\nu)(1+2\ii\tilde\nu)^2
- (1-2\ii\tilde\nu)^2\Gamma(3+2\ii\tilde\nu)}.
+ (1-2\ii\tilde\nu)^2}
+ \nonumber\\
+ &\quad\times\Gamma\!\left[\begin{matrix}
+ -\ii\tilde\nu,\,-\ii\tilde\nu,\,-\tfrac32-2\ii\tilde\nu,\,
+ \tfrac32+\ii\tilde\nu,\,\tfrac32+\ii\tilde\nu,\,
+ 2\ii\tilde\nu,\,2\ii\tilde\nu\\
+ 3+2\ii\tilde\nu
+ \end{matrix}\right].
  \label{eq:gauge-angular-common}
 \end{align}
 The five angular coefficients reduce to
@@ -2429,9 +2452,10 @@ The finite sum \eqref{eq:fr-finite-sum} and the Gamma recurrence
 give the closed form below, with the common factor
 \begin{equation}
  \mathcal G_{t}(\tn)
- =\frac{\Gamma(-\tfrac12-2\ii\tn)\Gamma^2(1+\ii\tn)}
- {\Gamma(2+2\ii\tn)
- \Gamma^2(\tfrac12-\ii\tn)}.
+ =\Gamma\!\left[\begin{matrix}
+ -\tfrac12-2\ii\tn,\,1+\ii\tn,\,1+\ii\tn\\
+ 2+2\ii\tn,\,\tfrac12-\ii\tn,\,\tfrac12-\ii\tn
+ \end{matrix}\right].
  \label{eq:dirac-loop-Gamma}
 \end{equation}
 For $x=-\ii\tn$, the fully reduced coefficients are
@@ -2485,14 +2509,16 @@ $\mathcal K_{\aa\bb}^{\kappa;p_1,p_2}
 \equiv\mathcal K_{\aa\bb}^{\kappa;p_1,p_2}(1,1)$.
 We use $\Gamma[a_1,\ldots,a_n]=\prod_j\Gamma(a_j)$.
 A tilde on ${}_3F_2$ divides the ordinary hypergeometric function by
-$\Gamma(b_1)\Gamma(b_2)$, where $b_1,b_2$ are its lower parameters.
+$\Gamma[b_1,b_2]$, where $b_1,b_2$ are its lower parameters.
 The closed expressions are
 \begin{align}
  \mathcal K_{\pm\mp}^{\kappa;p_1,p_2}
  &=\frac{e^{\mp\ii\pi(p_1-p_2)/2+\ii\pi\kappa}}{2^{3+p_1+p_2}}
- \frac{\Gamma[\tfrac32+p_1-\ii\tn,\tfrac32+p_1+\ii\tn,
-               \tfrac32+p_2-\ii\tn,\tfrac32+p_2+\ii\tn]}
- {\Gamma[2+p_1\pm\kappa,2+p_2\mp\kappa]},
+ \Gamma\!\left[\begin{matrix}
+ \tfrac32+p_1-\ii\tn,\,\tfrac32+p_1+\ii\tn,\,
+ \tfrac32+p_2-\ii\tn,\,\tfrac32+p_2+\ii\tn\\
+ 2+p_1\pm\kappa,\,2+p_2\mp\kappa
+ \end{matrix}\right],
  \label{eq:dirac-K-opposite}\\
  \mathcal K_{\pm\pm}^{\kappa;p_1,p_2}
  &=\frac{\mp\ii e^{\mp\ii\pi(p_1+p_2)/2}}{2^{3+p_1+p_2}}
@@ -2500,9 +2526,11 @@ The closed expressions are
  \nonumber\\
  &\quad\times\left\{
  \frac{e^{2\ii\pi\kappa}+e^{-2\pi\tn}}{2\pi}
- \frac{\Gamma[\tfrac32+p_1\mp\ii\tn,\tfrac32+p_2\mp\ii\tn,
-               \tfrac12\pm\kappa-\ii\tn,\tfrac12\pm\kappa+\ii\tn]}
- {\Gamma[2+p_1\pm\kappa,2+p_2\pm\kappa]}
+ \Gamma\!\left[\begin{matrix}
+ \tfrac32+p_1\mp\ii\tn,\,\tfrac32+p_2\mp\ii\tn,\,
+ \tfrac12\pm\kappa-\ii\tn,\,\tfrac12\pm\kappa+\ii\tn\\
+ 2+p_1\pm\kappa,\,2+p_2\pm\kappa
+ \end{matrix}\right]
  \right.\nonumber\\
  &\qquad\left.
  \pm\ii\Gamma(3+p_1+p_2)
@@ -2597,8 +2625,11 @@ can be expressed using a single ordinary hypergeometric function,
  2+2\ii\tn,\ 2+2\ii\tn\end{matrix}\middle|1\right],
  \nonumber\\
  \mathcal E_t(\tn)&=
- \frac{\pi^2\Gamma(1+2\ii\tn)}
- {\cosh(\pi\tn)\Gamma^2(1+\ii\tn)}.
+ \frac{\pi^2}{\cosh(\pi\tn)}
+ \Gamma\!\left[\begin{matrix}
+ 1+2\ii\tn\\
+ 1+\ii\tn,\,1+\ii\tn
+ \end{matrix}\right].
  \label{eq:dirac-finite-master}
 \end{align}
 The resulting expressions are
@@ -2656,11 +2687,16 @@ Using \eqref{eq:dirac-finite-master}, set
  {2(1+\ii\tilde\nu)(2+\ii\tilde\nu)},\nonumber\\
  \mathcal N_t&=\mathcal B_t\Gamma^2(1+2\ii\tilde\nu)
  \cosh^2(\pi\tilde\nu)\nonumber\\
- &=\frac{2^{4\ii\tilde\nu}\pi\Gamma(-\tfrac12-2\ii\tilde\nu)
- \Gamma^4(1+\ii\tilde\nu)}
- {(4\pi)^{7/2}\Gamma(2+2\ii\tilde\nu)
+ &=\frac{2^{4\ii\tilde\nu}\pi}
+ {(4\pi)^{7/2}
  (5+2\ii\tilde\nu)(3+2\ii\tilde\nu)
- (5+4\ii\tilde\nu)(3+4\ii\tilde\nu)}.
+ (5+4\ii\tilde\nu)(3+4\ii\tilde\nu)}
+ \nonumber\\
+ &\quad\times\Gamma\!\left[\begin{matrix}
+ -\tfrac12-2\ii\tilde\nu,\,1+\ii\tilde\nu,\,1+\ii\tilde\nu,\,
+ 1+\ii\tilde\nu,\,1+\ii\tilde\nu\\
+ 2+2\ii\tilde\nu
+ \end{matrix}\right].
  \label{eq:top-angular-explicit-common}
 \end{align}
 Gamma duplication and reflection give the second form of
