@@ -799,15 +799,6 @@ The bracket in \eqref{eq:bubble-signal} equals
     \label{eq:bubble-phase}
 \end{equation}
 
-\begin{figure}[tp]
-    \centering
-    \includegraphics[width=0.80\textwidth]{figure/CBub.png}
-    \caption{The bubble coefficient defined in \eqref{eq:bubble-coefficient}.
-    The red and blue curves show $\log|C^{\mathrm{Bub}}|$ and $\arg C^{\mathrm{Bub}}$ as functions of $\tilde\nu$.
-    }
-    \label{fig:bubble-coefficient}
-\end{figure}
-
 \FloatBarrier
 \subsection{Triangle Diagram}
 \label{sec:gauge-triangle}
@@ -937,15 +928,6 @@ Adding these two contributions gives
 \end{align}
 The nonanalytic momentum dependence is the same as in the bubble, while the hard propagator changes the amplitude and
 phase.
-Figure~\ref{fig:triangle-coefficient} shows the coefficient of a single triangle.
-
-\begin{figure}[tp]
-    \centering
-    \includegraphics[width=0.80\textwidth]{figure/CTri.png}
-    \caption{The coefficient $C^{\mathrm{Tri}}(\tilde\nu)$  defined in \eqref{eq:triangle-coefficient}.
-    The red and blue curves show $\log|C^{\mathrm{Tri}}|$ and $\arg C^{\mathrm{Tri}}$.}
-    \label{fig:triangle-coefficient}
-\end{figure}
 
 \FloatBarrier
 \subsection{Box Diagram}
@@ -1074,34 +1056,6 @@ The five complex functions depend only on $\tilde\nu$.
 % The signal is symmetric under $\theta_1\leftrightarrow\theta_3$ and $\phi_3\to-\phi_3$. 
 Its oscillatory momentum dependence is the same as in \eqref{eq:bubble-phase}, with an angle-dependent amplitude and
 phase supplied by $C^{\mathrm{Box}}$.
-
-Figures~\ref{fig:box-A-coefficients} and~\ref{fig:box-BD-coefficients} show the five coefficient functions.
-Their magnitudes decrease over the displayed mass range.
-The jumps in the plotted phases reflect the principal branch of $\arg$, defined modulo $2\pi$.
-
-\begin{figure}[hp]
-    \centering
-    \includegraphics[width=0.60\textwidth]{figure/CBoxA1.png}
-    \par\medskip
-    \includegraphics[width=0.60\textwidth]{figure/CBoxA2.png}
-    \par\medskip
-    \includegraphics[width=0.60\textwidth]{figure/CBoxA3.png}
-    \caption{The angular coefficients $A_{1,g}$, $A_{2,g}$, and $A_{3,g}$ (top to bottom) in
-    \eqref{eq:box-angular-expansion} for the box diagram.
-    Red curves show the logarithmic magnitudes and blue curves show the principal phases in radians.}
-    \label{fig:box-A-coefficients}
-\end{figure}
-
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=0.80\textwidth]{figure/CBoxB1.png}
-    \par\medskip
-    \includegraphics[width=0.80\textwidth]{figure/CBoxD1.png}
-    \caption{The angular coefficients $B_g$ (top, labelled $B1$) and $D_g$ (bottom, labelled $D1$) in
-    \eqref{eq:box-angular-expansion}.
-    The plotting conventions are the same as in Fig.~\ref{fig:box-A-coefficients}.}
-    \label{fig:box-BD-coefficients}
-\end{figure}
 
 \clearpage
 
@@ -1604,16 +1558,6 @@ The angular decomposition is
 The five coefficients depend only on $\tn$ and their analytic expressions are given in
 App.~\ref{app:dirac-coefficients}.
 All nonconstant angular terms are proportional to $\mathcal P_{t,2}^2$.
-Figure~\ref{fig:top-angular-coefficients} shows the mass dependence of the five angular coefficients.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.90\textwidth]{figure/TopQuarkAngularCoefficients.pdf}
-    \caption{The five top-quark angular coefficients in \eqref{eq:dirac-angular} as functions of $\tn=m_t/H$.
-    The curves show the natural logarithms of their absolute values.}
-    \label{fig:top-angular-coefficients}
-\end{figure}
-
 At fixed angles the oscillatory bracket in \eqref{eq:dirac-clock-signal} is
 \begin{equation}
  2|C_t|\cos\!\left[2\tn\log\!\left(\frac{k_s^2}{4k_{12}k_{34}}\right)
@@ -1624,9 +1568,159 @@ This is the leading same-branch oscillatory contribution in the collapsed $s$ ch
 Compared with the gauge-boson signals, the top-quark signal carries an additional soft suppression
 $k_s^2/(k_{12} k_{34})$ from \eqref{eq:dirac-cancellation}.
 
-\clearpage
-
 \section{Phenomenology}
+\label{sec:phenomenology}
+
+Now we disscuss the phenomenology of the Standard Model signal in the cosmological Higgs collider.
+We illustrate the mass dependence of the nonlocal signal coefficients in Figs.~\ref{fig:gauge-coefficient-mass-scan}
+and~\ref{fig:top-coefficient-mass-scan}.
+The left and right panels show the logarithmic magnitude and the principal phase in radians, respectively.
+The horizontal variable $\nu$ in each plot denotes the mass parameter $\tilde\nu$ defined above.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.49\textwidth]{figure/gauge_magnitude.pdf}\hfill
+    \includegraphics[width=0.49\textwidth]{figure/gauge_phase.pdf}
+    \caption{Mass dependence of the gauge-boson coefficients $C^{\mathrm{Bub}}$, $C^{\mathrm{Tri}}$ and
+    $A_{1,g}$, $A_{2,g}$, $A_{3,g}$, $B_g$, $D_g$, with
+    $\tilde\nu=\sqrt{m_A^2/H^2-1/4}$.
+    The subscript $g$ on the box coefficients is omitted in the legends.}
+    \label{fig:gauge-coefficient-mass-scan}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.49\textwidth]{figure/top_magnitude.pdf}\hfill
+    \includegraphics[width=0.49\textwidth]{figure/top_phase.pdf}
+    \caption{Mass dependence of the five top-quark angular coefficients in \eqref{eq:dirac-angular},
+    with $\tilde\nu=m_t/H$.
+    The subscript $t$ is omitted in the legends.}
+    \label{fig:top-coefficient-mass-scan}
+\end{figure}
+
+The magnitudes exhibit an overall suppression with increasing mass over the displayed ranges, while the phases
+retain a nontrivial mass dependence.
+Phase jumps at $\pm\pi$ arise from the principal-value convention.
+% For a fixed angular configuration, the amplitude and phase of the box contributions follow from the full complex
+% coefficients in \eqref{eq:box-angular-expansion} and \eqref{eq:dirac-angular}, assembled before taking the magnitude
+% and argument.
+
+To compare with observations, we relate the Higgs fluctuations to the curvature perturbation.
+At leading order, the Higgs contribution is $\zeta_h=N_h\delta h$, as in \eqref{eq:overview-delta-n}.
+Assuming that the contributions from different fields are uncorrelated, the Higgs contribution to the dimensionless
+curvature power spectrum is
+\begin{equation}
+    P_\zeta^{(h)}=N_h^2P_{\delta h}
+    \simeq N_h^2\left(\frac{H}{2\pi}\right)^2,
+    \label{eq:phenomenology-higgs-power}
+\end{equation}
+where we use $P_{\delta h}\simeq(H/2\pi)^2$ in the light-Higgs approximation.
+Following \cite{lu_cosmological_2020}, we define
+\begin{equation}
+    R_h\equiv\left(\frac{P_\zeta^{(h)}}{P_\zeta}\right)^{1/2},
+    \qquad 0\leq R_h\leq1,
+    \label{eq:phenomenology-higgs-fraction}
+\end{equation}
+where $P_\zeta$ is the total dimensionless curvature power spectrum.
+The conversion coefficient then satisfies
+\begin{equation}
+    |N_h|\simeq\frac{2\pi}{H}P_\zeta^{1/2}R_h.
+    \label{eq:phenomenology-Nh}
+\end{equation}
+
+At leading order, the contribution of each particle species to the curvature
+trispectrum is
+\begin{equation}
+    \begin{aligned}
+        T_\zeta^{(I)}(\mb k_i)
+        &\equiv\left\langle\zeta_{\mb k_1}\zeta_{\mb k_2}
+        \zeta_{\mb k_3}\zeta_{\mb k_4}\right\rangle_{c,I}'\\
+        &\simeq\left(\frac{2\pi}{H}\right)^4R_h^4P_\zeta^2
+        \left\langle\delta h_{\mb k_1}\delta h_{\mb k_2}
+        \delta h_{\mb k_3}\delta h_{\mb k_4}\right\rangle_{c,I}'.
+    \end{aligned}
+    \label{eq:phenomenology-species-trispectrum}
+\end{equation}
+Here $I=W,Z,t$ labels the particle species, and the correlator on the right-hand side is the connected Higgs
+four-point function generated by species $I$.
+
+We define the dimensionless trispectrum by
+\begin{equation}
+    \mathcal T(\mb k_i)
+    \equiv\frac{(k_1k_2k_3k_4)^3}{(2\pi)^6P_\zeta^3k_t^3}
+    \sum_{I=W,Z,t} T_\zeta^{(I)}(\mb k_i),
+    \qquad k_t\equiv\sum_{i=1}^4k_i,
+    \label{eq:phenomenology-dimensionless-trispectrum}
+\end{equation}
+In the collapsed $s$ channel, the leading oscillatory nonlocal contribution from the $W$, $Z$, and top loops takes
+the form
+\begin{align}
+    \left[\mathcal T(\mb k_i)\right]_{\mathrm{NS}}
+    \underset{k_s\ll k_i}{\simeq}{}&
+    t_{\mathrm{NL}}^W\left(\frac{k_s}{k_t}\right)^3
+    \cos\!\left[2\tilde\nu_W\log\!\left(\frac{k_s^2}{4k_{12}k_{34}}\right)
+    +\varphi_W\right]\nonumber\\
+    &+t_{\mathrm{NL}}^Z\left(\frac{k_s}{k_t}\right)^3
+    \cos\!\left[2\tilde\nu_Z\log\!\left(\frac{k_s^2}{4k_{12}k_{34}}\right)
+    +\varphi_Z\right]\nonumber\\
+    &+t_{\mathrm{NL}}^t\frac{k_t^2}{k_{12}k_{34}}
+    \left(\frac{k_s}{k_t}\right)^5
+    \cos\!\left[2\tilde\nu_t\log\!\left(\frac{k_s^2}{4k_{12}k_{34}}\right)
+    +\varphi_t\right].
+    \label{eq:phenomenology-clock-shape}
+\end{align}
+Both $t_{\mathrm{NL}}^I$ and $\varphi_I$ depend on the external momentum directions.
+Here $\tilde\nu_{W,Z}=\sqrt{m_{W,Z}^2/H^2-1/4}$, and $\tilde\nu_t=m_t/H$.
+The nonnegative coefficients $t_{\mathrm{NL}}^I$ define dimensionless clock amplitudes, in analogy with the bispectrum
+clock amplitude in \cite{lu_cosmological_2020}, while $\varphi_I$ are the corresponding phases.
+% For each gauge boson, the bubble, triangle, and box contributions are combined before extracting the amplitude and
+% phase, and all signs from the diagram prefactors are included in $\varphi_I$.
+
+To make this relation explicit, we define the complex combinations
+\begin{equation}
+    \begin{aligned}
+        \mathcal C_W\equiv{}&C^{\mathrm{Bub}}(\tilde\nu_W)
+        -2g^2\frac{h_0^2}{H^2}C^{\mathrm{Tri}}(\tilde\nu_W)
+        +g^4\frac{h_0^4}{H^4}C^{\mathrm{Box}}(\tilde\nu_W),\\
+        \mathcal C_Z\equiv{}&C^{\mathrm{Bub}}(\tilde\nu_Z)
+        -\frac{2g^2}{c_W^2}\frac{h_0^2}{H^2}C^{\mathrm{Tri}}(\tilde\nu_Z)
+        +\frac{g^4}{c_W^4}\frac{h_0^4}{H^4}C^{\mathrm{Box}}(\tilde\nu_Z).
+    \end{aligned}
+    \label{eq:phenomenology-gauge-clock-combinations}
+\end{equation}
+% The angular arguments of $C^{\mathrm{Box}}$ and $C_t$ are left implicit.
+% The factor of $2$ multiplying the triangle coefficient includes the two placements in
+% \eqref{eq:triangle-total-signal}.
+
+With the normalization in \eqref{eq:phenomenology-clock-shape}, the clock amplitudes and phases are
+\begin{equation}
+    \begin{aligned}
+        t_{\mathrm{NL}}^W
+        &=\frac{g^4R_h^4}{128\pi^2P_\zeta}|\mathcal C_W|,
+        &\qquad \varphi_W&=\arg\mathcal C_W,\\
+        t_{\mathrm{NL}}^Z
+        &=\frac{g^4R_h^4}{256\pi^2c_W^4P_\zeta}|\mathcal C_Z|,
+        &\varphi_Z&=\arg\mathcal C_Z,\\
+        t_{\mathrm{NL}}^t
+        &=\frac{3y_t^4R_h^4}{32\pi^2P_\zeta}|C_t|,
+        &\varphi_t&=\arg(-C_t).
+    \end{aligned}
+    \label{eq:phenomenology-clock-amplitudes-phases}
+\end{equation}
+% The $W$ amplitude includes both charge states $W^\pm$.
+% For the $Z$ boson, the replacement $g\to g/c_W$ gives factors $c_W^{-4}$, $c_W^{-6}$, and $c_W^{-8}$ in the bubble,
+% triangle, and box contributions, respectively.
+% These factors change the relative weights of the three diagrams, whose coefficients are evaluated at $\tilde\nu_Z$.
+% For the top quark, $C_t$ is the box coefficient in \eqref{eq:dirac-clock-coefficient}, and the amplitude includes the
+% color multiplicity $N_c=3$.
+% The overall minus sign in \eqref{eq:dirac-clock-signal} is absorbed into $\varphi_t$; all phases are understood modulo
+% $2\pi$.
+
+
+
+
+
+\clearpage
 
 \section{Conclusions and Outlooks}
 

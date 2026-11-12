@@ -1,0 +1,25 @@
+Signal Plots migration validation
+Wolfram 15.0.1 for Mac OS X ARM (64-bit) (July 2, 2026)
+
+Gauge relative bounds by nu: {{0.01`8., 2.0000000000000414*^-60}, {0.1`8., 2.0000000000000345*^-60}, {0.6`8., 2.0000000000000162*^-60}, {1.`8., 2.0000000000000348*^-60}, {2.`8., 2.0000000000000118*^-60}}
+Top relative bounds by nu: {{0.1`8., 6.985308565691136*^-68}, {0.2`8., 7.667345261371325*^-68}, {0.73`8., 8.298749451252787*^-68}, {1.`8., 7.940729776172705*^-68}, {2.`8., 1.1041789139227212*^-67}, {5.`8., 3.559691532333401*^-67}}
+Angular complex relative bound, all 40401 points: 1.3707808261208384*^-30
+Actual angular magnitude range: {4.62555922682134158105547185209183`8.*^-6, 6.38274370085508780692562484616932`8.*^-6}
+Principal angular phase range (rad): {-2.328705608147206137`8., -2.1907038691715022927`8.}
+Additional phi maps, actual ranges: {<|"Phi3" -> 1.5707963267948966193`8., "Magnitude" -> {4.02369300037228133730238449712215`8.*^-6, 5.67045231792309911929602204998544`8.*^-6}, "Phase" -> {-2.2562342143855586739`8., -2.0475798672614546347`8.}|>, <|"Phi3" -> 3.1415926535897932385`8., "Magnitude" -> {4.62555922682134158105547185209183`8.*^-6, 6.38274370085508780692562484616932`8.*^-6}, "Phase" -> {-2.328705608147206137`8., -2.1907038691715022927`8.}|>}
+Phi=Pi vs reflected phi=0, max absolute complex residual: 3.8938375807555364*^-36
+Phi=Pi/2 independent-sign symmetry, max absolute residual: 3.2155883043215758*^-65
+
+Gauge agreement at 5 nu values (60-digit comparison): True
+Top agreement at 6 nu values (70-digit comparison): True
+All 40401 original angular samples agree: True
+Angular dimensions and finite data: True
+Original exact nu grids and finite complex scans: True
+Principal-phase segments never cross a branch jump: True
+A3 = -3 A2, both models: True
+Additional maps have finite 201 x 201 data and correct phi: True
+Additional common contour ranges enclose all data: True
+Phi=Pi reflection and phi=Pi/2 sign symmetries (including numeric uncertainty): True
+New notebook includes saved 2 x 2 phi maps: True
+Saved input boxes parse: True
+Original notebook bytes unchanged: True
