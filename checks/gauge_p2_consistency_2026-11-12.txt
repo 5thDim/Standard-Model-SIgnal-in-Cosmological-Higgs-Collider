@@ -1,0 +1,16 @@
+Wolfram 15.0.1 for Mac OS X ARM (64-bit) (July 2, 2026)
+Scope: compare the freshly computed inline P2 finite parts with the original subsequent representations. All pre-existing notebook cells were preserved.
+Assumptions: real nu > 0. Pair order: {P_L, P_T}.
+FullSimplify(new finite parts - original P2LSimp/P2PMSimp): {0, 0}.
+Direct FullSimplify(new finite parts - common basis) reached the 15-second limit for each polarization. This was not interpreted as a discrepancy.
+Exact reduction: 22 hypergeometric objects -> the same four masters as masterExpressions. Gauss reduction is applied only with an untouched canceling upper/lower parameter.
+Linear master reconstruction residual: {0, 0}.
+After Gamma/polygamma recurrence, reflection and duplication, all coefficients agree with the existing pMatrix:
+{{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+Exact common-basis function residual after reconstruction and FullSimplify:
+{0, 0}
+Independent raw-finite-part versus stable common-basis comparison at 35-digit precision, rows {nu, relerr_L, relerr_T}:
+{{1/100, 0``34.6913377943807, 0``34.69088169418213}, {1/10, 0``34.63373721754441, 0``34.630464920648315}, {3/5, 0``34.57002267229192, 0``34.583025602871714}, {1, 0``34.592536128829394, 0``34.567026559020604}, {2, 0``34.63935323268226, 0``34.670922626156994}}
+The exact proof input cells were executed in another fresh kernel before saving. The numerical table records the separately executed raw-versus-basis calculation, not numerical evaluation of the symbolic zero residual.
+Notebook structural verification and binary save verification passed. No pre-existing expression or output was replaced.
+The manuscript source and PDFs were not changed.

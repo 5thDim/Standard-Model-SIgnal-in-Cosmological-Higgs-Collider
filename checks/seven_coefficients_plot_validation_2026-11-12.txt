@@ -1,0 +1,20 @@
+Seven-coefficient summary plots
+Appended final section: Seven coefficients: magnitude and phase.
+Seven curves in order: C^Bub, C^Tri, A1, A2, A3, B, D. Shared blue-purple-red-orange gradient in both plots.
+Magnitude: ln|C|, original nu=0.01..1 grid, 100 points per curve.
+Phase: principal arg C in radians, range [-Pi,Pi], original branch splits preserved.
+Existing saved plotting coordinates were reused without recalculating the physics coefficients; both new plotting input cells were executed in a fresh Wolfram 15.0.1 kernel and outputs were saved.
+The appended input uses the existing logData and phaseSegments functions for future reevaluation.
+Style: Latin Modern Roman, ticks and legends 10 pt, frame labels 12 pt, ImageSize 400 and AspectRatio 1/2; light-gray grid and black frame; framed white legends in two columns inside each plot.
+Visual preview inspected: labels, seven gradient colors, grids, legends and phase gaps are present without clipping or legend/curve overlap.
+All original notebook expressions and outputs are unchanged. The CacheID comment was removed to invalidate the pre-existing frontend layout cache after the append.
+Only final summary section appended: True
+Magnitude curve point counts: {100, 100, 100, 100, 100, 100, 100}
+Phase segment point counts: {100, 100, 80, 20, 100, 100, 100, 58, 42}
+Maximum curve coordinate differences: {0., 0.}
+Phase segments never cross a branch jump: True
+Both plot output cells are present at the end of the notebook.
+Original SHA256: 0b6c339dbdd499e8a2e978d59add4ddca6df9aa8e6d4a4ec4a8f6d1845cda9da
+Updated SHA256: 1ecffe57b3b7ad968b2bfa51731acbf828b5d193eaa3b0beda1c6eab43c66d56
+Manuscript source and PDFs were not changed.
+Final saved bytes match the verified candidate. Whitespace check of this appended change passed; pre-existing frontend formatting was retained.

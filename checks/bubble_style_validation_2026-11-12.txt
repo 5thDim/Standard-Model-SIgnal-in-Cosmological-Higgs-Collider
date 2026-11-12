@@ -1,0 +1,11 @@
+Bubble coefficient plot style update
+Only coefficientPlot[1] input/output cell group was replaced; all other notebook bytes are unchanged.
+Original 100-point magnitude and phase curves match exactly at saved plotting precision (maximum coordinate differences {0.,0.}).
+Left panel remains ln|C^Bub|; right panel remains arg C^Bub in radians, with original principal-phase range [-Pi,Pi] and branch segmentation.
+Style: gray major grid (0.8 gray, 0.5 pt); black frame (0.8 pt); inside upper-right framed white legend; Latin Modern Roman; ticks/legend 10 pt, labels 12 pt; panel width 400, aspect ratio 1/2.
+The four existing MacTeX Latin Modern Roman 10/12 regular/italic faces were registered for the current user via CoreText; no font files were downloaded or replaced.
+New input code was tokenized without evaluation, round-tripped identically, and evaluated in a fresh Wolfram 15.0.1 kernel. Framed legend remains an executable Framed expression.
+Native Graphics output is saved in the notebook. A 144-dpi PNG preview was exported and visually inspected: grid, framed legends, labels and both curves are present without clipping.
+Original notebook SHA256: 7f5b65b24554075f5f299790bd7ddfc14d60520a5067c127759a1ffa81cbe8e9
+Updated notebook SHA256: b6238b4ee775764ffb9a6bb2c198fe9c6d4849cabc7add7c9041649cace9caa5
+Manuscript source and PDFs were not modified.

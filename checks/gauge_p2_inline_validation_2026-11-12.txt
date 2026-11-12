@@ -1,0 +1,26 @@
+Fresh saved-notebook verification: 15.0.1 for Mac OS X ARM (64-bit) (July 2, 2026)
+{"START", "InlineP2-P1"}
+{"DONE", "InlineP2-P1", "seconds", 0.000014, "leaves", 1, "savedOutputMatch", "no output"}
+{"START", "InlineP2-seeds"}
+{"DONE", "InlineP2-seeds", "seconds", 0.00003, "leaves", 1, "savedOutputMatch", "no output"}
+{"START", "InlineP2-transverse-definition"}
+{"DONE", "InlineP2-transverse-definition", "seconds", 0.000015, "leaves", 1, "savedOutputMatch", "no output"}
+{"START", "InlineP2-longitudinal-definition"}
+{"DONE", "InlineP2-longitudinal-definition", "seconds", 0.000024, "leaves", 1, "savedOutputMatch", "no output"}
+{"START", "InlineP2-Laurent-code"}
+{"DONE", "InlineP2-Laurent-code", "seconds", 4.854789, "leaves", 1, "savedOutputMatch", "no output"}
+{"START", "InlineP2-transverse-result"}
+{"DONE", "InlineP2-transverse-result", "seconds", 0.016347, "leaves", 2537, "savedOutputMatch", True}
+{"START", "InlineP2-longitudinal-result"}
+{"DONE", "InlineP2-longitudinal-result", "seconds", 0.051665, "leaves", 10843, "savedOutputMatch", True}
+{"START", "InlineP2-numeric-check"}
+{"DONE", "InlineP2-numeric-check", "seconds", 23.32285, "leaves", 7, "savedOutputMatch", True}
+{"Original notebook outside inserted block unchanged", True}
+{"Full analytic leaf counts", {2537, 10843}, "numeric order {P_T,P_L}", {0.49655266511901488041891982083086607715`24.732270905157772 + 1.20229255009854174557228388108764893296`25.11631574400879*I, 3.49769794788028052071618326870227750096`24.808927948696496 + 6.83744965383156606331349582222102109922`25.10003978799345*I}}
+{"Inline Laurent statement count including terminal Null", 16, "source statement count including terminal Null", 16}
+{"Get calls in inserted executable cells", 0}
+{"Errors", {}, "Saved notebook", "/Users/ding/Research/Project/Standard-Model-SIgnal-in-Cosmological-Higgs-Collider/Gauge Boson Signal.nb"}
+{"Final serialized notebook parsed successfully", True}
+{"Original bytes outside the insertion preserved", True}
+{"Full analytic outputs are not shortened", True}
+{"Git whitespace check", "passed"}
