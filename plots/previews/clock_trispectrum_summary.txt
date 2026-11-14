@@ -1,0 +1,38 @@
+Leading oscillatory nonlocal collapsed s-channel template. Raw T and T/E are signed real quantities.
+r1=ks/k12; r2=ks/k34; k12=k1+k2; k34=k3+k4.
+x=-log10(r1), y=-log10(r2), both 0..2; 201 x 201 exact grid; 60-digit stored data.
+theta1=theta3=Pi/2, phi3=0; Lu2019Parameters[], lambda=0.01, h0/H=1.
+Lu (2019), Eqs. (11),(45): loop-dominated W/Z masses; mt=yt h0/Sqrt[2].
+E=(r1 r2/(r1+r2))^3. T/E retains the top extra r1 r2.
+Values near r_i=1 are extrapolations of the collapsed template, outside the controlled soft limit.
+Separate linear color ranges symmetric about zero; scientific colorbar ticks. No Abs, log or amplitude normalization.
+Masses W,Z,t /H: {0.55762418753511932943859865667007646497`12., 0.63366384947172651072568029167054207456`12., 0.70710678118654752440084436210484903928`12.}
+Raw T range: {-0.06629994841424750202449400851222823791`12., 0.00464935442097822292191009156711367732`12.}
+T/E range: {-0.79023906106030228722308584276907600683`12., 1.12510449708239511621255754206080873872`12.}
+Checks passed: 26/26
+Lu benchmark masses : True
+correct fixed angles : True
+correct 0..2 exact log grid : True
+T finite real 201 x 201 : True
+T preserves both signs : True
+T r1/r2 symmetry : True
+TOverE finite real 201 x 201 : True
+TOverE preserves both signs : True
+TOverE r1/r2 symmetry : True
+Envelope finite real 201 x 201 : True
+Envelope r1/r2 symmetry : True
+independent scalar versus vector grid {1, 1} : True
+original trispectrum envelope and phase {1, 1} : True
+independent scalar versus vector grid {25, 53} : True
+original trispectrum envelope and phase {25, 53} : True
+independent scalar versus vector grid {101, 101} : True
+original trispectrum envelope and phase {101, 101} : True
+independent scalar versus vector grid {1, 201} : True
+original trispectrum envelope and phase {1, 201} : True
+independent scalar versus vector grid {201, 1} : True
+original trispectrum envelope and phase {201, 1} : True
+independent scalar versus vector grid {201, 201} : True
+original trispectrum envelope and phase {201, 201} : True
+T equals E times TOverE on full grid : True
+species sum is TOverE on full grid : True
+top retains extra r1 r2 at r1=r2=0.1 : True

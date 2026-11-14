@@ -1,0 +1,22 @@
+T/E-only leading oscillatory collapsed template; both -log10(r1), -log10(r2) run from 0 to 5.
+201 x 201 exact grid; 60-digit data; 401 distinct coordinate sums evaluated once each.
+Reused the previous benchmark Shape, including masses, parameters, directions and complex amplitudes.
+No raw T or envelope grid was computed; only the signed reduced signal was generated and plotted.
+Top extra r1 r2 retained. Near r_i=1 the collapsed template is extrapolated.
+T/E range: {-1.20818380485872022894781265846031860081`12., 1.20573033441972817185227211776356132071`12.}
+Data load/generation time: 1.3723 s.
+Checks passed: 14/14
+unchanged masses, angles, parameters and complex amplitudes : True
+only TOverE generated : True
+correct 0..5 grid : True
+only 401 distinct sums evaluated : True
+finite real signed data : True
+r1 r2 symmetry : True
+matches old 0..2 map at all shared grid points : True
+independent reduced formula {1, 1} : True
+independent reduced formula {37, 91} : True
+independent reduced formula {101, 101} : True
+independent reduced formula {1, 201} : True
+independent reduced formula {201, 1} : True
+independent reduced formula {201, 201} : True
+top r1 r2 factor retained at deepest corner : True

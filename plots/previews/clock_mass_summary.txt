@@ -1,0 +1,27 @@
+Curvature clock mass scan: theta1=theta3=Pi/2, phi3=0. Direction fixed throughout the mass scan.
+Lu2019Parameters[], h0/H=1. Masses scanned independently of the fixed couplings.
+Gauge mass/H: 0.51..1 by 0.01; 1.025..3 by 0.025 (130 points).
+Top mass/H: 0.1..1 by 0.01; 1.025..3 by 0.025 (171 points).
+Gauge nu=Sqrt[(m/H)^2-1/4]>0; top nu=m/H. Actual tNL on logarithmic y axis; principal phase in (-Pi,Pi].
+Unchanged validated 60-digit raw mass scans; complex amplitudes reassembled at the corrected angles.
+The raw scans previously passed 38 normalization, phase and 60/80-digit stability checks.
+Configuration-update checks passed: 19/19
+W corrected fixed angles : True
+W unchanged physical parameters : True
+W unchanged mass grid : True
+W unchanged precision : True
+W all points match A1+D and manuscript weights : True
+W phase jumps split : True
+Z corrected fixed angles : True
+Z unchanged physical parameters : True
+Z unchanged mass grid : True
+Z unchanged precision : True
+Z all points match A1+D and manuscript weights : True
+Z phase jumps split : True
+t corrected fixed angles : True
+t unchanged physical parameters : True
+t unchanged mass grid : True
+t unchanged precision : True
+t all points match A1+D and manuscript weights : True
+t phase jumps split : True
+top agrees with nu=1 angular-map maximum : True
