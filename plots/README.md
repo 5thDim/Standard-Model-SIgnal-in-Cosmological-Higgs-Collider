@@ -1,6 +1,6 @@
 # Signal Plots
 
-打开根目录的 `Signal Plots.nb` 即可查看原有十张图、六张曲率 tNL 角分布预览、两张质量依赖图、两张 trispectrum 对比图及一张扩展范围的 T/E 图。正常运行只加载本目录中的六个模块，不读取原 notebook、原辅助脚本或论文。原文件均保留。
+打开根目录的 `Signal Plots.nb` 即可查看四张系数扫描图、六张曲率 tNL 角分布预览、两张质量依赖图及一张 0..5 范围的 T/E 图。正常运行只加载本目录中的六个模块，不读取原 notebook、原辅助脚本或论文。
 
 | 文件 | 职责 |
 |---|---|
@@ -9,7 +9,7 @@
 | `plot_data.wl` | 精确默认网格、复数扫描、固定质量扫角、幅度/相位投影、WXF 保存与缓存 |
 | `plot_style.wl` | Latin Modern Roman 字体、字号、线宽、图尺寸、留白、图例、渐变色及分段色条 |
 | `nu_scan.wl` | 根据已算好的复数扫描画系数图及曲率 tNL/相位质量图；相位跳变处断线 |
-| `angular_maps.wl` | 根据已算好的角网格画幅度和相位填色等高线地图 |
+| `angular_maps.wl` | 根据已有数据画曲率 tNL 角分布图及 T/E 动量比图 |
 | `build_notebook.wl` | 在新内核中生成并求值简短 notebook，保存单图及 2×2 组合预览 |
 | `validate.wl` | 可选的只读移植回归；读取原 notebook 的解析定义及第 8 节实例作比较 |
 
@@ -20,17 +20,13 @@
 - `gaugeNuGrid`：`Range[1/100,1,1/100]`，100 点。
 - `topNuGrid`：0.1–1 步长 0.01，1.05–5 步长 0.05，共 171 点。
 - `gaugePrecision=40`、`topPrecision=50`、`angularPrecision=60`。
-- `angularNu=1`、`phi3=0`、`cosineGrid=Subdivide[-1,1,200]`，即 201×201 网格。
-- `amplitudeUnit=10^-6`：色条标为“|Ct| × 10^6”，刻度 5 对应实际幅度 5×10^-6。幅度未取对数或归一化。
-- `magnitudeEdges`、`phaseEdges` 为原第 8 节色阶。更换二维参数后可改为 `Automatic`。
+- `angularNu=1`、`phi3=0`：曲率组装的参考质量指标和方位角。
 
-从上到下运行会自动使用匹配的 `data/*.wxf`；参数、精度或 `coefficients.wl` 的哈希改变时重算。`recomputeData=True` 可强制重算。只改样式时，修改并重新 `Get` 加载 `plot_style.wl`，再运行第 3–5 节即可，不用再算特殊函数。
+从上到下运行会自动使用匹配的 `data/*.wxf`；参数、精度或 `coefficients.wl` 的哈希改变时重算。`recomputeData=True` 可强制重算。只改系数扫描图的样式时，修改并重新 `Get` 加载 `plot_style.wl`，再运行第 3–4 节即可，不用再算特殊函数。
 
 Gauge 的七条曲线依次使用紫、蓝、青、绿、深金黄、橙、红；在 `plot_style.wl` 的 `GaugeScanColors` 中调整。两张 Gauge 图使用相同配色。
 
 Top 的五条曲线依次使用紫、蓝、绿、深金黄、红；在 `plot_style.wl` 的 `ScanColors` 中调整。两张 Top 图使用相同配色。
-
-第 5 节另含 ϕ3=π/2、π 的四张图：2×2 排列，上排 π/2、下排 π，左列幅度、右列相位；仍为 ν=1、201×201 网格。对应数据分别保存在 `top_angular_phi_pi_over_2.wxf` 与 `top_angular_phi_pi.wxf`。这一组的色阶在该小节的 `additionalMagnitudeEdges`、`additionalPhaseEdges` 中设置，并在两行间统一。
 
 所有 notebook 路径从 `NotebookDirectory[]` 构造；两个命令行脚本从自身所在目录定位工程。没有绝对路径或 Windows 路径。命令行可在项目根目录运行：
 
@@ -176,11 +172,10 @@ W/Z 共享同一份 gauge 扫描，各自按耦合权重和重数组装。
 只改样式时重新加载模块后运行两个绘图格及导出格。
 本阶段只输出 PNG 预览，不改动论文及插图 PDF。
 
-## Trispectrum 与去共同包络的对比
+## Trispectrum 的质量与振幅基准
 
-Notebook 第 8 节绘制带正负号的振荡非局域 collapsed 模板 `T_NS`，以及 `T_NS/E`。
+Notebook 第 8 节组装第 9 节 T/E 图所需的质量与复振幅，并显示参数表。
 动量比为 `r1=ks/k12`、`r2=ks/k34`，其中 `k12=k1+k2`、`k34=k3+k4`。
-横纵坐标为 `x=-log10(r1)`、`y=-log10(r2)`，默认网格为 `Subdivide[0,2,200]`，共 201×201 点。
 固定 `theta1=theta3=Pi/2, phi3=0`，其余参数沿用第 1 节，`lambda=1/100`。
 
 `Lu2019MassBenchmark` 按 Lu (2019) 的式 (11)、(45) 使用环修正主导的 W/Z 质量，
@@ -197,30 +192,15 @@ T_NS/E = tNL_W Cos[Psi_W] + tNL_Z Cos[Psi_Z] + tNL_t r1 r2 Cos[Psi_t]
 T_NS = E (T_NS/E)
 ```
 
-两张图均保留信号符号，采用以零为中心的线性色条、科学计数法刻度和相同的红蓝配色；
-各图的色条范围独立设置，数值未取绝对值或按最大值归一化。
 `T_NS/E` 只去掉共同包络，top 额外的 `r1 r2` 衰减仍然保留。
 `r_i` 接近 1 的区域属于 collapsed 模板的外推；深 soft 区域才用于解释 collapsed 近似下的信号。
 
-- `previews/clock_trispectrum.png`：实际 `T_NS`。
-- `previews/clock_trispectrum_over_envelope.png`：实际 `T_NS/E`。
-- `previews/clock_trispectrum_summary.txt`：物理参数、数值范围及核验结果。
-- `data/clock_shape_log_grid.wxf`：60 位精度的 `Envelope`、`T`、`TOverE` 和三个 `SpeciesReduced` 矩阵；
-  行对应 y，列对应 x。文件同时保留精确坐标网格、参数、构型、复系数及源码签名。
-
-`GenerateClockShapeData` / `CachedClockShapeData` 位于 `plot_data.wl`；
-`ClockShapeMapPlot` 位于 `angular_maps.wl`。修改 `clockShapeLogGrid` 可调整范围和分辨率，
-修改 `clockShapeBandCount` 可调整色阶数（取正偶数，至少 2）。
-只改样式时重新加载样式和地图模块，再运行第 8 节的两个绘图格及导出格即可。
-Notebook 保存压缩 PNG 预览；重新运行绘图格会生成原生图形。
-本阶段只更新 notebook 和 PNG 预览，不改动论文及插图 PDF。
-
-## 扩展到 0..5 的 T/E 图
+## 0..5 的 T/E 图
 
 Notebook 第 9 节单独绘制 `T_NS/E`，两轴均取 `-log10(r_i)=0..5`，即 `r_i=10^-5..1`。
 保持 201×201 网格、60 位数据精度和第 8 节的质量、参数、构型及样式。
 本图使用数学字体的花体 T 字形，并通过 `"ShowParameters"->False` 隐去 lambda、h0 和角度标记。
-复用第 8 节的 `clockCollapsedShape`，或从原 `clock_shape_log_grid.wxf` 中加载其 `Shape`。
+复用第 8 节的 `clockCollapsedShape`，或从本图的 `clock_shape_reduced_log_grid_0_to_5.wxf` 中加载其 `Shape`。
 本步不重新求值特殊函数，也不计算或绘制新的 T、E 网格。
 
 固定构型下 `T_NS/E` 仅依赖于 `x+y`，`GenerateReducedClockShapeData` 因而只求值
@@ -233,7 +213,8 @@ top 的额外 `r1 r2` 因子仍然保留；物种分量仅以一维 `SpeciesRedu
 - 核验：`previews/clock_trispectrum_over_envelope_0_to_5_summary.txt`。
 
 修改 `clockWideLogGrid` 可调整范围及网格（须均匀）；只改样式时重画第 9 节即可。
-原 0..2 的两张图、数据及 notebook 小节均保留，论文和插图 PDF 不变。
+色条为以零为中心的线性色条，采用科学计数法刻度；数值保留正负号，未按最大值归一化。
+Notebook 保存压缩 PNG 预览；重新运行绘图格会生成原生图形。
 
 ## 数据结构
 
@@ -242,9 +223,9 @@ WXF 保留任意精度复数，绘图时只将显示副本转换为机器精度�
 | 数据 | 主要字段 |
 |---|---|
 | ν 扫描 | `Model`、`Precision`、精确 `NuGrid`、`CoefficientNames`；`Rows` 每项为 `<|"Nu"->nu,"Coefficients"-><|系数名->复数值|>|>` |
-| 二维扫角 | `Model`、`Nu`、`Phi3`、`Precision`、精确 `CosGrid`、`GridDimensions`；`Coefficients` 保存仅计算一次的系数；`Rows` 为 `{x,y,complex C}`，y 外层、x 内层 |
+| 曲率二维扫角 | `Species`、`Nu`、`Phi3`、`Precision`、精确 `ThetaGrid`、`GridDimensions`；`ClockAssembly` 保存组装系数；`Rows` 为 `{theta1,theta3,complex amplitude}`，theta3 外层、theta1 内层 |
 
-两者还保存 `SchemaVersion` 和 `CoefficientSourceHash`。`NuPlotData` 与 `AngularPlotData` 只转换已有复数数据，不调用系数函数。`previews/` 中的 PNG 是实际 Wolfram 图形导出；`top_angular_additional_2x2.png` 对应新增四图的组合。
+两者还保存 `SchemaVersion` 和 `CoefficientSourceHash`。`NuPlotData` 与 `AngularPlotData` 只转换已有复数数据，不调用系数函数。`previews/` 中的 PNG 是实际 Wolfram 图形导出。
 
 ## 验证
 
@@ -254,9 +235,8 @@ WXF 保留任意精度复数，绘图时只将显示副本转换为机器精度�
 - Top：ν={0.1,0.2,0.73,1,2,5}，70 位比较，最大相对差异估计约 3.6×10^-67。
 - 原第 8 节全部 40,401 个复数角网格样本：相对差异估计约 1.4×10^-30（原网格值保存至 30 位）。
 - 实际幅度范围约 [4.6255592268,6.3827437009]×10^-6；主值相位约 [−2.3287056081,−2.1907038692] rad。
-- 默认网格、有限复数值、相位分段、A3=−3A2、保存输入及新增 2×2 输出均已检查。
+- 默认网格、有限复数值、相位分段及 A3=−3A2 均已检查。
 - 新增输入格已连同模块、参数格在另一个新内核执行通过，未加载原 notebook 的包，记录见 `notebook_replay.txt`。
-- 十张图已逐张检查，坐标标题、图例、参数框及竖直色条完整。新 notebook 不展开完整数据表。
 - 新增 π/2 图满足 x、y 独立反号对称，π 图与原 ϕ3=0 图沿 y 反射一致；包含数值精度估计的完整网格复数绝对残差低于 10^-28。
 - 35 个原有源码/论文文件的 SHA256 全部保持不变，论文 PDF 未更新。主要参考文件哈希见 `source_hashes.json`。
 

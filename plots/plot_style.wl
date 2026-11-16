@@ -6,8 +6,6 @@ CurveStyles::usage = "CurveStyles[n,model:Automatic] gives curve styles; Gauge u
 CoefficientLegend::usage = "CoefficientLegend[names,styles,position] is the framed two-column in-plot legend.";
 MapPlotOptions::usage = "MapPlotOptions[nu,phi3] returns square angular plot options and parameter inset.";
 MapBandColors::usage = "MapBandColors[edges] gives the discrete red-beige-blue fills.";
-MapColorLegend::usage = "MapColorLegend[edges,label] gives a vertical discrete bar on the right.";
-MapMeasureLabel::usage = "MapMeasureLabel[measure,model,unit] explicitly identifies the displayed quantity and units.";
 ClockMapPlotOptions::usage = "ClockMapPlotOptions[species,nu,phi3] gives theta1/theta3 map styling and a framed in-plot species/parameter label.";
 ClockMapLegendLabel::usage = "ClockMapLegendLabel[species] labels the actual dimensionless tNL, without rescaling.";
 ClockMapColorLegend::usage = "ClockMapColorLegend[edges,species] gives a white-background tNL legend with black labels.";
@@ -85,18 +83,6 @@ MapPlotOptions[v_,phi_] := {
     Sequence@@fontStyle[$SignalPlotStyle["LabelSize"]]],
     Background->White,FrameStyle->Black,FrameMargins->5,RoundingRadius->0],
     Scaled[$SignalPlotStyle["ParameterPosition"]]]};
-MapColorLegend[edges_List,label_] := Placed[
-  BarLegend[{mapPalette,{First[edges],Last[edges]}},Rest[Most[edges]],
-    LegendLabel->Placed[Style[label,Sequence@@fontStyle[$SignalPlotStyle["LabelSize"]]],Above],
-    LabelStyle->fontStyle[$SignalPlotStyle["LegendSize"]],
-    LegendMarkerSize->$SignalPlotStyle["ColorBarSize"],LegendMargins->$SignalPlotStyle["ColorBarMargins"]],Right];
-MapMeasureLabel[measure_,model_,unit_] := Module[{c=If[model=="Top",
-    Subscript[Style["C",Italic],Style["t",Italic]],
-    Superscript[Style["C",Italic],Style["Box",Plain]]]},
-  If[measure=="Phase",Row[{"arg ",c," (rad)"}],
-    If[unit==1,Row[{"|",c,"|"}],Row[{"|",c,"| \[Times] ",
-      If[unit==10^-6,Superscript[10,6],TraditionalForm[1/unit]]}]]]
-];
 ClockMapPlotOptions[species_,v_,phi_] := Module[{ticks,base},
   ticks=Table[{j Pi/4,TraditionalForm[j Pi/4]},{j,0,4}];
   base=DeleteCases[MapPlotOptions[v,phi],
