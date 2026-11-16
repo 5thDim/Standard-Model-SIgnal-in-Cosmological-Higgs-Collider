@@ -1716,6 +1716,84 @@ With the normalization in \eqref{eq:phenomenology-clock-shape}, the clock amplit
 % The overall minus sign in \eqref{eq:dirac-clock-signal} is absorbed into $\varphi_t$; all phases are understood modulo
 % $2\pi$.
 
+Since the clock amplitudes $t_{\mathrm{NL}}^I$ depend on the external momentum configuration, we first examine their
+angular distributions.
+For observational purposes, we are particularly interested in the configurations that maximize these amplitudes.
+We fix the mass parameter to $\tilde\nu=1$ and consider three azimuthal angles, $\phi_3=0,\pi/2,\pi$.
+For each choice of $\phi_3$, we plot $t_{\mathrm{NL}}^I$ as a function of the two polar angles
+$\theta_1,\theta_3\in[0,\pi]$.
+
+For the gauge bosons, all angular dependence arises from $C^{\mathrm{Box}}$, while the bubble and triangle contributions
+are isotropic.
+As shown in \eqref{eq:phenomenology-gauge-clock-combinations}, the replacement $g\to g/c_W$ enhances the box term
+relative to the bubble and triangle terms by factors of $c_W^{-4}$ and $c_W^{-2}$, respectively.
+We therefore expect the $Z$ signal to have stronger angular dependence than the $W$ signal and focus on $Z$ in the
+gauge-boson angular plots.
+Together with the top-quark signal, these choices give six plots showing the angular dependence of
+$t_{\mathrm{NL}}^Z$ and $t_{\mathrm{NL}}^t$, one for each species and each value of $\phi_3$.
+
+The angular scans at $\tilde\nu=1$ show that the largest clock amplitudes occur at
+$\theta_1=\theta_3=\pi/2$ and $\phi_3=0$ or $\pi$.
+In physical terms, $\mb k_s$ is perpendicular to $\mb k_1$, while $\mb k_3$ is parallel or antiparallel to $\mb k_1$.
+We choose the parallel configuration, $\theta_1=\theta_3=\pi/2$ and $\phi_3=0$, for the following mass scans to obtain
+large clock amplitudes.
+
+To use the Standard Model signals to calibrate the CHC, we next examine the mass dependence of their strengths.
+At this fixed configuration, we plot the clock amplitudes $t_{\mathrm{NL}}^I$ against the particle mass ratios $m_I/H$
+for $I=W,Z,t$.
+Once the momentum-ratio convention in \eqref{eq:phenomenology-clock-shape} is fixed, the phases $\varphi_I$ are
+predictions of the underlying theory and carry information about the particle interactions beyond the oscillation
+frequency~\cite{qin_phase_2022}.
+We therefore also show the dependence of $\varphi_I$ on $m_I/H$ in the same configuration.
+
+We now give an example of the oscillations in the nonlocal trispectrum in momentum space.
+Writing $r_1\equiv k_s/k_{12}$ and $r_2\equiv k_s/k_{34}$, we define the common envelope of the three signals as
+\begin{equation}
+    E(r_1,r_2)\equiv\left(\frac{k_s}{k_t}\right)^3
+    =\left(\frac{r_1r_2}{r_1+r_2}\right)^3.
+    \label{eq:phenomenology-common-envelope}
+\end{equation}
+To make the oscillations easier to see, we divide out this envelope and plot $[\mathcal T]_{\mathrm{NS}}/E$.
+% Equation~\eqref{eq:phenomenology-clock-shape} then gives
+% \begin{equation}
+%     \begin{aligned}
+%         \frac{[\mathcal T]_{\mathrm{NS}}}{E}
+%         &\simeq t_{\mathrm{NL}}^W\cos\Psi_W+t_{\mathrm{NL}}^Z\cos\Psi_Z
+%         +r_1r_2\,t_{\mathrm{NL}}^t\cos\Psi_t,\\
+%         \Psi_I&\equiv2\tilde\nu_I\log\!\left(\frac{r_1r_2}{4}\right)+\varphi_I.
+%     \end{aligned}
+%     \label{eq:phenomenology-reduced-shape}
+% \end{equation}
+The top signal therefore retains an additional suppression by $r_1r_2$ in the deeply collapsed limit.
+For suitable parameters, the $W$ and $Z$ signals with comparable amplitudes and nearby frequencies can produce a beat
+pattern in this regime, while the top contribution can become more visible at less collapsed momenta.
+
+As an example, we take $\lambda=0.01$, $g=0.6$, $c_W=0.88$ and $y_t=1$, following
+\cite{lu_cosmological_2020}, and retain $h_0=H$.
+Using \eqref{eq:overview-higgs-mass}, the loop-dominated $W/Z$ masses from
+\eqref{eq:overview-vector-mass-corrections}, and $m_t=y_th_0/\sqrt2$, we obtain
+\begin{equation}
+    \left(\frac{m_W}{H},\frac{m_Z}{H},\frac{m_t}{H}\right)
+    \simeq(0.5576,\,0.6337,\,0.7071).
+    \label{eq:phenomenology-benchmark-masses}
+\end{equation}
+We further set $R_h=0.14$ and $P_\zeta=2\times10^{-9}$.
+In the fixed parallel configuration chosen above, the clock amplitudes are
+\begin{equation}
+    \left(t_{\mathrm{NL}}^W,t_{\mathrm{NL}}^Z,t_{\mathrm{NL}}^t\right)
+    \simeq(1.128,\,0.1163,\,0.09335).
+    \label{eq:phenomenology-benchmark-amplitudes}
+\end{equation}
+We plot $[\mathcal T]_{\mathrm{NS}}/E$ as a function of $r_1$ and $r_2$, using
+$-\log_{10}r_1,-\log_{10}r_2\in[0,5]$ as the plotting coordinates.
+Near $r_i\sim1$, the plot should be understood as an extrapolation of the leading collapsed expression.
+
+For this benchmark, the $W$ clock amplitude is nearly an order of magnitude larger than the $Z$ amplitude, while the
+top contribution is further suppressed by $r_1r_2$.
+The plot is consequently dominated by one clearly visible oscillation frequency, associated with the $W$ boson.
+Nevertheless, the dominance of $W$ in this particular example does not exclude the possibility that future
+observations could reveal a richer superposition of Standard Model signals.
+
 
 
 
