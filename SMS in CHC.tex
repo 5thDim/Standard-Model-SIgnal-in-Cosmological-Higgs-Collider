@@ -195,7 +195,7 @@
 \paragraph{Notations and conventions}
 We work with the inflation patch of the dS spacetime with coordinates $x^\mu=(\tau,\bm x)$ and metric $\di s^2=(-\di\tau^2+\di\bm x^2)/\tau^2$, where $\tau\in(-\infty,0)$ and $\bm x\in\mathbb{R}^3$.
 We denote a three-momentum by $\bm k$ and its magnitude by $k\equiv|\bm k|$.
-We also use the condensed subscripts to denote summations, such as $k_{12}\equiv k_1+k_2$, $p_{12}=p_1+p_2$, etc.
+We also use the condensed subscripts to denote summations, such as $k_{12}\equiv k_1+k_2$, $p_{12}\equiv p_1+p_2$, etc.
 Our conventions for Euler $\Gamma$ products, the Pochhammer symbol, and hypergeometric functions are collected in App.~\ref{app:useful-functions}.
 A prime on a momentum-space correlator, such as $\langle\zeta_{\bm k_1}\cdots\zeta_{\bm k_n}\rangle'$, indicates that the overall factor $(2\pi)^3\delta^{(3)}(\sum_{i=1}^n\bm k_i)$ has been removed.
 
@@ -217,8 +217,8 @@ The Higgs fluctuations then change the decay rate in different regions.
 These regions reheat at different times and undergo different amounts of expansion.
 In this way, the Higgs fluctuations contribute to the primordial curvature perturbation.
 
-The conversion can be described by the local number of e-folds $N$.
-Let $h$ denote the Higgs value on an equal-time slice when inflation ended.
+The conversion can be described by the local number of e-folds $N$ from a spatially flat slice at the end of inflation to a uniform-density slice after reheating.
+Let $h$ denote the Higgs value on the initial slice.
 Using the $\delta N$ formalism~\cite{lyth_inflationary_2005,sasaki_general_1996,starobinsky_dynamics_1982,starobinsky_multicomponent_1985,lyth_general_2005}, we write the Higgs contribution to the curvature perturbation as:
 \begin{equation}
     \zeta_h=N_h\delta h
@@ -323,7 +323,7 @@ We extract the leading nonlocal contribution using the one-loop factorization th
 In the following sections, we calculate the amplitude of this leading nonlocal signal and its dependence on the particle masses and Higgs couplings.
 For the gauge bosons, we use the mass parameter $\tilde\nu=\sqrt{m_A^2/H^2-1/4}$ and the couplings $g$ for $W$ and $g/c_W$ for $Z$.
 For the top quark, we use $\tilde\nu=m_t/H$ and the Yukawa coupling $y_t$.
-We also analyze the characteristic angular partial-wave structures in the nonlocal signal, which are determined by the spin of the exchanged particle.
+We also analyze the characteristic angular partial-wave structures in the nonlocal signal, which depend on the spins and interaction structures of the particles in the loop.
 These results provide the SM reference signals for calibrating the cosmological Higgs collider.
 
 \section{Gauge Boson Signal}
@@ -588,7 +588,7 @@ With the four external momenta fixed, the $s$-channel contribution is
     \label{eq:bubble-sk}
 \end{align}
 The two quartic vertices give the factor $\left(\frac{g^2}{2}\right)^2=\frac{g^4}{4}$.
-And additional factor \(1/2\) accounts for the exchange of the two identical internal lines.
+An additional factor \(1/2\) accounts for the exchange of the two identical internal lines.
 For the fixed partition $(12)\mid(34)$, exchanges within either external Higgs pair leave the graph unchanged.
 There is therefore no additional external-permutation factor in the $s$-channel signal.
 
@@ -749,6 +749,7 @@ For the transverse modes this follows directly from \eqref{eq:vector-scalar-rela
 For the longitudinal mode, the differential relation also produces a delta-function contribution by integration by parts, and we retain this term together with the scalar-seed contributions.
 The required seed exponents include $p_0=-5/2+\ii\eta\tilde\nu$, on the boundary of the convergence domain.
 We define the result by analytic continuation from $p_0+\epsilon$, $\epsilon>0$, and take the finite part of the assembled expression at $\epsilon=0$.
+The regulator poles cancel after summing all SK branches.
 The seed normalization, closed forms, and combinations giving $\mathcal P^{(2),\lambda}_{\eta}$ are collected in App.~\ref{app:triangle-coefficients}.
 
 Finally, the leading signal of the first triangle is
@@ -905,7 +906,7 @@ The result contains five angular structures:
     \label{eq:box-angular-expansion}
 \end{align}
 The five complex functions depend only on $\tilde\nu$.
-Its oscillatory momentum dependence is the same as in \eqref{eq:bubble-phase}, with an angle-dependent amplitude and phase supplied by $C^{\mathrm{Box}}$.
+The oscillatory momentum dependence of the box signal is the same as in \eqref{eq:bubble-phase}, with an angle-dependent amplitude and phase supplied by $C^{\mathrm{Box}}$.
 
 \clearpage
 
@@ -1255,7 +1256,7 @@ And the $J=1$ contribution is excluded by Bose symmetry: since the two incoming 
 This is the partial-wave counterpart of the cancellation between the two external orderings.
 Therefore the zeroth-order soft contribution vanishes.
 
-So we need to expand the integrand to the next-to-leading order in the soft momentum.
+We therefore expand each hard subgraph to first order in the soft momenta.
 Combining the hard-line correction \eqref{eq:dirac-hard-expansion} and the endpoint correction \eqref{eq:dirac-endpoint-correction} gives
 \begin{align}
  \Lambda_-(V_{12}^{(1)}+V_{21}^{(1)})\Lambda_+
@@ -1299,8 +1300,7 @@ Consequently the first nonzero oscillatory signal scales as $k_s^{5\pm4\ii\tn}$.
 
 \subsection{Factorized Loop and Time Integrals}
 \label{sec:dirac-factorized}
-Now we have evaluated the spinor trace, and the next step is to perform the loop and time integrations.
-The scalar trace in \eqref{eq:dirac-scalar-trace} reduces the remaining loop to a scalar integral.
+The spinor trace in Eq.~\eqref{eq:dirac-scalar-trace} reduces the loop momentum integration to scalar convolutions.
 For each common soft branch $\eta=\pm1$, put $\mb v_{A,\eta}=\Pi^A_{1,\eta}\bm\ell +\Pi^A_{2,\eta}\mb n_A(\mb n_A\cdot\bm\ell)$, with $A=L,R$.
 The dimensionless loop coefficients are defined by
 \begin{align}
@@ -1616,9 +1616,9 @@ Near $r_i\sim1$, the plot should be understood as an extrapolation of the leadin
 For this benchmark, the $W$ clock amplitude is nearly an order of magnitude larger than the $Z$ amplitude, while the top contribution is further suppressed by $r_1r_2$.
 The plot is consequently dominated by one clearly visible oscillation frequency, associated with the $W$ boson.
 
-\clearpage
-
 \section{Conclusions and Outlooks}
+
+\clearpage
 
 \appendix
 \section{Useful Functions}
